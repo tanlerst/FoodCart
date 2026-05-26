@@ -5,8 +5,7 @@
   padding: 28px;
   background:
     radial-gradient(circle at 12% 14%, rgba(255, 120, 25, 0.18), transparent 24%),
-    radial-gradient(circle at 88% 88%, rgba(255, 120, 25, 0.12), transparent 26%),
-    #fff6ec;
+    radial-gradient(circle at 88% 88%, rgba(255, 120, 25, 0.12), transparent 26%), #fff6ec;
 }
 
 .login-panel {
