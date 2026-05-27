@@ -63,15 +63,16 @@ function filterFoodsBySearchWord(foods: Food[], searchWord: string): Food[] {
 
 
 export default function MenuPage() {
-
+    
     const [searchWord, setSearchWord] = useState<string>(""); // search bar
     const [chosenCategory, setSelectedCategory] = useState<string>("All");
     const categories = getCategories(sample_menu);
     const filtered_foods = filterFoods(sample_menu, chosenCategory, searchWord);
+    const pageTitle = searchWord ? `Search results for "${searchWord}"` : chosenCategory === "All" ? "All Categories" : `${chosenCategory} Category`;
 
     return (
         <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-6">{chosenCategory}</h1>
+            <h1 className="text-3xl font-bold mb-6">{pageTitle}</h1>
             <SearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
             
             <CategoryTabs categories={categories} chosen_category={chosenCategory} changeCategory={setSelectedCategory} />
