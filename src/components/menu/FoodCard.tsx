@@ -17,7 +17,8 @@ export default function FoodCard({ food }: FoodCardProps) {
       </div>
 
       <div className="px-8 mt-2">
-        <img src={food.imageUrl} alt={food.name} className="w-full h-48 object-cover" />
+        {/* image size fit to container */}
+        <img src={food.imageUrl} alt={food.name} className="w-full h-40 object-contain rounded-2xl" />
       </div>
 
       <div className="pt-4 px-4 mb-2">
