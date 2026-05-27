@@ -23,7 +23,7 @@ export default function FoodCard({ food }: FoodCardProps) {
       <div className="pt-4 px-4 mb-2">
         <div className="p-2">
           <h3 className="text-lg font-bold text-gray-900">{food.name}</h3>
-
+          {/* toFixed(2) here rounds to 2 decimal places */}
           <p className="text-orange-600 font-semibold mt-1">${food.price.toFixed(2)}</p>
         </div>
       </div>

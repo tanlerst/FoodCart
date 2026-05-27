@@ -5,5 +5,6 @@ export type Food = {
   description: string;
   price: number;
   imageUrl: string;
+  category: string;
   timeToPrepare: number; // in minutes
 };

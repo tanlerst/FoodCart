@@ -5,7 +5,7 @@ import { doSignup } from "../../utils/doSignup";
 import FormField from "../common/FormField";
 import Button from "../common/Button";
 
-export default function SignupCard() {
+export default function SignupComponent() {
   const [username, setFullName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
