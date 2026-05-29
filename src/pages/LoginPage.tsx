@@ -16,7 +16,7 @@ export default function LoginPage() {
 
         <LoginCard 
           onLogin={() => {
-            navigate("/menu");
+            navigate("/menu"); 
           }}/>
 
         <SignupCard/>

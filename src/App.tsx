@@ -1,3 +1,12 @@
+/* temp code to show only signup page*/
+
+// import SignupPage from "./pages/SignupPage";
+// import "./App.css";
+
+// export default function App() {
+//   return <SignupPage />;
+// }
+
 import { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import type { Session } from "@supabase/supabase-js";
@@ -6,6 +15,7 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import MenuPage from "./pages/MenuPage";
 import "./App.css";
+
 
 function ProtectedRoute({ session, children }: { session: Session | null; children: React.ReactNode }) {
   return session ? <>{children}</> : <Navigate to="/login" replace />;

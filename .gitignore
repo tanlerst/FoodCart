@@ -1,0 +1,6 @@
+node_modules/
+.env
+.env.*
+_env
+**/_env
+.DS_Store

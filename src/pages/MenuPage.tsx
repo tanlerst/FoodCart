@@ -3,8 +3,12 @@ import SearchBar from "../components/menu/SearchBar";
 import NavigationBar from "../components/menu/NavigationBar";
 import CategoryTabs from "../components/menu/CategoryTabs";
 import { menuData } from "../helpers/menu/menuData";
+import LogoutButton from "../components/auth/LogoutButton";
+import { useNavigate } from "react-router";
 
 export default function MenuPage() {
+
+  const navigate = useNavigate();
   const { filteredFoods, categories, search, setSearch, catTab, setCatTab } = menuData();
   const pageTitle = search
     ? `Search results for "${search}"`
@@ -13,7 +17,13 @@ export default function MenuPage() {
       : `${catTab} Category`;
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">{pageTitle}</h1>
+        <h1 className="text-3xl font-bold">{pageTitle}</h1>
+        
+        <div className="flex justify-end mb-4">
+        <LogoutButton onLogout = {() => {
+            navigate("/login");
+          }} />
+        </div>
       <SearchBar searchWord={search} setSearchWord={setSearch} />
 
       <CategoryTabs categories={categories} chosen_category={catTab} changeCategory={setCatTab} />

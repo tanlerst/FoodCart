@@ -6,7 +6,6 @@ import FormField from "../common/FormField";
 import Button from "../common/Button";
 
 
-
 export default function LoginCard({onLogin}: {
   onLogin: ()=>void;
 }) {
