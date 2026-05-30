@@ -1,7 +1,7 @@
 /* Signup Page for FoodCart */
 
 import SignupComponent from "../components/auth/SignupComponent";
-import SigninButton from "../components/auth/SigninButton"
+import SigninButton from "../components/auth/SigninButton";
 
 export default function SignupPage() {
   return (
@@ -16,11 +16,10 @@ export default function SignupPage() {
         </p>
         <SignupComponent />
 
-        <div className="mt-6 text-center">   
+        <div className="mt-6 text-center">
           <p> Already have an account? </p>
-          <SigninButton/>
+          <SigninButton />
         </div>
-      
       </div>
     </main>
   );

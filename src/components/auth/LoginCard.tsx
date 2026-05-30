@@ -5,10 +5,7 @@ import { doLogin } from "../../helpers/auth/doLogin";
 import FormField from "../common/FormField";
 import Button from "../common/Button";
 
-
-export default function LoginCard({onLogin}: {
-  onLogin: ()=>void;
-}) {
+export default function LoginCard({ onLogin }: { onLogin: () => void }) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 

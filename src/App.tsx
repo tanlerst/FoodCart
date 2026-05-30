@@ -16,12 +16,23 @@ import SignupPage from "./pages/SignupPage";
 import MenuPage from "./pages/MenuPage";
 import "./App.css";
 
-
-function ProtectedRoute({ session, children }: { session: Session | null; children: React.ReactNode }) {
+function ProtectedRoute({
+  session,
+  children,
+}: {
+  session: Session | null;
+  children: React.ReactNode;
+}) {
   return session ? <>{children}</> : <Navigate to="/login" replace />;
 }
 
-function PublicRoute({ session, children }: { session: Session | null; children: React.ReactNode }) {
+function PublicRoute({
+  session,
+  children,
+}: {
+  session: Session | null;
+  children: React.ReactNode;
+}) {
   return session ? <Navigate to="/menu" replace /> : <>{children}</>;
 }
 
@@ -51,10 +62,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={<Navigate to={session ? "/menu" : "/login"} replace />}
-        />
+        <Route path="/" element={<Navigate to={session ? "/menu" : "/login"} replace />} />
 
         <Route
           path="/login"

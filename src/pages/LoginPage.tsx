@@ -14,12 +14,13 @@ export default function LoginPage() {
 
         <p className="text-center text-gray-600 mb-6">Sign in to continue your food journey</p>
 
-        <LoginCard 
+        <LoginCard
           onLogin={() => {
-            navigate("/menu"); 
-          }}/>
+            navigate("/menu");
+          }}
+        />
 
-        <SignupCard/>
+        <SignupCard />
       </div>
     </main>
   );

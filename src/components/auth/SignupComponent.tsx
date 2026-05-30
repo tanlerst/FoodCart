@@ -4,13 +4,15 @@ import { useState } from "react";
 import { doSignup } from "../../helpers/auth/doSignup";
 import FormField from "../common/FormField";
 import Button from "../common/Button";
+import { useNavigate } from "react-router";
 
 export default function SignupComponent() {
   const [username, setFullName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
-
+  const navigate = useNavigate();
+  
   async function handleSignup(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -21,7 +23,7 @@ export default function SignupComponent() {
 
     try {
       await doSignup({ username, email, password });
-      alert("Account created successfully");
+      navigate("/login");
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);

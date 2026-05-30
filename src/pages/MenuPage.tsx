@@ -7,7 +7,6 @@ import LogoutButton from "../components/auth/LogoutButton";
 import { useNavigate } from "react-router";
 
 export default function MenuPage() {
-
   const navigate = useNavigate();
   const { filteredFoods, categories, search, setSearch, catTab, setCatTab } = menuData();
   const pageTitle = search
@@ -17,13 +16,15 @@ export default function MenuPage() {
       : `${catTab} Category`;
   return (
     <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold">{pageTitle}</h1>
-        
-        <div className="flex justify-end mb-4">
-        <LogoutButton onLogout = {() => {
+      <h1 className="text-3xl font-bold">{pageTitle}</h1>
+
+      <div className="flex justify-end mb-4">
+        <LogoutButton
+          onLogout={() => {
             navigate("/login");
-          }} />
-        </div>
+          }}
+        />
+      </div>
       <SearchBar searchWord={search} setSearchWord={setSearch} />
 
       <CategoryTabs categories={categories} chosen_category={catTab} changeCategory={setCatTab} />

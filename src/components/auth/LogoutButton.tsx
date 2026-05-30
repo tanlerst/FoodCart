@@ -1,24 +1,23 @@
-/* Reusable logout button on menu page*/
+import { useNavigate } from "react-router";
+import { supabase } from "../../utils/supabase";
 
-export default function LogoutButton({ onLogout }: {
-    onLogout: () => void;
-}) {
+export default function LogoutButton() {
+  const navigate = useNavigate();
 
-    const handleLogout = async () => {
-        try {
-            // await doLogin({ email, password });
-            //     onLogin();
-            } catch (error) {
-        if (error instanceof Error) {
-            alert(error.message);
-            }
-        }
-    };
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
 
-    return (
-        <button onClick={handleLogout} className="text-md text-orange-600 font-semibold">
-            Logout
-        </button>
-    );
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    navigate("/login");
+  };
+
+  return (
+    <button onClick={handleLogout} className="text-md text-orange-600 font-semibold">
+      Logout
+    </button>
+  );
 }
-
