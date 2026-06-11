@@ -7,6 +7,7 @@ import LogoutButton from "../components/auth/LogoutButton";
 import { useNavigate } from "react-router";
 
 export default function MenuPage() {
+  
   const navigate = useNavigate();
   const { filteredFoods, categories, search, setSearch, catTab, setCatTab } = menuData();
   const pageTitle = search
@@ -15,7 +16,7 @@ export default function MenuPage() {
       ? "All Categories"
       : `${catTab} Category`;
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 pb-30">
       <h1 className="text-3xl font-bold">{pageTitle}</h1>
 
       <div className="flex justify-end mb-4">
@@ -29,7 +30,10 @@ export default function MenuPage() {
 
       <CategoryTabs categories={categories} chosen_category={catTab} changeCategory={setCatTab} />
       <FoodGrid foods={filteredFoods} />
-      <NavigationBar />
+      
+      <div className="fixed bottom-0 left-0 right-0 bg-orange-50">
+          <NavigationBar/>
+      </div>
     </div>
   );
 }
