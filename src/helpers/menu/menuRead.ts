@@ -2,6 +2,7 @@ import { supabase } from "../../utils/supabase";
 import type { Food } from "../../types/Food";
 
 type FoodRow = {
+  id: number;
   name: string;
   description: string;
   price: number;
@@ -16,6 +17,7 @@ type CategoryRow = {
 
 export async function fetchMenu(): Promise<Food[]> {
   const { data, error } = await supabase.from("food").select(`
+      id,
       name,
       description,
       price,
@@ -29,6 +31,7 @@ export async function fetchMenu(): Promise<Food[]> {
   if (error) throw error;
 
   return ((data ?? []) as FoodRow[]).map((food) => ({
+    id: food.id,
     name: food.name,
     description: food.description,
     price: food.price,

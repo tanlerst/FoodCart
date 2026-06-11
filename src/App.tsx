@@ -1,7 +1,7 @@
 /* temp code to show only signup page*/
 
-// import SignupPage from "./pages/SignupPage";
 // import "./App.css";
+// import SignupPage from "./pages/SignupPage";
 
 // export default function App() {
 //   return <SignupPage />;
@@ -15,6 +15,7 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import MenuPage from "./pages/MenuPage";
 import "./App.css";
+import FoodDetailsPage from "./pages/FoodDetailsPage";
 
 function ProtectedRoute({
   session,
@@ -90,6 +91,14 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route 
+          path="/food/:id" 
+          element={
+              <FoodDetailsPage />
+          } 
+        />
+
       </Routes>
     </BrowserRouter>
   );
