@@ -12,7 +12,7 @@ export default function SignupComponent() {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const navigate = useNavigate();
-  
+
   async function handleSignup(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 

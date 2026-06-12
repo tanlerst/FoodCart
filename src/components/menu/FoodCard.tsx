@@ -14,9 +14,10 @@ export default function FoodCard({ food }: FoodCardProps) {
 
   return (
     // onClick navigate to food details page with food id
-    <div onClick={() => navigate("/food/" + food.id)} 
-    className="bg-white rounded-2xl shadow-md overflow-hidden pt-4">
-
+    <div
+      onClick={() => navigate("/food/" + food.id)}
+      className="bg-white rounded-2xl shadow-md overflow-hidden pt-4"
+    >
       <div className="flex items-center gap-2 px-4">
         <img src={timer} alt="Time" className="w-6 h-6" />
 
