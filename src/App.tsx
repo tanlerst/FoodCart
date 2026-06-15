@@ -16,6 +16,7 @@ import SignupPage from "./pages/SignupPage";
 import MenuPage from "./pages/MenuPage";
 import "./App.css";
 import FoodDetailsPage from "./pages/FoodDetailsPage";
+import CartPage from "./pages/CartPage";
 
 function ProtectedRoute({
   session,
@@ -97,6 +98,15 @@ export default function App() {
           element={
               <FoodDetailsPage />
           } 
+        />
+
+        <Route
+          path="/cart"
+          element={
+            <ProtectedRoute session={session}>
+              <CartPage />
+            </ProtectedRoute>
+          }
         />
 
       </Routes>

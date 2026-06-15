@@ -1,6 +1,6 @@
 import FoodGrid from "../components/menu/FoodGrid";
 import SearchBar from "../components/menu/SearchBar";
-import NavigationBar from "../components/menu/NavigationBar";
+import NavigationBar from "../components/common/NavigationBar";
 import CategoryTabs from "../components/menu/CategoryTabs";
 import { menuData } from "../helpers/menu/menuData";
 import LogoutButton from "../components/auth/LogoutButton";
@@ -19,11 +19,7 @@ export default function MenuPage() {
       <h1 className="text-3xl font-bold">{pageTitle}</h1>
 
       <div className="flex justify-end mb-4">
-        <LogoutButton
-          onLogout={() => {
-            navigate("/login");
-          }}
-        />
+        <LogoutButton/>
       </div>
       <SearchBar searchWord={search} setSearchWord={setSearch} />
 

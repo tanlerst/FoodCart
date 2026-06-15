@@ -13,10 +13,22 @@ import categories from "../../assets/menu/navigation_bar/categories_orange.png";
 import cart from "../../assets/menu/navigation_bar/cart_grey.png";
 import orders from "../../assets/menu/navigation_bar/order_grey.png";
 import profile from "../../assets/menu/navigation_bar/user_grey.png";
+import { useNavigate } from "react-router-dom";
 
-function NavigationItem({ imgSrc, label }: { imgSrc: string; label: string }) {
-  return (
-    <button className="nav-item flex flex-col items-center gap-1">
+type NavigationItemProps = {
+  imgSrc: string;
+  label: string;
+  onClick?: () => void;
+};
+
+function NavigationItem({ 
+  imgSrc, 
+  label, 
+  onClick 
+}: NavigationItemProps) {
+  
+    return (
+    <button className="nav-item flex flex-col items-center gap-1" onClick={onClick}>
       <img src={imgSrc} alt={label} className="w-6 h-6" />
       <span className="text-xs">{label}</span>
     </button>
@@ -24,23 +36,25 @@ function NavigationItem({ imgSrc, label }: { imgSrc: string; label: string }) {
 }
 
 export default function NavigationBar() {
+  const navigate = useNavigate();
+
   return (
     <div className="navigation-bar text-gray p-4 mt-6 border-t">
       <ul className="flex justify-around">
         <li>
-          <NavigationItem imgSrc={home} label="Home" />
+          <NavigationItem imgSrc={home} label="Home" onClick={() => navigate("/menu")} />
         </li>
         <li>
-          <NavigationItem imgSrc={categories} label="Categories" />
+          <NavigationItem imgSrc={categories} label="Categories" onClick={() => navigate("/menu")} />
         </li>
         <li>
-          <NavigationItem imgSrc={cart} label="Cart" />
+          <NavigationItem imgSrc={cart} label="Cart" onClick={() => navigate("/cart")} />
         </li>
         <li>
-          <NavigationItem imgSrc={orders} label="Orders" />
+          <NavigationItem imgSrc={orders} label="Orders" onClick={() => navigate("/orders")} />
         </li>
         <li>
-          <NavigationItem imgSrc={profile} label="Profile" />
+          <NavigationItem imgSrc={profile} label="Profile" onClick={() => navigate("/profile")} />
         </li>
       </ul>
     </div>
