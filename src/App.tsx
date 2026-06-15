@@ -17,6 +17,7 @@ import MenuPage from "./pages/MenuPage";
 import "./App.css";
 import FoodDetailsPage from "./pages/FoodDetailsPage";
 import CartPage from "./pages/CartPage";
+import { CartProvider } from "./context/CartContext";
 
 function ProtectedRoute({
   session,
@@ -62,54 +63,50 @@ export default function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to={session ? "/menu" : "/login"} replace />} />
+    <CartProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to={session ? "/menu" : "/login"} replace />} />
 
-        <Route
-          path="/login"
-          element={
-            <PublicRoute session={session}>
-              <LoginPage />
-            </PublicRoute>
-          }
-        />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute session={session}>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
 
-        <Route
-          path="/signup"
-          element={
-            <PublicRoute session={session}>
-              <SignupPage />
-            </PublicRoute>
-          }
-        />
+          <Route
+            path="/signup"
+            element={
+              <PublicRoute session={session}>
+                <SignupPage />
+              </PublicRoute>
+            }
+          />
 
-        <Route
-          path="/menu"
-          element={
-            <ProtectedRoute session={session}>
-              <MenuPage />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/menu"
+            element={
+              <ProtectedRoute session={session}>
+                <MenuPage />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route 
-          path="/food/:id" 
-          element={
-              <FoodDetailsPage />
-          } 
-        />
+          <Route path="/food/:id" element={<FoodDetailsPage />} />
 
-        <Route
-          path="/cart"
-          element={
-            <ProtectedRoute session={session}>
-              <CartPage />
-            </ProtectedRoute>
-          }
-        />
-
-      </Routes>
-    </BrowserRouter>
+          <Route
+            path="/cart"
+            element={
+              <ProtectedRoute session={session}>
+                <CartPage />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </CartProvider>
   );
 }

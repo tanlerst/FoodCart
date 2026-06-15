@@ -21,13 +21,8 @@ type NavigationItemProps = {
   onClick?: () => void;
 };
 
-function NavigationItem({ 
-  imgSrc, 
-  label, 
-  onClick 
-}: NavigationItemProps) {
-  
-    return (
+function NavigationItem({ imgSrc, label, onClick }: NavigationItemProps) {
+  return (
     <button className="nav-item flex flex-col items-center gap-1" onClick={onClick}>
       <img src={imgSrc} alt={label} className="w-6 h-6" />
       <span className="text-xs">{label}</span>
@@ -45,7 +40,11 @@ export default function NavigationBar() {
           <NavigationItem imgSrc={home} label="Home" onClick={() => navigate("/menu")} />
         </li>
         <li>
-          <NavigationItem imgSrc={categories} label="Categories" onClick={() => navigate("/menu")} />
+          <NavigationItem
+            imgSrc={categories}
+            label="Categories"
+            onClick={() => navigate("/menu")}
+          />
         </li>
         <li>
           <NavigationItem imgSrc={cart} label="Cart" onClick={() => navigate("/cart")} />

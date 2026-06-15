@@ -9,17 +9,15 @@ type CartItemProps = {
   removeItem: (foodId: number) => void;
 };
 
-export default function CartItem({ 
-    cartItem, 
-    incrementQuantity, 
-    decrementQuantity, 
-    removeItem 
+export default function CartItem({
+  cartItem,
+  incrementQuantity,
+  decrementQuantity,
+  removeItem,
 }: CartItemProps) {
-
-    return (
+  return (
     <div className="mx-auto mb-5 w-full max-w-4xl rounded-2xl bg-white p-6 shadow-md">
       <div className="flex items-center gap-4">
-
         <img
           src={cartItem.food.image}
           alt={cartItem.food.name}
@@ -29,14 +27,9 @@ export default function CartItem({
         <div className="flex flex-1 flex-col">
           <div className="flex items-start justify-between gap-3">
             <div>
+              <h3 className="text-xl font-bold text-gray-900">{cartItem.food.name}</h3>
 
-              <h3 className="text-xl font-bold text-gray-900">
-                {cartItem.food.name}
-              </h3>
-
-              <p className="mt-1 text-lg text-gray-600">
-                ${cartItem.food.price.toFixed(2)}
-              </p>
+              <p className="mt-1 text-lg text-gray-600">${cartItem.food.price.toFixed(2)}</p>
             </div>
 
             <button
@@ -49,7 +42,6 @@ export default function CartItem({
           </div>
 
           <div className="mt-4 flex items-center">
-
             <button
               type="button"
               onClick={decrementQuantity}

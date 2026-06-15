@@ -19,7 +19,7 @@ export default function MenuPage() {
       <h1 className="text-3xl font-bold">{pageTitle}</h1>
 
       <div className="flex justify-end mb-4">
-        <LogoutButton/>
+        <LogoutButton />
       </div>
       <SearchBar searchWord={search} setSearchWord={setSearch} />
 

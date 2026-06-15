@@ -3,11 +3,15 @@ import { useParams } from "react-router";
 import FoodDetails from "../components/food/FoodDetails";
 import type { Food } from "../types/Food";
 import { fetchFood } from "../helpers/menu/foodId";
+import { useCart } from "../context/CartContext";
+import { useNavigate } from "react-router";
 
 export default function FoodDetailsPage() {
+  const { addItem } = useCart();
   const { id } = useParams();
   const [food, setFood] = useState<Food | null>(null);
   const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadFood() {
@@ -27,9 +31,8 @@ export default function FoodDetailsPage() {
     loadFood();
   }, [id]);
 
-  function addToCart() {
-    // add to card logic
-    alert(`Added ${quantity} of ${food?.name} to cart!`);
+  if (!food) {
+    return <div>Loading...</div>;
   }
 
   function addToWheel() {
@@ -37,8 +40,10 @@ export default function FoodDetailsPage() {
     alert(`Added ${food?.name} to wheel!`);
   }
 
-  if (!food) {
-    return <div>Loading...</div>;
+  function addToCart() {
+    if (!food) return;
+    addItem(food, quantity);
+    navigate("/menu");
   }
 
   return (
