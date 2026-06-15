@@ -25,21 +25,26 @@ export default function CartPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Your Cart</h1>
-      <ClearCartButton clearCart={clearCart} />
-      <CartItemList
+        <h1 className="text-3xl font-bold mb-6">Your Cart</h1>
+        
+        <div className="flex justify-end mb-4">
+            <ClearCartButton clearCart={clearCart} />
+        </div>
+        
+        <CartItemList
         cartItems={cartItems}
         incrementQuantity={increaseQuantity}
         decrementQuantity={decreaseQuantity}
         removeItem={removeItem}
-      />
-      <div className="mt-6 flex justify-end">
-        <CheckoutButton disabled={cartItems.length === 0} />
-      </div>
+        />
+        
+        <div className="mt-6 flex justify-end">
+            <CheckoutButton disabled={cartItems.length === 0} />
+        </div>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-orange-50">
-        <NavigationBar />
-      </div>
+        <div className="fixed bottom-0 left-0 right-0 bg-orange-50">
+            <NavigationBar />
+        </div>
     </div>
   );
 }

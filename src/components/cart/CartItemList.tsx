@@ -22,7 +22,7 @@ export default function CartItemList({
   }
 
   return (
-    <div className="flex items-center justify-between p-4 border-b">
+    <div className="flex flex-col items-center justify-between p-4 border-b">
       {cartItems.map((item) => (
         <CartItem
           key={item.food.id}
