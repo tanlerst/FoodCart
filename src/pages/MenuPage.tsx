@@ -4,10 +4,8 @@ import NavigationBar from "../components/common/NavigationBar";
 import CategoryTabs from "../components/menu/CategoryTabs";
 import { menuData } from "../helpers/menu/menuData";
 import LogoutButton from "../components/auth/LogoutButton";
-import { useNavigate } from "react-router";
 
 export default function MenuPage() {
-  const navigate = useNavigate();
   const { filteredFoods, categories, search, setSearch, catTab, setCatTab } = menuData();
   const pageTitle = search
     ? `Search results for "${search}"`
