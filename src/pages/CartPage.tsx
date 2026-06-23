@@ -1,5 +1,4 @@
 import CartItemList from "../components/cart/CartItemList";
-import CheckoutButton from "../components/cart/CheckoutButton";
 import NavigationBar from "../components/common/NavigationBar";
 import ClearCartButton from "../components/cart/ClearCartButton";
 import { useCart } from "../context/CartContext";
@@ -44,10 +43,6 @@ export default function CartPage() {
         disabled={cartItems.length === 0} 
       />
       </div>
-
-      {/* <div className="mt-6 flex justify-end">
-        <CheckoutButton disabled={cartItems.length === 0} onCheckout={handleCheckout} />
-      </div> */}
 
       <div className="fixed bottom-0 left-0 right-0 bg-orange-50">
         <NavigationBar />
