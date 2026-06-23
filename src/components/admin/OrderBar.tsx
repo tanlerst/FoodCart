@@ -42,7 +42,7 @@ export default function OrderBar({
    
     return (
 
-        <div className={`flex justify-between items-center p-4 rounded-lg shadow-md cursor-pointer ${selected ? "bg-blue-100" : "bg-white"}`}
+        <div className={`grid grid-cols-[60px_160px_100px_200px_94px] justify-between items-center p-4 rounded-lg shadow-md cursor-pointer ${selected ? "bg-blue-100" : "bg-white"}`}
             onClick={() => onSelect(orderId)}
         >
             {/* Tick box */}

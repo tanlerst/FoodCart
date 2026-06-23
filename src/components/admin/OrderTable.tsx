@@ -7,21 +7,39 @@ import OrderBar from "./OrderBar";
 const orders = [
     {
         orderId: "000001",
-        customerName: "John Doe",
+        customerName: "James",
         items: 3,
         totalPrice: 25.50,
         status: "preparing",
-        date: "2023-08-01",
+        date: "2026-06-01",
         time: "12:30 PM"
     },
     {
         orderId: "000002",
-        customerName: "Jane Smith",
+        customerName: "Ben",
         items: 2,
         totalPrice: 15.00,
         status: "completed",
-        date: "2023-08-02",
+        date: "2026-06-02",
         time: "1:15 PM"
+    },
+    {
+        orderId: "000003",
+        customerName: "Alice",
+        items: 5,
+        totalPrice: 40.00,
+        status: "cancelled",
+        date: "2026-06-03",
+        time: "2:45 PM"
+    },
+    {
+        orderId: "000004",
+        customerName: "David",
+        items: 1,
+        totalPrice: 10.00,
+        status: "preparing",
+        date: "2026-06-04",
+        time: "3:30 PM"
     }
 
 ];
@@ -40,6 +58,7 @@ export default function OrderTable() {
 
     return (
         <div className="flex flex-col gap-4">
+            
             {orders.map(order => (
                 <OrderBar 
                     key={order.orderId}
