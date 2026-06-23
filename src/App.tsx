@@ -18,6 +18,7 @@ import "./App.css";
 import FoodDetailsPage from "./pages/FoodDetailsPage";
 import CartPage from "./pages/CartPage";
 import { CartProvider } from "./context/CartContext";
+import AdminOrderPage from "./pages/admin/AdminOrderPage";
 
 function ProtectedRoute({
   session,
@@ -40,73 +41,84 @@ function PublicRoute({
 }
 
 export default function App() {
-  const [session, setSession] = useState<Session | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      setSession(data.session);
-      setLoading(false);
-    });
-
-    const { data: authListener } = supabase.auth.onAuthStateChange((_event, newSession) => {
-      setSession(newSession);
-    });
-
-    return () => {
-      authListener.subscription.unsubscribe();
-    };
-  }, []);
-
-  if (loading) {
-    return <div className="p-8">Loading...</div>;
-  }
 
   return (
-    <CartProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Navigate to={session ? "/menu" : "/login"} replace />} />
-
-          <Route
-            path="/login"
-            element={
-              <PublicRoute session={session}>
-                <LoginPage />
-              </PublicRoute>
-            }
-          />
-
-          <Route
-            path="/signup"
-            element={
-              <PublicRoute session={session}>
-                <SignupPage />
-              </PublicRoute>
-            }
-          />
-
-          <Route
-            path="/menu"
-            element={
-              <ProtectedRoute session={session}>
-                <MenuPage />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route path="/food/:id" element={<FoodDetailsPage />} />
-
-          <Route
-            path="/cart"
-            element={
-              <ProtectedRoute session={session}>
-                <CartPage />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </CartProvider>
+     <AdminOrderPage />
   );
+
 }
+
+// export default function App() {
+//   const [session, setSession] = useState<Session | null>(null);
+//   const [loading, setLoading] = useState(true);
+
+//   useEffect(() => {
+//     supabase.auth.getSession().then(({ data }) => {
+//       setSession(data.session);
+//       setLoading(false);
+//     });
+
+//     const { data: authListener } = supabase.auth.onAuthStateChange((_event, newSession) => {
+//       setSession(newSession);
+//     });
+
+//     return () => {
+//       authListener.subscription.unsubscribe();
+//     };
+//   }, []);
+
+//   if (loading) {
+//     return <div className="p-8">Loading...</div>;
+//   }
+
+//   return (
+
+    
+
+//     <CartProvider>
+//       <BrowserRouter>
+//         <Routes>
+//           <Route path="/" element={<Navigate to={session ? "/menu" : "/login"} replace />} />
+
+//           <Route
+//             path="/login"
+//             element={
+//               <PublicRoute session={session}>
+//                 <LoginPage />
+//               </PublicRoute>
+//             }
+//           />
+
+//           <Route
+//             path="/signup"
+//             element={
+//               <PublicRoute session={session}>
+//                 <SignupPage />
+//               </PublicRoute>
+//             }
+//           />
+
+//           <Route
+//             path="/menu"
+//             element={
+//               <ProtectedRoute session={session}>
+//                 <MenuPage />
+//               </ProtectedRoute>
+//             }
+//           />
+
+//           <Route path="/food/:id" element={<FoodDetailsPage />} />
+
+//           <Route
+//             path="/cart"
+//             element={
+//               <ProtectedRoute session={session}>
+//                 <CartPage />
+//               </ProtectedRoute>
+//             }
+//           />
+//         </Routes>
+//       </BrowserRouter>
+//     </CartProvider>
+//   );
+// }
