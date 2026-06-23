@@ -4,9 +4,11 @@ import NavigationBar from "../components/common/NavigationBar";
 import ClearCartButton from "../components/cart/ClearCartButton";
 import { useCart } from "../context/CartContext";
 import { doCheckout } from "../helpers/cart/doCheckout";
+import OrderSummary from "../components/cart/OrderSummary";
 
 export default function CartPage() {
   const { cartItems, increaseQuantity, decreaseQuantity, removeItem, clearCart } = useCart();
+  const subTotal = cartItems.reduce((total, item) => total + item.food.price * item.quantity, 0);
 
   async function handleCheckout() {
     try {
@@ -35,9 +37,17 @@ export default function CartPage() {
         removeItem={removeItem}
       />
 
-      <div className="mt-6 flex justify-end">
-        <CheckoutButton disabled={cartItems.length === 0} onCheckout={handleCheckout} />
+      <div className="mt-6">
+      <OrderSummary 
+        subTotal={subTotal} 
+        onCheckout={handleCheckout} 
+        disabled={cartItems.length === 0} 
+      />
       </div>
+
+      {/* <div className="mt-6 flex justify-end">
+        <CheckoutButton disabled={cartItems.length === 0} onCheckout={handleCheckout} />
+      </div> */}
 
       <div className="fixed bottom-0 left-0 right-0 bg-orange-50">
         <NavigationBar />
