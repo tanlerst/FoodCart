@@ -1,5 +1,6 @@
 /* Order Table component under the admin order page, showing a list of orders */
 
+import { useState } from "react";
 import OrderBar from "./OrderBar";
 // import Pagination from "./Pagination";
 
@@ -26,10 +27,16 @@ const orders = [
 ];
 
 export default function OrderTable() {
-    
-    const handleSelectOrder = (orderId: string) => {
-        console.log(`Selected order ID: ${orderId}`);
-    };
+
+    const [selectedOrder, setSelectedOrder] = useState<string[]>([]);
+
+    function handleSelectOrder(orderId: string) {
+        if (selectedOrder.includes(orderId)) {
+            setSelectedOrder(selectedOrder.filter(id => id !== orderId));
+        } else {
+            setSelectedOrder([...selectedOrder, orderId]);
+        }
+    }
 
     return (
         <div className="flex flex-col gap-4">
@@ -40,14 +47,14 @@ export default function OrderTable() {
                     customerName={order.customerName}
                     items={order.items}
                     totalPrice={order.totalPrice}
-                    status={order.status as any} // Type assertion for OrderStatus
+                    status={order.status as any}
                     date={order.date}
                     time={order.time}
-                    selected={false} // You can manage selected state as needed
+                    selected={selectedOrder.includes(order.orderId)}
                     onSelect={handleSelectOrder}
                 />
             ))}
-            
+
         </div>
     );
 }
