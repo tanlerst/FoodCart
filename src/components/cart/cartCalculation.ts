@@ -1,6 +1,6 @@
 import type { CartItemData } from "../../types/CartItemData";
 
-const SST = 0.06;
+const SST_RATE = 0.06;
 
 export function calculateSubtotal( cartItems: CartItemData[]) {
     return cartItems.reduce(
@@ -9,11 +9,19 @@ export function calculateSubtotal( cartItems: CartItemData[]) {
     );
 }
 
+export function calculateSST(
+    subtotal: number
+) {
+  return subtotal * SST_RATE;
+}
+
 export function calculateTotal( 
     subtotal: number
 ) {
-    return subtotal * SST + subtotal;
+    return subtotal + calculateSST(subtotal);
 }
+
+
 
 
 

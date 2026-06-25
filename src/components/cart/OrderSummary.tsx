@@ -3,19 +3,20 @@
 import CheckoutButton from "./CheckoutButton";
 
 type OrderSummaryProps = {
-  subTotal: number;
+  subtotal: number;
+  sst: number,
+  total: number,
   onCheckout: () => void;
   disabled: boolean;
 };
 
 export default function OrderSummary({ 
-  subTotal, 
+  subtotal, 
+  sst,
+  total,
   onCheckout, 
   disabled 
 }: OrderSummaryProps) {
-
-  const sst = subTotal * 0.06; // 6% service fee
-  const total = subTotal + sst;
 
     return (
 
@@ -23,7 +24,7 @@ export default function OrderSummary({
         <h2 className="text-lg font-semibold">Order Summary</h2>
         <div className="flex justify-between">
           <span>Subtotal:</span>
-          <span>${subTotal.toFixed(2)}</span>
+          <span>${subtotal.toFixed(2)}</span>
         </div>
 
         <div className="flex justify-between">
@@ -41,16 +42,7 @@ export default function OrderSummary({
         </div>
         
       </div>
-
-      
-      
-      
-
-      
-
-        
-
-        
+  
     );
 }
 
