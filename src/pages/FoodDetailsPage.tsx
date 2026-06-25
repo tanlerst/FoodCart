@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import FoodDetails from "../components/food/FoodDetails";
-import type { Food } from "../types/Food";
+import type { Food } from "../types/food";
 import { fetchFood } from "../helpers/menu/foodId";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router";
