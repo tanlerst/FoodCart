@@ -1,5 +1,5 @@
 import { supabase } from "../../utils/supabase";
-import type { Food } from "../../types/Food";
+import type { Food } from "../../types/food";
 import type { FoodRow } from "../../types/FoodRow";
 
 export async function fetchFood(id: number): Promise<Food | null> {

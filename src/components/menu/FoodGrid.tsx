@@ -1,5 +1,5 @@
 import FoodCard from "./FoodCard";
-import type { Food } from "../../types/Food";
+import type { Food } from "../../types/food";
 
 type FoodGridProps = {
   foods: Food[];

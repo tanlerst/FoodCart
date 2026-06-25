@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import type { Food } from "../types/Food";
+import type { Food } from "../types/food";
 import type { CartItemData } from "../types/CartItemData";
 
 type CartContextType = {

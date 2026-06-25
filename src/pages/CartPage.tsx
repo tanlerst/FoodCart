@@ -4,10 +4,12 @@ import ClearCartButton from "../components/cart/ClearCartButton";
 import { useCart } from "../context/CartContext";
 import { doCheckout } from "../helpers/cart/doCheckout";
 import OrderSummary from "../components/cart/OrderSummary";
+import { calculateSubtotal, calculateTotal } from "../components/cart/cartCalculation";
 
 export default function CartPage() {
   const { cartItems, increaseQuantity, decreaseQuantity, removeItem, clearCart } = useCart();
-  const subTotal = cartItems.reduce((total, item) => total + item.food.price * item.quantity, 0);
+  const subtotal = calculateSubtotal(cartItems)
+  const total = calculateTotal(subtotal)
 
   async function handleCheckout() {
     try {
@@ -38,7 +40,7 @@ export default function CartPage() {
 
       <div className="mt-6">
       <OrderSummary 
-        subTotal={subTotal} 
+        subTotal={subtotal} 
         onCheckout={handleCheckout} 
         disabled={cartItems.length === 0} 
       />

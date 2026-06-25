@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useNavigate } from "react-router";
-import type { Food } from "../../types/Food";
+import type { Food } from "../../types/food";
 
 type FoodDetailsProps = {
   food: Food;

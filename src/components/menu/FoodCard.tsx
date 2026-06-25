@@ -1,7 +1,7 @@
 /* Food Card Component */
 /* Updated FoodCard so that it is clickable and navigates to the food details page */
 
-import type { Food } from "../../types/Food";
+import type { Food } from "../../types/food";
 import timer from "../../assets/menu/timer.png";
 import { useNavigate } from "react-router-dom";
 
