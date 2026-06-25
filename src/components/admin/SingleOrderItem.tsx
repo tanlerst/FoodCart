@@ -23,40 +23,27 @@ export default function OrderItem({
         <div className="flex flex-1 flex-col">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <h3 className="text-xl font-bold text-gray-900">{cartItem.food.name}</h3>
+              
+              {/* Food name */}
+              <h3 className="text-xl font-bold text-gray-900">
+                {cartItem.food.name}
+              </h3>
+             
+              {/* Price */}
+              <p className="mt-1 text-lg text-gray-600">
+                ${cartItem.food.price.toFixed(2)}
+              </p>
 
-              <p className="mt-1 text-lg text-gray-600">${cartItem.food.price.toFixed(2)}</p>
+              {/* Quantity */}
+              <p className="mt-1 text-sm text-gray-500">
+                Quantity: {cartItem.quantity}
+              </p>
             </div>
-{/* 
-            <button
-              type="button"
-              onClick={() => removeItem(cartItem.food.id)}
-              className="rounded-xl bg-red-500 px-4 py-2 font-semibold text-white"
-            >
-              Remove
-            </button> */}
+
           </div>
 
           <div className="mt-4 flex items-center">
-            {/* <button
-              type="button"
-              onClick={decrementQuantity}
-              className="rounded-l-xl bg-gray-200 px-4 py-2 text-lg font-semibold text-gray-700"
-            >
-              - */}
-            {/* </button>
-
-            <span className="bg-gray-100 px-6 py-2 text-lg font-semibold text-gray-800">
-              {cartItem.quantity}
-            </span> */}
-
-            {/* <button
-              type="button"
-              onClick={incrementQuantity}
-              className="rounded-r-xl bg-gray-200 px-4 py-2 text-lg font-semibold text-gray-700"
-            >
-              +
-            </button> */}
+           
           </div>
         </div>
       </div>
