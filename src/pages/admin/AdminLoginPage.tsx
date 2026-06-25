@@ -3,9 +3,24 @@
 import { useNavigate } from "react-router";
 import LoginCard from "../../components/auth/LoginCard";
 import SignupCard from "../../components/auth/SignupCard";
+import { getUsertype } from "../../helpers/auth/getUsertype";
+import { supabase } from "../../utils/supabase";
 
 export default function AdminLoginPage() {
   const navigate = useNavigate();
+
+  async function adminLogin(authUserid: string) {
+    const usertype = await getUsertype(authUserid);
+
+    if (usertype !== 2) {
+      await supabase.auth.signOut();
+      alert("Please use user login page.");
+      return;
+    }
+
+    navigate("/admin");
+  }
+
   return (
     <main className="min-h-screen flex items-center justify-center bg-white">
       <div className="w-full max-w-md">
@@ -15,11 +30,7 @@ export default function AdminLoginPage() {
 
         <p className="text-center text-gray-600 mb-6">Sign in to access your FoodCart admin dashboard</p>
 
-        <LoginCard
-          onLogin={() => {
-            // navigate("/menu");
-          }}
-        />
+        <LoginCard onLogin={adminLogin} />
 
         <SignupCard />
       </div>
