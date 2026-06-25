@@ -9,7 +9,6 @@ const orderItems: CartItemData[] = [
     food: {
         id: 1,
         name: "Cheese Pizza",
-        description: "Size: Medium",
         price: 12.9,
         image:
             "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400",
@@ -24,7 +23,6 @@ const orderItems: CartItemData[] = [
     food: {
         id: 2,
         name: "Iced Lemon Tea",
-        description: "",
         price: 6.0,
         image:
         "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400",
@@ -39,7 +37,6 @@ const orderItems: CartItemData[] = [
     food: {
         id: 3,
         name: "Garlic Bread",
-        description: "Add Cheese",
         price: 4.5,
         image:
         "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400",
