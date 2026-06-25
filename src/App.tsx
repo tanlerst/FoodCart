@@ -19,8 +19,8 @@ import FoodDetailsPage from "./pages/FoodDetailsPage";
 import CartPage from "./pages/CartPage";
 import { CartProvider } from "./context/CartContext";
 import AdminOrderPage from "./pages/admin/AdminOrderPage";
-import AdminSignupPage from "./pages/admin/AdminSignupPage"
-import AdminLoginPage from "./pages/admin/AdminLoginPage"
+import AdminSignupPage from "./pages/admin/AdminSignupPage";
+import AdminLoginPage from "./pages/admin/AdminLoginPage";
 
 function ProtectedRoute({
   session,
@@ -122,19 +122,16 @@ export default function App() {
             }
           />
 
-          <Route 
-            path="/adminlogin"
-            element={<AdminLoginPage />}
-          />
+          <Route path="/adminlogin" element={<AdminLoginPage />} />
 
           <Route
             path="/admin"
             element={
               <ProtectedRoute session={session}>
-                <AdminOrderPage/>
-                </ProtectedRoute>
+                <AdminOrderPage />
+              </ProtectedRoute>
             }
-            />
+          />
         </Routes>
       </BrowserRouter>
     </CartProvider>

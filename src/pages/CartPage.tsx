@@ -37,11 +37,11 @@ export default function CartPage() {
       />
 
       <div className="mt-6">
-      <OrderSummary 
-        subTotal={subTotal} 
-        onCheckout={handleCheckout} 
-        disabled={cartItems.length === 0} 
-      />
+        <OrderSummary
+          subTotal={subTotal}
+          onCheckout={handleCheckout}
+          disabled={cartItems.length === 0}
+        />
       </div>
 
       <div className="fixed bottom-0 left-0 right-0 bg-orange-50">
