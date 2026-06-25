@@ -19,31 +19,38 @@ import FoodDetailsPage from "./pages/FoodDetailsPage";
 import CartPage from "./pages/CartPage";
 import { CartProvider } from "./context/CartContext";
 import AdminOrderPage from "./pages/admin/AdminOrderPage";
+import AdminSignupPage from "./pages/admin/AdminSignupPage"
+import AdminLoginPage from "./pages/admin/AdminLoginPage"
 
-function ProtectedRoute({
-  session,
-  children,
-}: {
-  session: Session | null;
-  children: React.ReactNode;
-}) {
-  return session ? <>{children}</> : <Navigate to="/login" replace />;
-}
+// function ProtectedRoute({
+//   session,
+//   children,
+// }: {
+//   session: Session | null;
+//   children: React.ReactNode;
+// }) {
+//   return session ? <>{children}</> : <Navigate to="/login" replace />;
+// }
 
-function PublicRoute({
-  session,
-  children,
-}: {
-  session: Session | null;
-  children: React.ReactNode;
-}) {
-  return session ? <Navigate to="/menu" replace /> : <>{children}</>;
-}
+// function PublicRoute({
+//   session,
+//   children,
+// }: {
+//   session: Session | null;
+//   children: React.ReactNode;
+// }) {
+//   return session ? <Navigate to="/menu" replace /> : <>{children}</>;
+// }
 
 export default function App() {
 
   return (
-     <AdminOrderPage />
+    <BrowserRouter>
+      {/* <AdminLoginPage/> */}
+      <AdminSignupPage />
+    </BrowserRouter>
+   
+
   );
 
 }
