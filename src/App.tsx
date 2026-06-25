@@ -47,7 +47,9 @@ export default function App() {
   return (
     <BrowserRouter>
       {/* <AdminLoginPage/> */}
-      <AdminSignupPage />
+      {/* <AdminSignupPage /> */}
+      <AdminOrderPage />
+
     </BrowserRouter>
    
 
