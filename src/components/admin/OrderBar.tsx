@@ -1,6 +1,6 @@
 /* Order Bar is a single order under the admin order page, compiling to a list of orders */
 
-import type { OrderStatus } from "../../types/OrderStatus";
+import type { OrderStatus } from "../../types/orderStatus";
 
 type OrderBarProps = {
     orderId: string;
