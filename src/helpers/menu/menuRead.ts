@@ -1,6 +1,6 @@
 import { supabase } from "../../utils/supabase";
 import type { Food } from "../../types/food";
-import type { FoodRow } from "../../types/FoodRow";
+import type { FoodRow } from "../../types/foodRow";
 
 type CategoryRow = {
   name: string;
