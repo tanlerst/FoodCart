@@ -6,8 +6,8 @@ type OrderSummaryProps = {
   subtotal: number;
   sst: number,
   total: number,
-  onCheckout: () => void;
-  disabled: boolean;
+  onCheckout?: () => void; // optional
+  disabled?: boolean; // optional
   showCheckoutButton: boolean;
 };
 
@@ -16,7 +16,7 @@ export default function OrderSummary({
   sst,
   total,
   onCheckout, 
-  disabled,
+  disabled=false,
   showCheckoutButton
 }: OrderSummaryProps) {
   
