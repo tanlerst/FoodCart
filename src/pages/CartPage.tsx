@@ -46,6 +46,7 @@ export default function CartPage() {
         total={total}
         onCheckout={handleCheckout} 
         disabled={cartItems.length === 0} 
+        showCheckoutButton={true}
       />
       </div>
 
