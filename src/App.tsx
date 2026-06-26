@@ -34,111 +34,125 @@ import AdminOrderPage from "./pages/admin/AdminOrderPage";
 import AdminSignupPage from "./pages/admin/AdminSignupPage"
 import AdminLoginPage from "./pages/admin/AdminLoginPage"
 import AdminOrderDetailPage from "./pages/admin/AdminOrderDetailsPage"
-
-function ProtectedRoute({
-  session,
-  children,
-}: {
-  session: Session | null;
-  children: React.ReactNode;
-}) {
-  return session ? <>{children}</> : <Navigate to="/login" replace />;
-}
-
-function PublicRoute({
-  session,
-  children,
-}: {
-  session: Session | null;
-  children: React.ReactNode;
-}) {
-  return session ? <Navigate to="/menu" replace /> : <>{children}</>;
-}
-
-
+import AdminAddItemPage from "./pages/admin/AdminNewItemPage"
 
 export default function App() {
-  const [session, setSession] = useState<Session | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      setSession(data.session);
-      setLoading(false);
-    });
-
-    const { data: authListener } = supabase.auth.onAuthStateChange((_event, newSession) => {
-      setSession(newSession);
-    });
-
-    return () => {
-      authListener.subscription.unsubscribe();
-    };
-  }, []);
-
-  if (loading) {
-    return <div className="p-8">Loading...</div>;
-  }
 
   return (
-    <CartProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Navigate to={session ? "/menu" : "/login"} replace />} />
+    <BrowserRouter>
 
-          <Route
-            path="/login"
-            element={
-              <PublicRoute session={session}>
-                <LoginPage />
-              </PublicRoute>
-            }
-          />
+      <AdminAddItemPage>  
+        
+      </AdminAddItemPage>
+    </BrowserRouter>
+   
 
-          <Route
-            path="/signup"
-            element={
-              <PublicRoute session={session}>
-                <SignupPage />
-              </PublicRoute>
-            }
-          />
-
-          <Route
-            path="/menu"
-            element={
-              <ProtectedRoute session={session}>
-                <MenuPage />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route path="/food/:id" element={<FoodDetailsPage />} />
-
-          <Route
-            path="/cart"
-            element={
-              <ProtectedRoute session={session}>
-                <CartPage />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route 
-            path="/adminlogin"
-            element={<AdminLoginPage />}
-          />
-
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute session={session}>
-                <AdminOrderPage/>
-                </ProtectedRoute>
-            }
-            />
-        </Routes>
-      </BrowserRouter>
-    </CartProvider>
   );
 }
+
+// function ProtectedRoute({
+//   session,
+//   children,
+// }: {
+//   session: Session | null;
+//   children: React.ReactNode;
+// }) {
+//   return session ? <>{children}</> : <Navigate to="/login" replace />;
+// }
+
+// function PublicRoute({
+//   session,
+//   children,
+// }: {
+//   session: Session | null;
+//   children: React.ReactNode;
+// }) {
+//   return session ? <Navigate to="/menu" replace /> : <>{children}</>;
+// }
+
+
+// export default function App() {
+//   const [session, setSession] = useState<Session | null>(null);
+//   const [loading, setLoading] = useState(true);
+
+//   useEffect(() => {
+//     supabase.auth.getSession().then(({ data }) => {
+//       setSession(data.session);
+//       setLoading(false);
+//     });
+
+//     const { data: authListener } = supabase.auth.onAuthStateChange((_event, newSession) => {
+//       setSession(newSession);
+//     });
+
+//     return () => {
+//       authListener.subscription.unsubscribe();
+//     };
+//   }, []);
+
+//   if (loading) {
+//     return <div className="p-8">Loading...</div>;
+//   }
+
+//   return (
+//     <CartProvider>
+//       <BrowserRouter>
+//         <Routes>
+//           <Route path="/" element={<Navigate to={session ? "/menu" : "/login"} replace />} />
+
+//           <Route
+//             path="/login"
+//             element={
+//               <PublicRoute session={session}>
+//                 <LoginPage />
+//               </PublicRoute>
+//             }
+//           />
+
+//           <Route
+//             path="/signup"
+//             element={
+//               <PublicRoute session={session}>
+//                 <SignupPage />
+//               </PublicRoute>
+//             }
+//           />
+
+//           <Route
+//             path="/menu"
+//             element={
+//               <ProtectedRoute session={session}>
+//                 <MenuPage />
+//               </ProtectedRoute>
+//             }
+//           />
+
+//           <Route path="/food/:id" element={<FoodDetailsPage />} />
+
+//           <Route
+//             path="/cart"
+//             element={
+//               <ProtectedRoute session={session}>
+//                 <CartPage />
+//               </ProtectedRoute>
+//             }
+//           />
+
+//           <Route 
+//             path="/adminlogin"
+//             element={<AdminLoginPage />}
+//           />
+
+//           <Route
+//             path="/admin"
+//             element={
+//               <ProtectedRoute session={session}>
+//                 <AdminOrderPage/>
+//                 </ProtectedRoute>
+//             }
+//             />
+//         </Routes>
+//       </BrowserRouter>
+//     </CartProvider>
+//   );
+// }
