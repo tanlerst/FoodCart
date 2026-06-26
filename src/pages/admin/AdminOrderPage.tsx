@@ -3,7 +3,6 @@
 import { useState } from "react";
 import StatusFilterBar from "../../components/admin/order/StatusFilterBar";
 import OrderTable from "../../components/admin/order/OrderTable";
-import OrderSearchBar from "../../components/admin/order/OrderSearchBar"
 
 export default function AdminOrdersPage() {
   const [status, setStatus] = useState("all");
@@ -15,12 +14,10 @@ export default function AdminOrdersPage() {
         onChange={setStatus}
       />
 
-        <div className="p-4">            
-            <h1 className="text-2xl font-bold mb-4">Admin Order Page</h1>
-                <OrderTable />
-        </div>
+      <div className="p-4">            
+          <h1 className="text-2xl font-bold mb-4">Admin Order Page</h1>
+              <OrderTable />
+      </div>
     </div>
-    
-    
   );
 }
