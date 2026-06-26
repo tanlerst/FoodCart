@@ -1,5 +1,5 @@
 /* Status Filter Bar component for filtering, ie. status, date */
-import FilterSelect from "../common/FilterSelect"
+import FilterSelect from "../../common/FilterSelect"
 
 type StatusFilterBarProps = {
     status: string;

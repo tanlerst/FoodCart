@@ -1,6 +1,6 @@
 /* Order Item List for admin order details page */
 
-import type { CartItemData } from "../../types/CartItemData";
+import type { CartItemData } from "../../../types/CartItemData";
 import OrderItem from "./SingleOrderItem";
 
 type OrderItemListProps = {

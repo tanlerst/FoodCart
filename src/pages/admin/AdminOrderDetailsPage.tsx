@@ -1,6 +1,6 @@
 /* Admin Order Details Page */
 
-import AdminOrderItemsCard from "../../components/admin/AdminOrderItemsCard";
+import AdminOrderItemsCard from "../../components/admin/order/AdminOrderItemsCard";
 import type { CartItemData } from "../../types/CartItemData";
 
 const orderItems: CartItemData[] = [

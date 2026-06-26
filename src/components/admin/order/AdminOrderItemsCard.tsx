@@ -1,10 +1,10 @@
 /* Admin order details card showing order items and order summary */
 
-import type { CartItemData } from "../../types/CartItemData";
-import OrderItemList from "./OrderItemList";
-import OrderSummary from "../cart/OrderSummary";
+import type { CartItemData } from "../../../types/CartItemData";
+import OrderItemList from "../order/OrderItemList";
+import OrderSummary from "../../cart/OrderSummary";
 
-import { calculateSubtotal, calculateSST, calculateTotal } from "../cart/cartCalculation";
+import { calculateSubtotal, calculateSST, calculateTotal } from "../../cart/cartCalculation";
 
 type AdminOrderItemsCardProps = {
   cartItems: CartItemData[];

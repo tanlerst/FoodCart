@@ -1,8 +1,9 @@
 /* Admin order page for managing and viewing customer orders */
 
 import { useState } from "react";
-import StatusFilterBar from "../../components/admin/StatusFilterBar";
-import OrderTable from "../../components/admin/OrderTable";
+import StatusFilterBar from "../../components/admin/order/StatusFilterBar";
+import OrderTable from "../../components/admin/order/OrderTable";
+import OrderSearchBar from "../../components/admin/order/OrderSearchBar"
 
 export default function AdminOrdersPage() {
   const [status, setStatus] = useState("all");

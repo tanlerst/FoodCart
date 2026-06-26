@@ -2,7 +2,7 @@
 
 /* food item in cart page */
 
-import type { CartItemData } from "../../types/CartItemData";
+import type { CartItemData } from "../../../types/CartItemData";
 
 type OrderItemProps = {
   cartItem: CartItemData;
