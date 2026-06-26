@@ -14,7 +14,7 @@ export default function AdminCard() {
                 <p className="mt-5 text-lg leading-relaxed text-gray-600">
                     Manage menus, orders,
                 <br />
-                    and restaurant operations.
+                    and view analytics.
                 </p>
 
                 <button
