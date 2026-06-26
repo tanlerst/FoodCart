@@ -1,9 +1,9 @@
 /* food item in cart page */
 
-import type { CartItemData } from "../../types/CartItemData";
+import type { ItemData } from "../../types/itemData";
 
 type CartItemProps = {
-  cartItem: CartItemData;
+  cartItem: ItemData;
   incrementQuantity: () => void;
   decrementQuantity: () => void;
   removeItem: (foodId: number) => void;

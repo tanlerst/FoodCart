@@ -1,10 +1,10 @@
 /* Order Item List for admin order details page */
 
-import type { CartItemData } from "../../../types/CartItemData";
+import type { ItemData } from "../../../types/itemData";
 import OrderItem from "./SingleOrderItem";
 
 type OrderItemListProps = {
-  cartItems: CartItemData[];
+  cartItems: ItemData[];
 };
 
 export default function OrderItemList({ cartItems }: OrderItemListProps) {

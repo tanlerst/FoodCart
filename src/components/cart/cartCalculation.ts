@@ -1,8 +1,8 @@
-import type { CartItemData } from "../../types/CartItemData";
+import type { ItemData } from "../../types/itemData";
 
 const SST_RATE = 0.06;
 
-export function calculateSubtotal( cartItems: CartItemData[]) {
+export function calculateSubtotal( cartItems: ItemData[]) {
     return cartItems.reduce(
         (total, item) => total + item.food.price * item.quantity, 
         0

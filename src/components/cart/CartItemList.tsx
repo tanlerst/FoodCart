@@ -1,10 +1,10 @@
 /* grouped food items in cart page */
 
-import type { CartItemData } from "../../types/CartItemData";
+import type { ItemData } from "../../types/itemData";
 import CartItem from "./CartItem";
 
 type CartItemProps = {
-  cartItems: CartItemData[];
+  cartItems: ItemData[];
   incrementQuantity: (foodId: number) => void;
   decrementQuantity: (foodId: number) => void;
   removeItem: (foodId: number) => void;

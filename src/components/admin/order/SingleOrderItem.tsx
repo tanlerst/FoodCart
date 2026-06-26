@@ -2,10 +2,10 @@
 
 /* food item in cart page */
 
-import type { CartItemData } from "../../../types/CartItemData";
+import type { ItemData } from "../../../types/itemData";
 
 type OrderItemProps = {
-  cartItem: CartItemData;
+  cartItem: ItemData;
 };
 
 export default function OrderItem({

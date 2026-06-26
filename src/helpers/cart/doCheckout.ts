@@ -1,7 +1,7 @@
 import { supabase } from "../../utils/supabase";
-import type { CartItemData } from "../../types/CartItemData";
+import type { ItemData } from "../../types/itemData";
 
-export async function doCheckout(cartItems: CartItemData[]) {
+export async function doCheckout(cartItems: ItemData[]) {
   const { data: authData, error: authError } = await supabase.auth.getUser();
 
   if (authError) {

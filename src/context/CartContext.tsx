@@ -1,9 +1,9 @@
 import { createContext, useContext, useState } from "react";
 import type { Food } from "../types/food";
-import type { CartItemData } from "../types/CartItemData";
+import type { ItemData } from "../types/itemData";
 
 type CartContextType = {
-  cartItems: CartItemData[];
+  cartItems: ItemData[];
 
   addItem: (food: Food, quantity: number) => void;
 
@@ -19,7 +19,7 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | null>(null);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cartItems, setCartItems] = useState<CartItemData[]>([]);
+  const [cartItems, setCartItems] = useState<ItemData[]>([]);
   function addItem(food: Food, quantity: number) {
     if (cartItems.find((x) => x.food.id === food.id)) {
       setCartItems(
