@@ -7,6 +7,18 @@
 //   return <SignupPage />;
 // }
 
+// export default function App() {
+
+//   return (
+//     <BrowserRouter>
+
+//       <AdminOrderDetailPage />
+//     </BrowserRouter>
+   
+
+//   );
+// }
+
 import { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import type { Session } from "@supabase/supabase-js";
@@ -21,6 +33,7 @@ import { CartProvider } from "./context/CartContext";
 import AdminOrderPage from "./pages/admin/AdminOrderPage";
 import AdminSignupPage from "./pages/admin/AdminSignupPage"
 import AdminLoginPage from "./pages/admin/AdminLoginPage"
+import AdminOrderDetailPage from "./pages/admin/AdminOrderDetailsPage"
 
 function ProtectedRoute({
   session,
@@ -41,19 +54,9 @@ function PublicRoute({
 }) {
   return session ? <Navigate to="/menu" replace /> : <>{children}</>;
 }
-/*
-export default function App() {
 
-  return (
-    <BrowserRouter>
 
-      <AdminLoginPage />
-    </BrowserRouter>
-   
 
-  );
-}
-*/
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
