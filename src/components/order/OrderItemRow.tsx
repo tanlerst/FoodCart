@@ -32,6 +32,10 @@ export default function OrderItemRow({ item }: OrderItemRowProps) {
                         {item.name}
                     </h3>
 
+                    <h2 className="font-medium text-gray-900">
+                        ${item.price}
+                    </h2>
+
                     {/* Time */}
                     <p className="mt-2 text-sm text-gray-500">
                         🕒 {item.estimatedMinutes} mins

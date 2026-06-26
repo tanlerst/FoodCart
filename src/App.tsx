@@ -35,18 +35,20 @@ import AdminSignupPage from "./pages/admin/AdminSignupPage"
 import AdminLoginPage from "./pages/admin/AdminLoginPage"
 import AdminOrderDetailPage from "./pages/admin/AdminOrderDetailsPage"
 import AdminAddItemPage from "./pages/admin/AdminNewItemPage"
+import UserOrderDetailsPage from "./pages/UserOrderDetailsPage"
 
 export default function App() {
 
   return (
     <BrowserRouter>
+      {/* <OrderPage>
 
-      <AdminAddItemPage>  
-        
-      </AdminAddItemPage>
+      </OrderPage> */}
+      <UserOrderDetailsPage>
+
+      </UserOrderDetailsPage>
+
     </BrowserRouter>
-   
-
   );
 }
 

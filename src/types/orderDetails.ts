@@ -13,6 +13,7 @@ export type OrderDetailItem = {
     name: string;
     image: string;
     quantity: number;
+    price: number;
     estimatedMinutes: number;
     status: OrderItemStatus;
     servedAt?: string; // time served at e.g. Served at 12:00 PM
