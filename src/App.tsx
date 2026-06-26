@@ -36,6 +36,7 @@ import AdminLoginPage from "./pages/admin/AdminLoginPage"
 import AdminOrderDetailPage from "./pages/admin/AdminOrderDetailsPage"
 import AdminAddItemPage from "./pages/admin/AdminNewItemPage"
 import UserOrderDetailsPage from "./pages/UserOrderDetailsPage"
+import LandingPage from "./pages/LandingPage"
 
 export default function App() {
 
@@ -44,9 +45,10 @@ export default function App() {
       {/* <OrderPage>
 
       </OrderPage> */}
-      <UserOrderDetailsPage>
+      {/* <UserOrderDetailsPage>
 
-      </UserOrderDetailsPage>
+      </UserOrderDetailsPage> */}
+      <LandingPage/>
 
     </BrowserRouter>
   );

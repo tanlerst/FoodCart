@@ -1,0 +1,36 @@
+/* User card component on landing page before login */
+
+export default function UserCard() {
+    return (
+
+        <div className="rounded-3xl bg-white p-10 shadow-xl">
+            <div className="mx-auto flex h-40 w-40 items-center justify-center rounded-full bg-orange-50 text-6xl text-orange-600">
+                👥
+            </div>
+
+            <h3 className="mt-8 text-3xl font-bold text-gray-900">
+                User
+            </h3>
+
+            <p className="mt-5 text-lg leading-relaxed text-gray-600">
+                Browse menus, place orders,
+            <br />
+                and track your meals.
+            </p>
+
+            <button
+                type="button"
+                // onClick={} // change this
+                className="mt-12 flex w-full items-center justify-center gap-3 rounded-xl bg-orange-600 px-6 py-4 text-lg font-semibold text-white transition hover:bg-orange-700"
+            >
+                Continue as User
+                
+                <span className="text-2xl">
+                    ›
+                </span>
+            
+            </button>
+        </div>
+
+    );
+}
