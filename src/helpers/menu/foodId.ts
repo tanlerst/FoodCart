@@ -1,6 +1,6 @@
 import { supabase } from "../../utils/supabase";
 import type { Food } from "../../types/food";
-import type { FoodRow } from "../../types/FoodRow";
+import type { FoodRow } from "../../types/foodRow";
 
 export async function fetchFood(id: number): Promise<Food | null> {
   const { data, error } = await supabase
