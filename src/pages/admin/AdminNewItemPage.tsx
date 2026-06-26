@@ -5,8 +5,6 @@ import ItemImageCard from "../../components/admin/addItem/ItemImageCard";
 import PricingCard from "../../components/admin/addItem/PricingCard";
 import SaveItemButton from "../../components/admin/addItem/SaveItemButton"
 import CancelButton from "../../components/admin/addItem/CancelButton"
-// import PricingCard from "../../components/admin/addItem/PricingCard"
-// import ItemImageCard from "../../components/admin/addItem/ItemImageCard"
 
 export default function AdminNewItemPage() {
 
@@ -52,7 +50,5 @@ export default function AdminNewItemPage() {
                 
             </form>
         </div>
-
-
     );
 }
