@@ -5,6 +5,7 @@ import { useCart } from "../context/CartContext";
 import { doCheckout } from "../helpers/cart/doCheckout";
 import OrderSummary from "../components/cart/OrderSummary";
 import { calculateCartPricing } from "../helpers/cart/cartCalculation";
+import LogoutButton from "../components/auth/LogoutButton";
 
 export default function CartPage() {
   const { cartItems, increaseQuantity, decreaseQuantity, removeItem, clearCart } = useCart();
@@ -24,7 +25,18 @@ export default function CartPage() {
 
   return (
     <div className="container mx-auto px-4 py-8 pb-32">
-      <h1 className="text-3xl font-bold mb-6">Your Cart</h1>
+      
+      <div className="mb-6 flex items-center justify-between">
+      
+        <h1 className="text-3xl font-bold">
+          Your Cart
+        </h1>
+
+        <LogoutButton />
+        
+      </div>
+      
+     
 
       <div className="flex justify-end mb-4">
         <ClearCartButton clearCart={clearCart} />

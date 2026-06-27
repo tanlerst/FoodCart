@@ -14,10 +14,15 @@ export default function MenuPage() {
       : `${catTab} Category`;
   return (
     <div className="container mx-auto px-4 py-8 pb-30">
-      <h1 className="text-3xl font-bold">{pageTitle}</h1>
 
-      <div className="flex justify-end mb-4">
+      <div className="mb-6 flex items-center justify-between">
+      
+        <h1 className="text-3xl font-bold">
+          {pageTitle}
+        </h1>
+
         <LogoutButton />
+        
       </div>
       <SearchBar searchWord={search} setSearchWord={setSearch} />
 
