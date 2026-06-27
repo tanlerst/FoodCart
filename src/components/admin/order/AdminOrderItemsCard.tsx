@@ -21,7 +21,7 @@ export default function AdminOrderItemsCard({ cartItems }: AdminOrderItemsCardPr
         <h1 className="text-xl font-bold text-gray-900">Order Items</h1>
       </div>
 
-      <OrderItemList cartItems={cartItems} />
+      <OrderItemList items={cartItems} />
 
       <OrderSummary subtotal={subtotal} sst={sst} total={total} showCheckoutButton={false} />
     </div>
