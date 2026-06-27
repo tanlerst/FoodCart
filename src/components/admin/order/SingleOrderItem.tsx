@@ -22,8 +22,6 @@ export default function OrderItemRow({ orderItem, onStatusChange }: OrderItemRow
 
   return (
     <div className="mx-auto mb-5 w-full grid grid-cols-[1fr_60px_160px] max-w-4xl rounded-2xl bg-white p-6 shadow-md">
-      {/*  <div className="mx-auto mb-5 w-full max-w-4xl rounded-2xl bg-white p-6 shadow-md"> */}
-      {/* flex items-center gap-4 */}
       <div className="flex items-center gap-4">
         {/* Image */}
         <img src={orderItem.image} alt={orderItem.name} className="h-20 w-20 rounded-xl object-cover" />
