@@ -12,12 +12,6 @@ export default function AdminCard() {
 
       <h3 className="mt-8 text-3xl font-bold text-gray-900">Admin</h3>
 
-      <p className="mt-5 text-lg leading-relaxed text-gray-600">
-        Manage menus, orders,
-        <br />
-        and view analytics.
-      </p>
-
       <button
         type="button"
         onClick={() => navigate("/adminlogin")}

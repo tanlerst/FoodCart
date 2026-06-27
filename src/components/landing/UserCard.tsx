@@ -11,12 +11,6 @@ export default function UserCard() {
 
       <h3 className="mt-8 text-3xl font-bold text-gray-900">User</h3>
 
-      <p className="mt-5 text-lg leading-relaxed text-gray-600">
-        Browse menus, place orders,
-        <br />
-        and track your meals.
-      </p>
-
       <button
         type="button"
         onClick={() => navigate("/login")}
