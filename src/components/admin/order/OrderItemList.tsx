@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import type { OrderDetailsItem, OrderItemStatus } from "../../../types/orderDetails";
-// import type { ItemData } from "../../../types/itemData";
 import OrderItem from "./SingleOrderItem";
 
 type OrderItemListProps = {
