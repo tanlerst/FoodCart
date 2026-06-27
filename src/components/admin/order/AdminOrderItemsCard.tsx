@@ -1,19 +1,17 @@
 /* Admin order details card showing order items and order summary */
 
-import type { ItemData } from "../../../types/itemData";
+import type { OrderDetailsItem } from "../../../types/orderDetails";
 import OrderItemList from "../order/OrderItemList";
 import OrderSummary from "../../cart/OrderSummary";
 
-import { calculateSubtotal, calculateSST, calculateTotal } from "../../cart/cartCalculation";
+import { calculateOrderPricing } from "../../../helpers/order/orderCalculation";
 
 type AdminOrderItemsCardProps = {
-  cartItems: ItemData[];
+  items: OrderDetailsItem[];
 };
 
-export default function AdminOrderItemsCard({ cartItems }: AdminOrderItemsCardProps) {
-  const subtotal = calculateSubtotal(cartItems);
-  const sst = calculateSST(subtotal);
-  const total = calculateTotal(subtotal);
+export default function AdminOrderItemsCard({ items }: AdminOrderItemsCardProps) {
+  const { subtotal, gst, serviceFee, total } = calculateOrderPricing(items);
 
   return (
     <div className="rounded-xl border border-gray-200">
@@ -21,9 +19,15 @@ export default function AdminOrderItemsCard({ cartItems }: AdminOrderItemsCardPr
         <h1 className="text-xl font-bold text-gray-900">Order Items</h1>
       </div>
 
-      <OrderItemList items={cartItems} />
+      <OrderItemList items={items} />
 
-      <OrderSummary subtotal={subtotal} sst={sst} total={total} showCheckoutButton={false} />
+      <OrderSummary 
+        subtotal={subtotal} 
+        gst={gst} 
+        serviceFee={serviceFee}
+        total={total} 
+        showCheckoutButton={false} 
+      />
     </div>
   );
 }

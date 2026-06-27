@@ -4,7 +4,8 @@ import CheckoutButton from "./CheckoutButton";
 
 type OrderSummaryProps = {
   subtotal: number;
-  sst: number;
+  gst: number;
+  serviceFee: number;
   total: number;
   onCheckout?: () => void; // optional
   disabled?: boolean; // optional
@@ -13,7 +14,8 @@ type OrderSummaryProps = {
 
 export default function OrderSummary({
   subtotal,
-  sst,
+  gst,
+  serviceFee,
   total,
   onCheckout,
   disabled = false,
@@ -33,18 +35,47 @@ export default function OrderSummary({
     <div className="flex flex-col gap-4 p-4 rounded-lg shadow-xl">
       <h2 className="text-lg font-semibold">Order Summary</h2>
       <div className="flex justify-between">
-        <span>Subtotal:</span>
-        <span>${subtotal.toFixed(2)}</span>
+         {/* Subtotal */}
+        <span>
+          Subtotal:
+        </span>
+        
+        <span>
+          ${subtotal.toFixed(2)}
+        </span>
       </div>
 
+      {/* gst */}
       <div className="flex justify-between">
-        <span>sst (6%):</span>
-        <span>${sst.toFixed(2)}</span>
+        <span>
+          gst (9%):
+        </span>
+        
+        <span>
+          ${gst.toFixed(2)}
+        </span>
+      </div>
+
+      
+      {/* Service Fee */}
+      <div className="flex justify-between">
+        <span>
+          Service Fee (10%):
+        </span>
+        
+        <span>
+          ${serviceFee.toFixed(2)}
+        </span>
       </div>
 
       <div className="flex justify-between font-bold">
-        <span>Total:</span>
-        <span>${total.toFixed(2)}</span>
+        <span>
+          Total:
+        </span>
+        
+        <span>
+          ${total.toFixed(2)}
+        </span>
       </div>
 
       {checkoutButton}

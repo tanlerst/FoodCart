@@ -1,11 +1,12 @@
 import { supabase } from "../../utils/supabase";
 import type {
   OrderDetails,
-  OrderDetailItem,
+  OrderDetailsItem,
   OrderItemStatus,
   OrderStatus,
 } from "../../types/orderDetails";
 import type { orderData } from "./getOrder";
+import { calculateOrderPricing } from "./orderCalculation";
 
 type FoodRow = orderData["foodRows"][number];
 
@@ -51,7 +52,7 @@ export function formatOrder(data: orderData): OrderDetails {
     foodMap.set(food.id, food);
   });
 
-  const items: OrderDetailItem[] = data.orderRows.map((row) => {
+  const items: OrderDetailsItem[] = data.orderRows.map((row) => {
     const food = foodMap.get(row.food);
 
     if (!food) {
@@ -75,10 +76,7 @@ export function formatOrder(data: orderData): OrderDetails {
     };
   });
 
-  const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const gst = subtotal * 0.09;
-  const serviceFee = subtotal * 0.1;
-  const total = subtotal + serviceFee;
+  const pricing = calculateOrderPricing(items);
 
   return {
     customerID: data.authUserId,
@@ -88,9 +86,6 @@ export function formatOrder(data: orderData): OrderDetails {
     tableNumber: "1",
     status: getOrderStatus(data.orderRows.map((row) => row.status)),
     items,
-    subtotal,
-    gst,
-    serviceFee,
-    total,
+    ...pricing,
   };
 }

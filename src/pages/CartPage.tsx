@@ -4,18 +4,12 @@ import ClearCartButton from "../components/cart/ClearCartButton";
 import { useCart } from "../context/CartContext";
 import { doCheckout } from "../helpers/cart/doCheckout";
 import OrderSummary from "../components/cart/OrderSummary";
-import {
-  calculateSubtotal,
-  calculateSST,
-  calculateTotal,
-} from "../components/cart/cartCalculation";
+import { calculateCartPricing } from "../helpers/cart/cartCalculation";
 
 export default function CartPage() {
   const { cartItems, increaseQuantity, decreaseQuantity, removeItem, clearCart } = useCart();
-  const subtotal = calculateSubtotal(cartItems);
-  const sst = calculateSST(subtotal);
-  const total = calculateTotal(subtotal);
-
+  const { subtotal, gst, serviceFee, total } = calculateCartPricing(cartItems);
+  
   async function handleCheckout() {
     try {
       await doCheckout(cartItems);
@@ -46,7 +40,8 @@ export default function CartPage() {
       <div className="mt-6">
         <OrderSummary
           subtotal={subtotal}
-          sst={sst}
+          gst={gst}
+          serviceFee={serviceFee}
           total={total}
           onCheckout={handleCheckout}
           disabled={cartItems.length === 0}

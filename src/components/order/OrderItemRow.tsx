@@ -1,9 +1,9 @@
 /* Single row of order item in user order detail page */
 
-import type { OrderDetailItem } from "../../types/orderDetails";
+import type { OrderDetailsItem } from "../../types/orderDetails";
 
 type OrderItemRowProps = {
-  item: OrderDetailItem;
+  item: OrderDetailsItem;
 };
 
 const SERVED_FORMAT = "bg-green-100 text-green-700";

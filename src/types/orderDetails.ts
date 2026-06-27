@@ -7,7 +7,7 @@ export type OrderItemStatus = "preparing" | "served";
 export type OrderStatus = "received" | "preparing" | "serving" | "complete" | "paid";
 
 // Order item details (single item)
-export type OrderDetailItem = {
+export type OrderDetailsItem = {
   id: number;
   name: string;
   image: string;
@@ -27,9 +27,20 @@ export type OrderDetails = {
   orderType: string;
   tableNumber: string;
   status: OrderStatus;
-  items: OrderDetailItem[]; // list of items
+  items: OrderDetailsItem[]; // list of items
   subtotal: number;
   gst: number;
   serviceFee: number;
   total: number;
+};
+
+// this is use before subtotal, gst, service fee and total are calculated
+export type CreateOrderInput = {
+  customerID?: string;
+  orderNumber: string;
+  placedAt: string;
+  orderType: string;
+  tableNumber: string;
+  status: OrderStatus;
+  items: OrderDetailsItem[]; // list of items
 };

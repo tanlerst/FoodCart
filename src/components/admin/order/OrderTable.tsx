@@ -2,18 +2,20 @@
 
 import { useState } from "react";
 import OrderBar from "./OrderBar";
-import type { OrderDetails } from "../../../types/orderDetails";
+import type { CreateOrderInput, OrderDetails, OrderStatus } from "../../../types/orderDetails";
+import createOrderDetails from "../../../helpers/order/createOrderDetails";
 
-const orders: OrderDetails[] = [
+const orders: CreateOrderInput[] = [
   {
     orderNumber: "FC12346",
     placedAt: "May 26, 2025 at 12:45 PM",
     orderType: "Dine In",
     tableNumber: "7",
     status: "serving",
-    subtotal: 31.8,
-    serviceFee: 1.2,
-    total: 33.0,
+    // subtotal: 31.8,
+    // gst: 3,
+    // serviceFee: 1.2,
+    // total: 33.0,
     items: [
       {
         id: 1,
@@ -53,9 +55,9 @@ const orders: OrderDetails[] = [
     orderType: "Dine In",
     tableNumber: "7",
     status: "serving",
-    subtotal: 31.8,
-    serviceFee: 1.2,
-    total: 33.0,
+    // subtotal: 31.8,
+    // serviceFee: 1.2,
+    // total: 33.0,
     items: [
       {
         id: 1,
@@ -91,7 +93,7 @@ const orders: OrderDetails[] = [
   },
 ];
 
-function getOrderStatusFromItems(order: OrderDetails) {
+function getOrderStatusFromItems(order: CreateOrderInput) {
   const allItemsServed = order.items.every((item) => item.status === "served");
 
   const someItemsServed = order.items.some((item) => item.status === "served");
@@ -122,10 +124,10 @@ export default function OrderTable() {
   return (
     <div className="flex flex-col gap-4">
       {orders.map((order) => {
-        const updatedOrder: OrderDetails = {
+        const updatedOrder: OrderDetails = createOrderDetails({
           ...order,
           status: getOrderStatusFromItems(order),
-        };
+        });
 
         return (
           <OrderBar

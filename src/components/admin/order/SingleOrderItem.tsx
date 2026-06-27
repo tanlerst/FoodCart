@@ -1,20 +1,18 @@
 /* Admin Order Details Page Order Item */
 
-/* food item in cart page */
-
-import type { ItemData } from "../../../types/itemData";
+import type { OrderDetailsItem } from "../../../types/orderDetails";
 
 type OrderItemProps = {
-  cartItem: ItemData;
+  orderItem: OrderDetailsItem;
 };
 
-export default function OrderItem({ cartItem }: OrderItemProps) {
+export default function OrderItem({ orderItem}: OrderItemProps) {
   return (
     <div className="mx-auto mb-5 w-full max-w-4xl rounded-2xl bg-white p-6 shadow-md">
       <div className="flex items-center gap-4">
         <img
-          src={cartItem.food.image}
-          alt={cartItem.food.name}
+          src={orderItem.image}
+          alt={orderItem.name}
           className="h-24 w-24 rounded-xl object-cover"
         />
 
@@ -22,13 +20,19 @@ export default function OrderItem({ cartItem }: OrderItemProps) {
           <div className="flex items-start justify-between gap-3">
             <div>
               {/* Food name */}
-              <h3 className="text-xl font-bold text-gray-900">{cartItem.food.name}</h3>
+              <h3 className="text-xl font-bold text-gray-900">
+                {orderItem.name}
+              </h3>
 
               {/* Price */}
-              <p className="mt-1 text-lg text-gray-600">${cartItem.food.price.toFixed(2)}</p>
+              <p className="mt-1 text-lg text-gray-600">
+                ${orderItem.price.toFixed(2)}
+              </p>
 
               {/* Quantity */}
-              <p className="mt-1 text-sm text-gray-500">Quantity: {cartItem.quantity}</p>
+              <p className="mt-1 text-sm text-gray-500">
+                Quantity: {orderItem.quantity}
+              </p>
             </div>
           </div>
 

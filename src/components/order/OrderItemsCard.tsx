@@ -1,10 +1,10 @@
 /* Order item list under user order detail page */
 
-import type { OrderDetailItem } from "../../types/orderDetails";
+import type { OrderDetailsItem } from "../../types/orderDetails";
 import OrderItemRow from "./OrderItemRow";
 
 type OrderItemsCardProps = {
-  items: OrderDetailItem[];
+  items: OrderDetailsItem[];
 };
 
 export default function OrderItemsCard({ items }: OrderItemsCardProps) {
