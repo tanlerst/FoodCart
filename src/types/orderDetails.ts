@@ -21,14 +21,15 @@ export type OrderDetailItem = {
 
 // order details (an order: a list of items)
 export type OrderDetails = {
-    customerID?: string;
-    orderNumber: string;
-    placedAt: string;
-    orderType: string;
-    tableNumber: string;
-    status: OrderStatus;
-    items: OrderDetailItem[]; // list of items
-    subtotal: number;
-    serviceFee: number;
-    total: number;
+  customerID?: string;
+  orderNumber: string;
+  placedAt: string;
+  orderType: string;
+  tableNumber: string;
+  status: OrderStatus;
+  items: OrderDetailItem[]; // list of items
+  subtotal: number;
+  gst: number;
+  serviceFee: number;
+  total: number;
 };

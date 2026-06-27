@@ -6,19 +6,11 @@ type NavigationItemProps = {
 };
 
 export default function NavigationItem({ icon, label, onClick }: NavigationItemProps) {
-    return (
-        <button 
-            className="nav-item flex flex-col items-center gap-1" 
-            onClick={onClick}
-            >
-            
-            <span className="text-xl">
-                {icon}
-            </span>
+  return (
+    <button className="nav-item flex flex-col items-center gap-1" onClick={onClick}>
+      <span className="text-xl">{icon}</span>
 
-            <span className="text-xs">
-                {label}
-            </span>
-        </button>
-    );
+      <span className="text-xs">{label}</span>
+    </button>
+  );
 }

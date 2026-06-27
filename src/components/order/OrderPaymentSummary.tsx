@@ -1,11 +1,13 @@
 type OrderPaymentSummaryProps = {
   subtotal: number;
+  gst: number;
   serviceFee: number;
   total: number;
 };
 
 export default function OrderPaymentSummary({
   subtotal,
+  gst,
   serviceFee,
   total,
 }: OrderPaymentSummaryProps) {
@@ -15,10 +17,10 @@ export default function OrderPaymentSummary({
         <h2 className="text-xl font-bold text-gray-900">Order Summary</h2>
       </div>
 
-      <div className="grid grid-cols-3 divide-x divide-gray-200 text-center">
+      <div className="grid grid-cols-4 divide-x divide-gray-200 text-center">
         <SummaryItem label="Subtotal" value={subtotal} />
-
-        <SummaryItem label="SST" value={serviceFee} />
+        <SummaryItem label="GST" value={gst} />
+        <SummaryItem label="Service Charge" value={serviceFee} />
 
         <div>
           <p className="text-sm font-semibold text-gray-700">Total</p>

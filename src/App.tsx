@@ -113,6 +113,33 @@ export default function App() {
               </AdminRoute>
             }
           />
+
+          <Route
+            path="/admindetails"
+            element={
+              <AdminRoute session={session}>
+                <AdminOrderDetailPage />
+              </AdminRoute>
+            }
+          />
+
+          <Route
+            path="/additem"
+            element={
+              <AdminRoute session={session}>
+                <AdminAddItemPage />
+              </AdminRoute>
+            }
+          />
+
+          <Route
+            path="/orders"
+            element={
+              <UserRoute session={session}>
+                <UserOrderDetailsPage />
+              </UserRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </CartProvider>

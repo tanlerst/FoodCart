@@ -13,8 +13,9 @@ import categories from "../../assets/menu/navigation_bar/categories_orange.png";
 import cart from "../../assets/menu/navigation_bar/cart_grey.png";
 import orders from "../../assets/menu/navigation_bar/order_grey.png";
 import profile from "../../assets/menu/navigation_bar/user_grey.png";
+import NavigationItem from "./NavigationItem";
 import { useNavigate } from "react-router-dom";
-
+/*
 type NavigationItemProps = {
   imgSrc: string;
   label: string;
@@ -29,7 +30,7 @@ function NavigationItem({ imgSrc, label, onClick }: NavigationItemProps) {
     </button>
   );
 }
-
+*/
 export default function NavigationBar() {
   const navigate = useNavigate();
 
@@ -37,23 +38,19 @@ export default function NavigationBar() {
     <div className="navigation-bar text-gray p-4 mt-6 border-t">
       <ul className="flex justify-around">
         <li>
-          <NavigationItem imgSrc={home} label="Home" onClick={() => navigate("/menu")} />
+          <NavigationItem icon={home} label="Home" onClick={() => navigate("/menu")} />
         </li>
         <li>
-          <NavigationItem
-            imgSrc={categories}
-            label="Categories"
-            onClick={() => navigate("/menu")}
-          />
+          <NavigationItem icon={categories} label="Categories" onClick={() => navigate("/menu")} />
         </li>
         <li>
-          <NavigationItem imgSrc={cart} label="Cart" onClick={() => navigate("/cart")} />
+          <NavigationItem icon={cart} label="Cart" onClick={() => navigate("/cart")} />
         </li>
         <li>
-          <NavigationItem imgSrc={orders} label="Orders" onClick={() => navigate("/orders")} />
+          <NavigationItem icon={orders} label="Orders" onClick={() => navigate("/orders")} />
         </li>
         <li>
-          <NavigationItem imgSrc={profile} label="Profile" onClick={() => navigate("/profile")} />
+          <NavigationItem icon={profile} label="Profile" onClick={() => navigate("/profile")} />
         </li>
       </ul>
     </div>

@@ -5,7 +5,6 @@ import OrderBar from "./OrderBar";
 import type { OrderDetails } from "../../../types/orderDetails";
 
 const orders: OrderDetails[] = [
-  
   {
     orderNumber: "FC12346",
     placedAt: "May 26, 2025 at 12:45 PM",
@@ -19,8 +18,7 @@ const orders: OrderDetails[] = [
       {
         id: 1,
         name: "Cheese Burger",
-        image:
-          "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
         quantity: 1,
         price: 3.4,
         estimatedMinutes: 15,
@@ -30,8 +28,7 @@ const orders: OrderDetails[] = [
       {
         id: 2,
         name: "Cheese Pizza",
-        image:
-          "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400",
+        image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400",
         quantity: 1,
         price: 3.4,
         estimatedMinutes: 18,
@@ -41,8 +38,7 @@ const orders: OrderDetails[] = [
       {
         id: 3,
         name: "Ice Lemon Tea",
-        image:
-          "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400",
+        image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400",
         quantity: 2,
         price: 3.4,
         estimatedMinutes: 5,
@@ -64,8 +60,7 @@ const orders: OrderDetails[] = [
       {
         id: 1,
         name: "Cheese Burger",
-        image:
-          "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
         quantity: 1,
         price: 3.4,
         estimatedMinutes: 15,
@@ -75,8 +70,7 @@ const orders: OrderDetails[] = [
       {
         id: 2,
         name: "Cheese Pizza",
-        image:
-          "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400",
+        image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400",
         quantity: 1,
         price: 3.4,
         estimatedMinutes: 18,
@@ -86,8 +80,7 @@ const orders: OrderDetails[] = [
       {
         id: 3,
         name: "Ice Lemon Tea",
-        image:
-          "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400",
+        image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400",
         quantity: 2,
         price: 3.4,
         estimatedMinutes: 5,
@@ -99,15 +92,9 @@ const orders: OrderDetails[] = [
 ];
 
 function getOrderStatusFromItems(order: OrderDetails) {
-  
-  const allItemsServed = order.items.
-                          every(
-                            (item) => item.status === "served"
-                          );
+  const allItemsServed = order.items.every((item) => item.status === "served");
 
-  const someItemsServed = order.items.some(
-                            (item) => item.status === "served"
-                          );
+  const someItemsServed = order.items.some((item) => item.status === "served");
 
   if (allItemsServed) {
     return "complete";

@@ -4,8 +4,11 @@ import type { OrderDetails } from "../types/orderDetails";
 import OrderItemsCard from "../components/order/OrderItemsCard";
 import OrderPaymentSummary from "../components/order/OrderPaymentSummary";
 import NavigationBar from "../components/common/NavigationBar";
-
+import { getOrder } from "../helpers/order/getOrder";
+import { formatOrder } from "../helpers/order/formatOrder";
+import { useEffect, useState } from "react";
 // currently hardcoding the order
+/*
 const orderDetails: OrderDetails = {
   orderNumber: "FC12345",
   placedAt: "Placed on May 26, 2025 at 12:45 PM",
@@ -13,6 +16,7 @@ const orderDetails: OrderDetails = {
   tableNumber: "7",
   status: "complete",
   subtotal: 31.8,
+  gst: 1.2,
   serviceFee: 1.2,
   total: 33.0,
   items: [
@@ -48,8 +52,38 @@ const orderDetails: OrderDetails = {
     },
   ],
 };
+*/
 
 export default function UserOrderDetailsPage() {
+  const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadOrder() {
+      try {
+        const orderData = await getOrder();
+
+        if (!orderData) {
+          setOrderDetails(null);
+          return;
+        }
+
+        setOrderDetails(formatOrder(orderData));
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadOrder();
+  }, []);
+
+  if (loading) {
+    return <div className="p-8">Loading...</div>;
+  }
+
+  if (!orderDetails) {
+    return <div className="p-8">No orders.</div>;
+  }
+
   return (
     <div className="min-h-screen bg-orange-50 pb-32">
       <main className="mx-auto max-w-4xl px-5 py-6">
@@ -67,6 +101,7 @@ export default function UserOrderDetailsPage() {
 
         <OrderPaymentSummary
           subtotal={orderDetails.subtotal}
+          gst={orderDetails.gst}
           serviceFee={orderDetails.serviceFee}
           total={orderDetails.total}
         />

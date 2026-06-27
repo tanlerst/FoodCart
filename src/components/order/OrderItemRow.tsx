@@ -46,7 +46,7 @@ export default function OrderItemRow({ item }: OrderItemRowProps) {
 
         {/* Served time or est ready time */}
         <p className="mt-2 text-sm text-gray-500">
-          {isServed ? `Served at ${item.servedAt}` : `Est. ready ${item.estimatedReadyAt}`}
+          {isServed ? `` : `Est. ready ${item.estimatedReadyAt}`}
         </p>
       </div>
     </div>
