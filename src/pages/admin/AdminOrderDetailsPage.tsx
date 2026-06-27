@@ -2,6 +2,7 @@
 
 import AdminOrderItemsCard from "../../components/admin/order/AdminOrderItemsCard";
 import type { ItemData } from "../../types/itemData";
+import AdminSideBar from "../../components/admin/AdminSideBar"
 
 const orderItems: ItemData[] = [
   {
@@ -47,8 +48,13 @@ const orderItems: ItemData[] = [
 
 export default function AdminOrderDetailPage() {
   return (
-    <div className="min-h-screen bg-orange-50 px-8 py-8">
-      <AdminOrderItemsCard cartItems={orderItems} />
+    <div className="flex min-h-screen bg-gray-50">
+      {/* Side bar */}
+      <AdminSideBar/>
+      
+      <div className="flex-1 bg-orange-50 px-8 py-8">
+        <AdminOrderItemsCard cartItems={orderItems} />
+      </div>
     </div>
   );
 }
