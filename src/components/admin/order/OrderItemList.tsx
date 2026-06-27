@@ -4,14 +4,14 @@ import type { ItemData } from "../../../types/itemData";
 import OrderItem from "./SingleOrderItem";
 
 type OrderItemListProps = {
-  cartItems: ItemData[];
+  items: ItemData[];
 };
 
-export default function OrderItemList({ cartItems }: OrderItemListProps) {
+export default function OrderItemList({ items }: OrderItemListProps) {
   return (
     <div>
-      {cartItems.map((cartItem) => (
-        <OrderItem key={cartItem.food.id} cartItem={cartItem} />
+      {items.map((item) => (
+        <OrderItem key={item.food.id} cartItem={item} />
       ))}
     </div>
   );
