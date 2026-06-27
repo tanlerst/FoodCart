@@ -33,11 +33,27 @@ export default function UserOrderDetailsPage() {
   }, []);
 
   if (loading) {
-    return <div className="p-8">Loading...</div>;
+    return (
+       <div className="container mx-auto bg-orange-50 py-8 pb-32">
+        <div className="p-8">Loading...</div>
+        
+        <div className="fixed bottom-0 left-0 right-0 bg-white">
+          <NavigationBar />
+        </div>
+      </div>
+    );
   }
 
   if (!orderDetails) {
-    return <div className="p-8">No orders.</div>;
+    return (
+       <div className="container mx-auto bg-orange-50 py-8 pb-32">
+        <div className="p-8">No orders.</div>
+        
+        <div className="fixed bottom-0 left-0 right-0 bg-white">
+          <NavigationBar />
+        </div>
+      </div>
+    )
   }
 
   return (
