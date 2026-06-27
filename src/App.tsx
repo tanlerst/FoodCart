@@ -10,7 +10,6 @@ import FoodDetailsPage from "./pages/FoodDetailsPage";
 import CartPage from "./pages/CartPage";
 import { CartProvider } from "./context/CartContext";
 import AdminOrderPage from "./pages/admin/AdminOrderPage";
-import AdminSignupPage from "./pages/admin/AdminSignupPage";
 import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import AdminOrderDetailPage from "./pages/admin/AdminOrderDetailsPage";
 import AdminAddItemPage from "./pages/admin/AdminNewItemPage";

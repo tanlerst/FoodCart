@@ -1,6 +1,11 @@
 /* Pricing card under admin new item page */
 
-export default function PricingCard() {
+type PricingProps = {
+  price: string;
+  onPriceChange: (value: string) => void;
+};
+
+export default function PricingCard({ price, onPriceChange }: PricingProps) {
   return (
     <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
       <h2 className="mb-6 text-lg font-semibold text-gray-900">Pricing & Availability</h2>
@@ -17,7 +22,10 @@ export default function PricingCard() {
             <span className="border-r border-gray-300 px-4 py-3 text-gray-600">$</span>
             <input
               type="number" // stepper
+              step="0.01"
+              value={price}
               placeholder="0.00"
+              onChange={(x) => onPriceChange(x.target.value)}
               className="w-full rounded-r-xl px-4 py-3 outline-none"
             ></input>
           </div>
