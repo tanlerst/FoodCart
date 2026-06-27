@@ -5,6 +5,7 @@ import LoginCard from "../../components/auth/LoginCard";
 import SignupCard from "../../components/auth/SignupCard";
 import { getUserType } from "../../helpers/auth/getUserType";
 import { supabase } from "../../utils/supabase";
+import HomeButton from "../../components/auth/HomeButton"
 
 export default function AdminLoginPage() {
   const navigate = useNavigate();
@@ -22,19 +23,27 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-white">
-      <div className="w-full max-w-md">
-        <div className="flex justify-center items-center mb-6">
-          <h1 className="text-4xl font-bold text-gray-900">Admin Portal</h1>
+    <main className="min-h-screen bg-white">
+
+      {/* Home button */}
+      <div className="absolute left-8 top-8">
+        <HomeButton />
+      </div>
+
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="w-full max-w-md">
+          <div className="flex justify-center items-center mb-6">
+            <h1 className="text-4xl font-bold text-gray-900">Admin Portal</h1>
+          </div>
+
+          <p className="text-center text-gray-600 mb-6">
+            Sign in to access your FoodCart admin dashboard
+          </p>
+
+          <LoginCard onLogin={adminLogin} />
+
+          <SignupCard />
         </div>
-
-        <p className="text-center text-gray-600 mb-6">
-          Sign in to access your FoodCart admin dashboard
-        </p>
-
-        <LoginCard onLogin={adminLogin} />
-
-        <SignupCard />
       </div>
     </main>
   );
