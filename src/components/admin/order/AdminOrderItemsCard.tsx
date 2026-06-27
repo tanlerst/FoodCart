@@ -10,9 +10,7 @@ type AdminOrderItemsCardProps = {
   cartItems: ItemData[];
 };
 
-export default function AdminOrderItemsCard({
-  cartItems,
-}: AdminOrderItemsCardProps) {
+export default function AdminOrderItemsCard({ cartItems }: AdminOrderItemsCardProps) {
   const subtotal = calculateSubtotal(cartItems);
   const sst = calculateSST(subtotal);
   const total = calculateTotal(subtotal);
@@ -20,22 +18,12 @@ export default function AdminOrderItemsCard({
   return (
     <div className="rounded-xl border border-gray-200">
       <div className="flex items-center gap-3 px-6 py-5">
-        <h1 className="text-xl font-bold text-gray-900">
-          Order Items
-        </h1>
+        <h1 className="text-xl font-bold text-gray-900">Order Items</h1>
       </div>
 
-      <OrderItemList 
-        cartItems={cartItems} 
-        />
+      <OrderItemList cartItems={cartItems} />
 
-      <OrderSummary
-        subtotal={subtotal}
-        sst={sst}
-        total={total}
-        showCheckoutButton={false}
-      />
-
+      <OrderSummary subtotal={subtotal} sst={sst} total={total} showCheckoutButton={false} />
     </div>
   );
 }

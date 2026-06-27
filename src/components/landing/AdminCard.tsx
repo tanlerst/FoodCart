@@ -1,34 +1,31 @@
 /* Admin card component on landing page before login */
+import { useNavigate } from "react-router";
 
 export default function AdminCard() {
-    return (
-        <div className="rounded-3xl bg-white p-10 shadow-xl">
-                <div className="mx-auto flex h-40 w-40 items-center justify-center rounded-full bg-orange-50 text-6xl text-orange-800">
-                    📋
-                </div>
+  const navigate = useNavigate();
 
-                <h3 className="mt-8 text-3xl font-bold text-gray-900">
-                    Admin
-                </h3>
+  return (
+    <div className="rounded-3xl bg-white p-10 shadow-xl">
+      <div className="mx-auto flex h-40 w-40 items-center justify-center rounded-full bg-orange-50 text-6xl text-orange-800">
+        📋
+      </div>
 
-                <p className="mt-5 text-lg leading-relaxed text-gray-600">
-                    Manage menus, orders,
-                <br />
-                    and view analytics.
-                </p>
+      <h3 className="mt-8 text-3xl font-bold text-gray-900">Admin</h3>
 
-                <button
-                    type="button"
-                    // onClick=
-                    className="mt-12 flex w-full items-center justify-center gap-3 rounded-xl border border-orange-600 bg-white px-6 py-4 text-lg font-semibold text-orange-600 transition hover:bg-orange-50"
-                >
-                    Continue as Admin
-                    
-                    <span className="text-2xl">
-                        ›
-                    </span>
-                </button>
-        </div>
+      <p className="mt-5 text-lg leading-relaxed text-gray-600">
+        Manage menus, orders,
+        <br />
+        and view analytics.
+      </p>
 
-    );
+      <button
+        type="button"
+        onClick={() => navigate("/adminlogin")}
+        className="mt-12 flex w-full items-center justify-center gap-3 rounded-xl border border-orange-600 bg-white px-6 py-4 text-lg font-semibold text-orange-600 transition hover:bg-orange-50"
+      >
+        Continue as Admin
+        <span className="text-2xl">›</span>
+      </button>
+    </div>
+  );
 }

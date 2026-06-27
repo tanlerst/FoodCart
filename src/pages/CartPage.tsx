@@ -4,13 +4,17 @@ import ClearCartButton from "../components/cart/ClearCartButton";
 import { useCart } from "../context/CartContext";
 import { doCheckout } from "../helpers/cart/doCheckout";
 import OrderSummary from "../components/cart/OrderSummary";
-import { calculateSubtotal, calculateSST, calculateTotal } from "../components/cart/cartCalculation";
+import {
+  calculateSubtotal,
+  calculateSST,
+  calculateTotal,
+} from "../components/cart/cartCalculation";
 
 export default function CartPage() {
   const { cartItems, increaseQuantity, decreaseQuantity, removeItem, clearCart } = useCart();
-  const subtotal = calculateSubtotal(cartItems)
-  const sst = calculateSST(subtotal)
-  const total = calculateTotal(subtotal)
+  const subtotal = calculateSubtotal(cartItems);
+  const sst = calculateSST(subtotal);
+  const total = calculateTotal(subtotal);
 
   async function handleCheckout() {
     try {
@@ -40,14 +44,14 @@ export default function CartPage() {
       />
 
       <div className="mt-6">
-      <OrderSummary 
-        subtotal={subtotal} 
-        sst={sst}
-        total={total}
-        onCheckout={handleCheckout} 
-        disabled={cartItems.length === 0} 
-        showCheckoutButton={true}
-      />
+        <OrderSummary
+          subtotal={subtotal}
+          sst={sst}
+          total={total}
+          onCheckout={handleCheckout}
+          disabled={cartItems.length === 0}
+          showCheckoutButton={true}
+        />
       </div>
 
       <div className="fixed bottom-0 left-0 right-0 bg-orange-50">

@@ -1,7 +1,7 @@
 /* Save item button for add item page in admin portal */
 
 type SaveItemButtonProps = {
-  disabled?: boolean
+  disabled?: boolean;
 };
 
 export default function SaveItemButton({ disabled = false }: SaveItemButtonProps) {

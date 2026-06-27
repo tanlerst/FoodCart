@@ -1,24 +1,3 @@
-/* temp code to show only signup page*/
-
-// import "./App.css";
-// import SignupPage from "./pages/SignupPage";
-
-// export default function App() {
-//   return <SignupPage />;
-// }
-
-// export default function App() {
-
-//   return (
-//     <BrowserRouter>
-
-//       <AdminOrderDetailPage />
-//     </BrowserRouter>
-   
-
-//   );
-// }
-
 import { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import type { Session } from "@supabase/supabase-js";
@@ -31,132 +10,111 @@ import FoodDetailsPage from "./pages/FoodDetailsPage";
 import CartPage from "./pages/CartPage";
 import { CartProvider } from "./context/CartContext";
 import AdminOrderPage from "./pages/admin/AdminOrderPage";
-import AdminSignupPage from "./pages/admin/AdminSignupPage"
-import AdminLoginPage from "./pages/admin/AdminLoginPage"
-import AdminOrderDetailPage from "./pages/admin/AdminOrderDetailsPage"
-import AdminAddItemPage from "./pages/admin/AdminNewItemPage"
-import UserOrderDetailsPage from "./pages/UserOrderDetailsPage"
-import LandingPage from "./pages/LandingPage"
+import AdminSignupPage from "./pages/admin/AdminSignupPage";
+import AdminLoginPage from "./pages/admin/AdminLoginPage";
+import AdminOrderDetailPage from "./pages/admin/AdminOrderDetailsPage";
+import AdminAddItemPage from "./pages/admin/AdminNewItemPage";
+import UserOrderDetailsPage from "./pages/UserOrderDetailsPage";
+import LandingPage from "./pages/LandingPage";
+import { UserRoute } from "./routes/UserRoute";
+import { PublicRoute } from "./routes/PublicRoute";
+import { AdminRoute } from "./routes/AdminRoute";
 
 export default function App() {
+  const [session, setSession] = useState<Session | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      setSession(data.session);
+      setLoading(false);
+    });
+
+    const { data: authListener } = supabase.auth.onAuthStateChange((_event, newSession) => {
+      setSession(newSession);
+    });
+
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, []);
+
+  if (loading) {
+    return <div className="p-8">Loading...</div>;
+  }
 
   return (
-    <BrowserRouter>
-      {/* <OrderPage>
+    <CartProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to={session ? "/menu" : "/landing"} replace />} />
 
-      </OrderPage> */}
-      {/* <UserOrderDetailsPage>
+          <Route
+            path="/landing"
+            element={
+              <PublicRoute session={session}>
+                <LandingPage />
+              </PublicRoute>
+            }
+          />
 
-      </UserOrderDetailsPage> */}
-      <LandingPage/>
+          <Route
+            path="/login"
+            element={
+              <PublicRoute session={session}>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
 
-    </BrowserRouter>
+          <Route
+            path="/signup"
+            element={
+              <PublicRoute session={session}>
+                <SignupPage />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path="/menu"
+            element={
+              <UserRoute session={session}>
+                <MenuPage />
+              </UserRoute>
+            }
+          />
+
+          <Route path="/food/:id" element={<FoodDetailsPage />} />
+
+          <Route
+            path="/cart"
+            element={
+              <UserRoute session={session}>
+                <CartPage />
+              </UserRoute>
+            }
+          />
+
+          <Route
+            path="/adminlogin"
+            element={
+              <PublicRoute session={session}>
+                <AdminLoginPage />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute session={session}>
+                <AdminOrderPage />
+              </AdminRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
-
-// function ProtectedRoute({
-//   session,
-//   children,
-// }: {
-//   session: Session | null;
-//   children: React.ReactNode;
-// }) {
-//   return session ? <>{children}</> : <Navigate to="/login" replace />;
-// }
-
-// function PublicRoute({
-//   session,
-//   children,
-// }: {
-//   session: Session | null;
-//   children: React.ReactNode;
-// }) {
-//   return session ? <Navigate to="/menu" replace /> : <>{children}</>;
-// }
-
-
-// export default function App() {
-//   const [session, setSession] = useState<Session | null>(null);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     supabase.auth.getSession().then(({ data }) => {
-//       setSession(data.session);
-//       setLoading(false);
-//     });
-
-//     const { data: authListener } = supabase.auth.onAuthStateChange((_event, newSession) => {
-//       setSession(newSession);
-//     });
-
-//     return () => {
-//       authListener.subscription.unsubscribe();
-//     };
-//   }, []);
-
-//   if (loading) {
-//     return <div className="p-8">Loading...</div>;
-//   }
-
-//   return (
-//     <CartProvider>
-//       <BrowserRouter>
-//         <Routes>
-//           <Route path="/" element={<Navigate to={session ? "/menu" : "/login"} replace />} />
-
-//           <Route
-//             path="/login"
-//             element={
-//               <PublicRoute session={session}>
-//                 <LoginPage />
-//               </PublicRoute>
-//             }
-//           />
-
-//           <Route
-//             path="/signup"
-//             element={
-//               <PublicRoute session={session}>
-//                 <SignupPage />
-//               </PublicRoute>
-//             }
-//           />
-
-//           <Route
-//             path="/menu"
-//             element={
-//               <ProtectedRoute session={session}>
-//                 <MenuPage />
-//               </ProtectedRoute>
-//             }
-//           />
-
-//           <Route path="/food/:id" element={<FoodDetailsPage />} />
-
-//           <Route
-//             path="/cart"
-//             element={
-//               <ProtectedRoute session={session}>
-//                 <CartPage />
-//               </ProtectedRoute>
-//             }
-//           />
-
-//           <Route 
-//             path="/adminlogin"
-//             element={<AdminLoginPage />}
-//           />
-
-//           <Route
-//             path="/admin"
-//             element={
-//               <ProtectedRoute session={session}>
-//                 <AdminOrderPage/>
-//                 </ProtectedRoute>
-//             }
-//             />
-//         </Routes>
-//       </BrowserRouter>
-//     </CartProvider>
-//   );
-// }

@@ -1,10 +1,9 @@
-
 import OrderInfoCard from "../components/order/OrderInfoCard";
 import OrderStatusTracker from "../components/order/status_tracker/OrderStatusTracker";
-import type { OrderDetails } from "../types/orderDetails"
-import OrderItemsCard from "../components/order/OrderItemsCard"
-import OrderPaymentSummary from "../components/order/OrderPaymentSummary"
-import NavigationBar from "../components/common/NavigationBar"
+import type { OrderDetails } from "../types/orderDetails";
+import OrderItemsCard from "../components/order/OrderItemsCard";
+import OrderPaymentSummary from "../components/order/OrderPaymentSummary";
+import NavigationBar from "../components/common/NavigationBar";
 
 // currently hardcoding the order
 const orderDetails: OrderDetails = {
@@ -20,8 +19,7 @@ const orderDetails: OrderDetails = {
     {
       id: 1,
       name: "Cheese Burger",
-      image:
-        "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
       quantity: 1,
       price: 3.4,
       estimatedMinutes: 15,
@@ -31,8 +29,7 @@ const orderDetails: OrderDetails = {
     {
       id: 2,
       name: "Cheese Pizza",
-      image:
-        "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400",
+      image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400",
       quantity: 1,
       price: 3.4,
       estimatedMinutes: 18,
@@ -42,14 +39,12 @@ const orderDetails: OrderDetails = {
     {
       id: 3,
       name: "Ice Lemon Tea",
-      image:
-        "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400",
+      image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400",
       quantity: 2,
       price: 3.4,
       estimatedMinutes: 5,
       status: "preparing",
       estimatedReadyAt: "1:50 PM",
-
     },
   ],
 };
@@ -58,7 +53,6 @@ export default function UserOrderDetailsPage() {
   return (
     <div className="min-h-screen bg-orange-50 pb-32">
       <main className="mx-auto max-w-4xl px-5 py-6">
-
         <OrderInfoCard
           orderNumber={orderDetails.orderNumber}
           placedAt={orderDetails.placedAt}
@@ -67,9 +61,7 @@ export default function UserOrderDetailsPage() {
           status={orderDetails.status}
         />
 
-        <OrderStatusTracker 
-          status={orderDetails.status} 
-        />
+        <OrderStatusTracker status={orderDetails.status} />
 
         <OrderItemsCard items={orderDetails.items} />
 
@@ -78,13 +70,11 @@ export default function UserOrderDetailsPage() {
           serviceFee={orderDetails.serviceFee}
           total={orderDetails.total}
         />
-
       </main>
 
       <div className="fixed bottom-0 left-0 right-0 bg-white">
         <NavigationBar />
       </div>
-
     </div>
   );
 }

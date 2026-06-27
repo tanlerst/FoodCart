@@ -8,17 +8,11 @@ type OrderItemListProps = {
 };
 
 export default function OrderItemList({ cartItems }: OrderItemListProps) {
-
   return (
     <div>
-
       {cartItems.map((cartItem) => (
-        <OrderItem
-          key={cartItem.food.id}
-          cartItem={cartItem}
-        />
+        <OrderItem key={cartItem.food.id} cartItem={cartItem} />
       ))}
-    
     </div>
   );
 }

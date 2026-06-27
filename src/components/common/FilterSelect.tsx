@@ -11,14 +11,8 @@ type FilterSelectOptionProps = {
   onChange: (value: string) => void;
 };
 
-export default function FilterSelect({ 
-  options, 
-  value, 
-  onChange 
-}: FilterSelectOptionProps) {
-  
+export default function FilterSelect({ options, value, onChange }: FilterSelectOptionProps) {
   return (
-    
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
@@ -30,7 +24,5 @@ export default function FilterSelect({
         </option>
       ))}
     </select>
-
   );
 }
-

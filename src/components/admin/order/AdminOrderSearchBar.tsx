@@ -5,11 +5,10 @@ type AdminOrderSearchBarProps = {
   setSearchWord: (searchWord: string) => void;
 };
 
-export default function AdminOrderSearchBar({ 
-    searchWord, 
-    setSearchWord 
+export default function AdminOrderSearchBar({
+  searchWord,
+  setSearchWord,
 }: AdminOrderSearchBarProps) {
-
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchWord(event.target.value);
   };

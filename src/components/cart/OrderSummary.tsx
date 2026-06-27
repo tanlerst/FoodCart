@@ -4,22 +4,21 @@ import CheckoutButton from "./CheckoutButton";
 
 type OrderSummaryProps = {
   subtotal: number;
-  sst: number,
-  total: number,
+  sst: number;
+  total: number;
   onCheckout?: () => void; // optional
   disabled?: boolean; // optional
   showCheckoutButton: boolean;
 };
 
-export default function OrderSummary({ 
-  subtotal, 
+export default function OrderSummary({
+  subtotal,
   sst,
   total,
-  onCheckout, 
-  disabled=false,
-  showCheckoutButton
+  onCheckout,
+  disabled = false,
+  showCheckoutButton,
 }: OrderSummaryProps) {
-  
   let checkoutButton = null;
 
   if (showCheckoutButton && onCheckout) {
@@ -31,7 +30,6 @@ export default function OrderSummary({
   }
 
   return (
-
     <div className="flex flex-col gap-4 p-4 rounded-lg shadow-xl">
       <h2 className="text-lg font-semibold">Order Summary</h2>
       <div className="flex justify-between">
@@ -50,9 +48,6 @@ export default function OrderSummary({
       </div>
 
       {checkoutButton}
-      
     </div>
-
   );
 }
-

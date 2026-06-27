@@ -28,7 +28,9 @@ export default function AdminLoginPage() {
           <h1 className="text-4xl font-bold text-gray-900">Admin Portal</h1>
         </div>
 
-        <p className="text-center text-gray-600 mb-6">Sign in to access your FoodCart admin dashboard</p>
+        <p className="text-center text-gray-600 mb-6">
+          Sign in to access your FoodCart admin dashboard
+        </p>
 
         <LoginCard onLogin={adminLogin} />
 
