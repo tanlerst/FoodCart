@@ -20,7 +20,7 @@ export default function OrderPaymentSummary({
             <div className="grid grid-cols-4 divide-x divide-gray-200 text-center">
                 <SummaryItem label="Subtotal" value={subtotal} />
                 <SummaryItem label="GST" value={gst} />
-                <SummaryItem label="Service Charge" value={serviceFee} />
+                <SummaryItem label="Service Fee" value={serviceFee} />
 
                 <div>
                     <p className="text-sm font-semibold text-gray-700">Total</p>
