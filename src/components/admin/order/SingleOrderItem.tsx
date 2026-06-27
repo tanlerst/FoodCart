@@ -1,13 +1,23 @@
 /* Admin Order Details Page Order Item */
 
-import type { OrderDetailsItem } from "../../../types/orderDetails";
+import type { OrderDetailsItem, OrderItemStatus } from "../../../types/orderDetails";
 import StatusBadge from "../../common/StatusBadge";
 
 type OrderItemRowProps = {
   orderItem: OrderDetailsItem;
+  onStatusChange: (itemId: number, status: OrderItemStatus) => void;
 };
 
-export default function OrderItemRow({ orderItem }: OrderItemRowProps) {
+function getItemTimeText(orderItem: OrderDetailsItem) {
+  if (orderItem.status === "served") {
+    return `Served at ${orderItem.servedAt}`
+  } else {
+    return `Est. ready ${orderItem.estimatedReadyAt}`
+  }
+
+}
+
+export default function OrderItemRow({ orderItem, onStatusChange }: OrderItemRowProps) {
   const isServed = orderItem.status === "served";
 
   return (
@@ -34,7 +44,10 @@ export default function OrderItemRow({ orderItem }: OrderItemRowProps) {
       <p className="font-medium text-gray-900">x{orderItem.quantity}</p>
 
       <div>
-          <StatusBadge status={orderItem.status}/>
+          <StatusBadge 
+            status={orderItem.status}
+            onChange={(newStatus) => onStatusChange(orderItem.id, newStatus)}
+          />
 
           {/* Served time or est ready time */}
           <p className="mt-2 text-sm text-gray-500">
