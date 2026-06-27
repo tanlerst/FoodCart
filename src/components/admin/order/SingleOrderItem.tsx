@@ -1,43 +1,45 @@
 /* Admin Order Details Page Order Item */
 
 import type { OrderDetailsItem } from "../../../types/orderDetails";
+import StatusBadge from "../../common/StatusBadge";
 
-type OrderItemProps = {
+type OrderItemRowProps = {
   orderItem: OrderDetailsItem;
 };
 
-export default function OrderItem({ orderItem}: OrderItemProps) {
+export default function OrderItemRow({ orderItem }: OrderItemRowProps) {
+  const isServed = orderItem.status === "served";
+
   return (
-    <div className="mx-auto mb-5 w-full max-w-4xl rounded-2xl bg-white p-6 shadow-md">
+    <div className="mx-auto mb-5 w-full grid grid-cols-[1fr_60px_160px] max-w-4xl rounded-2xl bg-white p-6 shadow-md">
+      {/*  <div className="mx-auto mb-5 w-full max-w-4xl rounded-2xl bg-white p-6 shadow-md"> */}
+      {/* flex items-center gap-4 */}
       <div className="flex items-center gap-4">
-        <img
-          src={orderItem.image}
-          alt={orderItem.name}
-          className="h-24 w-24 rounded-xl object-cover"
-        />
+        {/* Image */}
+        <img src={orderItem.image} alt={orderItem.name} className="h-20 w-20 rounded-xl object-cover" />
 
-        <div className="flex flex-1 flex-col">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              {/* Food name */}
-              <h3 className="text-xl font-bold text-gray-900">
-                {orderItem.name}
-              </h3>
+        <div>
+          {/* Item name */}
+          <h3 className="font-bold text-gray-900">{orderItem.name}</h3>
+          
+          {/* Price */}
+          <h2 className="font-medium text-gray-900">${orderItem.price}</h2>
 
-              {/* Price */}
-              <p className="mt-1 text-lg text-gray-600">
-                ${orderItem.price.toFixed(2)}
-              </p>
-
-              {/* Quantity */}
-              <p className="mt-1 text-sm text-gray-500">
-                Quantity: {orderItem.quantity}
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-4 flex items-center"></div>
+          {/* Time */}
+          <p className="mt-2 text-sm text-gray-500">🕒 {orderItem.estimatedMinutes} mins</p>
         </div>
+      </div>
+
+      {/* Item quantity */}
+      <p className="font-medium text-gray-900">x{orderItem.quantity}</p>
+
+      <div>
+          <StatusBadge status={orderItem.status}/>
+
+          {/* Served time or est ready time */}
+          <p className="mt-2 text-sm text-gray-500">
+              {isServed ? `` : `Est. ready ${orderItem.estimatedReadyAt}`}
+          </p>
       </div>
     </div>
   );
