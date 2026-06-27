@@ -70,7 +70,7 @@ export function formatOrder(data: orderData): OrderDetails {
       ...(itemStatus === "served"
         ? {}
         : {
-            estimatedReadyAt: formatTime(addMinutes(data.orderRows[0].ordertime, food.time)),
+            estimatedReadyAt: formatTime(addMinutes(row.ordertime, food.time)),
           }),
     };
   });
