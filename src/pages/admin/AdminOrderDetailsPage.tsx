@@ -1,9 +1,14 @@
 /* Admin Order Details Page */
 
 import AdminOrderItemsCard from "../../components/admin/order/AdminOrderItemsCard";
-import type { OrderDetailsItem } from "../../types/orderDetails";
+import type { OrderDetailsItem, OrderDetails } from "../../types/orderDetails";
 import AdminSideBar from "../../components/admin/AdminSideBar";
+import { getOrderAdmin } from "../../helpers/admin/getOrderAdmin";
+import { formatOrder } from "../../helpers/order/formatOrder";
+import { useEffect, useState } from "react";
 
+
+export default function AdminOrderDetailPage() {
 const orderItems: OrderDetailsItem[] = [
   {
     id: 1,
@@ -37,7 +42,50 @@ const orderItems: OrderDetailsItem[] = [
   },
 ];
 
-export default function AdminOrderDetailPage() {
+
+  // const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null);
+  // const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   async function loadOrder() {
+  //     try {
+  //       const orderData = await getOrderAdmin(orderId);
+
+  //       if (!orderData) {
+  //         setOrderDetails(null);
+  //         return;
+  //       }
+
+  //       setOrderDetails(formatOrder(orderData));
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+  //   loadOrder();
+  // }, []);
+
+  // if (loading) {
+  //   return (
+  //     <div className="flex min-h-screen bg-gray-50">
+  //       {/* Side bar */}
+  //       <AdminSideBar />
+        
+  //       <div className="p-8">Loading...</div>
+  //     </div>
+  //   );
+  // }
+
+  // if (!orderDetails) {
+  //   return (
+  //     <div className="flex min-h-screen bg-gray-50">
+  //       {/* Side bar */}
+  //       <AdminSideBar />
+        
+  //       <div className="p-8">No orders.</div>
+  //     </div>
+  //   );
+  // }
+
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Side bar */}
