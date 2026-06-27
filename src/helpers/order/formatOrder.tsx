@@ -5,10 +5,10 @@ import type {
   OrderItemStatus,
   OrderStatus,
 } from "../../types/orderDetails";
-import type { orderData } from "./getOrder";
+import type { OrderData } from "../../types/OrderData";
 import { calculateOrderPricing } from "./orderCalculation";
 
-type FoodRow = orderData["foodRows"][number];
+type FoodRow = OrderData["foodRows"][number];
 
 function formatDateTime(timestamp: string): string {
   const date = new Date(timestamp);
@@ -46,7 +46,7 @@ function getOrderStatus(statusIds: number[]): OrderStatus {
   return "serving";
 }
 
-export function formatOrder(data: orderData): OrderDetails {
+export function formatOrder(data: OrderData): OrderDetails {
   const foodMap = new Map<number, FoodRow>();
   data.foodRows.forEach((food) => {
     foodMap.set(food.id, food);

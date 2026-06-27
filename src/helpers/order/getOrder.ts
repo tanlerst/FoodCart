@@ -1,33 +1,7 @@
 import { supabase } from "../../utils/supabase";
+import type { UserRow, OrderRow, FoodRow, OrderData } from "../../types/OrderData";
 
-type UserRow = {
-  id: number;
-};
-
-type OrderRow = {
-  id: number;
-  food: number;
-  quantity: number;
-  status: number;
-  ordertime: string;
-};
-
-type FoodRow = {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  time: number;
-};
-
-export type orderData = {
-  authUserId: string;
-  userRow: UserRow;
-  orderRows: OrderRow[];
-  foodRows: FoodRow[];
-};
-
-export async function getOrder(): Promise<orderData | null> {
+export async function getOrder(): Promise<OrderData | null> {
   const { data: authData, error: authError } = await supabase.auth.getUser();
 
   if (authError) {
