@@ -35,16 +35,16 @@ export default function OrderPaymentSummary({
 // Summary Item for order summary under user order page
 
 type SummaryItemProps = {
-  label: string;
-  value: number;
+    label: string;
+    value: number;
 };
 
 function SummaryItem({ label, value }: SummaryItemProps) {
-  return (
-    <div>
-        <p className="text-sm text-gray-500">{label}</p>
+    return (
+        <div>
+            <p className="text-sm text-gray-500">{label}</p>
 
-        <p className="mt-2 text-lg font-medium text-gray-900">${value.toFixed(2)}</p>
-    </div>
-  );
+            <p className="mt-2 text-lg font-medium text-gray-900">${value.toFixed(2)}</p>
+        </div>
+    );
 }
