@@ -2,7 +2,6 @@
 
 import LogoutButton from "../../components/admin/LogoutButton";
 import { useNavigate } from "react-router";
-import NavigationItem from "../common/NavigationItem";
 
 type SidebarItem = {
   label: string;
