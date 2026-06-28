@@ -1,9 +1,5 @@
 /* Cancel button for adding new item in admin portal*/
 
-type CancelButtonProps = {
-  //   onCancel: () => void;
-};
-
 // export default function CancelButton({ onCancel }: CancelButtonProps) {
 export default function CancelButton() {
   return (
