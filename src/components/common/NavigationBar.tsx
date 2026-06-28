@@ -38,7 +38,7 @@ export default function NavigationBar() {
           <NavigationItem icon={CgNotes} label="Orders" onClick={() => navigate("/orders")} />
         </li>
         <li>
-          <NavigationItem icon={IoPerson} label="Profile" onClick={() => navigate("/profile")} />
+          <NavigationItem icon={IoPerson} label="Profile" onClick={() => navigate("/menu")} />
         </li>
       </ul>
     </div>

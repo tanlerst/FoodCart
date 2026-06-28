@@ -114,7 +114,7 @@ export default function App() {
             }
           />
           <Route
-            path="/orders"
+            path="/adminorders"
             element={
               <AdminRoute session={session}>
                 <AdminOrderPage />

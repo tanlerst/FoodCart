@@ -31,9 +31,7 @@ export default function AdminLoginPage() {
       <div className="flex min-h-screen items-center justify-center">
         <div className="w-full max-w-md">
           <div className="flex justify-center items-center mb-6">
-            <h1 className="text-4xl font-bold text-gray-900">
-              Admin Portal
-            </h1>
+            <h1 className="text-4xl font-bold text-gray-900">Admin Portal</h1>
           </div>
 
           <p className="text-center text-gray-600 mb-6">
@@ -41,7 +39,6 @@ export default function AdminLoginPage() {
           </p>
 
           <LoginCard onLogin={adminLogin} />
-
         </div>
       </div>
     </main>

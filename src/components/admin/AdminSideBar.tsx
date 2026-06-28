@@ -18,7 +18,7 @@ const sidebarItems: SidebarItem[] = [
   {
     label: "Orders",
     icon: "🛒",
-    route: "/orders",
+    route: "/adminorders",
   },
   {
     label: "Menu",
