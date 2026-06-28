@@ -25,7 +25,11 @@ export default function NavigationBar() {
           <NavigationItem icon={IoHomeOutline} label="Home" onClick={() => navigate("/menu")} />
         </li>
         <li>
-          <NavigationItem icon={BiSolidCategoryAlt} label="Categories" onClick={() => navigate("/menu")} />
+          <NavigationItem
+            icon={BiSolidCategoryAlt}
+            label="Categories"
+            onClick={() => navigate("/menu")}
+          />
         </li>
         <li>
           <NavigationItem icon={FaShoppingCart} label="Cart" onClick={() => navigate("/cart")} />

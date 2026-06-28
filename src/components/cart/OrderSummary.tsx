@@ -35,47 +35,30 @@ export default function OrderSummary({
     <div className="flex flex-col gap-4 p-4 rounded-lg shadow-xl">
       <h2 className="text-lg font-semibold">Order Summary</h2>
       <div className="flex justify-between">
-         {/* Subtotal */}
-        <span>
-          Subtotal:
-        </span>
-        
-        <span>
-          ${subtotal.toFixed(2)}
-        </span>
+        {/* Subtotal */}
+        <span>Subtotal:</span>
+
+        <span>${subtotal.toFixed(2)}</span>
       </div>
 
       {/* gst */}
       <div className="flex justify-between">
-        <span>
-          gst (9%):
-        </span>
-        
-        <span>
-          ${gst.toFixed(2)}
-        </span>
+        <span>gst (9%):</span>
+
+        <span>${gst.toFixed(2)}</span>
       </div>
 
-      
       {/* Service Fee */}
       <div className="flex justify-between">
-        <span>
-          Service Fee (10%):
-        </span>
-        
-        <span>
-          ${serviceFee.toFixed(2)}
-        </span>
+        <span>Service Fee (10%):</span>
+
+        <span>${serviceFee.toFixed(2)}</span>
       </div>
 
       <div className="flex justify-between font-bold">
-        <span>
-          Total:
-        </span>
-        
-        <span>
-          ${total.toFixed(2)}
-        </span>
+        <span>Total:</span>
+
+        <span>${total.toFixed(2)}</span>
       </div>
 
       {checkoutButton}

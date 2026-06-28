@@ -1,14 +1,36 @@
 /* Order Bar is a single order under the admin order page, compiling to a list of orders */
 
-import type { OrderDetails, OrderStatus } from "../../../types/orderDetails";
+import type { adminOrders } from "../../../types/adminOrder";
+import { useNavigate } from "react-router";
 
 type OrderBarProps = {
-  order: OrderDetails;
-  selected: boolean;
-  onSelect: (orderNumber: string) => void;
+  order: adminOrders;
 };
 
-function getStatusColor(status: OrderStatus): string {
+function formatDateTime(timestamp: string): string {
+  const date = new Date(timestamp);
+  return date.toLocaleString([], {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
+function getOrderStatus(order: number): string {
+  if (order === 3) {
+    return "complete";
+  }
+
+  if (order === 2) {
+    return "serving";
+  }
+
+  return "preparing";
+}
+
+function getStatusColor(status: string): string {
   switch (status) {
     case "received":
       return "bg-blue-100 text-blue-700";
@@ -30,56 +52,48 @@ function getStatusColor(status: OrderStatus): string {
   }
 }
 
-function getTotalItemQuantity(order: OrderDetails): number {
-  return order.items.reduce((total, item) => total + item.quantity, 0);
-}
-
-export default function OrderBar({ order, selected, onSelect }: OrderBarProps) {
-  const orderItemQuantity = getTotalItemQuantity(order);
+export default function OrderBar({ order }: OrderBarProps) {
+  const navigate = useNavigate();
+  function openDetails() {
+    navigate("/itemdetails", {
+      state: {
+        orderIds: order.items,
+      },
+    });
+  }
 
   return (
     <div
-      className={`grid grid-cols-[60px_160px_100px_200px_94px] justify-between items-center p-4 rounded-lg shadow-md cursor-pointer ${selected ? "bg-blue-100" : "bg-white"}`}
-      onClick={() => onSelect(order.orderNumber)}
+      className={`grid grid-cols-[60px_160px_100px_200px_94px] justify-between items-center p-4 rounded-lg shadow-md cursor-pointer bg-white`}
+      onClick={openDetails}
     >
-      {/* Tick box */}
-      <div className="mr-4">
-        <input
-          type="checkbox"
-          checked={selected}
-          onChange={() => onSelect(order.orderNumber)}
-          onClick={(event) => event.stopPropagation()}
-          className="form-checkbox h-5 w-5 text-blue-600 accent-orange-600 rounded"
-        />
-      </div>
-
       {/* Order ID and date */}
       <div className="flex flex-col">
-        <span className="font-semibold">#{order.orderNumber}</span>
+        <span className="font-semibold">User {order.username}</span>
 
-        <span className="text-sm text-gray-500">{order.placedAt}</span>
+        <span className="text-sm text-gray-500">{formatDateTime(order.orderTime)}</span>
       </div>
 
       {/* Customer Name */}
-
+      {/*
       <div className="flex flex-col">
-        <span className="font-semibold">{order.customerID}</span>
+        <span className="font-semibold">{order.username}</span>
       </div>
-
+      */}
       {/* Items and Total Price */}
 
       <div className="flex flex-col items-end">
-        <span className="text-sm">{orderItemQuantity} items</span>
+        <span className="text-sm">{order.itemQty} items</span>
 
-        <span className="font-semibold">${order.total.toFixed(2)}</span>
+        <span className="font-semibold">${order.price.toFixed(2)}</span>
       </div>
 
       {/* Status */}
 
       <div
-        className={`px-3 py-1 rounded-full text-sm font-semibold ${getStatusColor(order.status)}`}
+        className={`px-3 py-1 rounded-full text-sm font-semibold ${getStatusColor(getOrderStatus(order.status))}`}
       >
-        {order.status}
+        {getOrderStatus(order.status)}
       </div>
     </div>
   );

@@ -8,16 +8,14 @@ type NavigationItemProps = {
 };
 
 export default function NavigationItem({ icon, label, onClick }: NavigationItemProps) {
-    const isStringIcon = typeof icon === "string";
-    const Icon = icon;
+  const isStringIcon = typeof icon === "string";
+  const Icon = icon;
 
-    return (
-        <button className="nav-item flex flex-col items-center gap-1" onClick={onClick}>
-            <span className="text-xl">
-                {isStringIcon ? icon : <Icon />}
-            </span>
+  return (
+    <button className="nav-item flex flex-col items-center gap-1" onClick={onClick}>
+      <span className="text-xl">{isStringIcon ? icon : <Icon />}</span>
 
-            <span className="text-xs">{label}</span>
-        </button>
-    );
+      <span className="text-xs">{label}</span>
+    </button>
+  );
 }

@@ -8,16 +8,13 @@ type OrderItemListProps = {
   items: OrderDetailsItem[];
 };
 
-
 export default function OrderItemList({ items }: OrderItemListProps) {
-
   // updated order item
-  const [orderItems, setOrderItems] = useState< OrderDetailsItem[]>(items);
+  const [orderItems, setOrderItems] = useState<OrderDetailsItem[]>(items);
 
   // handle order status change performed by admin
   function handleStatusChange(itemId: number, newStatus: OrderItemStatus) {
-    setOrderItems((oldItems) => 
-      oldItems.map((item) => updateItemStatus(item, itemId, newStatus)))
+    setOrderItems((oldItems) => oldItems.map((item) => updateItemStatus(item, itemId, newStatus)));
   }
 
   function updateItemStatus(item: OrderDetailsItem, itemId: number, newStatus: OrderItemStatus) {
@@ -28,19 +25,13 @@ export default function OrderItemList({ items }: OrderItemListProps) {
     return {
       ...item,
       status: newStatus,
-    }
+    };
   }
 
-
   return (
-
     <div>
       {orderItems.map((item) => (
-        <OrderItem 
-          key={item.id} 
-          orderItem={item} 
-          onStatusChange={handleStatusChange}
-        />
+        <OrderItem key={item.id} orderItem={item} onStatusChange={handleStatusChange} />
       ))}
     </div>
   );

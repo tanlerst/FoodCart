@@ -21,12 +21,12 @@ export default function AdminOrderItemsCard({ items }: AdminOrderItemsCardProps)
 
       <OrderItemList items={items} />
 
-      <OrderSummary 
-        subtotal={subtotal} 
-        gst={gst} 
+      <OrderSummary
+        subtotal={subtotal}
+        gst={gst}
         serviceFee={serviceFee}
-        total={total} 
-        showCheckoutButton={false} 
+        total={total}
+        showCheckoutButton={false}
       />
     </div>
   );

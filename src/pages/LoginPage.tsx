@@ -2,13 +2,12 @@
 import { useNavigate } from "react-router";
 import LoginCard from "../components/auth/LoginCard";
 import SignupCard from "../components/auth/SignupCard";
-import HomeButton from "../components/auth/HomeButton"
+import HomeButton from "../components/auth/HomeButton";
 
 export default function LoginPage() {
   const navigate = useNavigate();
   return (
     <main className="min-h-screen bg-white">
-
       {/* Home button */}
       <div className="absolute left-8 top-8">
         <HomeButton />
