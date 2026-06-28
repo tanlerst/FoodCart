@@ -1,12 +1,3 @@
-/* temp code to show only signup page*/
-
-// import SignupPage from "./pages/SignupPage";
-// import "./App.css";
-
-// export default function App() {
-//   return <SignupPage />;
-// }
-
 import { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import type { Session } from "@supabase/supabase-js";
@@ -15,26 +6,19 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import MenuPage from "./pages/MenuPage";
 import "./App.css";
-
-function ProtectedRoute({
-  session,
-  children,
-}: {
-  session: Session | null;
-  children: React.ReactNode;
-}) {
-  return session ? <>{children}</> : <Navigate to="/login" replace />;
-}
-
-function PublicRoute({
-  session,
-  children,
-}: {
-  session: Session | null;
-  children: React.ReactNode;
-}) {
-  return session ? <Navigate to="/menu" replace /> : <>{children}</>;
-}
+import FoodDetailsPage from "./pages/FoodDetailsPage";
+import CartPage from "./pages/CartPage";
+import { CartProvider } from "./context/CartContext";
+import AdminOrderPage from "./pages/admin/AdminOrderPage";
+import AdminLoginPage from "./pages/admin/AdminLoginPage";
+import AdminOrderDetailPage from "./pages/admin/AdminOrderDetailsPage";
+import AdminAddItemPage from "./pages/admin/AdminNewItemPage";
+import UserOrderDetailsPage from "./pages/UserOrderDetailsPage";
+import LandingPage from "./pages/LandingPage";
+import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
+import { UserRoute } from "./routes/UserRoute";
+import { PublicRoute } from "./routes/PublicRoute";
+import { AdminRoute } from "./routes/AdminRoute";
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
@@ -60,37 +44,112 @@ export default function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to={session ? "/menu" : "/login"} replace />} />
+    <CartProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to={session ? "/menu" : "/landing"} replace />} />
 
-        <Route
-          path="/login"
-          element={
-            <PublicRoute session={session}>
-              <LoginPage />
-            </PublicRoute>
-          }
-        />
+          <Route
+            path="/landing"
+            element={
+              <PublicRoute session={session}>
+                <LandingPage />
+              </PublicRoute>
+            }
+          />
 
-        <Route
-          path="/signup"
-          element={
-            <PublicRoute session={session}>
-              <SignupPage />
-            </PublicRoute>
-          }
-        />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute session={session}>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
 
-        <Route
-          path="/menu"
-          element={
-            <ProtectedRoute session={session}>
-              <MenuPage />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+          <Route
+            path="/signup"
+            element={
+              <PublicRoute session={session}>
+                <SignupPage />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path="/menu"
+            element={
+              <UserRoute session={session}>
+                <MenuPage />
+              </UserRoute>
+            }
+          />
+
+          <Route path="/food/:id" element={<FoodDetailsPage />} />
+
+          <Route
+            path="/cart"
+            element={
+              <UserRoute session={session}>
+                <CartPage />
+              </UserRoute>
+            }
+          />
+
+          <Route
+            path="/adminlogin"
+            element={
+              <PublicRoute session={session}>
+                <AdminLoginPage />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute session={session}>
+                <AdminDashboardPage />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="/orders"
+            element={
+              <AdminRoute session={session}>
+                <AdminOrderPage />
+              </AdminRoute>
+            }
+          />
+
+          <Route
+            path="/itemdetails"
+            element={
+              <AdminRoute session={session}>
+                <AdminOrderDetailPage />
+              </AdminRoute>
+            }
+          />
+
+          <Route
+            path="/additem"
+            element={
+              <AdminRoute session={session}>
+                <AdminAddItemPage />
+              </AdminRoute>
+            }
+          />
+
+          <Route
+            path="/orders"
+            element={
+              <UserRoute session={session}>
+                <UserOrderDetailsPage />
+              </UserRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </CartProvider>
   );
 }

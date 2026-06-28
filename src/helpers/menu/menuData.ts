@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { fetchMenu, fetchCategories } from "./menuRead.ts";
-import type { Food } from "../../types/Food.ts";
+import type { Food } from "../../types/food.ts";
 
 function filterFoods(foods: Food[], category: string, search: string): Food[] {
   search = search.trim().toLowerCase();

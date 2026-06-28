@@ -5,7 +5,7 @@ import { doLogin } from "../../helpers/auth/doLogin";
 import FormField from "../common/FormField";
 import Button from "../common/Button";
 
-export default function LoginCard({ onLogin }: { onLogin: () => void }) {
+export default function LoginCard({ onLogin }: { onLogin: (authUserid: string) => void }) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -13,8 +13,12 @@ export default function LoginCard({ onLogin }: { onLogin: () => void }) {
     e.preventDefault();
 
     try {
-      await doLogin({ email, password });
-      onLogin();
+      const data = await doLogin({ email, password });
+      const authUserid = data.user?.id;
+      if (!authUserid) {
+        throw new Error("No  user rturned.");
+      }
+      onLogin(authUserid);
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);

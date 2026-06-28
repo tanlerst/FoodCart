@@ -1,13 +1,23 @@
-import type { Food } from "../../types/Food";
+/* Food Card Component */
+/* Updated FoodCard so that it is clickable and navigates to the food details page */
+
+import type { Food } from "../../types/food";
 import timer from "../../assets/menu/timer.png";
+import { useNavigate } from "react-router-dom";
 
 type FoodCardProps = {
   food: Food;
 };
 
 export default function FoodCard({ food }: FoodCardProps) {
+  const navigate = useNavigate();
+
   return (
-    <div className="bg-white rounded-2xl shadow-md overflow-hidden pt-4">
+    // onClick navigate to food details page with food id
+    <div
+      onClick={() => navigate("/food/" + food.id)}
+      className="bg-white rounded-2xl shadow-md overflow-hidden pt-4"
+    >
       <div className="flex items-center gap-2 px-4">
         <img src={timer} alt="Time" className="w-6 h-6" />
 
