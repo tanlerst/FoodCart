@@ -86,7 +86,7 @@ export async function getOrderDetails(orderIds: number[]): Promise<OrderDetailsI
     const estimatedTime = formatTime(addMinutes(row.ordertime, food.time));
 
     return {
-      id: food.id,
+      id: row.id,
       name: food.name,
       image: supabase.storage.from("FoodCart").getPublicUrl(food.image).data.publicUrl,
       quantity: row.quantity,

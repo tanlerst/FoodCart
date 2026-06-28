@@ -1,7 +1,7 @@
 /* Admin portal navigation bar */
 
 import LogoutButton from "../../components/admin/LogoutButton";
-import { NavLink, useNavigate } from "react-router";
+import { NavLink } from "react-router";
 
 type SidebarItem = {
   label: string;
@@ -18,7 +18,7 @@ const sidebarItems: SidebarItem[] = [
   {
     label: "Orders",
     icon: "🛒",
-    route: "/admin",
+    route: "/orders",
   },
   {
     label: "Menu",
@@ -40,8 +40,6 @@ function getSidebarItemClass(isActive: boolean) {
 }
 
 export default function AdminSideBar() {
-  const navigate = useNavigate();
-
   return (
     <aside className="flex min-h-screen w-64 flex-col border-r border-orange-100 bg-white px-4 py-6">
       {/* Side Bar */}

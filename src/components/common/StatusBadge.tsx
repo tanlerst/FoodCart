@@ -12,6 +12,7 @@ const SERVED_FORMAT = "bg-green-100 text-green-700";
 const PREPARING_FORMAT = "bg-orange-100 text-orange-600";
 const SERVED_TEXT = "✔ Served";
 const PREPARING_TEXT = "⏲ Preparing";
+const PAID_TEXT = "$$ Paid";
 
 export default function StatusBadge({ status, onChange }: StatusBadgeProps) {
   const isServed = status === "served";
@@ -33,6 +34,8 @@ export default function StatusBadge({ status, onChange }: StatusBadgeProps) {
       <option value="preparing">{PREPARING_TEXT}</option>
 
       <option value="served">{SERVED_TEXT}</option>
+
+      <option value="paid">{PAID_TEXT}</option>
     </select>
   );
 }

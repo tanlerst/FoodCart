@@ -7,7 +7,7 @@ type OrderItemRowProps = {
   orderItem: OrderDetailsItem;
   onStatusChange: (itemId: number, status: OrderItemStatus) => void;
 };
-
+/*
 function getItemTimeText(orderItem: OrderDetailsItem) {
   if (orderItem.status === "served") {
     return `Served at ${orderItem.servedAt}`;
@@ -15,7 +15,7 @@ function getItemTimeText(orderItem: OrderDetailsItem) {
     return `Est. ready ${orderItem.estimatedReadyAt}`;
   }
 }
-
+*/
 export default function OrderItemRow({ orderItem, onStatusChange }: OrderItemRowProps) {
   const isServed = orderItem.status === "served";
 

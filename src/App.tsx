@@ -15,6 +15,7 @@ import AdminOrderDetailPage from "./pages/admin/AdminOrderDetailsPage";
 import AdminAddItemPage from "./pages/admin/AdminNewItemPage";
 import UserOrderDetailsPage from "./pages/UserOrderDetailsPage";
 import LandingPage from "./pages/LandingPage";
+import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
 import { UserRoute } from "./routes/UserRoute";
 import { PublicRoute } from "./routes/PublicRoute";
 import { AdminRoute } from "./routes/AdminRoute";
@@ -106,6 +107,14 @@ export default function App() {
 
           <Route
             path="/admin"
+            element={
+              <AdminRoute session={session}>
+                <AdminDashboardPage />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="/orders"
             element={
               <AdminRoute session={session}>
                 <AdminOrderPage />

@@ -1,16 +1,16 @@
 /* Admin order details card showing order items and order summary */
 
-import type { OrderDetailsItem } from "../../../types/orderDetails";
+import type { OrderDetailsItem, OrderItemStatus } from "../../../types/orderDetails";
 import OrderItemList from "../order/OrderItemList";
 import OrderSummary from "../../cart/OrderSummary";
-
 import { calculateOrderPricing } from "../../../helpers/order/orderCalculation";
 
 type AdminOrderItemsCardProps = {
   items: OrderDetailsItem[];
+  onStatusChange: (itemId: number, status: OrderItemStatus) => void;
 };
 
-export default function AdminOrderItemsCard({ items }: AdminOrderItemsCardProps) {
+export default function AdminOrderItemsCard({ items, onStatusChange }: AdminOrderItemsCardProps) {
   const { subtotal, gst, serviceFee, total } = calculateOrderPricing(items);
 
   return (
@@ -19,7 +19,7 @@ export default function AdminOrderItemsCard({ items }: AdminOrderItemsCardProps)
         <h1 className="text-xl font-bold text-gray-900">Order Items</h1>
       </div>
 
-      <OrderItemList items={items} />
+      <OrderItemList items={items} onStatusChange={onStatusChange} />
 
       <OrderSummary
         subtotal={subtotal}
