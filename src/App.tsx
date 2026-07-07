@@ -10,11 +10,11 @@ import FoodDetailsPage from "./pages/FoodDetailsPage";
 import CartPage from "./pages/CartPage";
 import { CartProvider } from "./context/CartContext";
 import AdminOrderPage from "./pages/admin/AdminOrderPage";
-import AdminLoginPage from "./pages/admin/AdminLoginPage";
+//import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import AdminOrderDetailPage from "./pages/admin/AdminOrderDetailsPage";
 import AdminAddItemPage from "./pages/admin/AdminNewItemPage";
 import UserOrderDetailsPage from "./pages/UserOrderDetailsPage";
-import LandingPage from "./pages/LandingPage";
+//import LandingPage from "./pages/LandingPage";
 import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
 import { UserRoute } from "./routes/UserRoute";
 import { PublicRoute } from "./routes/PublicRoute";
@@ -47,16 +47,7 @@ export default function App() {
     <CartProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to={session ? "/menu" : "/landing"} replace />} />
-
-          <Route
-            path="/landing"
-            element={
-              <PublicRoute session={session}>
-                <LandingPage />
-              </PublicRoute>
-            }
-          />
+          <Route path="/" element={<Navigate to={session ? "/menu" : "/login"} replace />} />
 
           <Route
             path="/login"
@@ -93,15 +84,6 @@ export default function App() {
               <UserRoute session={session}>
                 <CartPage />
               </UserRoute>
-            }
-          />
-
-          <Route
-            path="/adminlogin"
-            element={
-              <PublicRoute session={session}>
-                <AdminLoginPage />
-              </PublicRoute>
             }
           />
 

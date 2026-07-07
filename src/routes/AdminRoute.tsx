@@ -39,7 +39,7 @@ export function AdminRoute({
   }
 
   if (!session) {
-    return <Navigate to="/adminlogin" replace />;
+    return <Navigate to="/login" replace />;
   }
 
   if (!isAdmin) {
