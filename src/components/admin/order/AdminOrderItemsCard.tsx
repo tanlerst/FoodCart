@@ -11,7 +11,7 @@ type AdminOrderItemsCardProps = {
 };
 
 export default function AdminOrderItemsCard({ items, onStatusChange }: AdminOrderItemsCardProps) {
-  const { subtotal, gst, serviceFee, total } = calculateOrderPricing(items);
+  const { subtotal, gst, serviceCharge, totalAmount } = calculateOrderPricing(items);
 
   return (
     <div className="rounded-xl border border-gray-200">
@@ -24,8 +24,8 @@ export default function AdminOrderItemsCard({ items, onStatusChange }: AdminOrde
       <OrderSummary
         subtotal={subtotal}
         gst={gst}
-        serviceFee={serviceFee}
-        total={total}
+        serviceFee={serviceCharge}
+        total={totalAmount}
         showCheckoutButton={false}
       />
     </div>
