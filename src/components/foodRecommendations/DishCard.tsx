@@ -8,7 +8,7 @@ type DishCardProps = {
 
 export default function DishCard({ dish }: DishCardProps) {
     return (
-        <div className="bg-white rounded-[2rem] px-5 pb-6 pt-7 shadow-md">
+        <div className="min-h-[400px] bg-white rounded-[2rem] px-5 pb-6 pt-7 shadow-md">
             
             {/* Image */}
             <img
