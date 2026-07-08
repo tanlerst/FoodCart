@@ -1,5 +1,5 @@
 import { supabase } from "../../utils/supabase";
-import type { UserRow, OrderRow, FoodRow, OrderData } from "../../types/OrderData";
+import type { UserRow, OrderRow, FoodRow, OrderData } from "../../types/getOrderData";
 
 export async function getOrder(): Promise<OrderData | null> {
   const { data: authData, error: authError } = await supabase.auth.getUser();

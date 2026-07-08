@@ -1,20 +1,20 @@
 /* food item in cart page */
 
-import type { ItemData } from "../../types/itemData";
+import type { CartItem } from "../../types/cart";
 
-type CartItemProps = {
-  cartItem: ItemData;
+type CartItemRowProps = {
+  cartItem: CartItem;
   incrementQuantity: () => void;
   decrementQuantity: () => void;
   removeItem: (foodId: number) => void;
 };
 
-export default function CartItem({
+export default function CartItemRow({
   cartItem,
   incrementQuantity,
   decrementQuantity,
   removeItem,
-}: CartItemProps) {
+}: CartItemRowProps) {
   return (
     <div className="mx-auto mb-5 w-full max-w-4xl rounded-2xl bg-white p-6 shadow-md">
       <div className="flex items-center gap-4">

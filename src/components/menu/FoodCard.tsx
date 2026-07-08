@@ -1,12 +1,12 @@
 /* Food Card Component */
 /* Updated FoodCard so that it is clickable and navigates to the food details page */
 
-import type { Food } from "../../types/food";
+import type { FoodItem } from "../../types/food";
 import timer from "../../assets/menu/timer.png";
 import { useNavigate } from "react-router-dom";
 
 type FoodCardProps = {
-  food: Food;
+  food: FoodItem;
 };
 
 export default function FoodCard({ food }: FoodCardProps) {

@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { fetchMenu, fetchCategories } from "./menuRead.ts";
-import type { Food } from "../../types/food.ts";
+import type { FoodItem } from "../../types/food.ts";
 
-function filterFoods(foods: Food[], category: string, search: string): Food[] {
+function filterFoods(foods: FoodItem[], category: string, search: string): FoodItem[] {
   search = search.trim().toLowerCase();
 
   if (search) {
@@ -17,7 +17,7 @@ function filterFoods(foods: Food[], category: string, search: string): Food[] {
 }
 
 export function menuData() {
-  const [foods, setFoods] = useState<Food[]>([]);
+  const [foods, setFoods] = useState<FoodItem[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [search, setSearch] = useState("");
   const [catTab, setCatTab] = useState("All");

@@ -1,6 +1,6 @@
 /* Admin order details card showing order items and order summary */
 
-import type { OrderDetailsItem, OrderItemStatus } from "../../../types/orderDetails";
+import type { OrderDetailsItem, OrderItemStatus } from "../../../types/order";
 import OrderItemList from "../order/OrderItemList";
 import OrderSummary from "../../cart/OrderSummary";
 import { calculateOrderPricing } from "../../../helpers/order/orderCalculation";

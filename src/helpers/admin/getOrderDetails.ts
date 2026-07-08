@@ -1,6 +1,6 @@
 // helpers/admin/getAdminOrderDetailItems.ts
 import { supabase } from "../../utils/supabase";
-import type { OrderDetailsItem, OrderItemStatus } from "../../types/orderDetails";
+import type { OrderDetailsItem, OrderItemStatus } from "../../types/order";
 
 type OrderRow = {
   id: number;

@@ -1,6 +1,6 @@
 /* Order item list under user order detail page */
 
-import type { OrderDetailsItem } from "../../types/orderDetails";
+import type { OrderDetailsItem } from "../../types/order";
 import OrderItemRow from "./OrderItemRow";
 
 type OrderItemsCardProps = {

@@ -1,8 +1,8 @@
 import FoodCard from "./FoodCard";
-import type { Food } from "../../types/food";
+import type { FoodItem } from "../../types/food";
 
 type FoodGridProps = {
-  foods: Food[];
+  foods: FoodItem[];
 };
 
 export default function FoodGrid({ foods }: FoodGridProps) {

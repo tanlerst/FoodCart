@@ -1,8 +1,8 @@
 import { supabase } from "../../utils/supabase";
-import type { Food } from "../../types/food";
-import type { FoodRow } from "../../types/foodRow";
+import type { FoodItem } from "../../types/food";
+// import type { FoodItem } from "../../types/foodRow";
 
-export async function fetchFood(id: number): Promise<Food | null> {
+export async function fetchFood(id: number): Promise<FoodItem | null> {
   const { data, error } = await supabase
     .from("food")
     .select(`
@@ -27,7 +27,7 @@ export async function fetchFood(id: number): Promise<Food | null> {
     return null;
   }
 
-  const food = data as FoodRow;
+  const food = data as FoodItem;
 
   return {
     id: food.id,

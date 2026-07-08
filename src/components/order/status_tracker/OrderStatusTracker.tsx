@@ -1,4 +1,4 @@
-import type { OrderStatus } from "../../../types/orderDetails";
+import type { OrderStatus } from "../../../types/order";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import StatusLine from "./StatusLine";
 import StatusStep from "./StatusStep";

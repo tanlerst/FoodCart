@@ -1,4 +1,4 @@
-import type { CreateOrderInput, OrderDetails } from "../../types/orderDetails";
+import type { CreateOrderInput, OrderDetails } from "../../types/order";
 import { calculateOrderPricing } from "./orderCalculation";
 
 export default function createOrderDetails(order: CreateOrderInput): OrderDetails {

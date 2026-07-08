@@ -1,6 +1,6 @@
 import OrderInfoCard from "../components/order/OrderInfoCard";
 import OrderStatusTracker from "../components/order/status_tracker/OrderStatusTracker";
-import type { OrderDetails } from "../types/orderDetails";
+import type { OrderDetails } from "../types/order";
 import OrderItemsCard from "../components/order/OrderItemsCard";
 import OrderPaymentSummary from "../components/order/OrderPaymentSummary";
 import NavigationBar from "../components/common/NavigationBar";
@@ -67,8 +67,6 @@ export default function UserOrderDetailsPage() {
         <OrderInfoCard
           orderNumber={orderDetails.orderNumber}
           placedAt={orderDetails.placedAt}
-          orderType={orderDetails.orderType}
-          tableNumber={orderDetails.tableNumber}
           status={orderDetails.status}
         />
 
@@ -79,8 +77,8 @@ export default function UserOrderDetailsPage() {
         <OrderPaymentSummary
           subtotal={orderDetails.subtotal}
           gst={orderDetails.gst}
-          serviceFee={orderDetails.serviceFee}
-          total={orderDetails.total}
+          serviceFee={orderDetails.serviceCharge}
+          total={orderDetails.totalAmount}
         />
       </main>
 
