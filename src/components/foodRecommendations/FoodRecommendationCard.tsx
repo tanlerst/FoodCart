@@ -27,11 +27,6 @@ export default function FoodRecommendationPage({ recommendedDishes, onAddDish }:
         navigate("/menu");
     }
 
-    function handleAddDish() {
-    // logic to add the dish to the order
-
-    }
-
     function handleClose() {
         // navigate to the menu page
         navigate("/menu");
@@ -112,7 +107,7 @@ export default function FoodRecommendationPage({ recommendedDishes, onAddDish }:
                         onBrowseMenu={handleBrowseMenu} 
                     />
 
-                    <AddDishButton onAddDish={handleAddDish} />
+                    <AddDishButton onAddDish={handleAdd} />
                 </div>
 
             </div>

@@ -2,7 +2,7 @@
 
 // import { useState } from "react";
 import type { FoodItem } from "../types/food";
-import FoodRecommendation from "../components/foodRecommendations/FoodRecommendation";
+import FoodRecommendation from "../components/foodRecommendations/FoodRecommendationCard";
 import temp from "../assets/Logo.png";
 
 export default function FoodRecommendationPage() {
