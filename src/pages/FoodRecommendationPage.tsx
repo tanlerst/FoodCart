@@ -1,56 +1,43 @@
 /* Food Recommendation page */
-
-// import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { FoodItem } from "../types/food";
 import FoodRecommendation from "../components/foodRecommendations/FoodRecommendationCard";
-import temp from "../assets/Logo.png";
+import { getRecommended } from "../helpers/menu/getRecommended";
+import { useCart } from "../context/CartContext";
 
 export default function FoodRecommendationPage() {
+  const [recommended, setRecommended] = useState<FoodItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const { addItem } = useCart();
 
-
-    // current using hardcoding items
-    const hardcodedDishes: FoodItem[] = [
-        {
-            id: 1,
-            name: "Spaghetti Bolognese",
-            description: "Classic Italian pasta dish with rich meat sauce.",
-            price: 12.99,
-            image: temp,
-            time: 20,
-            isRecommended: true,
-            isAvailable: true,
-            category: { name: "Pasta" },
-        },
-        {
-            id: 2,
-            name: "Margherita Pizza",
-            description: "Traditional pizza with fresh tomatoes, mozzarella, and basil.",
-            price: 10.99,
-            image: temp,
-            time: 15,
-            isRecommended: true,
-            isAvailable: true,
-            category: { name: "Pizza" },
-        },
-        {
-            id: 3,
-            name: "Caesar Salad",
-            description: "Crisp lettuce with Caesar dressing, croutons and Parmesan cheese.",
-            price: 8.99,
-            image: temp,
-            time: 10,
-            isRecommended: true,
-            isAvailable: true,
-            category: { name: "Salad" },
-        },
-    ];
-
-    function handleAddDish(dish: FoodItem) {
-        // logic to add the dish to the order
-        console.log(`Added ${dish.name} to the order.`);
+  useEffect(() => {
+    async function loadRecommendations() {
+      try {
+        const foods = await getRecommended();
+        setRecommended(foods);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to load recommendations.");
+      } finally {
+        setLoading(false);
+      }
     }
 
-    return <FoodRecommendation recommendedDishes={hardcodedDishes} onAddDish={handleAddDish} />;
+    loadRecommendations();
+  }, []);
 
+  if (loading) {
+    return <div className="p-8">Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  function handleAddDish(dish: FoodItem) {
+    addItem(dish, 1);
+    console.log(`Added ${dish.name} to the order.`);
+  }
+
+  return <FoodRecommendation recommendedDishes={recommended} onAddDish={handleAddDish} />;
 }
-    

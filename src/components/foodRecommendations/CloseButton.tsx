@@ -11,7 +11,7 @@ export default function CloseButton({ onClose }: CloseButtonProps) {
       onClick={onClose}
       className="absolute top-6 right-6 text-gray-600 text-3xl"
     >
-        x
+      x
     </button>
   );
 }

@@ -8,11 +8,7 @@ type OrderInfoCardProps = {
   status: OrderStatus;
 };
 
-export default function OrderInfoCard({
-  orderNumber,
-  placedAt,
-  status,
-}: OrderInfoCardProps) {
+export default function OrderInfoCard({ orderNumber, placedAt, status }: OrderInfoCardProps) {
   return (
     <div className="mb-4 rounded-2xl bg-white p-5 shadow-md">
       <div className="flex items-center justify-between gap-4">

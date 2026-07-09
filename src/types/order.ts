@@ -40,7 +40,7 @@ export type CreateOrderInput = {
   orderNumber: string;
   placedAt: string;
   orderType: string;
-  tableNumber?: number; // optional at this moment 
+  tableNumber?: number; // optional at this moment
   status: OrderStatus;
   items: OrderDetailsItem[]; // list of items
 };

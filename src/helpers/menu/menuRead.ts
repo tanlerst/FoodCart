@@ -7,7 +7,9 @@ type CategoryRow = {
 };
 
 export async function fetchMenu(): Promise<FoodItem[]> {
-  const { data, error } = await supabase.from("food").select(`
+  const { data, error } = await supabase
+    .from("food")
+    .select(`
       id,
       name,
       description,
@@ -17,7 +19,9 @@ export async function fetchMenu(): Promise<FoodItem[]> {
       category (
         name
       )
-    `);
+    `)
+    .eq("available", true)
+    .order("category");
 
   if (error) throw error;
 
