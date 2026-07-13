@@ -7,8 +7,8 @@
  */
 
 type NotesCardProps = {
-  notes: string;
-  setNotes: (notes: string) => void;
+    notes: string;
+    setNotes: (notes: string) => void;
 };
 
 const MAX_NOTES_LENGTH = 100; 
@@ -16,10 +16,11 @@ const MAX_NOTES_LENGTH = 100;
 export default function NotesCard({ notes, setNotes }: NotesCardProps) {
 
     return (
-        <section className="flex flex-col p-4 border border-gray-300 rounded-lg shadow-md">
+        <section className="flex flex-col mt-5 p-4 border border-gray-300 rounded-lg shadow-md">
             
             <h2 className="text-lg font-semibold mb-2">
                 Add Notes
+                
                 <span className="text-xs text-gray-500"> (Optional)</span>
             </h2>
 
