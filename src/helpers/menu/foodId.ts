@@ -1,6 +1,17 @@
 import { supabase } from "../../utils/supabase";
 import type { FoodItem } from "../../types/food";
-// import type { FoodItem } from "../../types/foodRow";
+
+type FoodRow = {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  time: number;
+  category: {
+    name: string;
+  }[];
+};
 
 export async function fetchFood(id: number): Promise<FoodItem | null> {
   const { data, error } = await supabase
@@ -27,7 +38,7 @@ export async function fetchFood(id: number): Promise<FoodItem | null> {
     return null;
   }
 
-  const food = data as FoodItem;
+  const food = data as FoodRow;
 
   return {
     id: food.id,
@@ -37,9 +48,7 @@ export async function fetchFood(id: number): Promise<FoodItem | null> {
     image: supabase.storage.from("FoodCart").getPublicUrl(food.image).data.publicUrl,
     time: food.time,
     category: {
-      name: Array.isArray(food.category)
-        ? (food.category[0]?.name ?? "Uncategorized")
-        : (food.category?.name ?? "Uncategorized"),
+      name: food.category[0]?.name ?? "Uncategorised",
     },
   };
 }
