@@ -11,7 +11,7 @@ type OptionButtonProps = {
     onSelect: () => void;
 };
 
-export default function renderDietaryOption({
+export default function OptionButton({
     option,
     isSelected,
     onSelect
