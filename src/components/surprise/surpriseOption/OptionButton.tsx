@@ -2,7 +2,7 @@
  *  @file OptionButton.tsx
  *  @author Xi Yan 
  *  @version 1.0.0
- *  @description Option button to allow selections
+ *  @description Option button for making selections
  */
 
 type OptionButtonProps = {
