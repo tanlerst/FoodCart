@@ -13,7 +13,7 @@ type BudgetCardProps = {
 
 export default function BudgetCard({ budget, setBudget }: BudgetCardProps) {
 
-    const MIN_BUDGET = 10;
+    const MIN_BUDGET = 10; // to be updated
     const MAX_BUDGET = 100;
 
     return (
