@@ -4,7 +4,7 @@
 export type OrderItemStatus = "preparing" | "served";
 
 // an order
-export type OrderStatus = "received" | "preparing" | "serving" | "served" | "paid" | "complete";
+export type OrderStatus = "received" | "preparing" | "serving" | "served" | "complete" | "paid" | "complete";
 
 // Order item details (single item)
 export type OrderDetailsItem = {
