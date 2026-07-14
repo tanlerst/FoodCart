@@ -74,13 +74,13 @@ export default function InformationCard({
             Short Description
             <span className="text-gray-400"> (Optional)</span>
           </label>
-          <input
-            type="text"
-            value={description}
-            onChange={(x) => onDescriptionChange(x.target.value)}
-            placeholder="A short description of the item (Optional)"
-            className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-orange-500"
-          />
+            <input
+              type="text"
+              value={description}
+              onChange={(x) => onDescriptionChange(x.target.value)}
+              placeholder="A short description of the item (Optional)"
+              className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-orange-500"
+            />
         </div>
 
         <div>
