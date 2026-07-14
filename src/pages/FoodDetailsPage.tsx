@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import FoodDetails from "../components/food/FoodDetails";
-import type { Food } from "../types/food";
+import type { FoodItem } from "../types/food";
 import { fetchFood } from "../helpers/menu/foodId";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router";
@@ -9,7 +9,7 @@ import { useNavigate } from "react-router";
 export default function FoodDetailsPage() {
   const { addItem } = useCart();
   const { id } = useParams();
-  const [food, setFood] = useState<Food | null>(null);
+  const [food, setFood] = useState<FoodItem | null>(null);
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
 

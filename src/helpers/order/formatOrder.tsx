@@ -4,8 +4,8 @@ import type {
   OrderDetailsItem,
   OrderItemStatus,
   OrderStatus,
-} from "../../types/orderDetails";
-import type { OrderData } from "../../types/OrderData";
+} from "../../types/order";
+import type { OrderData } from "../../types/getOrderData";
 import { calculateOrderPricing } from "./orderCalculation";
 
 type FoodRow = OrderData["foodRows"][number];
@@ -79,11 +79,10 @@ export function formatOrder(data: OrderData): OrderDetails {
   const pricing = calculateOrderPricing(items);
 
   return {
-    customerID: data.authUserId,
+    customerId: data.authUserId,
     orderNumber: "FC-0001",
     placedAt: formatDateTime(data.orderRows[0].ordertime),
-    orderType: "Dine In",
-    tableNumber: "1",
+    tableNumber: 1,
     status: getOrderStatus(data.orderRows.map((row) => row.status)),
     items,
     ...pricing,

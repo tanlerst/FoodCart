@@ -1,22 +1,14 @@
 /* Order information under user order details page */
 
-import type { OrderStatus } from "../../types/orderDetails";
+import type { OrderStatus } from "../../types/order";
 
 type OrderInfoCardProps = {
   orderNumber: string;
   placedAt: string;
-  orderType: string;
-  tableNumber: string;
   status: OrderStatus;
 };
 
-export default function OrderInfoCard({
-  orderNumber,
-  placedAt,
-  orderType,
-  //   tableNumber, // ignore at this moment
-  status,
-}: OrderInfoCardProps) {
+export default function OrderInfoCard({ orderNumber, placedAt, status }: OrderInfoCardProps) {
   return (
     <div className="mb-4 rounded-2xl bg-white p-5 shadow-md">
       <div className="flex items-center justify-between gap-4">
@@ -31,7 +23,7 @@ export default function OrderInfoCard({
             <p className="mt-1 text-sm text-gray-500">{placedAt}</p>
 
             <p className="mt-1 text-gray-700">
-              {orderType}
+              {/* {orderType} */}
               <span className="mx-2">•</span>
               {/* Table {tableNumber} */}
               Table ?

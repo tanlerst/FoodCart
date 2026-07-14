@@ -1,13 +1,15 @@
 import { supabase } from "../../utils/supabase";
-import type { Food } from "../../types/food";
-import type { FoodRow } from "../../types/foodRow";
+import type { FoodItem } from "../../types/food";
+// import type { FoodItem } from "../../types/foodRow";
 
 type CategoryRow = {
   name: string;
 };
 
-export async function fetchMenu(): Promise<Food[]> {
-  const { data, error } = await supabase.from("food").select(`
+export async function fetchMenu(): Promise<FoodItem[]> {
+  const { data, error } = await supabase
+    .from("food")
+    .select(`
       id,
       name,
       description,
@@ -17,11 +19,13 @@ export async function fetchMenu(): Promise<Food[]> {
       category (
         name
       )
-    `);
+    `)
+    .eq("available", true)
+    .order("category");
 
   if (error) throw error;
 
-  return ((data ?? []) as FoodRow[]).map((food) => ({
+  return ((data ?? []) as FoodItem[]).map((food) => ({
     id: food.id,
     name: food.name,
     description: food.description,

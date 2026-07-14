@@ -1,6 +1,6 @@
 /* Status badge for an order item in admin order details page and user order page*/
 
-import type { OrderItemStatus } from "../../types/orderDetails";
+import type { OrderItemStatus } from "../../types/order";
 
 type StatusBadgeProps = {
   status: OrderItemStatus;

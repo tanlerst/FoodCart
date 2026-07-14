@@ -2,10 +2,10 @@
 
 import React from "react";
 import { useNavigate } from "react-router";
-import type { Food } from "../../types/food";
+import type { FoodItem } from "../../types/food";
 
 type FoodDetailsProps = {
-  food: Food;
+  food: FoodItem;
   quantity: number;
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
   addToCart: () => void;

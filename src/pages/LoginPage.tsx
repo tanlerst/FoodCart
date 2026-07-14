@@ -12,7 +12,7 @@ export default function LoginPage() {
   async function login(authUserid: string) {
     const usertype = await getUserType(authUserid);
     if (usertype === 1) {
-      navigate("/menu");
+      navigate("/recommendations");
     } else if (usertype === 2) {
       navigate("/admin");
     } else {

@@ -1,4 +1,4 @@
-import type { OrderDetailsItem } from "../../types/orderDetails";
+import type { OrderDetailsItem } from "../../types/order";
 
 const GST_RATE = 0.09;
 const SERVICE_FEE_RATE = 0.1;
@@ -26,13 +26,13 @@ export function calculateTotal(items: OrderDetailsItem[]) {
 export function calculateOrderPricing(items: OrderDetailsItem[]) {
   const subtotal = calculateSubtotal(items);
   const gst = calculateGST(subtotal);
-  const serviceFee = calculateServiceFee(subtotal);
-  const total = subtotal + gst + serviceFee;
+  const serviceCharge = calculateServiceFee(subtotal);
+  const totalAmount = subtotal + gst + serviceCharge;
 
   return {
     subtotal,
     gst,
-    serviceFee,
-    total,
+    serviceCharge,
+    totalAmount,
   };
 }

@@ -1,6 +1,6 @@
 /* Admin Order Details Page Order Item */
 
-import type { OrderDetailsItem, OrderItemStatus } from "../../../types/orderDetails";
+import type { OrderDetailsItem, OrderItemStatus } from "../../../types/order";
 import StatusBadge from "../../common/StatusBadge";
 
 type OrderItemRowProps = {

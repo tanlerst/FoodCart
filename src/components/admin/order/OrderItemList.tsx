@@ -1,6 +1,6 @@
 /* Order Item List for admin order details page */
 
-import type { OrderDetailsItem, OrderItemStatus } from "../../../types/orderDetails";
+import type { OrderDetailsItem, OrderItemStatus } from "../../../types/order";
 import OrderItem from "./SingleOrderItem";
 
 type OrderItemListProps = {

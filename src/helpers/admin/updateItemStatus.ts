@@ -1,5 +1,5 @@
 import { supabase } from "../../utils/supabase";
-import type { OrderItemStatus } from "../../types/orderDetails";
+import type { OrderItemStatus } from "../../types/order";
 
 function statusToId(status: OrderItemStatus): number {
   if (status === "served") {

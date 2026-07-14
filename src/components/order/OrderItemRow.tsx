@@ -1,6 +1,6 @@
 /* Single row of order item in user order detail page */
 
-import type { OrderDetailsItem } from "../../types/orderDetails";
+import type { OrderDetailsItem } from "../../types/order";
 import StatusBadge from "../common/StatusBadge";
 
 type OrderItemRowProps = {
