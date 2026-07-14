@@ -1,7 +1,7 @@
 /* Admin Order Details Page */
 
 import AdminOrderItemsCard from "../../components/admin/order/AdminOrderItemsCard";
-import type { OrderDetailsItem, OrderItemStatus, OrderStatus } from "../../types/orderDetails";
+import type { OrderDetailsItem, OrderItemStatus, OrderStatus } from "../../types/order";
 import AdminSideBar from "../../components/admin/AdminSideBar";
 import { useEffect, useState } from "react";
 import { getOrderDetails } from "../../helpers/admin/getOrderDetails";
