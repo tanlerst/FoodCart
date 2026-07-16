@@ -10,7 +10,7 @@ type FoodRow = {
   time: number;
   category: {
     name: string;
-  }[];
+  };
 };
 
 export async function fetchFood(id: number): Promise<FoodItem | null> {
@@ -38,7 +38,7 @@ export async function fetchFood(id: number): Promise<FoodItem | null> {
     return null;
   }
 
-  const food = data as FoodRow;
+  const food = data as unknown as FoodRow;
 
   return {
     id: food.id,
@@ -48,7 +48,7 @@ export async function fetchFood(id: number): Promise<FoodItem | null> {
     image: supabase.storage.from("FoodCart").getPublicUrl(food.image).data.publicUrl,
     time: food.time,
     category: {
-      name: food.category[0]?.name ?? "Uncategorised",
+      name: food.category.name,
     },
   };
 }

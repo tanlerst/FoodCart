@@ -1,9 +1,9 @@
 /* Status tracker step component received, preparing ...*/
 
 type AdminStatusStepProps = {
-    icon: string;
-    label: string;
-    active: boolean;
+  icon: string;
+  label: string;
+  active: boolean;
 };
 
 const ACTIVE_BORDER = "border-orange-600 bg-orange-50 text-orange-600";
@@ -12,17 +12,17 @@ const ACTIVE_TEXT = "text-orange-600";
 const INACTIVE_TEXT = "text-gray-500";
 
 export default function AdminStatusStep({ icon, label, active }: AdminStatusStepProps) {
-    return (
-        <div className="flex flex-col items-center gap-2">
-            <div
-                className={`flex h-16 w-16 items-center justify-center rounded-full border-2 text-2xl ${
-                active ? ACTIVE_BORDER : INACTIVE_BORDER
-                }`}
-            >
-                {icon}
-            </div>
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <div
+        className={`flex h-16 w-16 items-center justify-center rounded-full border-2 text-2xl ${
+          active ? ACTIVE_BORDER : INACTIVE_BORDER
+        }`}
+      >
+        {icon}
+      </div>
 
-            <p className={`text-sm font-medium ${active ? ACTIVE_TEXT : INACTIVE_TEXT}`}>{label}</p>
-        </div>
-    );
+      <p className={`text-sm font-medium ${active ? ACTIVE_TEXT : INACTIVE_TEXT}`}>{label}</p>
+    </div>
+  );
 }

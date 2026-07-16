@@ -14,7 +14,7 @@ type FoodRow = {
   time: number;
   category: {
     name: string;
-  }[];
+  };
 };
 
 export async function fetchMenu(): Promise<FoodItem[]> {
@@ -33,13 +33,11 @@ export async function fetchMenu(): Promise<FoodItem[]> {
     `)
     .eq("available", true)
     .order("category");
-
   if (error) {
     throw error;
   }
-
-  const foods = (data ?? []) as FoodRow[];
-
+  const foods = (data ?? []) as unknown as FoodRow[];
+  console.log(JSON.stringify(data?.[0], null, 2));
   return foods.map((food) => ({
     id: food.id,
     name: food.name,
@@ -48,7 +46,7 @@ export async function fetchMenu(): Promise<FoodItem[]> {
     image: supabase.storage.from("FoodCart").getPublicUrl(food.image).data.publicUrl,
     time: food.time,
     category: {
-      name: food.category[0]?.name ?? "Uncategorised",
+      name: food.category.name,
     },
   }));
 }

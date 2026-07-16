@@ -1,10 +1,17 @@
 /* order item status type, order status type, order detail item type, order detail type*/
 
 // a particular item
-export type OrderItemStatus = "preparing" | "served";
+export type OrderItemStatus = "preparing" | "served" | "paid";
 
 // an order
-export type OrderStatus = "received" | "preparing" | "serving" | "served" | "complete" | "paid" | "complete";
+export type OrderStatus =
+  | "received"
+  | "preparing"
+  | "serving"
+  | "served"
+  | "complete"
+  | "paid"
+  | "complete";
 
 // Order item details (single item)
 export type OrderDetailsItem = {
