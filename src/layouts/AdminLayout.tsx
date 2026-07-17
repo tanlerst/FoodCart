@@ -1,7 +1,7 @@
 /**
  *  @file AdminLayout.tsx
  *  @author Xi Yan 
- *  @version 1.0.0
+ *  @version 1.0.1
  *  @description This is the shared layout for the admin pages.
  */
 
@@ -10,11 +10,13 @@ import AdminSideBar from "../components/admin/AdminSideBar";
 
 type AdminLayoutProps = {
     title: string;
+    description?: string;
     children: ReactNode;
 };
 
 export default function AdminLayout({
     title,
+    description,
     children,
 }: AdminLayoutProps) {
     return (
@@ -25,6 +27,13 @@ export default function AdminLayout({
                 <h1 className="mb-6 text-2xl font-bold text-gray-900">
                     {title}
                 </h1>
+
+                {/* Description */}
+                {description && (
+                    <p className="mt-2 text-sm text-gray-500">
+                        {description}
+                    </p>
+                )}
 
                 {children}
             </main>
