@@ -19,15 +19,15 @@ export default function AdminLayout({
 }: AdminLayoutProps) {
     return (
         <div className="min-h-screen bg-gray-50">
-        <AdminSideBar />
+            <AdminSideBar />
 
-        <main className="ml-64 min-h-screen bg-orange-50 px-8 py-8">
-            <h1 className="mb-6 text-2xl font-bold text-gray-900">
-            {title}
-            </h1>
+            <main className="ml-64 min-h-screen bg-orange-50 px-8 py-8">
+                <h1 className="mb-6 text-2xl font-bold text-gray-900">
+                    {title}
+                </h1>
 
-            {children}
-        </main>
+                {children}
+            </main>
         </div>
     );
 }
