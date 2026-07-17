@@ -4,7 +4,7 @@ import AdminSideBar from "../../components/admin/AdminSideBar";
 
 export default function AdminDashboardPage() {
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="ml-64 min-h-screen bg-gray-50">
       {/* Side bar */}
       <AdminSideBar></AdminSideBar>
 

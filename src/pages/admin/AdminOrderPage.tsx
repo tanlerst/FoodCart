@@ -9,10 +9,10 @@ export default function AdminOrdersPage() {
   const [status, setStatus] = useState("all");
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="ml-64 min-h-screen bg-gray-50">
       <AdminSideBar />
 
-      <main className="flex-1 bg-orange-50 px-8 py-8">
+      <main className="bg-orange-50 px-8 py-8">
         <StatusFilterBar status={status} onChange={setStatus} />
 
         <div className="p-4">
