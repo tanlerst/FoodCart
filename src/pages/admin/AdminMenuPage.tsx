@@ -125,17 +125,7 @@ export default function AdminMenuPage() {
     item: FoodItem,
     isAvailable: boolean,
   ) {
-    setItems((currentItems) =>
-      currentItems.map(
-        (currentItem) =>
-          currentItem.id === item.id
-            ? {
-                ...currentItem,
-                isAvailable,
-              }
-            : currentItem,
-      ),
-    );
+    // logic to update the availability of the selected food item
   }
 
   return (
