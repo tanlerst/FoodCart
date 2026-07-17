@@ -1,24 +1,20 @@
 /* Login function logic */
 import { useNavigate } from "react-router";
-import { getUserType } from "../helpers/auth/getUserType";
+import { getRoute } from "../helpers/auth/getRoute";
 import { supabase } from "../utils/supabase";
 import LoginCard from "../components/auth/LoginCard";
 import SignupCard from "../components/auth/SignupCard";
-//import HomeButton from "../components/auth/HomeButton";
 
 export default function LoginPage() {
   const navigate = useNavigate();
 
   async function login(authUserid: string) {
-    const usertype = await getUserType(authUserid);
-    if (usertype === 1) {
-      navigate("/recommendations");
-    } else if (usertype === 2) {
-      navigate("/admin");
-    } else {
+    try {
+      const route = await getRoute(authUserid);
+      navigate(route);
+    } catch (error) {
       await supabase.auth.signOut();
-      alert("Usertype error");
-      return;
+      alert(error instanceof Error ? error.message : "Usertype error");
     }
   }
 

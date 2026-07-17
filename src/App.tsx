@@ -17,15 +17,29 @@ import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
 import { UserRoute } from "./routes/UserRoute";
 import { PublicRoute } from "./routes/PublicRoute";
 import { AdminRoute } from "./routes/AdminRoute";
+import { getRoute } from "./helpers/auth/getRoute";
 import FoodRecommendationPage from "./pages/FoodRecommendationPage";
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
+  const [route, setRoute] = useState<string | null>(null);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
+    supabase.auth.getSession().then(async ({ data }) => {
       setSession(data.session);
+
+      if (data.session?.user) {
+        try {
+          setRoute(await getRoute(data.session.user.id));
+        } catch (error) {
+          await supabase.auth.signOut();
+          setSession(null);
+          setRoute(null);
+        }
+      } else {
+        setRoute(null);
+      }
       setLoading(false);
     });
 
@@ -45,12 +59,20 @@ export default function App() {
     <CartProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to={session ? "/menu" : "/login"} replace />} />
+          <Route
+            path="/"
+            element={
+              <Navigate
+                to={session ? (route === "/admin" ? "admin" : "/menu") : "/login"}
+                replace
+              />
+            }
+          />
 
           <Route
             path="/login"
             element={
-              <PublicRoute session={session}>
+              <PublicRoute session={session} route={route}>
                 <LoginPage />
               </PublicRoute>
             }
@@ -59,7 +81,7 @@ export default function App() {
           <Route
             path="/signup"
             element={
-              <PublicRoute session={session}>
+              <PublicRoute session={session} route={route}>
                 <SignupPage />
               </PublicRoute>
             }
