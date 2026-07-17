@@ -19,6 +19,7 @@ import { PublicRoute } from "./routes/PublicRoute";
 import { AdminRoute } from "./routes/AdminRoute";
 import { getRoute } from "./helpers/auth/getRoute";
 import FoodRecommendationPage from "./pages/FoodRecommendationPage";
+import AdminMenuPage from "./pages/admin/AdminMenuPage"
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
@@ -55,119 +56,130 @@ export default function App() {
   if (loading) {
     return <div className="p-8">Loading...</div>;
   }
+
   return (
-    <CartProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Navigate
-                to={session ? (route === "/admin" ? "admin" : "/menu") : "/login"}
-                replace
-              />
-            }
-          />
 
-          <Route
-            path="/login"
-            element={
-              <PublicRoute session={session} route={route}>
-                <LoginPage />
-              </PublicRoute>
-            }
-          />
+    <BrowserRouter>
+      <AdminMenuPage/>
 
-          <Route
-            path="/signup"
-            element={
-              <PublicRoute session={session} route={route}>
-                <SignupPage />
-              </PublicRoute>
-            }
-          />
+    
+    </BrowserRouter>
 
-          <Route
-            path="/recommendations"
-            element={
-              <UserRoute session={session}>
-                <FoodRecommendationPage />
-              </UserRoute>
-            }
-          />
-
-          <Route
-            path="/menu"
-            element={
-              <UserRoute session={session}>
-                <MenuPage />
-              </UserRoute>
-            }
-          />
-
-          <Route
-            path="/food/:id"
-            element={
-              <UserRoute session={session}>
-                <FoodDetailsPage />
-              </UserRoute>
-            }
-          />
-
-          <Route
-            path="/cart"
-            element={
-              <UserRoute session={session}>
-                <CartPage />
-              </UserRoute>
-            }
-          />
-
-          <Route
-            path="/admin"
-            element={
-              <AdminRoute session={session}>
-                <AdminDashboardPage />
-              </AdminRoute>
-            }
-          />
-          <Route
-            path="/adminorders"
-            element={
-              <AdminRoute session={session}>
-                <AdminOrderPage />
-              </AdminRoute>
-            }
-          />
-
-          <Route
-            path="/itemdetails"
-            element={
-              <AdminRoute session={session}>
-                <AdminOrderDetailsPage />
-              </AdminRoute>
-            }
-          />
-
-          <Route
-            path="/additem"
-            element={
-              <AdminRoute session={session}>
-                <AdminAddItemPage />
-              </AdminRoute>
-            }
-          />
-
-          <Route
-            path="/orders"
-            element={
-              <UserRoute session={session}>
-                <UserOrderDetailsPage />
-              </UserRoute>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </CartProvider>
   );
+
+  // return (
+  //   <CartProvider>
+  //     <BrowserRouter>
+  //       <Routes>
+  //         <Route
+  //           path="/"
+  //           element={
+  //             <Navigate
+  //               to={session ? (route === "/admin" ? "admin" : "/menu") : "/login"}
+  //               replace
+  //             />
+  //           }
+  //         />
+
+  //         <Route
+  //           path="/login"
+  //           element={
+  //             <PublicRoute session={session} route={route}>
+  //               <LoginPage />
+  //             </PublicRoute>
+  //           }
+  //         />
+
+  //         <Route
+  //           path="/signup"
+  //           element={
+  //             <PublicRoute session={session} route={route}>
+  //               <SignupPage />
+  //             </PublicRoute>
+  //           }
+  //         />
+
+  //         <Route
+  //           path="/recommendations"
+  //           element={
+  //             <UserRoute session={session}>
+  //               <FoodRecommendationPage />
+  //             </UserRoute>
+  //           }
+  //         />
+
+  //         <Route
+  //           path="/menu"
+  //           element={
+  //             <UserRoute session={session}>
+  //               <MenuPage />
+  //             </UserRoute>
+  //           }
+  //         />
+
+  //         <Route
+  //           path="/food/:id"
+  //           element={
+  //             <UserRoute session={session}>
+  //               <FoodDetailsPage />
+  //             </UserRoute>
+  //           }
+  //         />
+
+  //         <Route
+  //           path="/cart"
+  //           element={
+  //             <UserRoute session={session}>
+  //               <CartPage />
+  //             </UserRoute>
+  //           }
+  //         />
+
+  //         <Route
+  //           path="/admin"
+  //           element={
+  //             <AdminRoute session={session}>
+  //               <AdminDashboardPage />
+  //             </AdminRoute>
+  //           }
+  //         />
+  //         <Route
+  //           path="/adminorders"
+  //           element={
+  //             <AdminRoute session={session}>
+  //               <AdminOrderPage />
+  //             </AdminRoute>
+  //           }
+  //         />
+
+  //         <Route
+  //           path="/itemdetails"
+  //           element={
+  //             <AdminRoute session={session}>
+  //               <AdminOrderDetailsPage />
+  //             </AdminRoute>
+  //           }
+  //         />
+
+  //         <Route
+  //           path="/additem"
+  //           element={
+  //             <AdminRoute session={session}>
+  //               <AdminAddItemPage />
+  //             </AdminRoute>
+  //           }
+  //         />
+
+  //         <Route
+  //           path="/orders"
+  //           element={
+  //             <UserRoute session={session}>
+  //               <UserOrderDetailsPage />
+  //             </UserRoute>
+  //           }
+  //         />
+  //       </Routes>
+  //     </BrowserRouter>
+  //   </CartProvider>
+  // );
 }
