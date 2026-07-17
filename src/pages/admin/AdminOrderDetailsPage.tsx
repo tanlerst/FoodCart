@@ -2,7 +2,6 @@
 
 import AdminOrderItemsCard from "../../components/admin/order/AdminOrderItemsCard";
 import type { OrderDetailsItem, OrderItemStatus, OrderStatus } from "../../types/order";
-import AdminSideBar from "../../components/admin/AdminSideBar";
 import { useEffect, useState } from "react";
 import { getOrderDetails } from "../../helpers/admin/getOrderDetails";
 import { useLocation, Navigate } from "react-router";
@@ -13,6 +12,7 @@ import MarkAllServedButton from "../../components/admin/order/MarkAllAsServedBut
 import MarkAsPaidButton from "../../components/admin/order/MarkAsPaidButton";
 import OrderCompletedBadge from "../../components/admin/order/OrderCompleteBadge";
 import MarkOrderCompleteButton from "../../components/admin/order/MarkOrderCompleteButton";
+import AdminLayout from "../../layouts/AdminLayout";
 
 type orderDetailsLocationState = {
   orderIds: number[];
@@ -131,14 +131,9 @@ export default function AdminOrderDetailsPage() {
   }
 
   return (
-    <div className="ml-64 min-h-screen bg-orange-50">
-      <AdminSideBar />
-
-      <main className="min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-8">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-6">
-          <header>
-            <h1 className="text-2xl font-bold text-gray-900">Order Details</h1>
-          </header>
+    <AdminLayout
+      title="Admin Order Details">
+        <div className="flex w-full flex-col gap-3">
 
           {/* Status Tracker */}
           <AdminOrderStatusTracker status={orderStatus} />
@@ -173,7 +168,6 @@ export default function AdminOrderDetailsPage() {
             </div>
           )}
         </div>
-      </main>
-    </div>
+    </AdminLayout>
   );
 }
