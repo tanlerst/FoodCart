@@ -1,7 +1,7 @@
 /**
  *  @file AddItemButton.tsx
  *  @author Xi Yan 
- *  @version 1.0.0
+ *  @version 1.0.1
  *  @description This is the add item button for the menu page in admin portal
  */
 
@@ -11,7 +11,7 @@ export default function SaveItemButton() {
             type="submit"
             className="flex rounded-xl bg-orange-600 px-6 py-3 font-semibold text-white text-sm"
         >
-            Add New Item
+            + Add New Item
         </button>
     );
 }
