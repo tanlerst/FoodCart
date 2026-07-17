@@ -4,10 +4,10 @@ import type { FoodItem } from "../../types/food";
 import type { AvailabilityFilter } from "../../types/menu";
 
 import AdminLayout from "../../layouts/AdminLayout";
-import AddItemButton from "../../components/admin/addItem/AddItemButton";
-import MenuPagination from "../../components/admin/addItem/MenuPagination";
-import MenuTable from "../../components/admin/addItem/MenuTable";
-import MenuToolbar from "../../components/admin/addItem/MenuToolbar";
+import AddItemButton from "../../components/admin/menu/AddItemButton";
+import MenuPagination from "../../components/admin/menu/MenuPagination";
+import MenuTable from "../../components/admin/menu/MenuTable";
+import MenuToolbar from "../../components/admin/menu/MenuToolbar";
 
 import { SAMPLE_MENU_ITEMS } from "../../data/menuItems";
 import { filterMenuItems } from "../../helpers/admin/filterMenuItems";
