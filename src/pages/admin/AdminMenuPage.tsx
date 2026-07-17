@@ -117,6 +117,10 @@ export default function AdminMenuPage() {
     // delete logic to delete selected food item
   }
 
+  function handleAddItem() {
+    // direct to add item page
+  }
+
   function handleAvailabilityChange(
     item: FoodItem,
     isAvailable: boolean,
@@ -140,7 +144,7 @@ export default function AdminMenuPage() {
       description="Manage restaurant menu items."
     >
       <div className="mb-5 flex justify-end">
-        <AddItemButton />
+        <AddItemButton onClick={handleAddItem}/>
       </div>
 
       <section className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
