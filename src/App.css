@@ -4,8 +4,8 @@
   place-items: center;
   padding: 28px;
   background:
-    radial-gradient(circle at 12% 14%, rgba(255, 120, 25, 0.18), transparent 24%),
-    radial-gradient(circle at 88% 88%, rgba(255, 120, 25, 0.12), transparent 26%), #fff6ec;
+    radial-gradient(circle at 12% 14%, rgb(255 120 25 / 18%), transparent 24%),
+    radial-gradient(circle at 88% 88%, rgb(255 120 25 / 12%), transparent 26%), #fff6ec;
 }
 
 .login-panel {
@@ -13,10 +13,10 @@
   min-height: min(960px, calc(100svh - 56px));
   display: grid;
   place-items: center;
-  background: #ffffff;
+  background: #fff;
   border: 1px solid #f0efed;
   border-radius: 44px;
-  box-shadow: 0 28px 80px rgba(35, 31, 28, 0.1);
+  box-shadow: 0 28px 80px rgb(35 31 28 / 10%);
 }
 
 .login-content {
@@ -81,7 +81,7 @@
   padding: 0 20px;
   border: 1.5px solid #d9d9df;
   border-radius: 16px;
-  background: #ffffff;
+  background: #fff;
   transition:
     border-color 160ms ease,
     box-shadow 160ms ease;
@@ -89,7 +89,7 @@
 
 .input-shell:focus-within {
   border-color: #fb5a00;
-  box-shadow: 0 0 0 4px rgba(251, 90, 0, 0.12);
+  box-shadow: 0 0 0 4px rgb(251 90 0 / 12%);
 }
 
 .field-icon,
@@ -106,7 +106,7 @@
   width: 100%;
   height: 100%;
   fill: none;
-  stroke: currentColor;
+  stroke: currentcolor;
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -180,12 +180,12 @@
   border: 0;
   border-radius: 16px;
   background: linear-gradient(90deg, #ff7318, #f45800);
-  color: #ffffff;
+  color: #fff;
   font: inherit;
   font-size: 1.35rem;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 18px 34px rgba(244, 88, 0, 0.26);
+  box-shadow: 0 18px 34px rgb(244 88 0 / 26%);
   transition:
     transform 160ms ease,
     box-shadow 160ms ease;
@@ -193,7 +193,7 @@
 
 .login-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 22px 42px rgba(244, 88, 0, 0.3);
+  box-shadow: 0 22px 42px rgb(244 88 0 / 30%);
 }
 
 .login-button:disabled {
@@ -242,7 +242,7 @@
   padding: 18px 12px;
   border: 1.5px solid #dedee3;
   border-radius: 16px;
-  background: #ffffff;
+  background: #fff;
   color: #17171c;
   font: inherit;
   font-size: 1rem;
@@ -256,7 +256,7 @@
 .social-button:hover {
   border-color: #fb5a00;
   transform: translateY(-1px);
-  box-shadow: 0 14px 30px rgba(34, 34, 40, 0.08);
+  box-shadow: 0 14px 30px rgb(34 34 40 / 8%);
 }
 
 .social-icon,
@@ -289,7 +289,7 @@
 .cart-stroke,
 .spark {
   fill: none;
-  stroke: currentColor;
+  stroke: currentcolor;
   stroke-width: 3.4;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -334,7 +334,7 @@
   width: 25px;
   height: 25px;
   fill: none;
-  stroke: currentColor;
+  stroke: currentcolor;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -359,14 +359,14 @@
 button:focus-visible,
 a:focus-visible,
 input:focus-visible {
-  outline: 3px solid rgba(251, 90, 0, 0.45);
+  outline: 3px solid rgb(251 90 0 / 45%);
   outline-offset: 4px;
 }
 
-@media (max-width: 720px) {
+@media (width <= 720px) {
   .login-shell {
     padding: 0;
-    background: #ffffff;
+    background: #fff;
   }
 
   .login-panel {
@@ -426,7 +426,7 @@ input:focus-visible {
   }
 }
 
-@media (max-width: 430px) {
+@media (width <= 430px) {
   .login-content {
     width: min(100% - 28px, 520px);
   }
