@@ -4,10 +4,10 @@ import InformationCard from "../../components/admin/menu/InformationCard";
 import ItemImageCard from "../../components/admin/menu/ItemImageCard";
 import PricingCard from "../../components/admin/menu/PricingCard";
 import SaveItemButton from "../../components/admin/menu/SaveItemButton";
-import AdminSideBar from "../../components/admin/AdminSideBar";
 import { createItem } from "../../helpers/admin/createItem";
 import { getCategories } from "../../helpers/admin/getCategories";
 import type { CategoryOption } from "../../helpers/admin/getCategories";
+import AdminLayout from "../../layouts/AdminLayout";
 
 export default function AdminNewItemPage() {
   // Change here
@@ -76,21 +76,13 @@ export default function AdminNewItemPage() {
   }
 
   return (
-    <div className="ml-64 min-h-screen bg-gray-50">
-      {/* Side bar */}
-      <AdminSideBar></AdminSideBar>
-
-      <div className="min-h-screen bg-gray-50 px-5 py-6">
-        {/* Page title */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Add New Item</h1>
-
-          <p className="mt-2 text-gray-500">Create a new menu item for your restaurant.</p>
-        </div>
-
+    <AdminLayout
+      title="Add New Item"
+      description="Create a new menu item"
+    >
+      <div className="mt-2 bg-gray-50 px-5">
         {/* Item details */}
-        {/* <form onSubmit={handleSubmit} className="space-y-6"> */}
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6 pb-5 pt-5">
           <InformationCard
             name={name}
             description={description}
@@ -124,6 +116,6 @@ export default function AdminNewItemPage() {
           </div>
         </form>
       </div>
-    </div>
+    </AdminLayout>
   );
 }
