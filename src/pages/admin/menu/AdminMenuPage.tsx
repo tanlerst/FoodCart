@@ -1,14 +1,14 @@
 import { useMemo, useState, useEffect } from "react";
-import type { FoodItem } from "../../types/food";
-import type { AvailabilityFilter } from "../../types/menu";
-import { getItems } from "../../helpers/admin/adminMenuRead";
-import AdminLayout from "../../layouts/AdminLayout";
-import AddItemButton from "../../components/admin/menu/AddItemButton";
-import MenuPagination from "../../components/admin/menu/MenuPagination";
-import MenuTable from "../../components/admin/menu/MenuTable";
-import MenuToolbar from "../../components/admin/menu/MenuToolbar";
+import type { FoodItem } from "../../../types/food";
+import type { AvailabilityFilter } from "../../../types/menu";
+import { getItems } from "../../../helpers/admin/adminMenuRead";
+import AdminLayout from "../../../layouts/AdminLayout";
+import AddItemButton from "../../../components/admin/menu/AddItemButton";
+import MenuPagination from "../../../components/admin/menu/MenuPagination";
+import MenuTable from "../../../components/admin/menu/MenuTable";
+import MenuToolbar from "../../../components/admin/menu/MenuToolbar";
 import { useNavigate } from "react-router";
-import { filterMenuItems } from "../../helpers/admin/filterMenuItems";
+import { filterMenuItems } from "../../../helpers/admin/filterMenuItems";
 const ITEMS_PER_PAGE = 5;
 
 export default function AdminMenuPage() {

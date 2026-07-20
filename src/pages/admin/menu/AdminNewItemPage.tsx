@@ -1,13 +1,13 @@
 /* Admin New Item Page for adding new food items to the menu */
 import { useEffect, useState } from "react";
-import InformationCard from "../../components/admin/menu/InformationCard";
-import ItemImageCard from "../../components/admin/menu/ItemImageCard";
-import PricingCard from "../../components/admin/menu/PricingCard";
-import SaveItemButton from "../../components/admin/menu/SaveItemButton";
-import { createItem } from "../../helpers/admin/createItem";
-import { getCategories } from "../../helpers/admin/getCategories";
-import type { CategoryOption } from "../../helpers/admin/getCategories";
-import AdminLayout from "../../layouts/AdminLayout";
+import InformationCard from "../../../components/admin/menu/InformationCard";
+import ItemImageCard from "../../../components/admin/menu/ItemImageCard";
+import PricingCard from "../../../components/admin/menu/PricingCard";
+import SaveItemButton from "../../../components/admin/menu/SaveItemButton";
+import { createItem } from "../../../helpers/admin/createItem";
+import { getCategories } from "../../../helpers/admin/getCategories";
+import type { CategoryOption } from "../../../helpers/admin/getCategories";
+import AdminLayout from "../../../layouts/AdminLayout";
 import { useNavigate } from "react-router";
 
 export default function AdminNewItemPage() {
