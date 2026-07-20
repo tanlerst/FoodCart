@@ -21,6 +21,7 @@ import { PublicRoute } from "./routes/PublicRoute";
 import { AdminRoute } from "./routes/AdminRoute";
 import SurpriseOptionPage from "./pages/surprise/SurpriseOptionPage";
 import SurpriseConfirmationPage from "./pages/surprise/SurpriseConfirmationPage";
+import SurpriseOrderPlacedPage from "./pages/surprise/SurpriseOrderPlacedPage";
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
@@ -47,8 +48,9 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <SurpriseConfirmationPage />
+      {/* <SurpriseConfirmationPage /> */}
       {/* <SurpriseOptionPage/> */}
+      <SurpriseOrderPlacedPage/>
     </BrowserRouter>
 
   );
