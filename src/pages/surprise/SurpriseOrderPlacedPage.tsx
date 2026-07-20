@@ -11,6 +11,10 @@ export default function SurpriseOrderPlacedPage() {
     // back to menu
   }
 
+  function handleGoCart() {
+    // go to cart logic
+  }
+
   return (
     <main className="min-h-screen bg-orange-50 p-4">
       <div className="relative mx-auto min-h-screen max-w-md rounded-2xl p-10 shadow-md">
@@ -28,12 +32,11 @@ export default function SurpriseOrderPlacedPage() {
 
         </div>
 
-       
-
         <div className="pt-15">
           <OrderPlacedActionButtons
           onOrderAgain={handleOrderAgain}
           onBackMenu={handleBackMenu}
+          onGoToCart={handleGoCart}
         />
       </div>
 
