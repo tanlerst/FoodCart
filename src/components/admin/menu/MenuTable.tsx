@@ -7,10 +7,7 @@ type MenuTableProps = {
   items: FoodItem[];
   onEdit: (item: FoodItem) => void;
   onDelete: (item: FoodItem) => void;
-  onAvailabilityChange: (
-    item: FoodItem,
-    isAvailable: boolean,
-  ) => void;
+  onAvailabilityChange: (item: FoodItem, isAvailable: boolean) => void;
 };
 
 export default function MenuTable({
@@ -28,29 +25,17 @@ export default function MenuTable({
       <table className="w-full min-w-[1000px] border-collapse text-left">
         <thead className="bg-gray-50">
           <tr className="border-b border-gray-200 text-sm text-gray-600">
-            <th className="px-5 py-4 font-semibold">
-              Item
-            </th>
+            <th className="px-5 py-4 font-semibold">Item</th>
 
-            <th className="px-5 py-4 font-semibold">
-              Category
-            </th>
+            <th className="px-5 py-4 font-semibold">Category</th>
 
-            <th className="px-5 py-4 font-semibold">
-              Price
-            </th>
+            <th className="px-5 py-4 font-semibold">Price</th>
 
-            <th className="px-5 py-4 font-semibold">
-              Prep Time
-            </th>
+            <th className="px-5 py-4 font-semibold">Prep Time</th>
 
-            <th className="px-5 py-4 font-semibold">
-              Availability
-            </th>
+            <th className="px-5 py-4 font-semibold">Availability</th>
 
-            <th className="px-5 py-4 text-center font-semibold">
-              Actions
-            </th>
+            <th className="px-5 py-4 text-center font-semibold">Actions</th>
           </tr>
         </thead>
 
@@ -62,9 +47,7 @@ export default function MenuTable({
               item={item}
               onEdit={onEdit}
               onDelete={onDelete}
-              onAvailabilityChange={
-                onAvailabilityChange
-              }
+              onAvailabilityChange={onAvailabilityChange}
             />
           ))}
         </tbody>

@@ -1,7 +1,4 @@
-import {
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type MenuPaginationProps = {
   currentPage: number;
@@ -21,8 +18,7 @@ export default function MenuPagination({
   onPageChange,
 }: MenuPaginationProps) {
   const hasPreviousPage = currentPage > 1;
-  const hasNextPage =
-    currentPage < totalPages;
+  const hasNextPage = currentPage < totalPages;
 
   function handlePreviousPage() {
     if (hasPreviousPage) {
@@ -38,22 +34,11 @@ export default function MenuPagination({
 
   return (
     <div className="flex flex-col gap-3 border-t border-gray-200 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
-      
       {/* Showing x to x of x items */}
       <p className="text-sm text-gray-500">
-        Showing{" "}
-        <span className="font-medium text-gray-700">
-          {startItem}
-        </span>{" "}
-        to{" "}
-        <span className="font-medium text-gray-700">
-          {endItem}
-        </span>{" "}
-        of{" "}
-        <span className="font-medium text-gray-700">
-          {totalItems}
-        </span>{" "}
-        items
+        Showing <span className="font-medium text-gray-700">{startItem}</span> to{" "}
+        <span className="font-medium text-gray-700">{endItem}</span> of{" "}
+        <span className="font-medium text-gray-700">{totalItems}</span> items
       </p>
 
       {/* Left button */}
@@ -70,8 +55,7 @@ export default function MenuPagination({
 
         {/* Page of x of x */}
         <span className="min-w-24 text-center text-sm font-medium text-gray-600">
-          Page {currentPage} of{" "}
-          {Math.max(totalPages, 1)}
+          Page {currentPage} of {Math.max(totalPages, 1)}
         </span>
 
         {/* Right button */}

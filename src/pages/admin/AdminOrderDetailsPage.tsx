@@ -131,43 +131,37 @@ export default function AdminOrderDetailsPage() {
   }
 
   return (
-    <AdminLayout
-      title="Admin Order Details">
-        <div className="flex w-full flex-col gap-3">
+    <AdminLayout title="Admin Order Details">
+      <div className="flex w-full flex-col gap-3">
+        {/* Status Tracker */}
+        <AdminOrderStatusTracker status={orderStatus} />
 
-          {/* Status Tracker */}
-          <AdminOrderStatusTracker status={orderStatus} />
+        {/* Buttons */}
 
-          {/* Buttons */}
+        <div className="flex flex-col gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:flex-row sm:justify-end">
+          {orderStatus === "received" && <StartPreparingButton onClick={handleStartPreparing} />}
 
-          <div className="flex flex-col gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:flex-row sm:justify-end">
-            {orderStatus === "received" && <StartPreparingButton onClick={handleStartPreparing} />}
-
-            {(orderStatus === "preparing" || orderStatus === "serving") && (
-              <MarkAllServedButton onClick={handleMarkAllServed} />
-            )}
-
-            {orderStatus === "served" && <MarkAsPaidButton onClick={handleMarkAsPaid} />}
-
-            {orderStatus === "paid" && (
-              <MarkOrderCompleteButton onClick={handleMarkOrderComplete} />
-            )}
-
-            {orderStatus === "complete" && <OrderCompletedBadge />}
-          </div>
-
-          {orders.length > 0 ? (
-            <AdminOrderItemsCard items={orders} onStatusChange={handleStatusChange} />
-          ) : (
-            <div className="rounded-xl border border-gray-200 bg-white px-6 py-12 text-center shadow-sm">
-              <p className="font-medium text-gray-800">No matching order items found</p>
-
-              <p className="mt-1 text-sm text-gray-500">
-                Try searching by item ID, name, or status.
-              </p>
-            </div>
+          {(orderStatus === "preparing" || orderStatus === "serving") && (
+            <MarkAllServedButton onClick={handleMarkAllServed} />
           )}
+
+          {orderStatus === "served" && <MarkAsPaidButton onClick={handleMarkAsPaid} />}
+
+          {orderStatus === "paid" && <MarkOrderCompleteButton onClick={handleMarkOrderComplete} />}
+
+          {orderStatus === "complete" && <OrderCompletedBadge />}
         </div>
+
+        {orders.length > 0 ? (
+          <AdminOrderItemsCard items={orders} onStatusChange={handleStatusChange} />
+        ) : (
+          <div className="rounded-xl border border-gray-200 bg-white px-6 py-12 text-center shadow-sm">
+            <p className="font-medium text-gray-800">No matching order items found</p>
+
+            <p className="mt-1 text-sm text-gray-500">Try searching by item ID, name, or status.</p>
+          </div>
+        )}
+      </div>
     </AdminLayout>
   );
 }

@@ -1,7 +1,3 @@
-export type MenuItemAvailability =
-  | "available"
-  | "unavailable";
+export type MenuItemAvailability = "available" | "unavailable";
 
-export type AvailabilityFilter =
-  | "all"
-  | MenuItemAvailability;
+export type AvailabilityFilter = "all" | MenuItemAvailability;

@@ -9,9 +9,7 @@ export default function AdminOrdersPage() {
   const [status, setStatus] = useState("all");
 
   return (
-    <AdminLayout 
-      title="Admin Order Page">
-
+    <AdminLayout title="Admin Order Page">
       <main className="bg-orange-50 px-2 py-8">
         <StatusFilterBar status={status} onChange={setStatus} />
 

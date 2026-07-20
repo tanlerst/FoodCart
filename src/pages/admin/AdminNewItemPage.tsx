@@ -8,6 +8,7 @@ import { createItem } from "../../helpers/admin/createItem";
 import { getCategories } from "../../helpers/admin/getCategories";
 import type { CategoryOption } from "../../helpers/admin/getCategories";
 import AdminLayout from "../../layouts/AdminLayout";
+import { useNavigate } from "react-router";
 
 export default function AdminNewItemPage() {
   // Change here
@@ -20,6 +21,7 @@ export default function AdminNewItemPage() {
   const [categories, setCategories] = useState<CategoryOption[]>([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadCategories() {
@@ -72,14 +74,12 @@ export default function AdminNewItemPage() {
       alert(error instanceof Error ? error.message : "Failed to create item.");
     } finally {
       setSubmitting(false);
+      navigate("/adminmenu");
     }
   }
 
   return (
-    <AdminLayout
-      title="Add New Item"
-      description="Create a new menu item"
-    >
+    <AdminLayout title="Add New Item" description="Create a new menu item">
       <div className="mt-2 bg-gray-50 px-5">
         {/* Item details */}
         <form onSubmit={handleSubmit} className="space-y-6 pb-5 pt-5">

@@ -1,10 +1,6 @@
 import { supabase } from "../../utils/supabase";
 import type { FoodItem } from "../../types/food";
 
-type CategoryRow = {
-  name: string;
-};
-
 type FoodRow = {
   id: number;
   name: string;
@@ -12,12 +8,14 @@ type FoodRow = {
   price: number;
   image: string;
   time: number;
+  recommended: boolean;
+  available: boolean;
   category: {
     name: string;
   };
 };
 
-export async function fetchMenu(): Promise<FoodItem[]> {
+export async function getItems(): Promise<FoodItem[]> {
   const { data, error } = await supabase
     .from("food")
     .select(`
@@ -27,16 +25,19 @@ export async function fetchMenu(): Promise<FoodItem[]> {
       price,
       image,
       time,
+      recommended,
+      available,
       category (
         name
       )
     `)
-    .eq("available", true)
     .order("category");
+
   if (error) {
-    throw error;
+    throw new Error(error.message);
   }
   const foods = (data ?? []) as unknown as FoodRow[];
+
   return foods.map((food) => ({
     id: food.id,
     name: food.name,
@@ -44,16 +45,10 @@ export async function fetchMenu(): Promise<FoodItem[]> {
     price: food.price,
     image: supabase.storage.from("FoodCart").getPublicUrl(food.image).data.publicUrl,
     time: food.time,
+    isRecommended: food.recommended,
+    isAvailable: food.available,
     category: {
       name: food.category.name,
     },
   }));
-}
-
-export async function fetchCategories(): Promise<string[]> {
-  const { data, error } = await supabase.from("category").select("name");
-
-  if (error) throw error;
-
-  return ["All", ...(data as CategoryRow[]).map((category) => category.name)];
 }

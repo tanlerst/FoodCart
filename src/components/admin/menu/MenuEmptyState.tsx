@@ -7,9 +7,7 @@ export default function MenuEmptyState() {
         <SearchX size={24} />
       </div>
 
-      <h2 className="mt-4 text-lg font-semibold text-gray-800">
-        No menu items found
-      </h2>
+      <h2 className="mt-4 text-lg font-semibold text-gray-800">No menu items found</h2>
     </div>
   );
 }

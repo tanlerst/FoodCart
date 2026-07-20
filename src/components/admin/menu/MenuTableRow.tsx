@@ -7,10 +7,7 @@ type MenuTableRowProps = {
   item: FoodItem;
   onEdit: (item: FoodItem) => void;
   onDelete: (item: FoodItem) => void;
-  onAvailabilityChange: (
-    item: FoodItem,
-    isAvailable: boolean,
-  ) => void;
+  onAvailabilityChange: (item: FoodItem, isAvailable: boolean) => void;
 };
 
 export default function MenuTableRow({
@@ -20,15 +17,11 @@ export default function MenuTableRow({
   onAvailabilityChange,
 }: MenuTableRowProps) {
   function handleAvailabilityToggle() {
-    onAvailabilityChange(
-      item,
-      !item.isAvailable,
-    );
+    onAvailabilityChange(item, !item.isAvailable);
   }
 
   return (
     <tr className="border-b border-gray-100 transition last:border-b-0 hover:bg-orange-50/40">
-      
       {/* Food item */}
       <td className="px-5 py-4">
         <div className="flex min-w-96 items-center gap-4">
@@ -39,14 +32,10 @@ export default function MenuTableRow({
           />
 
           <div>
-            <h2 className="font-semibold text-gray-900">
-              {item.name}
-            </h2>
+            <h2 className="font-semibold text-gray-900">{item.name}</h2>
 
             {item.description && (
-              <p className="mt-1 max-w-md text-sm leading-6 text-gray-500">
-                {item.description}
-              </p>
+              <p className="mt-1 max-w-md text-sm leading-6 text-gray-500">{item.description}</p>
             )}
 
             {/* Recommended tag for recommended food items */}
@@ -58,30 +47,21 @@ export default function MenuTableRow({
           </div>
         </div>
       </td>
-      
+
       {/* Category */}
-      <td className="px-5 py-4 text-sm font-medium text-gray-700">
-        {item.category.name}
-      </td>
-      
+      <td className="px-5 py-4 text-sm font-medium text-gray-700">{item.category.name}</td>
+
       {/* Price */}
-      <td className="px-5 py-4 text-sm font-medium text-gray-900">
-        ${item.price.toFixed(2)}
-      </td>
-      
+      <td className="px-5 py-4 text-sm font-medium text-gray-900">${item.price.toFixed(2)}</td>
+
       {/* Time */}
-      <td className="px-5 py-4 text-sm text-gray-700">
-        {item.time} min
-      </td>
-      
+      <td className="px-5 py-4 text-sm text-gray-700">{item.time} min</td>
+
       {/* isAvailable */}
       <td className="px-5 py-4">
-        <AvailabilityBadge
-          isAvailable={item.isAvailable}
-          onToggle={handleAvailabilityToggle}
-        />
+        <AvailabilityBadge isAvailable={item.isAvailable} onToggle={handleAvailabilityToggle} />
       </td>
-      
+
       {/* Action buttons */}
       <td className="px-5 py-4">
         <div className="flex justify-center gap-3">
@@ -95,7 +75,7 @@ export default function MenuTableRow({
           >
             <Pencil size={17} />
           </button>
-          
+
           {/* Delete button */}
           <button
             type="button"

@@ -14,33 +14,19 @@ export function filterMenuItems({
   category,
   availability,
 }: FilterMenuItemsParameters): FoodItem[] {
-  const normalizedSearch = search
-    .trim()
-    .toLowerCase();
+  const normalizedSearch = search.trim().toLowerCase();
 
   return items.filter((item) => {
     const matchesSearch =
       normalizedSearch === "" ||
-      item.name
-        .toLowerCase()
-        .includes(normalizedSearch) ||
-      item.description
-        ?.toLowerCase()
-        .includes(normalizedSearch);
+      item.name.toLowerCase().includes(normalizedSearch) ||
+      item.description?.toLowerCase().includes(normalizedSearch);
 
-    const matchesCategory =
-      category === "all" ||
-      item.category.name === category;
+    const matchesCategory = category === "all" || item.category.name === category;
 
     const matchesAvailability =
-      availability === "all" ||
-      item.isAvailable ===
-        (availability === "available");
+      availability === "all" || item.isAvailable === (availability === "available");
 
-    return (
-      matchesSearch &&
-      matchesCategory &&
-      matchesAvailability
-    );
+    return matchesSearch && matchesCategory && matchesAvailability;
   });
 }

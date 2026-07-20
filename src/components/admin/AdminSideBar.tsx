@@ -23,7 +23,7 @@ const sidebarItems: SidebarItem[] = [
   {
     label: "Menu",
     icon: "📖",
-    route: "/additem",
+    route: "/adminmenu",
   },
 ];
 
