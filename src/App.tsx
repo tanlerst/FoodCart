@@ -13,7 +13,7 @@ import AdminOrderPage from "./pages/admin/AdminOrderPage";
 import AdminOrderDetailsPage from "./pages/admin/AdminOrderDetailsPage";
 import AdminAddItemPage from "./pages/admin/AdminNewItemPage";
 import UserOrderDetailsPage from "./pages/UserOrderDetailsPage";
-import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
+import AdminDashboardPage from "./pages/admin/dashboard/AdminDashboardPage";
 import { UserRoute } from "./routes/UserRoute";
 import { PublicRoute } from "./routes/PublicRoute";
 import { AdminRoute } from "./routes/AdminRoute";
