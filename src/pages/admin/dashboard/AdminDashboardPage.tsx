@@ -1,6 +1,6 @@
 /* Admin Dashboard Page showing top selling food items and total sales */
 
-import AdminLayout from "../../layouts/AdminLayout";
+import AdminLayout from "../../../layouts/AdminLayout";
 
 export default function AdminDashboardPage() {
   return (
