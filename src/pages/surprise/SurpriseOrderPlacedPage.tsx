@@ -1,5 +1,5 @@
 import OrderPlacedActionButtons from "../../components/surprise/surpriseOrderPlaced/OrderPlacedActionButtons";
-import OrderSuccessBanner from "../../components/surprise/surpriseOrderPlaced/OrderPlacedBanner";
+import OrderOrderPlacedBanner from "../../components/surprise/surpriseOrderPlaced/OrderPlacedBanner";
 
 export default function SurpriseOrderPlacedPage() {
 
@@ -24,7 +24,7 @@ export default function SurpriseOrderPlacedPage() {
         </header>
 
         <div className="pt-15">
-          <OrderSuccessBanner />
+          <OrderOrderPlacedBanner />
 
         </div>
 
