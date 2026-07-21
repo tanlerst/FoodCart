@@ -60,7 +60,8 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <AdminEditItemPage/>
+      {/* <AdminEditItemPage/> */}
+      <AdminAddItemPage/>
     </BrowserRouter>
 
   );
