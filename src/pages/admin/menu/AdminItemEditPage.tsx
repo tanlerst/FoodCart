@@ -16,62 +16,7 @@ export default function AdminEditItemPage() {
     imageUrl: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400",
   };
 
-//   useEffect(() => {
-//     async function loadCategories() {
-//       try {
-//         const data = await getCategories();
-//         setCategories(data);
-//       } catch (error) {
-//         console.error(error);
-//       } finally {
-//         setLoadingCategories(false);
-//       }
-//     }
-
-//     loadCategories();
-//   }, []);
-
-//   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-//     e.preventDefault();
-//     if (!name.trim() || !categoryId || !price.trim() || !image || !time) {
-//       alert("Please fill in all required fields.");
-//       return;
-//     }
-
-//     const parsedPrice = Number(price);
-//     if (Number.isNaN(parsedPrice)) {
-//       alert("Please enter a valid price.");
-//       return;
-//     }
-
-//     const parsedTime = Number(time);
-//     if (Number.isNaN(parsedTime)) {
-//       alert("Please enter a valid time.");
-//       return;
-//     }
-
-//     try {
-//       setSubmitting(true);
-
-//       await createItem({
-//         name: name.trim(),
-//         description: description.trim(),
-//         price: parsedPrice,
-//         category: Number(categoryId),
-//         image,
-//         time: parsedTime,
-//       });
-
-//       alert("Item created successfully.");
-//     } catch (error) {
-//       alert(error instanceof Error ? error.message : "Failed to create item.");
-//     } finally {
-//       setSubmitting(false);
-//       navigate("/adminmenu");
-//     }
-//   }
-  
-  function handleSaveItem() {
+  function handleSubmit() {
     // update the value and navigate to admin menu page
   }
 
@@ -89,7 +34,7 @@ export default function AdminEditItemPage() {
             time: String(item.time),
             availability: item.availability,
           }}
-          onSubmit={handleSaveItem}
+          onSubmit={handleSubmit}
         />
       </div>
     </AdminLayout>
