@@ -7,20 +7,29 @@ import SurpriseMeButton from "../../components/surprise/surpriseOption/SurpriseM
 import CategoryCard from "../../components/surprise/surpriseOption/CategoryCard";
 import NavigationBar from "../../components/common/NavigationBar";
 import { useNavigate } from "react-router";
+import type { SurprisePreferences } from "../../types/surprise";
 
 export default function SurpriseOptionPage() {
   const navigate = useNavigate();
-  const handleSurprise = () => {
-    navigate("/surpriseconfirmation");
-  };
 
-    // const [dietaryPreferences, setDietaryPreferences] = useState("None");
-    const [dietaryPreferences, setDietaryPreferences] = useState<string[]>([]);
-    const [notes, setNotes] = useState("");
-    const [budget, setBudget] = useState(10);
-    // const [category, setCategory] = useState("All categories");
-    const [category, setCategory] = useState<string[]>([]);
-    const [mealAmount, setMealAmount] = useState(5);
+  const [dietaryPreferences, setDietaryPreferences] = useState<string[]>([]);
+  const [notes, setNotes] = useState("");
+  const [budget, setBudget] = useState(10);
+  const [category, setCategory] = useState<string[]>([]);
+  const [mealAmount, setMealAmount] = useState(1);
+
+  const handleSurprise = () => {
+    const preferences: SurprisePreferences = {
+      amount: mealAmount,
+      budget,
+      dietaryPreferences,
+      categories: category,
+      remark: notes,
+    };
+    navigate("/surpriseconfirmation", {
+      state: preferences,
+    });
+  };
 
   return (
     <main className="min-h-screen bg-orange-50 p-4">
@@ -32,15 +41,12 @@ export default function SurpriseOptionPage() {
 
           <BudgetCard budget={budget} setBudget={setBudget} />
 
-                    <DietaryPreferences 
-                        dietaryPreference={dietaryPreferences}
-                        setDietaryPreference={setDietaryPreferences}
-                    />
+          <DietaryPreferences
+            dietaryPreference={dietaryPreferences}
+            setDietaryPreference={setDietaryPreferences}
+          />
 
-                    <CategoryCard
-                        selectedCategories={category}
-                        setSelectedCategory={setCategory}
-                    />
+          <CategoryCard selectedCategories={category} setSelectedCategory={setCategory} />
 
           <NotesCard notes={notes} setNotes={setNotes} />
 
