@@ -4,12 +4,16 @@ import AdminLayout from "../../../layouts/AdminLayout";
 
 export default function AdminNewItemPage() {
 
+  function handleSubmit() {
+    // handle logic to create new item and navigate back to menu page
+  }
+
   return (
     <AdminLayout title="Add New Item" description="Create a new menu item">
       <div className="mt-2 bg-gray-50 px-5">
         <ItemForm
           mode="create"
-          onSubmit={() => 1}
+          onSubmit={handleSubmit}
         />
       </div>
     </AdminLayout>
