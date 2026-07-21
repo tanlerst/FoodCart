@@ -48,7 +48,7 @@ export default function ItemImageCard({
             )}
           </h3>
 
-          <label className="flex aspect-square w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-2xl border-2 border-dashed border-orange-400 bg-orange-50 text-center hover:bg-orange-50">
+          <label className="flex aspect-square w-full max-w-xs cursor-pointer flex-col items-center justify-center overflow-hidden rounded-2xl border-2 border-dashed border-orange-400 bg-orange-50 text-center hover:bg-orange-50">
             <input
               type="file"
               accept="image/*"
