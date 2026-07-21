@@ -18,7 +18,8 @@ export default function SurpriseOptionPage() {
     const [dietaryPreferences, setDietaryPreferences] = useState<string[]>([]);
     const [notes, setNotes] = useState("");
     const [budget, setBudget] = useState(10);
-    const [category, setCategory] = useState("All categories");
+    // const [category, setCategory] = useState("All categories");
+    const [category, setCategory] = useState<string[]>([]);
     const [mealAmount, setMealAmount] = useState(5);
 
   return (
