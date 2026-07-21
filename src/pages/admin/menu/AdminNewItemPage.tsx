@@ -8,6 +8,62 @@ export default function AdminNewItemPage() {
     // handle logic to create new item and navigate back to menu page
   }
 
+//   useEffect(() => {
+//     async function loadCategories() {
+//       try {
+//         const data = await getCategories();
+//         setCategories(data);
+//       } catch (error) {
+//         console.error(error);
+//       } finally {
+//         setLoadingCategories(false);
+//       }
+//     }
+
+//     loadCategories();
+//   }, []);
+
+//   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+//     e.preventDefault();
+//     if (!name.trim() || !categoryId || !price.trim() || !image || !time) {
+//       alert("Please fill in all required fields.");
+//       return;
+//     }
+
+//     const parsedPrice = Number(price);
+//     if (Number.isNaN(parsedPrice)) {
+//       alert("Please enter a valid price.");
+//       return;
+//     }
+
+//     const parsedTime = Number(time);
+//     if (Number.isNaN(parsedTime)) {
+//       alert("Please enter a valid time.");
+//       return;
+//     }
+
+//     try {
+//       setSubmitting(true);
+
+//       await createItem({
+//         name: name.trim(),
+//         description: description.trim(),
+//         price: parsedPrice,
+//         category: Number(categoryId),
+//         image,
+//         time: parsedTime,
+//       });
+
+//       alert("Item created successfully.");
+//     } catch (error) {
+//       alert(error instanceof Error ? error.message : "Failed to create item.");
+//     } finally {
+//       setSubmitting(false);
+//       navigate("/adminmenu");
+//     }
+//   }
+
+
   return (
     <AdminLayout title="Add New Item" description="Create a new menu item">
       <div className="mt-2 bg-gray-50 px-5">
