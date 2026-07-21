@@ -3,9 +3,16 @@
 type PricingProps = {
   price: string;
   onPriceChange: (value: string) => void;
+  availability: string;
+  onAvailabilityChange: (value: string) => void;
 };
 
-export default function PricingCard({ price, onPriceChange }: PricingProps) {
+export default function PricingCard({ 
+  price, 
+  onPriceChange,
+  availability,
+  onAvailabilityChange
+ }: PricingProps) {
   return (
     <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
       <h2 className="mb-6 text-lg font-semibold text-gray-900">Pricing & Availability</h2>
@@ -38,7 +45,10 @@ export default function PricingCard({ price, onPriceChange }: PricingProps) {
             <span className="text-red-500">*</span>
           </label>
 
-          <select className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-orange-500">
+          <select 
+            value={availability}
+            onChange={(x) => onAvailabilityChange(x.target.value)}
+            className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-orange-500">
             <option>Available</option>
             <option>Unavailable</option>
           </select>
