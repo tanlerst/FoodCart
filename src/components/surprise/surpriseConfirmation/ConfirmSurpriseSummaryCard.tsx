@@ -1,9 +1,4 @@
-import {
-  CircleDollarSign,
-  LayoutGrid,
-  MessageSquareText,
-  Utensils,
-} from "lucide-react";
+import { CircleDollarSign, LayoutGrid, MessageSquareText, Utensils } from "lucide-react";
 
 import SurpriseSummaryRow from "./ConfirmSurpriseSummaryRow";
 
@@ -20,15 +15,9 @@ export default function ConfirmSurpriseSummaryCard({
   categories,
   remark,
 }: SurpriseSummaryCardProps) {
-  const dietaryText =
-    dietaryPreferences.length > 0
-      ? dietaryPreferences.join(", ")
-      : "None";
+  const dietaryText = dietaryPreferences.length > 0 ? dietaryPreferences.join(", ") : "None";
 
-  const categoryText =
-    categories.length > 0
-      ? categories.join(", ")
-      : "All Categories";
+  const categoryText = categories.length > 0 ? categories.join(", ") : "All Categories";
 
   const remarkText = remark.trim() || "No remark";
 
@@ -58,7 +47,6 @@ export default function ConfirmSurpriseSummaryCard({
         value={remarkText}
         showDivider={false}
       />
-
     </section>
   );
 }

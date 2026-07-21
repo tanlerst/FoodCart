@@ -4,9 +4,7 @@ type ConfirmSurpriseHeaderProps = {
   onBack: () => void;
 };
 
-export default function ConfirmSurpriseHeader({
-  onBack,
-}: ConfirmSurpriseHeaderProps) {
+export default function ConfirmSurpriseHeader({ onBack }: ConfirmSurpriseHeaderProps) {
   return (
     <header className="relative flex min-h-14 items-center justify-center">
       <button
@@ -17,9 +15,7 @@ export default function ConfirmSurpriseHeader({
         <ArrowLeft size={29} strokeWidth={2.3} />
       </button>
 
-      <h1 className="px-12 text-center text-xl font-bold text-gray-950">
-        Confirm Your Surprise
-      </h1>
+      <h1 className="px-12 text-center text-xl font-bold text-gray-950">Confirm Your Surprise</h1>
     </header>
   );
 }

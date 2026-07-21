@@ -13,6 +13,7 @@ import { BiSolidCategoryAlt } from "react-icons/bi";
 import { FaShoppingCart } from "react-icons/fa";
 import { CgNotes } from "react-icons/cg";
 import { IoPerson } from "react-icons/io5";
+import { IoGiftOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
 export default function NavigationBar() {
@@ -31,6 +32,14 @@ export default function NavigationBar() {
             onClick={() => navigate("/menu")}
           />
         </li>
+        <li>
+          <NavigationItem
+            icon={IoGiftOutline}
+            label="Surprise Me"
+            onClick={() => navigate("/surprise")}
+          />
+        </li>
+
         <li>
           <NavigationItem icon={FaShoppingCart} label="Cart" onClick={() => navigate("/cart")} />
         </li>

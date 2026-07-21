@@ -1,31 +1,32 @@
-import BackButton from "../../components/surprise/surpriseConfirmation/BackButton"
+import BackButton from "../../components/surprise/surpriseConfirmation/BackButton";
 import PlaceOrderButton from "../../components/surprise/surpriseConfirmation/PlaceOrderButton";
-import SurpriseBanner from "../../components/surprise/surpriseConfirmation/ConfirmSurpriseBanner"
-import ConfirmSurpriseHeader from "../../components/surprise/surpriseConfirmation/ConfirmSurpriseHeader"
+import SurpriseBanner from "../../components/surprise/surpriseConfirmation/ConfirmSurpriseBanner";
+import ConfirmSurpriseHeader from "../../components/surprise/surpriseConfirmation/ConfirmSurpriseHeader";
 import ConfirmSurpriseSummaryCard from "../../components/surprise/surpriseConfirmation/ConfirmSurpriseSummaryCard";
-import ConfirmSurpriseTotalCard from "../../components/surprise/surpriseConfirmation/ConfirmSurpriseTotal"
+import ConfirmSurpriseTotalCard from "../../components/surprise/surpriseConfirmation/ConfirmSurpriseTotal";
+import NavigationBar from "../../components/common/NavigationBar";
 import type { SurprisePreferences } from "../../types/surprise";
+import { useNavigate } from "react-router";
 
 export default function SurpriseConfrmationPage() {
+  const navigate = useNavigate();
   function handlePlaceOrder() {
     // logic here
   }
 
   function handleBack() {
-    // back navigation 
+    navigate("/surprise");
   }
 
-  // get preferences from prev page 
+  // get preferences from prev page
   // const preferences:SurprisePreferences = ;
   const preferences = null;
 
   return (
-
     <main className="min-h-screen bg-orange-50 p-4">
       <div className="relative mx-auto min-h-screen max-w-md rounded-2xl p-10 shadow-md">
         <div>
-          <ConfirmSurpriseHeader
-            onBack={handleBack} />
+          <ConfirmSurpriseHeader onBack={handleBack} />
         </div>
 
         <div>
@@ -54,8 +55,7 @@ export default function SurpriseConfrmationPage() {
             budget={preferences.budget} /> */}
 
           {/* hard coded value */}
-          <ConfirmSurpriseTotalCard
-            budget={25} />
+          <ConfirmSurpriseTotalCard budget={25} />
         </div>
 
         {/* Buttons */}
@@ -63,6 +63,9 @@ export default function SurpriseConfrmationPage() {
           <BackButton onClick={handleBack} />
 
           <PlaceOrderButton onClick={handlePlaceOrder} />
+        </div>
+        <div className="fixed bottom-0 left-0 right-0 bg-orange-50">
+          <NavigationBar />
         </div>
       </div>
     </main>

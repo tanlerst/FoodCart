@@ -1,13 +1,13 @@
 /**
  *  @file SurpriseMeButton.tsx
- *  @author Xi Yan 
+ *  @author Xi Yan
  *  @version 1.0.0
- *  @description This file is the surprise me button component for the surprise option page. 
+ *  @description This file is the surprise me button component for the surprise option page.
  *                It displays a button that triggers the surprise action.
  */
 
 type SurpriseMeButtonProps = {
-    onSurprise: () => void;
+  onSurprise: () => void;
 };
 
 export default function SurpriseMeButton({ onSurprise }: SurpriseMeButtonProps) {
@@ -21,6 +21,3 @@ export default function SurpriseMeButton({ onSurprise }: SurpriseMeButtonProps) 
     </button>
   );
 }
-
-
-
