@@ -14,11 +14,12 @@ export default function SurpriseOptionPage() {
     navigate("/surpriseconfirmation");
   };
 
-  const [dietaryPreference, setDietaryPreference] = useState("None");
-  const [notes, setNotes] = useState("");
-  const [budget, setBudget] = useState(10);
-  const [category, setCategory] = useState("All categories");
-  const [mealAmount, setMealAmount] = useState(1);
+    // const [dietaryPreferences, setDietaryPreferences] = useState("None");
+    const [dietaryPreferences, setDietaryPreferences] = useState<string[]>([]);
+    const [notes, setNotes] = useState("");
+    const [budget, setBudget] = useState(10);
+    const [category, setCategory] = useState("All categories");
+    const [mealAmount, setMealAmount] = useState(5);
 
   return (
     <main className="min-h-screen bg-orange-50 p-4">
@@ -30,12 +31,15 @@ export default function SurpriseOptionPage() {
 
           <BudgetCard budget={budget} setBudget={setBudget} />
 
-          <DietaryPreferences
-            dietaryPreference={dietaryPreference}
-            setDietaryPreference={setDietaryPreference}
-          />
+                    <DietaryPreferences 
+                        dietaryPreference={dietaryPreferences}
+                        setDietaryPreference={setDietaryPreferences}
+                    />
 
-          <CategoryCard selectedCategory={category} setSelectedCategory={setCategory} />
+                    <CategoryCard
+                        selectedCategories={category}
+                        setSelectedCategory={setCategory}
+                    />
 
           <NotesCard notes={notes} setNotes={setNotes} />
 
