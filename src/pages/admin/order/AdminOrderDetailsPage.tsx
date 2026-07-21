@@ -1,18 +1,18 @@
 /* Admin Order Details Page */
 
-import AdminOrderItemsCard from "../../components/admin/order/AdminOrderItemsCard";
-import type { OrderDetailsItem, OrderItemStatus, OrderStatus } from "../../types/order";
+import AdminOrderItemsCard from "../../../components/admin/order/AdminOrderItemsCard";
+import type { OrderDetailsItem, OrderItemStatus, OrderStatus } from "../../../types/order";
 import { useEffect, useState } from "react";
-import { getOrderDetails } from "../../helpers/admin/getOrderDetails";
+import { getOrderDetails } from "../../../helpers/admin/getOrderDetails";
 import { useLocation, Navigate } from "react-router";
-import { updateItemStatus } from "../../helpers/admin/updateItemStatus";
-import AdminOrderStatusTracker from "../../components/admin/order/status_tracker/AdminOrderStatusTracker";
-import StartPreparingButton from "../../components/admin/order/StartPreparingButton";
-import MarkAllServedButton from "../../components/admin/order/MarkAllAsServedButton";
-import MarkAsPaidButton from "../../components/admin/order/MarkAsPaidButton";
-import OrderCompletedBadge from "../../components/admin/order/OrderCompleteBadge";
-import MarkOrderCompleteButton from "../../components/admin/order/MarkOrderCompleteButton";
-import AdminLayout from "../../layouts/AdminLayout";
+import { updateItemStatus } from "../../../helpers/admin/updateItemStatus";
+import AdminOrderStatusTracker from "../../../components/admin/order/status_tracker/AdminOrderStatusTracker";
+import StartPreparingButton from "../../../components/admin/order/StartPreparingButton";
+import MarkAllServedButton from "../../../components/admin/order/MarkAllAsServedButton";
+import MarkAsPaidButton from "../../../components/admin/order/MarkAsPaidButton";
+import OrderCompletedBadge from "../../../components/admin/order/OrderCompleteBadge";
+import MarkOrderCompleteButton from "../../../components/admin/order/MarkOrderCompleteButton";
+import AdminLayout from "../../../layouts/AdminLayout";
 
 type orderDetailsLocationState = {
   orderIds: number[];
