@@ -81,10 +81,6 @@ export default function AdminMenuPage() {
     navigate("/additem");
   }
 
-  function handleAvailabilityChange(item: FoodItem, isAvailable: boolean) {
-    // logic to update the availability of the selected food item
-  }
-
   if (loading) {
     return (
       <AdminLayout title="Menu" description="Manage restaurant menu items.">
@@ -122,7 +118,6 @@ export default function AdminMenuPage() {
           <MenuTable
             items={paginatedItems}
             onEdit={handleEdit}
-            onAvailabilityChange={handleAvailabilityChange}
           />
 
           {/* Pagination */}

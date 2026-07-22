@@ -6,13 +6,9 @@ import AvailabilityBadge from "./AvailabilityBadge";
 type MenuTableRowProps = {
   item: FoodItem;
   onEdit: (item: FoodItem) => void;
-  onAvailabilityChange: (item: FoodItem, isAvailable: boolean) => void;
 };
 
-export default function MenuTableRow({ item, onEdit, onAvailabilityChange }: MenuTableRowProps) {
-  function handleAvailabilityToggle() {
-    onAvailabilityChange(item, !item.isAvailable);
-  }
+export default function MenuTableRow({ item, onEdit }: MenuTableRowProps) {
 
   return (
     <tr className="border-b border-gray-100 transition last:border-b-0 hover:bg-orange-50/40">
@@ -53,7 +49,7 @@ export default function MenuTableRow({ item, onEdit, onAvailabilityChange }: Men
 
       {/* isAvailable */}
       <td className="px-5 py-4">
-        <AvailabilityBadge isAvailable={item.isAvailable} onToggle={handleAvailabilityToggle} />
+        <AvailabilityBadge isAvailable={item.isAvailable} />
       </td>
 
       {/* Action buttons */}
