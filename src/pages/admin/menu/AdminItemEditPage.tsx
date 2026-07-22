@@ -3,7 +3,6 @@ import ItemForm from "../../../components/admin/menu/ItemForm";
 import AdminLayout from "../../../layouts/AdminLayout";
 
 export default function AdminEditItemPage() {
-  
   // currently hard coding item data
   const item = {
     id: 1,

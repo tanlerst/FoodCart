@@ -12,8 +12,8 @@ type PricingProps = {
 const RECOMMENDATION_ACTIVE_STYLE = "bg-orange-50 text-orange-600";
 const RECOMMEDATION_INACTIVE_STYLE = "bg-white text-gray-500 hover:bg-gray-50";
 
-export default function PricingCard({ 
-  price, 
+export default function PricingCard({
+  price,
   onPriceChange,
   recommended,
   availability,
@@ -52,10 +52,11 @@ export default function PricingCard({
             <span className="text-red-500">*</span>
           </label>
 
-          <select 
+          <select
             value={availability}
             onChange={(x) => onAvailabilityChange(x.target.value)}
-            className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-orange-500">
+            className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-orange-500"
+          >
             <option>Available</option>
             <option>Unavailable</option>
           </select>

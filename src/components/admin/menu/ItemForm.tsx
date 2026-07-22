@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InformationCard from "./InformationCard";
 import ItemImageCard from "./ItemImageCard";
 import DietaryPreferencesCard from "./DietaryPreferencesCard";
@@ -7,8 +7,8 @@ import SaveItemButton from "./SaveItemButton";
 import CancelButton from "./CancelButton"
 
 import type { CategoryOption } from "../../../helpers/admin/getCategories";
+import { getCategories } from "../../../helpers/admin/getCategories";
 
-// curently declaring type here, can move to types if necessary
 export type ItemFormValues = {
   name: string;
   description: string;
@@ -35,10 +35,9 @@ export type ItemFormSubmitData = {
 
 type ItemFormProps = {
   mode: "create" | "edit";
-  initialValues?: Partial<ItemFormValues>; // make every property optional
+  initialValues?: Partial<ItemFormValues>;
   existingImageUrl?: string | null;
-  // onSubmit: (data: ItemFormSubmitData)
-  onSubmit: () => void;
+  onSubmit: (data: ItemFormSubmitData) => Promise<void>;
 };
 
 const emptyValues: ItemFormValues = {
@@ -53,7 +52,12 @@ const emptyValues: ItemFormValues = {
   image: null,
 };
 
-export default function ItemForm({ mode, initialValues, existingImageUrl, onSubmit }: ItemFormProps) {
+export default function ItemForm({
+  mode,
+  initialValues,
+  existingImageUrl,
+  onSubmit,
+}: ItemFormProps) {
   const [values, setValues] = useState<ItemFormValues>({ ...emptyValues, ...initialValues });
   const [dietaryPreferences, setDietaryPreferences] = useState<string[]>([]);
   const [recommended, setRecommended] = useState<boolean>(initialValues?.recommended ?? false);
@@ -61,50 +65,83 @@ export default function ItemForm({ mode, initialValues, existingImageUrl, onSubm
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [submitting, setSubmitting] = useState(false);
 
+  useEffect(() => {
+    async function loadCategories() {
+      try {
+        const data = await getCategories();
+        setCategories(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoadingCategories(false);
+      }
+    }
+    loadCategories();
+  }, []);
+
+  function update(field: keyof ItemFormValues, value: ItemFormValues[keyof ItemFormValues]) {
+    setValues((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  }
+
   const requiresNewImage = mode === "create" && !values.image;
-  
+
   const isFormValid =
     values.name.trim() &&
-    values.categoryId &&
+    values.categoryId.trim() &&
     values.price.trim() &&
-    values.time &&
+    values.time.trim() &&
     !requiresNewImage;
 
-  function update() {
-    // general method to update values.value
-    // setValue
+  async function handleSubmit(formEvent: React.FormEvent<HTMLFormElement>) {
+    formEvent.preventDefault();
+    if (!isFormValid) {
+      return;
+    }
+    setSubmitting(true);
+    try {
+      await onSubmit({
+        name: values.name.trim(),
+        description: values.description.trim(),
+        category: Number(values.categoryId),
+        price: Number(values.price),
+        time: Number(values.time),
+        availability: values.availability,
+        image: values.image,
+      });
+    } finally {
+      setSubmitting(false);
+    }
   }
 
-  function handleSubmit() {
-    // submit the form
+  function handleNameChange(value: string) {
+    update("name", value);
   }
 
-  function handleNameChange() {
-
+  function handleDescriptionChange(value: string) {
+    update("description", value);
   }
 
-  function handleDescriptionChange() {
-
+  function handleCategoryChange(value: string) {
+    update("categoryId", value);
   }
 
-  function handleCategoryChange() {
-
+  function handleTimeChange(value: string) {
+    update("time", value);
   }
 
-  function handleTimeChange() {
-
+  function handlePriceChange(value: string) {
+    update("price", value);
   }
 
-  function handlePriceChange() {
-
+  function handleAvailabilityChange(value: string) {
+    update("availability", value);
   }
 
-  function handleAvailabilityChange() {
-
-  }
-
-  function handleImageChange() {
-
+  function handleImageChange(file: File | null) {
+    update("image", file);
   }
   
   function handleCancel() {
@@ -122,7 +159,6 @@ export default function ItemForm({ mode, initialValues, existingImageUrl, onSubm
         categories={categories}
         loadingCategories={loadingCategories}
         time={values.time}
-        // change these
         onNameChange={handleNameChange}
         onDescriptionChange={handleDescriptionChange}
         onCategoryChange={handleCategoryChange}
@@ -131,7 +167,6 @@ export default function ItemForm({ mode, initialValues, existingImageUrl, onSubm
 
       <PricingCard
         price={values.price}
-        // change this
         onPriceChange={handlePriceChange}
         availability={values.availability}
         onAvailabilityChange={handleAvailabilityChange}
@@ -146,7 +181,6 @@ export default function ItemForm({ mode, initialValues, existingImageUrl, onSubm
 
       <ItemImageCard
         image={values.image}
-        // change this
         onImageChange={handleImageChange}
         existingImageUrl={existingImageUrl}
       />

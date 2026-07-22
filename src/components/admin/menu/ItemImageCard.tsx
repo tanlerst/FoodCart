@@ -4,15 +4,8 @@ type ImageProps = {
   existingImageUrl?: string | null; // only in edit mode
 };
 
-export default function ItemImageCard({
-  image,
-  onImageChange,
-  existingImageUrl
-}: ImageProps) {
-
-  const previewUrl = image
-    ? URL.createObjectURL(image)
-    : null;
+export default function ItemImageCard({ image, onImageChange, existingImageUrl }: ImageProps) {
+  const previewUrl = image ? URL.createObjectURL(image) : null;
 
   return (
     <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
@@ -35,7 +28,6 @@ export default function ItemImageCard({
 
         {/* Upload new image*/}
         <div className={existingImageUrl ? "" : "col-span-2"}>
-
           <h3 className="mb-3 text-sm font-medium text-gray-700">
             {existingImageUrl ? (
               <>
@@ -58,11 +50,7 @@ export default function ItemImageCard({
 
             {/* If previewUrl is set then show preview */}
             {previewUrl ? (
-              <img
-                src={previewUrl}
-                alt="Item preview"
-                className="h-full w-full object-cover"
-              />
+              <img src={previewUrl} alt="Item preview" className="h-full w-full object-cover" />
             ) : (
               <>
                 <p className="font-semibold text-gray-800">Upload Item Image</p>

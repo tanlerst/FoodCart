@@ -1,6 +1,6 @@
 import { supabase } from "../../utils/supabase";
 
-type itemDetails = {
+export type itemDetails = {
   name: string;
   description: string;
   category: number;
