@@ -1,6 +1,7 @@
 import { useState } from "react";
 import InformationCard from "./InformationCard";
 import ItemImageCard from "./ItemImageCard";
+import DietaryPreferencesCard from "./DietaryPreferencesCard";
 import PricingCard from "./PricingCard";
 import SaveItemButton from "./SaveItemButton";
 import CancelButton from "./CancelButton"
@@ -16,6 +17,7 @@ export type ItemFormValues = {
   time: string;
   availability: string;
   recommended: boolean;
+  dietaryPreferences: string[],   
   image: File | null;
 };
 
@@ -27,6 +29,7 @@ export type ItemFormSubmitData = {
   time: number;
   availability: string;
   recommended: boolean;
+  dietaryPreferences: string[],    
   image: File | null; // null in edit mode (keep existing image)
 };
 
@@ -46,11 +49,13 @@ const emptyValues: ItemFormValues = {
   time: "",
   availability: "available",
   recommended: false,
+  dietaryPreferences: [],    
   image: null,
 };
 
 export default function ItemForm({ mode, initialValues, existingImageUrl, onSubmit }: ItemFormProps) {
   const [values, setValues] = useState<ItemFormValues>({ ...emptyValues, ...initialValues });
+  const [dietaryPreferences, setDietaryPreferences] = useState<string[]>([]);
   const [recommended, setRecommended] = useState<boolean>(initialValues?.recommended ?? false);
   const [categories, setCategories] = useState<CategoryOption[]>([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
@@ -101,16 +106,11 @@ export default function ItemForm({ mode, initialValues, existingImageUrl, onSubm
   function handleImageChange() {
 
   }
-
-  function handleRecommendationChange() {
-
-  }
-
+  
   function handleCancel() {
     // navigate back to menu item page
 
   }
-
 
 
   return (
@@ -137,6 +137,11 @@ export default function ItemForm({ mode, initialValues, existingImageUrl, onSubm
         onAvailabilityChange={handleAvailabilityChange}
         recommended={recommended}
         onRecommendedChange={setRecommended}
+      />
+
+      <DietaryPreferencesCard
+        selected={dietaryPreferences}
+        onChange={setDietaryPreferences}
       />
 
       <ItemImageCard
