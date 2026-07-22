@@ -13,6 +13,7 @@ export type ItemFormValues = {
   price: string;
   time: string;
   availability: string;
+  recommended: boolean;
   image: File | null;
 };
 
@@ -23,6 +24,7 @@ export type ItemFormSubmitData = {
   price: number;
   time: number;
   availability: string;
+  recommended: boolean;
   image: File | null; // null in edit mode (keep existing image)
 };
 
@@ -41,18 +43,16 @@ const emptyValues: ItemFormValues = {
   price: "",
   time: "",
   availability: "available",
+  recommended: false,
   image: null,
 };
 
 export default function ItemForm({ mode, initialValues, existingImageUrl, onSubmit }: ItemFormProps) {
   const [values, setValues] = useState<ItemFormValues>({ ...emptyValues, ...initialValues });
+  const [recommended, setRecommended] = useState<boolean>(initialValues?.recommended ?? false);
   const [categories, setCategories] = useState<CategoryOption[]>([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [submitting, setSubmitting] = useState(false);
-
-  function update() {
-    // update the form values with the new value
-  }
 
   const requiresNewImage = mode === "create" && !values.image;
   
@@ -62,6 +62,11 @@ export default function ItemForm({ mode, initialValues, existingImageUrl, onSubm
     values.price.trim() &&
     values.time &&
     !requiresNewImage;
+
+  function update() {
+    // general method to update values.value
+    // setValue
+  }
 
   function handleSubmit() {
     // submit the form
@@ -95,6 +100,10 @@ export default function ItemForm({ mode, initialValues, existingImageUrl, onSubm
 
   }
 
+  function handleRecommendationChange() {
+
+  }
+
 
 
   return (
@@ -119,6 +128,8 @@ export default function ItemForm({ mode, initialValues, existingImageUrl, onSubm
         onPriceChange={handlePriceChange}
         availability={values.availability}
         onAvailabilityChange={handleAvailabilityChange}
+        recommended={recommended}
+        onRecommendedChange={setRecommended}
       />
 
       <ItemImageCard

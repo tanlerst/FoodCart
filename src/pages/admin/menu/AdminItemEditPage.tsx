@@ -13,6 +13,7 @@ export default function AdminEditItemPage() {
     price: 12.99,
     time: 15,
     availability: "available",
+    recommended: true,
     imageUrl: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400",
   };
 
@@ -33,6 +34,7 @@ export default function AdminEditItemPage() {
             price: String(item.price),
             time: String(item.time),
             availability: item.availability,
+            recommended: item.recommended,
           }}
           onSubmit={handleSubmit}
         />
