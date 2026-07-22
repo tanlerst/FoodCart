@@ -4,10 +4,11 @@ import ItemImageCard from "./ItemImageCard";
 import DietaryPreferencesCard from "./DietaryPreferencesCard";
 import PricingCard from "./PricingCard";
 import SaveItemButton from "./SaveItemButton";
-import CancelButton from "./CancelButton"
+import CancelButton from "./CancelButton";
 
 import type { CategoryOption } from "../../../helpers/admin/getCategories";
 import { getCategories } from "../../../helpers/admin/getCategories";
+import { useNavigate } from "react-router";
 
 export type ItemFormValues = {
   name: string;
@@ -17,7 +18,7 @@ export type ItemFormValues = {
   time: string;
   availability: string;
   recommended: boolean;
-  dietaryPreferences: string[],   
+  dietaryPreferences: number[];
   image: File | null;
 };
 
@@ -27,9 +28,9 @@ export type ItemFormSubmitData = {
   category: number;
   price: number;
   time: number;
-  availability: string;
+  availability: boolean;
   recommended: boolean;
-  dietaryPreferences: string[],    
+  dietaryPreferences: number[];
   image: File | null; // null in edit mode (keep existing image)
 };
 
@@ -48,7 +49,7 @@ const emptyValues: ItemFormValues = {
   time: "",
   availability: "available",
   recommended: false,
-  dietaryPreferences: [],    
+  dietaryPreferences: [],
   image: null,
 };
 
@@ -59,11 +60,14 @@ export default function ItemForm({
   onSubmit,
 }: ItemFormProps) {
   const [values, setValues] = useState<ItemFormValues>({ ...emptyValues, ...initialValues });
-  const [dietaryPreferences, setDietaryPreferences] = useState<string[]>([]);
+  const [dietaryPreferences, setDietaryPreferences] = useState<number[]>(
+    initialValues?.dietaryPreferences ?? [],
+  );
   const [recommended, setRecommended] = useState<boolean>(initialValues?.recommended ?? false);
   const [categories, setCategories] = useState<CategoryOption[]>([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadCategories() {
@@ -108,8 +112,10 @@ export default function ItemForm({
         category: Number(values.categoryId),
         price: Number(values.price),
         time: Number(values.time),
-        availability: values.availability,
+        availability: values.availability === "available",
         image: values.image,
+        recommended,
+        dietaryPreferences,
       });
     } finally {
       setSubmitting(false);
@@ -143,12 +149,10 @@ export default function ItemForm({
   function handleImageChange(file: File | null) {
     update("image", file);
   }
-  
+
   function handleCancel() {
-    // navigate back to menu item page
-
+    navigate("/adminmenu");
   }
-
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 pb-5 pt-5">
@@ -174,10 +178,7 @@ export default function ItemForm({
         onRecommendedChange={setRecommended}
       />
 
-      <DietaryPreferencesCard
-        selected={dietaryPreferences}
-        onChange={setDietaryPreferences}
-      />
+      <DietaryPreferencesCard selected={dietaryPreferences} onChange={setDietaryPreferences} />
 
       <ItemImageCard
         image={values.image}

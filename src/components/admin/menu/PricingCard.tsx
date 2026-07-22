@@ -19,7 +19,7 @@ export default function PricingCard({
   availability,
   onAvailabilityChange,
   onRecommendedChange,
- }: PricingProps) {
+}: PricingProps) {
   return (
     <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
       <h2 className="mb-6 text-lg font-semibold text-gray-900">Pricing & Availability</h2>
@@ -80,23 +80,19 @@ export default function PricingCard({
               type="button"
               onClick={() => onRecommendedChange(true)}
               className={`flex flex-1 items-center justify-center gap-2 px-4 py-3 text-sm font-medium transition ${
-                recommended
-                  ? RECOMMENDATION_ACTIVE_STYLE
-                  : RECOMMEDATION_INACTIVE_STYLE
+                recommended ? RECOMMENDATION_ACTIVE_STYLE : RECOMMEDATION_INACTIVE_STYLE
               }`}
             >
               <span>{recommended ? "★" : "☆"}</span>
               Recommended
             </button>
-            
+
             {/* Not recommended */}
             <button
               type="button"
               onClick={() => onRecommendedChange(false)}
               className={`flex flex-1 items-center justify-center gap-2 border-l border-gray-300 px-4 py-3 text-sm font-medium transition ${
-                !recommended
-                  ? RECOMMENDATION_ACTIVE_STYLE
-                  : RECOMMEDATION_INACTIVE_STYLE
+                !recommended ? RECOMMENDATION_ACTIVE_STYLE : RECOMMEDATION_INACTIVE_STYLE
               }`}
             >
               <span>{!recommended ? "★" : "☆"}</span>

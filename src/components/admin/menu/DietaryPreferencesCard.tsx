@@ -1,25 +1,37 @@
-/* Dietary preferences card for admin new item page and item edit page */
+import { readRestrictions } from "../../../helpers/surprise/readRestrictions";
+import type { RestrictionRow } from "../../../helpers/surprise/readRestrictions";
+import { useEffect, useState } from "react";
 
 const DIETARY_PREFERENCES_ACTIVE_STYLE = "border-orange-400 bg-orange-50 text-orange-600";
-const DIETARY_PREFERENCES_INACTIVE_STYLE = "border-gray-300 bg-white text-gray-700 hover:bg-gray-50";
-
-const DIETARY_OPTIONS = [
-  { value: "vegetarian", label: "Vegetarian" },
-  { value: "vegan", label: "Vegan" },
-  { value: "gluten-free", label: "Gluten-Free" },
-  { value: "dairy-free", label: "Dairy-Free" },
-  { value: "nut-free", label: "Nut-Free" },
-];
+const DIETARY_PREFERENCES_INACTIVE_STYLE =
+  "border-gray-300 bg-white text-gray-700 hover:bg-gray-50";
 
 type DietaryPreferencesProps = {
-  selected: string[];
-  onChange: (value: string[]) => void;
+  selected: number[];
+  onChange: (value: number[]) => void;
 };
 
 export default function DietaryPreferencesCard({ selected, onChange }: DietaryPreferencesProps) {
-  const isNoneSelected = selected.length === 0;
+  const [dietary, setDietary] = useState<RestrictionRow[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  function toggleOption(value: string) {
+  const isNoneSelected = selected.length === 0;
+  useEffect(() => {
+    async function loadDietary() {
+      try {
+        const data = await readRestrictions();
+        setDietary(data);
+      } catch (error) {
+        setError(error instanceof Error ? error.message : "Failed to load dietary preferences.");
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadDietary();
+  }, []);
+
+  function toggleOption(value: number) {
     if (selected.includes(value)) {
       onChange(selected.filter((v) => v !== value));
     } else {
@@ -29,6 +41,14 @@ export default function DietaryPreferencesCard({ selected, onChange }: DietaryPr
 
   function selectNone() {
     onChange([]);
+  }
+
+  if (loading) {
+    return <div className="p-8">Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
   }
 
   return (
@@ -47,18 +67,20 @@ export default function DietaryPreferencesCard({ selected, onChange }: DietaryPr
         >
           None
         </button>
-        
+
         {/* Other dietary options */}
-        {DIETARY_OPTIONS.map((option) => (
+        {dietary.map((option) => (
           <button
-            key={option.value}
+            key={option.id}
             type="button"
-            onClick={() => toggleOption(option.value)}
+            onClick={() => toggleOption(option.id)}
             className={`rounded-xl border px-4 py-3 text-center text-sm font-medium transition ${
-              selected.includes(option.value) ? DIETARY_PREFERENCES_ACTIVE_STYLE : DIETARY_PREFERENCES_INACTIVE_STYLE
+              selected.includes(option.id)
+                ? DIETARY_PREFERENCES_ACTIVE_STYLE
+                : DIETARY_PREFERENCES_INACTIVE_STYLE
             }`}
           >
-            {option.label}
+            {option.restriction}
           </button>
         ))}
       </div>

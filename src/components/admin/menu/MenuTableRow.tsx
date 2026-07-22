@@ -1,4 +1,4 @@
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil } from "lucide-react";
 
 import type { FoodItem } from "../../../types/food";
 import AvailabilityBadge from "./AvailabilityBadge";
@@ -6,16 +6,10 @@ import AvailabilityBadge from "./AvailabilityBadge";
 type MenuTableRowProps = {
   item: FoodItem;
   onEdit: (item: FoodItem) => void;
-  onDelete: (item: FoodItem) => void;
   onAvailabilityChange: (item: FoodItem, isAvailable: boolean) => void;
 };
 
-export default function MenuTableRow({
-  item,
-  onEdit,
-  onDelete,
-  onAvailabilityChange,
-}: MenuTableRowProps) {
+export default function MenuTableRow({ item, onEdit, onAvailabilityChange }: MenuTableRowProps) {
   function handleAvailabilityToggle() {
     onAvailabilityChange(item, !item.isAvailable);
   }
@@ -74,17 +68,6 @@ export default function MenuTableRow({
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-600 transition hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600"
           >
             <Pencil size={17} />
-          </button>
-
-          {/* Delete button */}
-          <button
-            type="button"
-            onClick={() => onDelete(item)}
-            aria-label={`Delete ${item.name}`}
-            title={`Delete ${item.name}`}
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 bg-white text-red-500 transition hover:border-red-300 hover:bg-red-50"
-          >
-            <Trash2 size={17} />
           </button>
         </div>
       </td>

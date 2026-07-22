@@ -6,16 +6,10 @@ import MenuTableRow from "./MenuTableRow";
 type MenuTableProps = {
   items: FoodItem[];
   onEdit: (item: FoodItem) => void;
-  onDelete: (item: FoodItem) => void;
   onAvailabilityChange: (item: FoodItem, isAvailable: boolean) => void;
 };
 
-export default function MenuTable({
-  items,
-  onEdit,
-  onDelete,
-  onAvailabilityChange,
-}: MenuTableProps) {
+export default function MenuTable({ items, onEdit, onAvailabilityChange }: MenuTableProps) {
   if (items.length === 0) {
     return <MenuEmptyState />;
   }
@@ -46,7 +40,6 @@ export default function MenuTable({
               key={item.id}
               item={item}
               onEdit={onEdit}
-              onDelete={onDelete}
               onAvailabilityChange={onAvailabilityChange}
             />
           ))}

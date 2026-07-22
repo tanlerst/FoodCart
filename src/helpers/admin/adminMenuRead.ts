@@ -11,6 +11,7 @@ type FoodRow = {
   recommended: boolean;
   available: boolean;
   category: {
+    id: number;
     name: string;
   };
 };
@@ -28,6 +29,7 @@ export async function getItems(): Promise<FoodItem[]> {
       recommended,
       available,
       category (
+        id,
         name
       )
     `)
@@ -47,6 +49,7 @@ export async function getItems(): Promise<FoodItem[]> {
     time: food.time,
     isRecommended: food.recommended,
     isAvailable: food.available,
+    categoryId: food.category.id,
     category: {
       name: food.category.name,
     },

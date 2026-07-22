@@ -35,6 +35,7 @@ export default function App() {
         try {
           setRoute(await getRoute(data.session.user.id));
         } catch (error) {
+          console.log(error);
           await supabase.auth.signOut();
           setSession(null);
           setRoute(null);

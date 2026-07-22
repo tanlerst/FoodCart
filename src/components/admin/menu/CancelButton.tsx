@@ -4,7 +4,7 @@ type CancelButtonProps = {
 };
 
 export default function CancelButton({ onCancel }: CancelButtonProps) {
-// export default function CancelButton() {
+  // export default function CancelButton() {
   return (
     <button
       type="button"

@@ -72,11 +72,9 @@ export default function AdminMenuPage() {
   }
 
   function handleEdit(item: FoodItem) {
-    // direct to edit page of selected food item
-  }
-
-  function handleDelete(item: FoodItem) {
-    // delete logic to delete selected food item
+    navigate("/edititem", {
+      state: { item },
+    });
   }
 
   function handleAddItem() {
@@ -124,7 +122,6 @@ export default function AdminMenuPage() {
           <MenuTable
             items={paginatedItems}
             onEdit={handleEdit}
-            onDelete={handleDelete}
             onAvailabilityChange={handleAvailabilityChange}
           />
 
