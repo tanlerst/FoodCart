@@ -64,15 +64,14 @@ export async function getSurpriseFoods(preferences: SurprisePreferences): Promis
     restrictions.map((row) => [row.id, row.restriction]),
   );
 
-  const blockedRestrictionsByFoodId = new Map<number, Set<string>>();
+  const blockedRestrictions = new Map<number, Set<string>>();
 
   for (const row of foodRestrictions) {
     const restrictionName = restrictionById.get(row.restrictionId);
     if (!restrictionName) continue;
-
-    const existing = blockedRestrictionsByFoodId.get(row.foodId) ?? new Set<string>();
+    const existing = blockedRestrictions.get(row.foodId) ?? new Set<string>();
     existing.add(restrictionName);
-    blockedRestrictionsByFoodId.set(row.foodId, existing);
+    blockedRestrictions.set(row.foodId, existing);
   }
 
   const selectedCategories =
