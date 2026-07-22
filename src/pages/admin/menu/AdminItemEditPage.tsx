@@ -14,6 +14,7 @@ export default function AdminEditItemPage() {
     time: 15,
     availability: "available",
     recommended: true,
+    dietaryPreferences: ["gluten-free"],
     imageUrl: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400",
   };
 
@@ -35,6 +36,7 @@ export default function AdminEditItemPage() {
             time: String(item.time),
             availability: item.availability,
             recommended: item.recommended,
+            dietaryPreferences:[]
           }}
           onSubmit={handleSubmit}
         />
