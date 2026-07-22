@@ -5,7 +5,7 @@ export type FoodItem = {
   price: number;
   image: string;
   isRecommended?: boolean; // for food recommendations
-  isAvailable?: boolean; // to indicate if the food item is available for ordering
+  isAvailable: boolean; // to indicate if the food item is available for ordering
   categoryId?: number;
   category: {
     name: string;
