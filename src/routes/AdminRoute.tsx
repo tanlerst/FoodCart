@@ -22,7 +22,6 @@ export function AdminRoute({
       }
       try {
         const usertype = await getUserType(session.user.id);
-        console.log(usertype);
         setAdmin(usertype === 2);
       } catch {
         setAdmin(false);

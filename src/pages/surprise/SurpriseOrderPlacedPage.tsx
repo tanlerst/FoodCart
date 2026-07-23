@@ -1,18 +1,20 @@
 import OrderPlacedActionButtons from "../../components/surprise/surpriseOrderPlaced/OrderPlacedActionButtons";
 import OrderOrderPlacedBanner from "../../components/surprise/surpriseOrderPlaced/OrderPlacedBanner";
 import NavigationBar from "../../components/common/NavigationBar";
+import { useNavigate } from "react-router";
 
 export default function SurpriseOrderPlacedPage() {
+  const navigate = useNavigate();
   function handleOrderAgain() {
-    // navigate to surprise order page
+    navigate("/surprise");
   }
 
   function handleBackMenu() {
-    // back to menu
+    navigate("/menu");
   }
 
   function handleGoCart() {
-    // go to cart logic
+    navigate("/orders");
   }
 
   return (

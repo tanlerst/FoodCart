@@ -22,7 +22,6 @@ export function UserRoute({
       }
       try {
         const usertype = await getUserType(session.user.id);
-        console.log(usertype);
         setUser(usertype === 1);
       } catch {
         setUser(false);

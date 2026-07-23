@@ -17,7 +17,7 @@ export default function DietaryPreferences({
     async function loadRestrictions() {
       try {
         const data = await readRestrictions();
-        setRestrictions(["None", ...data]);
+        setRestrictions(["None", ...data.map((row) => row.restriction)]);
       } catch (error) {
         console.error(error);
       }
