@@ -32,8 +32,8 @@ export default function SurpriseOptionPage() {
   };
 
   return (
-    <main className="min-h-screen bg-orange-50 p-4">
-      <div className="relative mx-auto min-h-screen max-w-md rounded-2xl p-10 shadow-md">
+    <main className="min-h-screen bg-orange-50 p-4 pb-28">
+      <div className="relative mx-auto max-w-md rounded-2xl p-10 shadow-md">
         <h1 className="mb-2 text-center text-3xl font-bold text-gray-800">Surprise Me!</h1>
 
         <div className="my-6 w-full max-w-md">
