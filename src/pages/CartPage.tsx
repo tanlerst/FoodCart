@@ -1,7 +1,7 @@
 import CartItemList from "../components/cart/CartItemList";
 import NavigationBar from "../components/common/NavigationBar";
 import ClearCartButton from "../components/cart/ClearCartButton";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../contexts/CartContext";
 import { doCheckout } from "../helpers/cart/doCheckout";
 import OrderSummary from "../components/cart/OrderSummary";
 import { calculateCartPricing } from "../helpers/cart/cartCalculation";

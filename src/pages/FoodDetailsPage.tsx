@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import FoodDetails from "../components/food/FoodDetails";
 import type { Food } from "../types/food";
 import { fetchFood } from "../helpers/menu/foodId";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../contexts/CartContext";
 import { useNavigate } from "react-router";
 
 export default function FoodDetailsPage() {
