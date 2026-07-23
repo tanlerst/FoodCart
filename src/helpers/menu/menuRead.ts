@@ -47,6 +47,7 @@ export async function fetchMenu(): Promise<FoodItem[]> {
     category: {
       name: food.category.name,
     },
+    isAvailable: true,
   }));
 }
 

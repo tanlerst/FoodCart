@@ -115,10 +115,7 @@ export default function AdminMenuPage() {
         />
 
         <div className="m-5 overflow-hidden rounded-xl border border-gray-200">
-          <MenuTable
-            items={paginatedItems}
-            onEdit={handleEdit}
-          />
+          <MenuTable items={paginatedItems} onEdit={handleEdit} />
 
           {/* Pagination */}
           <MenuPagination

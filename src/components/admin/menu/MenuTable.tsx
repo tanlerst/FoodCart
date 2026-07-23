@@ -35,11 +35,7 @@ export default function MenuTable({ items, onEdit }: MenuTableProps) {
         {/* Table row */}
         <tbody>
           {items.map((item) => (
-            <MenuTableRow
-              key={item.id}
-              item={item}
-              onEdit={onEdit}
-            />
+            <MenuTableRow key={item.id} item={item} onEdit={onEdit} />
           ))}
         </tbody>
       </table>

@@ -44,5 +44,6 @@ export async function getRecommended(): Promise<FoodItem[]> {
     category: {
       name: food.category[0]?.name ?? "",
     },
+    isAvailable: true,
   }));
 }

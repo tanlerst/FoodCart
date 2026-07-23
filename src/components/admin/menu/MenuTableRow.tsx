@@ -9,7 +9,6 @@ type MenuTableRowProps = {
 };
 
 export default function MenuTableRow({ item, onEdit }: MenuTableRowProps) {
-
   return (
     <tr className="border-b border-gray-100 transition last:border-b-0 hover:bg-orange-50/40">
       {/* Food item */}

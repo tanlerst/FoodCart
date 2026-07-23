@@ -7,10 +7,11 @@ type FoodRow = {
   description: string;
   price: number;
   image: string;
-  time: number;
+  available: boolean;
   category: {
     name: string;
   };
+  time: number;
 };
 
 export async function fetchFood(id: number): Promise<FoodItem | null> {
@@ -22,10 +23,11 @@ export async function fetchFood(id: number): Promise<FoodItem | null> {
       description,
       price,
       image,
-      time,
+      available,
       category (
         name
       )
+      time,
     `)
     .eq("id", id)
     .single();
@@ -47,6 +49,7 @@ export async function fetchFood(id: number): Promise<FoodItem | null> {
     price: food.price,
     image: supabase.storage.from("FoodCart").getPublicUrl(food.image).data.publicUrl,
     time: food.time,
+    isAvailable: food.available,
     category: {
       name: food.category.name,
     },
