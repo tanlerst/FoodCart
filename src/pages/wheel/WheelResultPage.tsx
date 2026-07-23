@@ -6,6 +6,7 @@ import {
 
 import WheelResultCard from "../../components/wheel/ResultCard";
 import { SELECTED_ITEM } from "../../data/sampleWheelItems"
+import CancelButton from "../../components/wheel/CancelButton";
 
 // TODO: hard coded value
 const selectedItem = SELECTED_ITEM;
@@ -17,13 +18,18 @@ export default function WheelResultPage() {
 
   }
 
+  function handleCancel() {
+  
+  }
+
   return (
     <main className="min-h-screen bg-orange-50/40 px-4 pb-28 pt-6">
       <div className="mx-auto max-w-md">
-        <header>
+        <header className="flex items-center justify-between">
           <h1 className="text-2xl font-bold text-gray-900">
             Spin Result
           </h1>
+            <CancelButton onClick={handleCancel}/>
         </header>
 
         <section className="mt-10 text-center">

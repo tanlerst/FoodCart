@@ -5,6 +5,7 @@ import { filterEligibleWheelItems } from "../../helpers/wheel/filterWheelItem";
 import { useWheel } from "../../helpers/wheel/useWheel";
 import { SAMPLE_WHEEL_ITEMS } from "../../data/sampleWheelItems"
 import { MIN_WHEEL_ITEMS, MAX_WHEEL_ITEMS } from "../../contexts/WheelContext";
+import CancelButton from "../../components/wheel/CancelButton";
 
 const MINIMUM_WHEEL_ITEMS = MIN_WHEEL_ITEMS;
 const MAXIMUM_WHEEL_ITEMS = MAX_WHEEL_ITEMS;
@@ -18,16 +19,24 @@ export default function WheelListPage() {
 
   const canSpin = eligibleItems.length >= MINIMUM_WHEEL_ITEMS;
 
+  function handleCancel() {
+    
+  }
+
   if (items.length === 0) {
     return (
       <main className="min-h-screen bg-orange-50/40 px-4 pb-28 pt-6">
         <div className="mx-auto max-w-md">
           <header>
-            <h1 className="text-2xl font-bold text-gray-900">
-              Wheel Item List
-            </h1>
+            <div className="flex items-center justify-between">
+              <h1 className="text-2xl font-bold text-gray-900">
+                Wheel Item List
+              </h1>
 
-            <p className="mt-2 text-sm leading-6 text-gray-600">
+              <CancelButton onClick={handleCancel} />
+            </div>
+
+            <p className="mt-6 text-sm leading-6 text-gray-600">
               Add your favourite items to the wheel and let it decide what you should eat
             </p>
           </header>
@@ -45,12 +54,16 @@ export default function WheelListPage() {
     <main className="min-h-screen bg-orange-50/40 px-4 pb-28 pt-6">
       <div className="mx-auto max-w-md">
         <header>
-          <h1 className="text-2xl font-bold text-gray-900">
-            Wheel Item List
-          </h1>
+          <div className="flex items-center justify-between">
+            <h1 className="text-2xl font-bold text-gray-900">
+              Wheel Item List
+            </h1>
 
-          <p className="mt-2 text-sm leading-6 text-gray-600">
-            Add items to the wheel and let it decides what you should eat
+            <CancelButton onClick={handleCancel} />
+          </div>
+
+          <p className="mt-6 text-sm leading-6 text-gray-600">
+            Add your favourite items to the wheel and let it decide what you should eat
           </p>
         </header>
 
