@@ -14,7 +14,7 @@ export default function SurpriseOptionPage() {
 
   const [dietaryPreferences, setDietaryPreferences] = useState<string[]>([]);
   const [notes, setNotes] = useState("");
-  const [budget, setBudget] = useState(10);
+  const [budget, setBudget] = useState(15);
   const [category, setCategory] = useState<string[]>([]);
   const [mealAmount, setMealAmount] = useState(1);
 
@@ -39,7 +39,7 @@ export default function SurpriseOptionPage() {
         <div className="my-6 w-full max-w-md">
           <MealAmountCard mealAmount={mealAmount} setMealAmount={setMealAmount} />
 
-          <BudgetCard budget={budget} setBudget={setBudget} />
+          <BudgetCard budget={budget} minBudget={15} maxBudget={200} setBudget={setBudget} />
 
           <DietaryPreferences
             dietaryPreference={dietaryPreferences}

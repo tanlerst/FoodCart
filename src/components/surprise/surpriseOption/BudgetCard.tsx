@@ -1,19 +1,24 @@
-/**
- *  @file BudgetCard.tsx
- *  @author Xi Yan
- *  @version 1.0.0
- *  @description This file is the budget card component for the surprise option page.
- *                It displays a card with the budget slider for the user to select their budget.
- */
-
 type BudgetCardProps = {
   budget: number;
+  minBudget: number;
+  maxBudget: number;
   setBudget: (budget: number) => void;
 };
 
-export default function BudgetCard({ budget, setBudget }: BudgetCardProps) {
-  const MIN_BUDGET = 10; // to be updated
-  const MAX_BUDGET = 100;
+export default function BudgetCard({ budget, minBudget, maxBudget, setBudget }: BudgetCardProps) {
+
+  function handleBudgetChange(value: number) {
+    if (value < minBudget) {
+      setBudget(minBudget);
+      return;
+    }
+
+    if (value > maxBudget) {
+      setBudget(maxBudget);
+      return;
+    }
+  setBudget(value);
+}
 
   return (
     <section>
@@ -25,17 +30,17 @@ export default function BudgetCard({ budget, setBudget }: BudgetCardProps) {
 
         <input
           type="range"
-          min={MIN_BUDGET}
-          max={MAX_BUDGET}
+          min={minBudget}
+          max={maxBudget}
           step="1"
           value={budget}
-          onChange={(event) => setBudget(Number(event.target.value))}
+          onChange={(event) => handleBudgetChange(Number(event.target.value))}
           className="w-full accent-orange-500"
         />
 
         <div className="flex items-center justify-between">
-          <span className="text-gray-500 text-sm">Min: ${MIN_BUDGET}</span>
-          <span className="text-gray-500 text-sm">Max: ${MAX_BUDGET}</span>
+          <span className="text-gray-500 text-sm">Min: ${minBudget}</span>
+          <span className="text-gray-500 text-sm">Max: ${maxBudget}</span>
         </div>
 
         <div className="flex mt-4 w-full border border-gray-300 rounded-lg">
@@ -43,9 +48,10 @@ export default function BudgetCard({ budget, setBudget }: BudgetCardProps) {
 
           <input
             type="number"
-            min={MIN_BUDGET}
-            max={MAX_BUDGET}
+            min={minBudget}
+            max={maxBudget}
             value={budget}
+            onChange={(event) => handleBudgetChange(Number(event.target.value))}
             className="w-full border-none px-4 py-1 outline-none accent-orange-500"
           />
         </div>
