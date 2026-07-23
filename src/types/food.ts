@@ -12,3 +12,8 @@ export type FoodItem = {
   };
   time: number;
 };
+
+export type ItemData = {
+  food: FoodItem;
+  quantity: number;
+};

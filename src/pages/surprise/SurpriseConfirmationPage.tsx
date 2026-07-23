@@ -9,14 +9,14 @@ import type { SurprisePreferences } from "../../types/surprise";
 import { useLocation, useNavigate } from "react-router";
 import { getSurpriseFoods } from "../../helpers/surprise/surpriseHelper";
 import { useEffect, useState } from "react";
-import type { Food } from "../../types/food";
+import type { FoodItem, ItemData } from "../../types/food";
 import { doCheckout } from "../../helpers/cart/doCheckout";
-import type { ItemData } from "../../types/itemData";
+
 export default function SurpriseConfrmationPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const preferences = location.state as SurprisePreferences | undefined;
-  const [foods, setFoods] = useState<Food[]>([]);
+  const [foods, setFoods] = useState<FoodItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
