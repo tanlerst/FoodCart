@@ -21,6 +21,9 @@ import { getRoute } from "./helpers/auth/getRoute";
 import FoodRecommendationPage from "./pages/FoodRecommendationPage";
 import AdminMenuPage from "./pages/admin/menu/AdminMenuPage";
 import AdminEditItemPage from "./pages/admin/menu/AdminItemEditPage";
+import SurpriseOptionPage from "./pages/surprise/SurpriseOptionPage";
+import SurpriseConfirmationPage from "./pages/surprise/SurpriseConfirmationPage";
+import SurpriseOrderPlacedPage from "./pages/surprise/SurpriseOrderPlacedPage";
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
@@ -114,6 +117,33 @@ export default function App() {
             element={
               <UserRoute session={session}>
                 <FoodDetailsPage />
+              </UserRoute>
+            }
+          />
+
+          <Route
+            path="/surprise"
+            element={
+              <UserRoute session={session}>
+                <SurpriseOptionPage />
+              </UserRoute>
+            }
+          />
+
+          <Route
+            path="/surpriseconfirmation"
+            element={
+              <UserRoute session={session}>
+                <SurpriseConfirmationPage />
+              </UserRoute>
+            }
+          />
+
+          <Route
+            path="/surpriseplaced"
+            element={
+              <UserRoute session={session}>
+                <SurpriseOrderPlacedPage />
               </UserRoute>
             }
           />
