@@ -30,6 +30,7 @@ export type TopSellingItem = {
   name: string;
   image: string;
   orderCount: number;
+  revenue: number;
 };
 
 export type TopSellingMetric =  
