@@ -1,12 +1,17 @@
-import type { TopSellingItem } from "../../../types/adminDashboard";
+import type { TopSellingItem, TopSellingMetric } from "../../../types/adminDashboard";
 import TopSellingItemRow from "./TopSellingItemRow";
 
 type TopSellingItemsCardProps = {
   title: string;
   items: TopSellingItem[];
+  metric: TopSellingMetric;
 };
 
-export default function TopSellingItemsCard({ title, items }: TopSellingItemsCardProps) {
+export default function TopSellingItemsCard({ 
+  title, 
+  items,
+  metric, 
+}: TopSellingItemsCardProps) {
   return (
     <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
       <div>
@@ -16,7 +21,12 @@ export default function TopSellingItemsCard({ title, items }: TopSellingItemsCar
       {items.length > 0 ? (
         <div className="mt-5 divide-y divide-gray-100">
           {items.map((item, index) => (
-            <TopSellingItemRow key={item.id} item={item} position={index + 1} />
+            <TopSellingItemRow 
+              key={item.id} 
+              item={item} 
+              position={index + 1}
+              metric={metric} 
+            />
           ))}
         </div>
       ) : (

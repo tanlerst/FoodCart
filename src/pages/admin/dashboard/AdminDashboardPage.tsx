@@ -68,11 +68,37 @@ export default function AdminDashboardPage() {
           <OrderStatusCard statuses={orderStatus} />
         </div>
 
+        {/* Top Selling (By number of orders) */}
         {/* All-time and past seven days top-selling items */}
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
-          <TopSellingItemsCard title="All-Time Top Selling" items={allTimeTop} />
+          <TopSellingItemsCard 
+            title="All-Time Top Selling (Number of Orders)" 
+            items={allTimeTop}
+            metric="orders"
+          />
 
-          <TopSellingItemsCard title="Top Selling — Past 7 Days" items={weekTop} />
+          <TopSellingItemsCard 
+            title="Top Selling — Past 7 Days (Number of Orders)" 
+            items={weekTop} 
+            metric="orders"
+          /> 
+        </div>
+        
+        {/* Top selling (By revenue) */}
+        <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+          {/* TODO: update allTimeTop and weekTop*/}
+          <TopSellingItemsCard 
+            title="All-Time Top Selling (Revenue)" 
+            items={allTimeTop}
+            metric="revenue"
+          />
+
+          <TopSellingItemsCard 
+            title="Top Selling — Past 7 Days (Revenue)" 
+            items={weekTop} 
+            metric="revenue"
+          />
+          
         </div>
       </div>
     </AdminLayout>
