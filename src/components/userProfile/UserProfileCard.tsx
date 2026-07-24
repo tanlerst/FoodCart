@@ -1,3 +1,4 @@
+/* User information on profile page */
 import { Mail, Pencil, UserRound } from "lucide-react";
 
 import type { UserProfile } from "../../types/profile";

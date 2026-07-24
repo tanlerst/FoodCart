@@ -43,7 +43,6 @@ export default function UserProfilePage() {
           <UserProfileSection title="Account">
             <UserProfileSettingCard
               title="Change Password"
-              description="Update your password"
               icon={LockKeyhole}
               onClick={() => 1} // TODO: navigate to change password page
             />
@@ -53,7 +52,6 @@ export default function UserProfilePage() {
           <UserProfileSection title="Support">
             <UserProfileSettingCard
               title="Log Out"
-              description="Sign out of your account"
               icon={LogOut}
               onClick={handleLogout}
               variant="destructive"
