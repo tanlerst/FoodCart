@@ -8,3 +8,8 @@ export type ChangePasswordFormData = {
   newPassword: string;
   confirmPassword: string;
 };
+
+export type EditableProfile = {
+  name: string;
+  email: string;
+};
