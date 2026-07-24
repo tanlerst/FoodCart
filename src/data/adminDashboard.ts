@@ -1,17 +1,11 @@
-import {
-  BookOpen,
-  DollarSign,
-  ShoppingBag,
-  UtensilsCrossed,
-} from "lucide-react";
+import { BookOpen, DollarSign, ShoppingBag, UtensilsCrossed } from "lucide-react";
 
 import type {
   DashboardStat,
-  OrderStatus,
+  AdminOrderStatus,
   SalesDataPoint,
   TopSellingItem,
 } from "../types/adminDashboard";
-
 
 // To test empty data
 // export const DASHBOARD_STATS: DashboardStat[] = [];
@@ -56,7 +50,6 @@ export const DASHBOARD_STATS: DashboardStat[] = [
   },
 ];
 
-
 // Data points for the graph
 export const SALES_DATA: SalesDataPoint[] = [
   {
@@ -90,9 +83,9 @@ export const SALES_DATA: SalesDataPoint[] = [
 ];
 
 // For order status pie chart
-export const ORDER_STATUSES: OrderStatus[] = [
+export const ORDER_STATUSES: AdminOrderStatus[] = [
   {
-    id: "received",
+    id: "serving",
     label: "Received",
     count: 14,
     percentage: 35,

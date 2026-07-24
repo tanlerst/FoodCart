@@ -4,56 +4,75 @@ import DashboardStatsGrid from "../../../components/admin/dashboard/DashboardSta
 import OrderStatusCard from "../../../components/admin/dashboard/OrderStatusCard";
 import SalesOverviewCard from "../../../components/admin/dashboard/SalesOverviewCard";
 import TopSellingItemsCard from "../../../components/admin/dashboard/TopSellingItemCard";
+import { useEffect, useState } from "react";
 
-import {
-  ALL_TIME_TOP_SELLING_ITEMS,
-  DASHBOARD_STATS,
-  ORDER_STATUSES,
-  PAST_SEVEN_DAYS_TOP_SELLING_ITEMS,
-  SALES_DATA,
-} from "../../../data/adminDashboard";
-
+import { getStats } from "../../../helpers/admin/dashboard/getStats";
+import { getOrderStatus } from "../../../helpers/admin/dashboard/getOrderStatus";
+import { getSalesData } from "../../../helpers/admin/dashboard/getSalesData";
+import { getAllTimeTop, getWeekTop } from "../../../helpers/admin/dashboard/getTopItems";
 import AdminLayout from "../../../layouts/AdminLayout";
+import type {
+  DashboardStat,
+  AdminOrderStatus,
+  SalesDataPoint,
+  TopSellingItem,
+} from "../../../types/adminDashboard";
 
 export default function AdminDashboardPage() {
-  return (
-    <AdminLayout
-      title="Admin Dashboard"
-      description="View restaurant analytics."
-    >
-      <div className="space-y-6 mt-6">
+  const [stats, setStats] = useState<DashboardStat[]>([]);
+  const [orderStatus, setOrderStatus] = useState<AdminOrderStatus[]>([]);
+  const [salesData, setSalesData] = useState<SalesDataPoint[]>([]);
+  const [allTimeTop, setAllTimeTop] = useState<TopSellingItem[]>([]);
+  const [weekTop, setWeekTop] = useState<TopSellingItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    async function loadDashBoard() {
+      try {
+        const [statsData, statuses, sales, allTime, pastWeek] = await Promise.all([
+          getStats(),
+          getOrderStatus(),
+          getSalesData(),
+          getAllTimeTop(),
+          getWeekTop(),
+        ]);
+        setStats(statsData);
+        setOrderStatus(statuses);
+        setSalesData(sales);
+        setAllTimeTop(allTime);
+        setWeekTop(pastWeek);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadDashBoard();
+  }, []);
 
+  if (loading) {
+    return (
+      <AdminLayout title="Admin Dashboard" description="View restaurant analytics.">
+        <div className="p-8">Loading...</div>
+      </AdminLayout>
+    );
+  }
+
+  return (
+    <AdminLayout title="Admin Dashboard" description="View restaurant analytics.">
+      <div className="space-y-6 mt-6">
         {/* Statistics cards*/}
-        <DashboardStatsGrid
-          stats={DASHBOARD_STATS}
-        />
+        <DashboardStatsGrid stats={stats} />
 
         {/* Sales and order status charts */}
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
-          <SalesOverviewCard
-            data={SALES_DATA}
-          />
+          <SalesOverviewCard data={salesData} />
 
-          <OrderStatusCard
-            statuses={ORDER_STATUSES}
-          />
+          <OrderStatusCard statuses={orderStatus} />
         </div>
 
         {/* All-time and past seven days top-selling items */}
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
-          <TopSellingItemsCard
-            title="All-Time Top Selling"
-            items={
-              ALL_TIME_TOP_SELLING_ITEMS
-            }
-          />
+          <TopSellingItemsCard title="All-Time Top Selling" items={allTimeTop} />
 
-          <TopSellingItemsCard
-            title="Top Selling — Past 7 Days"
-            items={
-              PAST_SEVEN_DAYS_TOP_SELLING_ITEMS
-            }
-          />
+          <TopSellingItemsCard title="Top Selling — Past 7 Days" items={weekTop} />
         </div>
       </div>
     </AdminLayout>

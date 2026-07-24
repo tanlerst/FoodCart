@@ -16,17 +16,14 @@ export type SalesDataPoint = {
 };
 
 // pie chart
-export type OrderStatus = {
+export type AdminOrderStatus = {
   id: OrderStatusId;
   label: string;
   count: number;
   percentage: number;
 };
 
-export type OrderStatusId =
-  | "received"
-  | "preparing"
-  | "served";
+export type OrderStatusId = "serving" | "preparing" | "served";
 
 export type TopSellingItem = {
   id: number;

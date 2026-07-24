@@ -4,6 +4,7 @@ export type UserRow = {
 
 export type OrderRow = {
   id: number;
+  orderNumber: string;
   food: number;
   quantity: number;
   status: number;

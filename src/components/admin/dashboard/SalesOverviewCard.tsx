@@ -34,8 +34,8 @@ export default function SalesOverviewCard({ data }: SalesOverviewCardProps) {
               <CartesianGrid strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="date" />
               <YAxis />
-              <Tooltip 
-                formatter={(value) => [currencyFormatter.format(Number(value)), "Revenue"]} 
+              <Tooltip
+                formatter={(value) => [currencyFormatter.format(Number(value)), "Revenue"]}
               />
               <Area
                 type="monotone"

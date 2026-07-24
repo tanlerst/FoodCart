@@ -39,7 +39,7 @@ export default function SurpriseOptionPage() {
         <div className="my-6 w-full max-w-md">
           <MealAmountCard mealAmount={mealAmount} setMealAmount={setMealAmount} />
 
-          <BudgetCard budget={budget} minBudget={15} maxBudget={200} setBudget={setBudget} />
+          <BudgetCard budget={budget} minBudget={0} maxBudget={200} setBudget={setBudget} />
 
           <DietaryPreferences
             dietaryPreference={dietaryPreferences}

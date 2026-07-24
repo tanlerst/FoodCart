@@ -5,10 +5,7 @@ type TopSellingItemRowProps = {
   position: number;
 };
 
-export default function TopSellingItemRow({
-  item,
-  position,
-}: TopSellingItemRowProps) {
+export default function TopSellingItemRow({ item, position }: TopSellingItemRowProps) {
   return (
     <article className="flex items-center gap-4 py-4 first:pt-0 last:pb-0">
       <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-white">
@@ -22,15 +19,10 @@ export default function TopSellingItemRow({
       />
 
       <div className="min-w-0 flex-1">
-        <h3 className="truncate font-semibold text-gray-900">
-          {item.name}
-        </h3>
+        <h3 className="truncate font-semibold text-gray-900">{item.name}</h3>
 
         <p className="mt-1 text-sm text-gray-500">
-          {item.orderCount}{" "}
-          {item.orderCount === 1
-            ? "order"
-            : "orders"}
+          {item.orderCount} {item.orderCount === 1 ? "order" : "orders"}
         </p>
       </div>
     </article>

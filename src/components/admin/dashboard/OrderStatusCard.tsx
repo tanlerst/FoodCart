@@ -1,18 +1,17 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
-import type { OrderStatus, OrderStatusId } from "../../../types/adminDashboard";
+import type { AdminOrderStatus, OrderStatusId } from "../../../types/adminDashboard";
 
 type OrderStatusCardProps = {
-  statuses: OrderStatus[];
+  statuses: AdminOrderStatus[];
 };
 
-const ORDER_STATUS_COLOURS: Record<OrderStatusId,string> = {
-  received: "#3b82f6",
+const ORDER_STATUS_COLOURS: Record<OrderStatusId, string> = {
+  serving: "#3b82f6",
   preparing: "#f97316",
   served: "#16a34a",
 };
 
 export default function OrderStatusCard({ statuses }: OrderStatusCardProps) {
-  
   // Number of orders for each status
   const totalOrders = statuses.reduce((total, status) => total + status.count, 0);
 
@@ -42,7 +41,7 @@ export default function OrderStatusCard({ statuses }: OrderStatusCardProps) {
 
                 <Tooltip
                   formatter={(value, _name, entry) => {
-                    const status = entry.payload as OrderStatus;
+                    const status = entry.payload as AdminOrderStatus;
                     return [`${Number(value)} orders`, `${status.label} (${status.percentage}%)`];
                   }}
                 />
@@ -56,7 +55,6 @@ export default function OrderStatusCard({ statuses }: OrderStatusCardProps) {
           </div>
 
           <div className="w-full space-y-3">
-            
             {/* Statuses */}
             {statuses.map((status) => (
               <div

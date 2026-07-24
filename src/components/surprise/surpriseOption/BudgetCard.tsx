@@ -6,7 +6,6 @@ type BudgetCardProps = {
 };
 
 export default function BudgetCard({ budget, minBudget, maxBudget, setBudget }: BudgetCardProps) {
-
   function handleBudgetChange(value: number) {
     if (value < minBudget) {
       setBudget(minBudget);
@@ -17,8 +16,8 @@ export default function BudgetCard({ budget, minBudget, maxBudget, setBudget }: 
       setBudget(maxBudget);
       return;
     }
-  setBudget(value);
-}
+    setBudget(value);
+  }
 
   return (
     <section>
