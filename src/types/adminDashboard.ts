@@ -31,3 +31,7 @@ export type TopSellingItem = {
   image: string;
   orderCount: number;
 };
+
+export type TopSellingMetric =  
+  "orders" | 
+  "revenue";
