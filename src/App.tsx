@@ -24,6 +24,7 @@ import WheelItemPage from "./pages/wheel/WheelItemPage";
 import WheelProvider from "./contexts/WheelContext";
 import WheelResultPage from "./pages/wheel/WheelResultPage";
 import UserProfilePage from "./pages/userProfile/UserProfilePage";
+import UserEditProfilePage from "./pages/userProfile/UserEditProfilePage";
 
 
 export default function App() {
@@ -52,7 +53,8 @@ export default function App() {
   return (
 
     <BrowserRouter>
-      <UserProfilePage/>
+      {/* <UserProfilePage/> */}
+      <UserEditProfilePage/>
     </BrowserRouter>
 
     // <CartProvider>
