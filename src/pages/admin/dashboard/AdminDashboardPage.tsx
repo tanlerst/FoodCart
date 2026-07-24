@@ -22,24 +22,31 @@ export default function AdminDashboardPage() {
   const [stats, setStats] = useState<DashboardStat[]>([]);
   const [orderStatus, setOrderStatus] = useState<AdminOrderStatus[]>([]);
   const [salesData, setSalesData] = useState<SalesDataPoint[]>([]);
+  const [allTimeTopRevenue, setAllTimeTopRevenue] = useState<TopSellingItem[]>([]);
+  const [weekTopRevenue, setWeekTopRevenue] = useState<TopSellingItem[]>([]);
   const [allTimeTop, setAllTimeTop] = useState<TopSellingItem[]>([]);
   const [weekTop, setWeekTop] = useState<TopSellingItem[]>([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function loadDashBoard() {
       try {
-        const [statsData, statuses, sales, allTime, pastWeek] = await Promise.all([
-          getStats(),
-          getOrderStatus(),
-          getSalesData(),
-          getAllTimeTop(),
-          getWeekTop(),
-        ]);
+        const [statsData, statuses, sales, allTime, pastWeek, allTimeRev, pastWeekRev] =
+          await Promise.all([
+            getStats(),
+            getOrderStatus(),
+            getSalesData(),
+            getAllTimeTop("orders"),
+            getWeekTop("orders"),
+            getAllTimeTop("revenue"),
+            getWeekTop("revenue"),
+          ]);
         setStats(statsData);
         setOrderStatus(statuses);
         setSalesData(sales);
         setAllTimeTop(allTime);
         setWeekTop(pastWeek);
+        setAllTimeTopRevenue(allTimeRev);
+        setWeekTopRevenue(pastWeekRev);
       } finally {
         setLoading(false);
       }
@@ -71,34 +78,33 @@ export default function AdminDashboardPage() {
         {/* Top Selling (By number of orders) */}
         {/* All-time and past seven days top-selling items */}
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
-          <TopSellingItemsCard 
-            title="All-Time Top Selling (Number of Orders)" 
+          <TopSellingItemsCard
+            title="All-Time Top Selling (Number of Orders)"
             items={allTimeTop}
             metric="orders"
           />
 
-          <TopSellingItemsCard 
-            title="Top Selling — Past 7 Days (Number of Orders)" 
-            items={weekTop} 
+          <TopSellingItemsCard
+            title="Top Selling — Past 7 Days (Number of Orders)"
+            items={weekTop}
             metric="orders"
-          /> 
+          />
         </div>
-        
+
         {/* Top selling (By revenue) */}
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
           {/* TODO: update allTimeTop and weekTop*/}
-          <TopSellingItemsCard 
-            title="All-Time Top Selling (Revenue)" 
-            items={allTimeTop}
+          <TopSellingItemsCard
+            title="All-Time Top Selling (Revenue)"
+            items={allTimeTopRevenue}
             metric="revenue"
           />
 
-          <TopSellingItemsCard 
-            title="Top Selling — Past 7 Days (Revenue)" 
-            items={weekTop} 
+          <TopSellingItemsCard
+            title="Top Selling — Past 7 Days (Revenue)"
+            items={weekTopRevenue}
             metric="revenue"
           />
-          
         </div>
       </div>
     </AdminLayout>

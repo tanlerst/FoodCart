@@ -33,6 +33,4 @@ export type TopSellingItem = {
   revenue: number;
 };
 
-export type TopSellingMetric =  
-  "orders" | 
-  "revenue";
+export type TopSellingMetric = "orders" | "revenue";
