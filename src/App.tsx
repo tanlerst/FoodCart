@@ -23,6 +23,7 @@ import SpinWheelPage from "./pages/wheel/SpinWheelPage";
 import WheelItemPage from "./pages/wheel/WheelItemPage";
 import WheelProvider from "./contexts/WheelContext";
 import WheelResultPage from "./pages/wheel/WheelResultPage";
+import UserProfilePage from "./pages/userProfile/UserProfilePage";
 
 
 export default function App() {
@@ -50,13 +51,9 @@ export default function App() {
 
   return (
 
-  <BrowserRouter>
-    <WheelProvider>
-      <SpinWheelPage/>
-      {/* <WheelItemPage/>
-      <WheelResultPage/> */}
-    </WheelProvider>
-  </BrowserRouter>
+    <BrowserRouter>
+      <UserProfilePage/>
+    </BrowserRouter>
 
     // <CartProvider>
     //   <BrowserRouter>
