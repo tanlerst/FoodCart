@@ -1,5 +1,5 @@
 import {
-  ArrowLeft,
+  ChevronLeft,
   LockKeyhole,
 } from "lucide-react";
 
@@ -24,7 +24,7 @@ export default function UserChangePasswordPage() {
             onClick={() => 1} // TODO: go back to profile page
             className="absolute left-0 flex h-10 w-10 items-center justify-center rounded-full text-orange-500"
           >
-            <ArrowLeft size={26} />
+            <ChevronLeft size={26} />
           </button>
 
           <h1 className="text-2xl font-bold text-gray-900">
