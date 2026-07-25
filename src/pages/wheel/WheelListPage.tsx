@@ -3,7 +3,6 @@ import WheelEmptyState from "../../components/wheel/WheelEmptyState";
 import WheelItemList from "../../components/wheel/WheelItemList";
 import { useWheel } from "../../contexts/WheelContext";
 import { MIN_WHEEL_ITEMS } from "../../contexts/WheelContext";
-import { MAX_WHEEL_ITEMS } from "../../contexts/WheelContext";
 import CancelButton from "../../components/wheel/CancelButton";
 import { useNavigate } from "react-router";
 import UserLayout from "../../layouts/UserLayout";
@@ -29,7 +28,6 @@ export default function WheelListPage() {
           
           <AddMoreItemsButton
             onClick={() => navigate("/menu")}
-            disabled={items.length >= MAX_WHEEL_ITEMS}
           />
 
           {/* Spin button */}
