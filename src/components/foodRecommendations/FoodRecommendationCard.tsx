@@ -78,7 +78,6 @@ export default function FoodRecommendationPage({
           <AddCard onAdd={handleAdd} />
         </div>
         <div className="relative mx-auto mt-4 w-[80%] ">
-          {/* Hardcoded Food Item */}
           <DishCard dish={currentDish} />
 
           {/* Skip Icon (left) */}
