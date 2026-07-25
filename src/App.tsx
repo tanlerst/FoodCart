@@ -74,42 +74,42 @@ export default function App() {
       <WheelProvider>
         <BrowserRouter>
           <Routes>
-              <Route
+            <Route
               path="/"
               element={
                 <Navigate
-                to={session ? (route === "/admin" ? "admin" : "/menu") : "/login"}
+                  to={session ? (route === "/admin" ? "admin" : "/menu") : "/login"}
                   replace
                 />
               }
             />
 
-          <Route
-            path="/login"
-            element={
-              <PublicRoute session={session} route={route}>
-                <LoginPage />
-              </PublicRoute>
-            }
-          />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute session={session} route={route}>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
 
-          <Route
-            path="/signup"
-            element={
-              <PublicRoute session={session} route={route}>
-                <SignupPage />
-              </PublicRoute>
-            }
-          />
+            <Route
+              path="/signup"
+              element={
+                <PublicRoute session={session} route={route}>
+                  <SignupPage />
+                </PublicRoute>
+              }
+            />
 
-          <Route
-            path="/recommendations"
-            element={
-              <UserRoute session={session}>
-                <FoodRecommendationPage />
-              </UserRoute>
-            }
-          />
+            <Route
+              path="/recommendations"
+              element={
+                <UserRoute session={session}>
+                  <FoodRecommendationPage />
+                </UserRoute>
+              }
+            />
 
             <Route
               path="/menu"
@@ -120,41 +120,41 @@ export default function App() {
               }
             />
 
-          <Route
-            path="/food/:id"
-            element={
-              <UserRoute session={session}>
-                <FoodDetailsPage />
-              </UserRoute>
-            }
-          />
+            <Route
+              path="/food/:id"
+              element={
+                <UserRoute session={session}>
+                  <FoodDetailsPage />
+                </UserRoute>
+              }
+            />
 
-          <Route
-            path="/surprise"
-            element={
-              <UserRoute session={session}>
-                <SurpriseOptionPage />
-              </UserRoute>
-            }
-          />
+            <Route
+              path="/surprise"
+              element={
+                <UserRoute session={session}>
+                  <SurpriseOptionPage />
+                </UserRoute>
+              }
+            />
 
-          <Route
-            path="/surpriseconfirmation"
-            element={
-              <UserRoute session={session}>
-                <SurpriseConfirmationPage />
-              </UserRoute>
-            }
-          />
+            <Route
+              path="/surpriseconfirmation"
+              element={
+                <UserRoute session={session}>
+                  <SurpriseConfirmationPage />
+                </UserRoute>
+              }
+            />
 
-          <Route
-            path="/surpriseplaced"
-            element={
-              <UserRoute session={session}>
-                <SurpriseOrderPlacedPage />
-              </UserRoute>
-            }
-          />
+            <Route
+              path="/surpriseplaced"
+              element={
+                <UserRoute session={session}>
+                  <SurpriseOrderPlacedPage />
+                </UserRoute>
+              }
+            />
 
             <Route
               path="/cart"
@@ -193,29 +193,29 @@ export default function App() {
             />
 
             <Route
-            path="/user"
-            element={
-              <UserRoute session={session}>
-                <UserProfilePage />
-              </UserRoute>
-            }
-          />
-          <Route
-            path="/editprofile"
-            element={
-              <UserRoute session={session}>
-                <UserEditProfilePage />
-              </UserRoute>
-            }
-          />
-          <Route
-            path="/changepassword"
-            element={
-              <UserRoute session={session}>
-                <UserChangePasswordPage />
-              </UserRoute>
-            }
-          />
+              path="/user"
+              element={
+                <UserRoute session={session}>
+                  <UserProfilePage />
+                </UserRoute>
+              }
+            />
+            <Route
+              path="/editprofile"
+              element={
+                <UserRoute session={session}>
+                  <UserEditProfilePage />
+                </UserRoute>
+              }
+            />
+            <Route
+              path="/changepassword"
+              element={
+                <UserRoute session={session}>
+                  <UserChangePasswordPage />
+                </UserRoute>
+              }
+            />
 
             <Route
               path="/admin"
@@ -225,7 +225,7 @@ export default function App() {
                 </AdminRoute>
               }
             />
-            
+
             <Route
               path="/adminorders"
               element={
@@ -240,15 +240,15 @@ export default function App() {
               element={
                 <AdminRoute session={session}>
                   <AdminOrderDetailsPage />
-              </AdminRoute>
-            }
-          />
+                </AdminRoute>
+              }
+            />
 
-          <Route
-            path="/adminmenu"
-            element={
-              <AdminRoute session={session}>
-                <AdminMenuPage />
+            <Route
+              path="/adminmenu"
+              element={
+                <AdminRoute session={session}>
+                  <AdminMenuPage />
                 </AdminRoute>
               }
             />
@@ -262,14 +262,14 @@ export default function App() {
               }
             />
 
-          <Route
-            path="/edititem"
-            element={
-              <AdminRoute session={session}>
-                <AdminEditItemPage />
-              </AdminRoute>
-            }
-          />
+            <Route
+              path="/edititem"
+              element={
+                <AdminRoute session={session}>
+                  <AdminEditItemPage />
+                </AdminRoute>
+              }
+            />
 
             <Route
               path="/orders"
