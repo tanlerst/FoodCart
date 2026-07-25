@@ -82,8 +82,6 @@ export function formatOrder(data: OrderData): OrderDetails {
     customerID: data.authUserId,
     orderNumber: "FC-0001",
     placedAt: formatDateTime(data.orderRows[0].ordertime),
-    orderType: "Dine In",
-    tableNumber: "1",
     status: getOrderStatus(data.orderRows.map((row) => row.status)),
     items,
     ...pricing,

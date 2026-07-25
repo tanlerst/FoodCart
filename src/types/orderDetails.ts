@@ -24,8 +24,6 @@ export type OrderDetails = {
   customerID?: string;
   orderNumber: string;
   placedAt: string;
-  orderType: string;
-  tableNumber: string;
   status: OrderStatus;
   items: OrderDetailsItem[]; // list of items
   subtotal: number;
