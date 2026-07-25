@@ -45,7 +45,7 @@ export default function UserOrderDetailsPage() {
 
   if (!orderDetails) {
     return (
-      <div className="container mx-auto bg-orange-50 py-8 pb-32">
+      <div className="container mx-auto bg-orange-50 py-8 pb-28">
         <div className="p-8">No orders.</div>
 
         <div className="fixed bottom-0 left-0 right-0 bg-white">
@@ -56,37 +56,39 @@ export default function UserOrderDetailsPage() {
   }
 
   return (
-    <div className="container mx-auto bg-orange-50 py-8 pb-32">
-      <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Your Order</h1>
+    <main className="min-h-screen bg-orange-50 px-4 pb-28 pt-3">
+      <div className="mx-auto max-w-md">
+        <div className="mb-6 flex items-center justify-between px-4 sm:px-6">
+          <h1 className="text-3xl font-bold">Your Order</h1>
+          <LogoutButton />
+        </div>
 
-        <LogoutButton />
+        <div className="mx-auto max-w-4xl">
+          <OrderInfoCard
+            orderNumber={orderDetails.orderNumber}
+            placedAt={orderDetails.placedAt}
+            // tableNumber={orderDetails.tableNumber}
+            status={orderDetails.status}
+          />
+
+          <OrderStatusTracker status={orderDetails.status} />
+
+          <OrderItemsCard items={orderDetails.items} />
+
+          <OrderPaymentSummary
+            subtotal={orderDetails.subtotal}
+            gst={orderDetails.gst}
+            serviceFee={orderDetails.serviceFee}
+            total={orderDetails.total}
+          />
+        </div>
+
+        <div className="fixed bottom-0 left-0 right-0 bg-white">
+          <NavigationBar />
+        </div>
       </div>
 
-      <main className="mx-auto max-w-4xl px-5 py-6">
-        <OrderInfoCard
-          orderNumber={orderDetails.orderNumber}
-          placedAt={orderDetails.placedAt}
-          orderType={orderDetails.orderType}
-          tableNumber={orderDetails.tableNumber}
-          status={orderDetails.status}
-        />
-
-        <OrderStatusTracker status={orderDetails.status} />
-
-        <OrderItemsCard items={orderDetails.items} />
-
-        <OrderPaymentSummary
-          subtotal={orderDetails.subtotal}
-          gst={orderDetails.gst}
-          serviceFee={orderDetails.serviceFee}
-          total={orderDetails.total}
-        />
-      </main>
-
-      <div className="fixed bottom-0 left-0 right-0 bg-white">
-        <NavigationBar />
-      </div>
-    </div>
+    </main>
+    
   );
 }
