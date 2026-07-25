@@ -1,5 +1,3 @@
-import { useState } from "react";
-import IncludeDrinksOption from "../../components/wheel/IncludeDrinkOption";
 import SpinWheel from "../../components/wheel/SpinWheel";
 import type { WheelItem } from "../../types/wheelItem";
 import { SAMPLE_WHEEL_ITEMS } from "../../data/sampleWheelItems";
@@ -9,7 +7,6 @@ import CancelButton from "../../components/wheel/CancelButton";
 const SAMPLE_ITEMS: WheelItem[] = SAMPLE_WHEEL_ITEMS;
 
 export default function SpinWheelPage() {
-  const [includeDrinks, setIncludeDrinks] = useState(true);
 
   function handleSpinComplete() {
 
@@ -35,11 +32,7 @@ export default function SpinWheelPage() {
             items={SAMPLE_ITEMS} 
             onSpinComplete={handleSpinComplete}/>
         </div>
-        
-        <IncludeDrinksOption
-          checked={includeDrinks}
-          onChange={setIncludeDrinks}
-        />
+
       </div>
     </main>
   );
