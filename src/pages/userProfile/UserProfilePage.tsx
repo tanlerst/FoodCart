@@ -1,6 +1,5 @@
 import { LockKeyhole, LogOut } from "lucide-react";
 import { useEffect, useState } from "react";
-import NavigationBar from "../../components/common/NavigationBar";
 import UserProfileCard from "../../components/userProfile/UserProfileCard";
 import UserProfileSettingCard from "../../components/userProfile/UserProfileSettingCard";
 import UserProfileSection from "../../components/userProfile/UserProfileSection";
@@ -8,6 +7,7 @@ import { useNavigate } from "react-router";
 import type { UserProfile } from "../../types/profile";
 import { getProfile } from "../../helpers/profile/getProfile";
 import { supabase } from "../../utils/supabase";
+import UserLayout from "../../layouts/UserLayout";
 
 export default function UserProfilePage() {
   const navigate = useNavigate();
@@ -46,37 +46,29 @@ export default function UserProfilePage() {
   }
 
   return (
-    <main className="min-h-screen bg-orange-50/60 pb-28">
-      <div className="mx-auto w-full max-w-md px-4 pb-6 pt-8">
-        <header className="mb-7">
-          <h1 className="text-3xl font-bold text-gray-900">Your Profile</h1>
-        </header>
+    <UserLayout title="Your Profile">
+      <div className="space-y-7">
+        <UserProfileCard user={profile} onEditProfile={() => navigate("/editprofile")} />
 
-        <div className="space-y-7">
-          <UserProfileCard user={profile} onEditProfile={() => navigate("/editprofile")} />
+        {/* Change password */}
+        <UserProfileSection title="Account">
+          <UserProfileSettingCard
+            title="Change Password"
+            icon={LockKeyhole}
+            onClick={() => navigate("/changepassword")}
+          />
+        </UserProfileSection>
 
-          {/* Change password */}
-          <UserProfileSection title="Account">
-            <UserProfileSettingCard
-              title="Change Password"
-              icon={LockKeyhole}
-              onClick={() => navigate("/changepassword")}
-            />
-          </UserProfileSection>
-
-          {/* Support */}
-          <UserProfileSection title="Support">
-            <UserProfileSettingCard
-              title="Log Out"
-              icon={LogOut}
-              onClick={handleLogout}
-              variant="destructive"
-            />
-          </UserProfileSection>
-        </div>
+        {/* Support */}
+        <UserProfileSection title="Support">
+          <UserProfileSettingCard
+            title="Log Out"
+            icon={LogOut}
+            onClick={handleLogout}
+            variant="destructive"
+          />
+        </UserProfileSection>
       </div>
-
-      <NavigationBar />
-    </main>
+    </UserLayout>
   );
 }
