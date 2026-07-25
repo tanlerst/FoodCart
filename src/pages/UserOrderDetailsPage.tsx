@@ -7,7 +7,7 @@ import NavigationBar from "../components/common/NavigationBar";
 import { getOrder } from "../helpers/order/getOrder";
 import { formatOrder } from "../helpers/order/formatOrder";
 import { useEffect, useState } from "react";
-import LogoutButton from "../components/auth/LogoutButton";
+import UserLayout from "../layouts/UserLayout";
 
 export default function UserOrderDetailsPage() {
   const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null);
@@ -33,61 +33,45 @@ export default function UserOrderDetailsPage() {
 
   if (loading) {
     return (
-      <div className="container mx-auto bg-orange-50 py-8 pb-32">
-        <div className="p-8">Loading...</div>
-
-        <div className="fixed bottom-0 left-0 right-0 bg-white">
-          <NavigationBar />
-        </div>
-      </div>
+      <UserLayout title="Your Order">
+        <p>Loading</p>
+      </UserLayout>
     );
   }
 
   if (!orderDetails) {
     return (
-      <div className="container mx-auto bg-orange-50 py-8 pb-28">
-        <div className="p-8">No orders.</div>
-
-        <div className="fixed bottom-0 left-0 right-0 bg-white">
-          <NavigationBar />
-        </div>
-      </div>
+      <UserLayout title="Your Order">
+        <p>No orders.</p>
+      </UserLayout>
     );
   }
 
   return (
-    <main className="min-h-screen bg-orange-50 px-4 pb-28 pt-3">
-      <div className="mx-auto max-w-md">
-        <div className="mb-6 flex items-center justify-between px-4 sm:px-6">
-          <h1 className="text-3xl font-bold">Your Order</h1>
-          <LogoutButton />
-        </div>
+    <UserLayout title="Your Orders">
+      <div className="space-y-4">
+        <OrderInfoCard
+          orderNumber={orderDetails.orderNumber}
+          placedAt={orderDetails.placedAt}
+          status={orderDetails.status}
+        />
 
-        <div className="mx-auto max-w-4xl">
-          <OrderInfoCard
-            orderNumber={orderDetails.orderNumber}
-            placedAt={orderDetails.placedAt}
-            status={orderDetails.status}
-          />
+        <OrderStatusTracker status={orderDetails.status} />
 
-          <OrderStatusTracker status={orderDetails.status} />
+        <OrderItemsCard items={orderDetails.items} />
 
-          <OrderItemsCard items={orderDetails.items} />
-
-          <OrderPaymentSummary
-            subtotal={orderDetails.subtotal}
-            gst={orderDetails.gst}
-            serviceFee={orderDetails.serviceCharge}
-            total={orderDetails.totalAmount}
-          />
-        </div>
-
-        <div className="fixed bottom-0 left-0 right-0 bg-white">
-          <NavigationBar />
-        </div>
+        <OrderPaymentSummary
+          subtotal={orderDetails.subtotal}
+          gst={orderDetails.gst}
+          serviceFee={orderDetails.serviceCharge}
+          total={orderDetails.totalAmount}
+        />
       </div>
 
-    </main>
+      <div className="fixed bottom-0 left-0 right-0 bg-white">
+        <NavigationBar />
+      </div>
+  </UserLayout>
     
   );
 }
