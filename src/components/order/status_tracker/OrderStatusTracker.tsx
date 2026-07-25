@@ -49,7 +49,7 @@ export default function OrderStatusTracker({ status }: OrderStatusTrackerProps) 
 
         <StatusLine active={isPreparing} />
 
-        <StatusStep icon="🍳" label="Preparing" active />
+        <StatusStep icon="🍳" label="Preparing" active={isPreparing} />
 
         <StatusLine active={isServing} />
 
