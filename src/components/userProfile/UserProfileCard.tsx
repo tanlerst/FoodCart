@@ -11,14 +11,14 @@ type UserProfileCardProps = {
 export default function UserProfileCard({ user, onEditProfile }: UserProfileCardProps) {
   return (
     <article className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-6">
         <div className="relative shrink-0">
           <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-full bg-orange-50">
             <UserRound size={44} strokeWidth={1.8} className="text-orange-500" />
           </div>
         </div>
 
-        <div className="shrink-0">
+        <div className="min-w-0 flex-1">
           {/* Username */}
           <h2 className="truncate text-xl font-bold text-gray-900">{user.name}</h2>
 
@@ -28,17 +28,18 @@ export default function UserProfileCard({ user, onEditProfile }: UserProfileCard
             <span className="truncate">{user.email}</span>
           </div>
         </div>
+      </div>
 
         {/* Edit profile button */}
         <button
           type="button"
           onClick={onEditProfile}
-          className="hidden items-center gap-2 rounded-xl border border-orange-500 px-4 py-2.5 text-sm font-semibold text-orange-500 sm:flex"
+          className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-orange-500 px-4 py-2.5 text-sm font-semibold text-orange-500"
         >
           <Pencil size={16} />
           Edit Profile
         </button>
-      </div>
+
     </article>
   );
 }
