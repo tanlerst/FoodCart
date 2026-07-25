@@ -8,7 +8,7 @@ import MenuPage from "./pages/MenuPage";
 import "./App.css";
 import FoodDetailsPage from "./pages/FoodDetailsPage";
 import CartPage from "./pages/CartPage";
-import { CartProvider } from "./context/CartContext";
+import { CartProvider } from "./contexts/CartContext";
 import AdminOrderPage from "./pages/admin/order/AdminOrderPage";
 import AdminOrderDetailsPage from "./pages/admin/order/AdminOrderDetailsPage";
 import AdminAddItemPage from "./pages/admin/menu/AdminNewItemPage";
@@ -24,6 +24,10 @@ import AdminEditItemPage from "./pages/admin/menu/AdminItemEditPage";
 import SurpriseOptionPage from "./pages/surprise/SurpriseOptionPage";
 import SurpriseConfirmationPage from "./pages/surprise/SurpriseConfirmationPage";
 import SurpriseOrderPlacedPage from "./pages/surprise/SurpriseOrderPlacedPage";
+import SpinWheelPage from "./pages/wheel/SpinWheelPage";
+import WheelItemPage from "./pages/wheel/WheelItemPage";
+import WheelProvider from "./contexts/WheelContext";
+import WheelResultPage from "./pages/wheel/WheelResultPage";
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
@@ -64,17 +68,18 @@ export default function App() {
 
   return (
     <CartProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Navigate
+      <WheelProvider>
+        <BrowserRouter>
+          <Routes>
+              <Route
+              path="/"
+              element={
+                <Navigate
                 to={session ? (route === "/admin" ? "admin" : "/menu") : "/login"}
-                replace
-              />
-            }
-          />
+                  replace
+                />
+              }
+            />
 
           <Route
             path="/login"
@@ -103,14 +108,14 @@ export default function App() {
             }
           />
 
-          <Route
-            path="/menu"
-            element={
-              <UserRoute session={session}>
-                <MenuPage />
-              </UserRoute>
-            }
-          />
+            <Route
+              path="/menu"
+              element={
+                <UserRoute session={session}>
+                  <MenuPage />
+                </UserRoute>
+              }
+            />
 
           <Route
             path="/food/:id"
@@ -148,37 +153,64 @@ export default function App() {
             }
           />
 
-          <Route
-            path="/cart"
-            element={
-              <UserRoute session={session}>
-                <CartPage />
-              </UserRoute>
-            }
-          />
+            <Route
+              path="/cart"
+              element={
+                <UserRoute session={session}>
+                  <CartPage />
+                </UserRoute>
+              }
+            />
 
-          <Route
-            path="/admin"
-            element={
-              <AdminRoute session={session}>
-                <AdminDashboardPage />
-              </AdminRoute>
-            }
-          />
-          <Route
-            path="/adminorders"
-            element={
-              <AdminRoute session={session}>
-                <AdminOrderPage />
-              </AdminRoute>
-            }
-          />
+            <Route
+              path="/wheel"
+              element={
+                <UserRoute session={session}>
+                  <SpinWheelPage />
+                </UserRoute>
+              }
+            />
 
-          <Route
-            path="/itemdetails"
-            element={
-              <AdminRoute session={session}>
-                <AdminOrderDetailsPage />
+            <Route
+              path="/wheelitem"
+              element={
+                <UserRoute session={session}>
+                  <WheelItemPage />
+                </UserRoute>
+              }
+            />
+
+            <Route
+              path="/wheelresult"
+              element={
+                <UserRoute session={session}>
+                  <WheelResultPage />
+                </UserRoute>
+              }
+            />
+
+            <Route
+              path="/admin"
+              element={
+                <AdminRoute session={session}>
+                  <AdminDashboardPage />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/adminorders"
+              element={
+                <AdminRoute session={session}>
+                  <AdminOrderPage />
+                </AdminRoute>
+              }
+            />
+
+            <Route
+              path="/itemdetails"
+              element={
+                <AdminRoute session={session}>
+                  <AdminOrderDetailsPage />
               </AdminRoute>
             }
           />
@@ -188,18 +220,18 @@ export default function App() {
             element={
               <AdminRoute session={session}>
                 <AdminMenuPage />
-              </AdminRoute>
-            }
-          />
+                </AdminRoute>
+              }
+            />
 
-          <Route
-            path="/additem"
-            element={
-              <AdminRoute session={session}>
-                <AdminAddItemPage />
-              </AdminRoute>
-            }
-          />
+            <Route
+              path="/additem"
+              element={
+                <AdminRoute session={session}>
+                  <AdminAddItemPage />
+                </AdminRoute>
+              }
+            />
 
           <Route
             path="/edititem"
@@ -210,16 +242,17 @@ export default function App() {
             }
           />
 
-          <Route
-            path="/orders"
-            element={
-              <UserRoute session={session}>
-                <UserOrderDetailsPage />
-              </UserRoute>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
+            <Route
+              path="/orders"
+              element={
+                <UserRoute session={session}>
+                  <UserOrderDetailsPage />
+                </UserRoute>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </WheelProvider>
     </CartProvider>
   );
 }

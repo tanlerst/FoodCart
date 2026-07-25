@@ -8,11 +8,8 @@ type CartContextType = {
   addItem: (food: FoodItem, quantity: number) => void;
 
   increaseQuantity: (foodId: number) => void;
-
   decreaseQuantity: (foodId: number) => void;
-
   removeItem: (foodId: number) => void;
-
   clearCart: () => void;
 };
 

@@ -3,11 +3,13 @@ import { useParams } from "react-router";
 import FoodDetails from "../components/food/FoodDetails";
 import type { FoodItem } from "../types/food";
 import { fetchFood } from "../helpers/menu/foodId";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../contexts/CartContext";
 import { useNavigate } from "react-router";
+import { useWheel } from "../contexts/WheelContext";
 
 export default function FoodDetailsPage() {
-  const { addItem } = useCart();
+  const { addItem: addCart } = useCart();
+  const { addItem: addWheel } = useWheel();
   const { id } = useParams();
   const [food, setFood] = useState<FoodItem | null>(null);
   const [quantity, setQuantity] = useState(1);
@@ -36,13 +38,20 @@ export default function FoodDetailsPage() {
   }
 
   function addToWheel() {
-    // add to wheel logic
-    alert(`Added ${food?.name} to wheel!`);
+    if (!food) return;
+    addWheel({
+      id: food.id,
+      name: food.name,
+      price: food.price,
+      image: food.image,
+      category: food.category,
+    });
+    navigate("/menu");
   }
 
   function addToCart() {
     if (!food) return;
-    addItem(food, quantity);
+    addCart(food, quantity);
     navigate("/menu");
   }
 
