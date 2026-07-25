@@ -54,7 +54,7 @@ export default function FoodRecommendationPage({
   }
 
   return (
-    <main className="min-h-screen bg-orange-50 p-4">
+    <main className="min-h-screen bg-white p-4">
       <div className="relative mx-auto min-h-screen max-w-md rounded-2xl bg-white-100 p-10 shadow-md">
         {/* Close button */}
         <CloseButton onClose={handleClose} />
