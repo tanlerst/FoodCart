@@ -3,7 +3,7 @@ import { useWheel } from "../../contexts/WheelContext";
 import { useCart } from "../../contexts/CartContext";
 import { useNavigate } from "react-router";
 import WheelResultCard from "../../components/wheel/ResultCard";
-import CancelButton from "../../components/wheel/CancelButton";
+import CancelButton from "../../components/common/CancelButton";
 import type { FoodItem } from "../../types/food";
 
 export default function WheelResultPage() {

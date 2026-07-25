@@ -1,6 +1,6 @@
 import SpinWheel from "../../components/wheel/SpinWheel";
 import { useWheel } from "../../contexts/WheelContext";
-import CancelButton from "../../components/wheel/CancelButton";
+import CancelButton from "../../components/common/CancelButton";
 import { useNavigate } from "react-router";
 import type { WheelItem } from "../../types/wheelItem";
 
