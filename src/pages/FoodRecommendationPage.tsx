@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import type { FoodItem } from "../types/food";
 import FoodRecommendation from "../components/foodRecommendations/FoodRecommendationCard";
 import { getRecommended } from "../helpers/menu/getRecommended";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../contexts/CartContext";
 
 export default function FoodRecommendationPage() {
   const [recommended, setRecommended] = useState<FoodItem[]>([]);

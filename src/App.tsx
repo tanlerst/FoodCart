@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import type { Session } from "@supabase/supabase-js";
 import { supabase } from "./utils/supabase";
@@ -65,14 +64,7 @@ export default function App() {
       authListener.subscription.unsubscribe();
     };
   }, []);
-    return () => {
-      authListener.subscription.unsubscribe();
-    };
-  }, []);
 
-  if (loading) {
-    return <div className="p-8">Loading...</div>;
-  }
   if (loading) {
     return <div className="p-8">Loading...</div>;
   }
@@ -224,14 +216,6 @@ export default function App() {
               </UserRoute>
             }
           />
-          <Route
-            path="/adminlogin"
-            element={
-              <PublicRoute session={session}>
-                <AdminLoginPage />
-              </PublicRoute>
-            }
-          />
 
             <Route
               path="/admin"
@@ -241,6 +225,7 @@ export default function App() {
                 </AdminRoute>
               }
             />
+            
             <Route
               path="/adminorders"
               element={
