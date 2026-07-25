@@ -15,7 +15,7 @@ export default function OrderPlacedActionButtons({
       <button
         type="button"
         onClick={onOrderAgain}
-        className="flex h-16 w-full items-center justify-center rounded-2xl bg-orange-500 text-xl font-bold text-white shadow-sm transition active:scale-[0.98]"
+        className="flex h-16 w-full items-center justify-center rounded-2xl bg-orange-500 text-lg font-bold text-white shadow-sm transition active:scale-[0.98]"
       >
         Order Another Surprise
       </button>
@@ -24,7 +24,7 @@ export default function OrderPlacedActionButtons({
       <button
         type="button"
         onClick={onGoToCart}
-        className="mt-4 h-16 w-full items-center justify-center rounded-xl border-2 border-orange-500 px-6 py-3 font-bold text-xl text-orange-500 active:scale-[0.98]"
+        className="mt-4 h-16 w-full items-center justify-center rounded-xl border-2 border-orange-500 px-6 py-3 font-bold text-lg text-orange-500 active:scale-[0.98]"
       >
         View Orders
       </button>
