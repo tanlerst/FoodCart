@@ -1,10 +1,3 @@
-/**
- *  @file AdminLayout.tsx
- *  @author Xi Yan
- *  @version 1.0.1
- *  @description This is the shared layout for the admin pages.
- */
-
 import type { ReactNode } from "react";
 import AdminSideBar from "../components/admin/AdminSideBar";
 
