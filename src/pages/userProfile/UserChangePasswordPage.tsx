@@ -1,18 +1,14 @@
-import {
-  ChevronLeft,
-  LockKeyhole,
-} from "lucide-react";
-
+import { ChevronLeft, LockKeyhole } from "lucide-react";
+import { updatePassword } from "../../helpers/profile/updatePassword";
 import UserChangePasswordForm from "../../components/userProfile/UserChangePasswordForm";
-
+import { useNavigate } from "react-router";
 import type { ChangePasswordFormData } from "../../types/profile";
 
 export default function UserChangePasswordPage() {
-
-  function handleUpdatePassword(formData: ChangePasswordFormData ) {
-    // Set new password to Supabase
-    // success alert
-    // back to profile page
+  const navigate = useNavigate();
+  async function handleUpdatePassword(formData: ChangePasswordFormData) {
+    await updatePassword(formData.currentPassword, formData.newPassword);
+    navigate("/user");
   }
 
   return (
@@ -21,25 +17,19 @@ export default function UserChangePasswordPage() {
         <header className="relative flex items-center justify-center">
           <button
             type="button"
-            onClick={() => 1} // TODO: go back to profile page
+            onClick={() => navigate("/user")} // TODO: go back to profile page
             className="absolute left-0 flex h-10 w-10 items-center justify-center rounded-full text-orange-500"
           >
             <ChevronLeft size={26} />
           </button>
 
-          <h1 className="text-2xl font-bold text-gray-900">
-            Change Password
-          </h1>
+          <h1 className="text-2xl font-bold text-gray-900">Change Password</h1>
         </header>
 
         <section className="mt-14">
           <div className="text-center">
             <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-orange-50">
-              <LockKeyhole
-                size={36}
-                strokeWidth={1.8}
-                className="text-orange-500"
-              />
+              <LockKeyhole size={36} strokeWidth={1.8} className="text-orange-500" />
             </div>
 
             <p className="mx-auto mt-6 max-w-sm leading-6 text-gray-600">
@@ -48,9 +38,7 @@ export default function UserChangePasswordPage() {
           </div>
 
           <div className="mt-10">
-            <UserChangePasswordForm
-              onSubmit={handleUpdatePassword}
-            />
+            <UserChangePasswordForm onSubmit={handleUpdatePassword} />
           </div>
         </section>
       </div>

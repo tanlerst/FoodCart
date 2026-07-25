@@ -1,12 +1,12 @@
 import { Mail } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { EditableProfile } from "../../../types/profile";
 import UserEditProfileInput from "./UserEditProfileInput";
 
 type EditProfileFormProps = {
   initialProfile: EditableProfile;
-  onSave: (profile: EditableProfile) => void;
+  onSave: (profile: EditableProfile) => void | Promise<void>;
   onCancel: () => void;
 };
 
@@ -15,10 +15,20 @@ export default function EditProfileForm({
   onSave,
   onCancel,
 }: EditProfileFormProps) {
-  const [profile, setProfile] = useState<EditableProfile>(initialProfile);
+  const [name, setName] = useState(initialProfile.name);
+  const [email, setEmail] = useState(initialProfile.email);
 
-  function handleSubmit() {
-    // submit form
+  useEffect(() => {
+    setName(initialProfile.name);
+    setEmail(initialProfile.email);
+  }, [initialProfile]);
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    await onSave({
+      name: name.trim(),
+      email: email.trim(),
+    });
   }
 
   return (
@@ -26,28 +36,25 @@ export default function EditProfileForm({
       onSubmit={handleSubmit}
       className="rounded-3xl border border-slate-200 bg-white px-5 py-8 shadow-sm sm:px-8"
     >
-      
       <div className="mt-10 space-y-6">
         <UserEditProfileInput
           id="profile-name"
           label="Name"
-          value={profile.name}
+          value={name}
           required
-          onChange={() => 1} // TODO: change here
+          onChange={(event) => setName(event.target.value)}
         />
 
-        {/* Email (Cannot be changed) */}
         <UserEditProfileInput
           id="profile-email"
           label="Email"
-          value={profile.email}
+          value={email}
           required
-          disabled
-          helperText="Email cannot be changed."
+          onChange={(event) => setEmail(event.target.value)}
           icon={<Mail size={21} />}
         />
       </div>
-      
+
       {/* Save changes button */}
       <div className="mt-10 space-y-3">
         <button
@@ -56,7 +63,7 @@ export default function EditProfileForm({
         >
           Save Changes
         </button>
-        
+
         {/* Cancel button */}
         <button
           type="button"

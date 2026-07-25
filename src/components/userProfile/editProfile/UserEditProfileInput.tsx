@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ChangeEvent, ReactNode } from "react";
 
 type UserEditProfileInputProps = {
   id: string;
@@ -8,7 +8,7 @@ type UserEditProfileInputProps = {
   disabled?: boolean;
   helperText?: string;
   icon?: ReactNode;
-  onChange?: () => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function UserEditProfileInput({
@@ -23,19 +23,10 @@ export default function UserEditProfileInput({
 }: UserEditProfileInputProps) {
   return (
     <div>
-      <label
-        htmlFor={id}
-        className="mb-2 block text-base font-semibold text-slate-900"
-      >
+      <label htmlFor={id} className="mb-2 block text-base font-semibold text-slate-900">
         {label}
 
-        {required && (
-          <span
-            className="ml-1 text-red-500"
-          >
-            *
-          </span>
-        )}
+        {required && <span className="ml-1 text-red-500">*</span>}
       </label>
 
       <div className="relative">
@@ -47,6 +38,7 @@ export default function UserEditProfileInput({
 
         <input
           id={id}
+          type="text"
           value={value}
           required={required}
           disabled={disabled}
@@ -56,18 +48,12 @@ export default function UserEditProfileInput({
             "text-base text-slate-900 outline-none",
             "focus:border-orange-500 focus:ring-2 focus:ring-orange-100",
             icon ? "pl-12 pr-4" : "px-4",
-            disabled
-              ? "bg-slate-50 text-slate-700"
-              : "bg-white",
+            disabled ? "bg-slate-50 text-slate-700" : "bg-white",
           ].join(" ")}
         />
       </div>
 
-      {helperText && (
-        <p className="mt-2 text-sm text-slate-500">
-          {helperText}
-        </p>
-      )}
+      {helperText && <p className="mt-2 text-sm text-slate-500">{helperText}</p>}
     </div>
   );
 }

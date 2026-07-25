@@ -11,35 +11,24 @@ const SAMPLE_ITEMS: WheelItem[] = SAMPLE_WHEEL_ITEMS;
 export default function SpinWheelPage() {
   const [includeDrinks, setIncludeDrinks] = useState(true);
 
-  function handleSpinComplete() {
+  function handleSpinComplete() {}
 
-  }
-
-  function handleCancel() {
-
-  }
+  function handleCancel() {}
 
   return (
     <main className="min-h-screen bg-orange-50 px-4 pb-28 pt-6">
       <div className="mx-auto max-w-md">
         <header className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-900">
-            Spin the Wheel
-          </h1>
+          <h1 className="text-2xl font-bold text-gray-900">Spin the Wheel</h1>
 
           <CancelButton onClick={handleCancel} />
         </header>
-        
+
         <div className="mt-15 mb-10 space-y-4">
-          <SpinWheel 
-            items={SAMPLE_ITEMS} 
-            onSpinComplete={handleSpinComplete}/>
+          <SpinWheel items={SAMPLE_ITEMS} onSpinComplete={handleSpinComplete} />
         </div>
-        
-        <IncludeDrinksOption
-          checked={includeDrinks}
-          onChange={setIncludeDrinks}
-        />
+
+        <IncludeDrinksOption checked={includeDrinks} onChange={setIncludeDrinks} />
       </div>
     </main>
   );

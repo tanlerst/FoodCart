@@ -1,47 +1,31 @@
-import {
-  RefreshCcw,
-  ShoppingCart,
-  Sparkles,
-} from "lucide-react";
+import { RefreshCcw, ShoppingCart, Sparkles } from "lucide-react";
 
 import WheelResultCard from "../../components/wheel/ResultCard";
-import { SELECTED_ITEM } from "../../data/sampleWheelItems"
+import { SELECTED_ITEM } from "../../data/sampleWheelItems";
 import CancelButton from "../../components/wheel/CancelButton";
 
 // TODO: hard coded value
 const selectedItem = SELECTED_ITEM;
 
 export default function WheelResultPage() {
-
   function handleAddToCart() {
     // TODO: add logic
-
   }
 
-  function handleCancel() {
-  
-  }
+  function handleCancel() {}
 
   return (
     <main className="min-h-screen bg-orange-50/40 px-4 pb-28 pt-6">
       <div className="mx-auto max-w-md">
         <header className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-900">
-            Spin Result
-          </h1>
-            <CancelButton onClick={handleCancel}/>
+          <h1 className="text-2xl font-bold text-gray-900">Spin Result</h1>
+          <CancelButton onClick={handleCancel} />
         </header>
 
         <section className="mt-10 text-center">
-          <Sparkles
-            size={36}
-            className="mx-auto text-orange-500"
-          />
+          <Sparkles size={36} className="mx-auto text-orange-500" />
 
-          <h2 className="mt-4 text-3xl font-bold text-gray-900">
-            Here is the selected food!
-          </h2>
-
+          <h2 className="mt-4 text-3xl font-bold text-gray-900">Here is the selected food!</h2>
         </section>
 
         {/* Selected food card */}

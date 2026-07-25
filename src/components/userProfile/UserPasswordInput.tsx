@@ -1,9 +1,11 @@
+import type { ChangeEvent } from "react";
+
 type UserPasswordInputProps = {
   id: string;
   label: string;
   value: string;
   placeholder: string;
-  onChange: () => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function UserPasswordInput({
@@ -13,13 +15,9 @@ export default function UserPasswordInput({
   placeholder,
   onChange,
 }: UserPasswordInputProps) {
-
   return (
     <div>
-      <label
-        htmlFor={id}
-        className="mb-2 block font-semibold text-gray-800"
-      >
+      <label htmlFor={id} className="mb-2 block font-semibold text-gray-800">
         {label}
       </label>
 

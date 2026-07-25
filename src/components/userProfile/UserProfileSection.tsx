@@ -5,15 +5,10 @@ type UserProfileSectionProps = {
   children: ReactNode;
 };
 
-export default function UserProfileSection({
-  title,
-  children,
-}: UserProfileSectionProps) {
+export default function UserProfileSection({ title, children }: UserProfileSectionProps) {
   return (
     <section>
-      <h2 className="mb-3 text-lg font-bold text-gray-900">
-        {title}
-      </h2>
+      <h2 className="mb-3 text-lg font-bold text-gray-900">{title}</h2>
 
       <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
         {children}

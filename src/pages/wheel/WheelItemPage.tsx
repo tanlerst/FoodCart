@@ -3,7 +3,7 @@ import WheelEmptyState from "../../components/wheel/WheelEmptyState";
 import WheelItemList from "../../components/wheel/WheelItemList";
 import { filterEligibleWheelItems } from "../../helpers/wheel/filterWheelItem";
 import { useWheel } from "../../helpers/wheel/useWheel";
-import { SAMPLE_WHEEL_ITEMS } from "../../data/sampleWheelItems"
+import { SAMPLE_WHEEL_ITEMS } from "../../data/sampleWheelItems";
 import { MIN_WHEEL_ITEMS, MAX_WHEEL_ITEMS } from "../../contexts/WheelContext";
 import CancelButton from "../../components/wheel/CancelButton";
 
@@ -11,17 +11,14 @@ const MINIMUM_WHEEL_ITEMS = MIN_WHEEL_ITEMS;
 const MAXIMUM_WHEEL_ITEMS = MAX_WHEEL_ITEMS;
 
 export default function WheelListPage() {
-
   const { removeItem, clearItems } = useWheel();
 
-  const eligibleItems = SAMPLE_WHEEL_ITEMS; // TODO: change the logic here using filterEligibleWheelItems 
+  const eligibleItems = SAMPLE_WHEEL_ITEMS; // TODO: change the logic here using filterEligibleWheelItems
   const items = SAMPLE_WHEEL_ITEMS; // TODO:
 
   const canSpin = eligibleItems.length >= MINIMUM_WHEEL_ITEMS;
 
-  function handleCancel() {
-    
-  }
+  function handleCancel() {}
 
   if (items.length === 0) {
     return (
@@ -29,9 +26,7 @@ export default function WheelListPage() {
         <div className="mx-auto max-w-md">
           <header>
             <div className="flex items-center justify-between">
-              <h1 className="text-2xl font-bold text-gray-900">
-                Wheel Item List
-              </h1>
+              <h1 className="text-2xl font-bold text-gray-900">Wheel Item List</h1>
 
               <CancelButton onClick={handleCancel} />
             </div>
@@ -55,9 +50,7 @@ export default function WheelListPage() {
       <div className="mx-auto max-w-md">
         <header>
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-gray-900">
-              Wheel Item List
-            </h1>
+            <h1 className="text-2xl font-bold text-gray-900">Wheel Item List</h1>
 
             <CancelButton onClick={handleCancel} />
           </div>
@@ -68,11 +61,7 @@ export default function WheelListPage() {
         </header>
 
         {/* Wheel items */}
-        <WheelItemList
-          items={items}
-          onRemove={removeItem}
-          onClear={clearItems}
-        />
+        <WheelItemList items={items} onRemove={removeItem} onClear={clearItems} />
 
         <AddMoreItemsButton
           onClick={() => 1} // navigate to menu
@@ -94,7 +83,6 @@ export default function WheelListPage() {
             Add at least two items to spin the wheel.
           </p>
         )}
-
       </div>
     </main>
   );

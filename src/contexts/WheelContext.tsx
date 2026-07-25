@@ -1,11 +1,7 @@
-import {
-  createContext,
-  useState,
-  type ReactNode,
-} from "react";
+import { createContext, useState, type ReactNode } from "react";
 
 import type { WheelItem } from "../types/wheelItem";
-import { SAMPLE_WHEEL_ITEMS } from "../data/sampleWheelItems"
+import { SAMPLE_WHEEL_ITEMS } from "../data/sampleWheelItems";
 
 type WheelContextValue = {
   items: WheelItem[];
@@ -29,7 +25,6 @@ type WheelProviderProps = {
   children: ReactNode;
 };
 
-
 function getStoredWheelItems(): WheelItem[] {
   return SAMPLE_WHEEL_ITEMS;
   // get wheel items from database or frontend
@@ -38,16 +33,13 @@ function getStoredWheelItems(): WheelItem[] {
 
 function getStoredIncludeDrinks() {
   // get user saved preferences for drinks
-  // if no saved pref, return true 
+  // if no saved pref, return true
   return true;
   // TODO: change here
-
 }
 
-export default function WheelProvider({
-  children,
-}: WheelProviderProps) {
-  const [items, setItems] = useState<WheelItem[]>(getStoredWheelItems,);
+export default function WheelProvider({ children }: WheelProviderProps) {
+  const [items, setItems] = useState<WheelItem[]>(getStoredWheelItems);
 
   const [selectedItem, setSelectedItem] = useState<WheelItem | null>(null);
 
@@ -58,12 +50,12 @@ export default function WheelProvider({
   }
 
   function clearItems() {
-   // TODO
+    // TODO
   }
 
   function isItemInWheel() {
-   //TODO
-   return true;
+    //TODO
+    return true;
   }
 
   const value = {
@@ -77,9 +69,5 @@ export default function WheelProvider({
     setIncludeDrinks,
   };
 
-  return (
-    <WheelContext.Provider value={value}>
-      {children}
-    </WheelContext.Provider>
-  );
+  return <WheelContext.Provider value={value}>{children}</WheelContext.Provider>;
 }

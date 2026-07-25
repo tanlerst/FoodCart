@@ -1,13 +1,10 @@
-import {
-  ChevronRight,
-  type LucideIcon,
-} from "lucide-react";
+import { ChevronRight, type LucideIcon } from "lucide-react";
 
 type ProfileMenuItemProps = {
   title: string;
   icon: LucideIcon;
   onClick: () => void;
-  variant?: "default" | "destructive"
+  variant?: "default" | "destructive";
   showDivider?: boolean;
 };
 
@@ -18,13 +15,10 @@ export default function ProfileMenuItem({
   variant = "default",
   showDivider = false,
 }: ProfileMenuItemProps) {
-  const titleStyle = variant == "destructive"
-    ? "text-red-600"
-    : "text-gray-900";
+  const titleStyle = variant == "destructive" ? "text-red-600" : "text-gray-900";
 
-  const iconStyle = variant == "destructive"
-    ? "bg-red-50 text-red-500"
-    : "bg-orange-50 text-orange-500";
+  const iconStyle =
+    variant == "destructive" ? "bg-red-50 text-red-500" : "bg-orange-50 text-orange-500";
 
   return (
     <>
@@ -40,23 +34,13 @@ export default function ProfileMenuItem({
         </span>
 
         <span className="min-w-0 flex-1">
-          <span
-            className={`block font-semibold ${titleStyle}`}
-          >
-            {title}
-          </span>
-
+          <span className={`block font-semibold ${titleStyle}`}>{title}</span>
         </span>
 
-        <ChevronRight
-          size={21}
-          className="shrink-0 text-gray-500"
-        />
+        <ChevronRight size={21} className="shrink-0 text-gray-500" />
       </button>
 
-      {showDivider && (
-        <div className="mx-5 border-t border-gray-200" />
-      )}
+      {showDivider && <div className="mx-5 border-t border-gray-200" />}
     </>
   );
 }
