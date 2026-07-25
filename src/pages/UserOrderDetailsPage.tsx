@@ -67,7 +67,6 @@ export default function UserOrderDetailsPage() {
           <OrderInfoCard
             orderNumber={orderDetails.orderNumber}
             placedAt={orderDetails.placedAt}
-            // tableNumber={orderDetails.tableNumber}
             status={orderDetails.status}
           />
 
@@ -78,8 +77,8 @@ export default function UserOrderDetailsPage() {
           <OrderPaymentSummary
             subtotal={orderDetails.subtotal}
             gst={orderDetails.gst}
-            serviceFee={orderDetails.serviceFee}
-            total={orderDetails.total}
+            serviceFee={orderDetails.serviceCharge}
+            total={orderDetails.totalAmount}
           />
         </div>
 
