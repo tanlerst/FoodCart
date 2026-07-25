@@ -1,42 +1,67 @@
-/* Food Recommendation page */
-import { useState, useEffect } from "react";
-import type { FoodItem } from "../types/food";
-import FoodRecommendation from "../components/foodRecommendations/FoodRecommendationCard";
-import { getRecommended } from "../helpers/menu/getRecommended";
+import { useNavigate } from "react-router";
+
+import FoodRecommendationCard from "../components/foodRecommendations/FoodRecommendationCard";
 import { useCart } from "../contexts/CartContext";
+import { useRecommendedFoods } from "../helpers/foodRecommendation/useRecommendedFoods";
+import { useRecommendationQueue } from "../helpers/foodRecommendation/useRecommendationQueue";
+import type { FoodItem } from "../types/food";
 
 export default function FoodRecommendationPage() {
-  const [recommended, setRecommended] = useState<FoodItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
   const { addItem } = useCart();
 
-  useEffect(() => {
-    async function loadRecommendations() {
-      try {
-        const foods = await getRecommended();
-        setRecommended(foods);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to load recommendations.");
-      } finally {
-        setLoading(false);
-      }
-    }
+  const { foods, loading, error, } = useRecommendedFoods();
 
-    loadRecommendations();
-  }, []);
-
-  if (loading) {
-    return <div className="p-8">Loading...</div>;
+  function navigateToMenu() {
+    navigate("/menu");
   }
 
-  if (error) {
-    return <div>{error}</div>;
-  }
-
-  function handleAddDish(dish: FoodItem) {
+  function addDishToCart(dish: FoodItem) {
     addItem(dish, 1);
   }
 
-  return <FoodRecommendation recommendedDishes={recommended} onAddDish={handleAddDish} />;
+const {currentDish, skipCurrentDish, addCurrentDish, } = useRecommendationQueue({
+  initialDishes: foods,
+  onAddDish: addDishToCart,
+  onQueueEmpty: navigateToMenu,
+});
+
+  if (loading) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-white">
+        <p className="text-gray-600">
+          Loading recommendations...
+        </p>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-white p-8">
+        <p className="text-center text-red-600">
+          {error}
+        </p>
+      </main>
+    );
+  }
+
+  if (!currentDish) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-white p-8">
+        <p className="text-center text-gray-600">
+          No recommendations available.
+        </p>
+      </main>
+    );
+  }
+
+  return (
+    <FoodRecommendationCard
+      dish={currentDish}
+      onClose={navigateToMenu}
+      onSkip={skipCurrentDish}
+      onAdd={addCurrentDish}
+    />
+  );
 }
