@@ -31,7 +31,6 @@ export type OrderDetails = {
   customerId?: string;
   orderNumber: string;
   placedAt: string;
-  tableNumber?: number;
   status: OrderStatus;
   items: OrderDetailsItem[]; // list of items
   subtotal: number;
