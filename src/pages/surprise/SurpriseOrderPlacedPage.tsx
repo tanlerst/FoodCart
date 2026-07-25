@@ -1,6 +1,5 @@
 import OrderPlacedActionButtons from "../../components/surprise/surpriseOrderPlaced/OrderPlacedActionButtons";
 import OrderOrderPlacedBanner from "../../components/surprise/surpriseOrderPlaced/OrderPlacedBanner";
-import NavigationBar from "../../components/common/NavigationBar";
 import { useNavigate } from "react-router";
 
 export default function SurpriseOrderPlacedPage() {
@@ -37,9 +36,6 @@ export default function SurpriseOrderPlacedPage() {
             onBackMenu={handleBackMenu}
             onGoToCart={handleGoCart}
           />
-        </div>
-        <div className="fixed bottom-0 left-0 right-0 bg-orange-50">
-          <NavigationBar />
         </div>
       </div>
     </main>

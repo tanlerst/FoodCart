@@ -4,7 +4,6 @@ import SurpriseBanner from "../../components/surprise/surpriseConfirmation/Confi
 import ConfirmSurpriseHeader from "../../components/surprise/surpriseConfirmation/ConfirmSurpriseHeader";
 import ConfirmSurpriseSummaryCard from "../../components/surprise/surpriseConfirmation/ConfirmSurpriseSummaryCard";
 import ConfirmSurpriseTotalCard from "../../components/surprise/surpriseConfirmation/ConfirmSurpriseTotal";
-import NavigationBar from "../../components/common/NavigationBar";
 import type { SurprisePreferences } from "../../types/surprise";
 import { useLocation, useNavigate } from "react-router";
 import { getSurpriseFoods } from "../../helpers/surprise/surpriseHelper";
@@ -105,9 +104,6 @@ export default function SurpriseConfrmationPage() {
           <BackButton onClick={handleBack} />
 
           <PlaceOrderButton onClick={handlePlaceOrder} />
-        </div>
-        <div className="fixed bottom-0 left-0 right-0 bg-orange-50">
-          <NavigationBar />
         </div>
       </div>
     </main>
