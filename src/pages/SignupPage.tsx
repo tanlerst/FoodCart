@@ -2,15 +2,10 @@
 
 import SignupComponent from "../components/auth/SignupComponent";
 import SigninButton from "../components/auth/SigninButton";
-import HomeButton from "../components/auth/HomeButton";
 
 export default function SignupPage() {
   return (
     <main className="min-h-screen bg-white">
-      {/* Home button */}
-      <div className="absolute left-8 top-8">
-        <HomeButton />
-      </div>
 
       <div className="flex min-h-screen items-center justify-center">
         <div className="w-full max-w-md">
