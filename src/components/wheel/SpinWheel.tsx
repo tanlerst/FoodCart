@@ -37,11 +37,19 @@ export default function SpinWheel({
   );
 
   function handleSpin() {
-    // TODO: spin logic
+    if(!mustSpin) {
+       const selectedItemIndex = Math.floor(Math.random() * items.length);
+        setPrizeNumber(selectedItemIndex)
+        setMustSpin(true);
+    }
+   
   }
 
   function handleStopSpinning() {
-    // TODO: stop spinning and update selected item
+    setMustSpin(false);
+    const selectedItem = items[prizeNumber];
+
+    // navigate to the result page
   }
 
   return (
