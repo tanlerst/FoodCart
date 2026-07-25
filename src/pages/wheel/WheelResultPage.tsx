@@ -4,7 +4,7 @@ import { useCart } from "../../contexts/CartContext";
 import { useNavigate } from "react-router";
 import WheelResultCard from "../../components/wheel/ResultCard";
 import CancelButton from "../../components/wheel/CancelButton";
-import type { Food } from "../../types/food";
+import type { FoodItem } from "../../types/food";
 
 export default function WheelResultPage() {
   const { addItem } = useCart();
@@ -16,7 +16,7 @@ export default function WheelResultPage() {
     return null;
   }
   function handleAddToCart() {
-    addItem(selectedItem as Food, 1);
+    addItem(selectedItem as FoodItem, 1);
     navigate("/cart");
   }
 

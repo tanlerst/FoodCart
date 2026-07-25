@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import type { Session } from "@supabase/supabase-js";
 import { supabase } from "./utils/supabase";
@@ -28,6 +29,9 @@ import SpinWheelPage from "./pages/wheel/SpinWheelPage";
 import WheelItemPage from "./pages/wheel/WheelItemPage";
 import WheelProvider from "./contexts/WheelContext";
 import WheelResultPage from "./pages/wheel/WheelResultPage";
+import UserProfilePage from "./pages/userProfile/UserProfilePage";
+import UserEditProfilePage from "./pages/userProfile/UserEditProfilePage";
+import UserChangePasswordPage from "./pages/userProfile/UserChangePasswordPage";
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
@@ -61,7 +65,14 @@ export default function App() {
       authListener.subscription.unsubscribe();
     };
   }, []);
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, []);
 
+  if (loading) {
+    return <div className="p-8">Loading...</div>;
+  }
   if (loading) {
     return <div className="p-8">Loading...</div>;
   }
@@ -188,6 +199,39 @@ export default function App() {
                 </UserRoute>
               }
             />
+
+            <Route
+            path="/user"
+            element={
+              <UserRoute session={session}>
+                <UserProfilePage />
+              </UserRoute>
+            }
+          />
+          <Route
+            path="/editprofile"
+            element={
+              <UserRoute session={session}>
+                <UserEditProfilePage />
+              </UserRoute>
+            }
+          />
+          <Route
+            path="/changepassword"
+            element={
+              <UserRoute session={session}>
+                <UserChangePasswordPage />
+              </UserRoute>
+            }
+          />
+          <Route
+            path="/adminlogin"
+            element={
+              <PublicRoute session={session}>
+                <AdminLoginPage />
+              </PublicRoute>
+            }
+          />
 
             <Route
               path="/admin"
