@@ -7,10 +7,10 @@ import AddCard from "./AddCard";
 import SkipIcon from "./SkipIcon";
 import AddIcon from "./AddIcon";
 import AddDishButton from "./AddDishButton";
-import CloseButton from "./CloseButton";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import type { FoodItem } from "../../types/food";
+import CancelButton from "../common/CancelButton";
 
 type FoodRecommendationPageProps = {
   recommendedDishes: FoodItem[];
@@ -57,7 +57,7 @@ export default function FoodRecommendationPage({
     <main className="min-h-screen bg-white p-4">
       <div className="relative mx-auto min-h-screen max-w-md rounded-2xl bg-white-100 p-10 shadow-md">
         {/* Close button */}
-        <CloseButton onClose={handleClose} />
+        <CancelButton onClick={handleClose} />
 
         {/* Header */}
         <div className="flex flex-col items-center justify-center gap-4 p-4">
