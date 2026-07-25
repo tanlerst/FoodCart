@@ -48,7 +48,7 @@ const NAVIGATION_ITEMS: NavigationBarItem[] = [
   {
     label: "Profile",
     icon: UserRound,
-    route: "/profile",
+    route: "/user",
   },
 ];
 
