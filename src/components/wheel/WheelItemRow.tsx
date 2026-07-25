@@ -6,10 +6,7 @@ type WheelItemRowProps = {
   onRemove: (itemId: number) => void;
 };
 
-export default function WheelItemRow({
-  item,
-  onRemove,
-}: WheelItemRowProps) {
+export default function WheelItemRow({ item, onRemove }: WheelItemRowProps) {
   return (
     <article className="flex items-center gap-4 border-b border-gray-100 py-4 last:border-b-0">
       <img
@@ -19,16 +16,13 @@ export default function WheelItemRow({
       />
 
       <div className="min-w-0 flex-1">
-        <h3 className="truncate text-sm font-semibold text-gray-900">
-          {item.name}
-        </h3>
+        <h3 className="truncate text-sm font-semibold text-gray-900">{item.name}</h3>
 
         <p className="mt-1 text-sm text-gray-600">
-          {/* {formatCurrency(item.price)} */}
-          ${item.price}
+          {/* {formatCurrency(item.price)} */}${item.price}
         </p>
       </div>
-        
+
       {/* Remove item button */}
       <button
         type="button"

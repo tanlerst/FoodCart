@@ -4,15 +4,10 @@ import type { ItemData } from "../types/itemData";
 
 type CartContextType = {
   cartItems: ItemData[];
-
   addItem: (food: Food, quantity: number) => void;
-
   increaseQuantity: (foodId: number) => void;
-
   decreaseQuantity: (foodId: number) => void;
-
   removeItem: (foodId: number) => void;
-
   clearCart: () => void;
 };
 

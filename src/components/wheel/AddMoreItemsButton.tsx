@@ -7,10 +7,7 @@ type AddMoreItemsButtonProps = {
   disabled?: boolean;
 };
 
-export default function AddMoreItemsButton({
-  onClick,
-  disabled = false,
-}: AddMoreItemsButtonProps) {
+export default function AddMoreItemsButton({ onClick, disabled = false }: AddMoreItemsButtonProps) {
   return (
     <button
       type="button"

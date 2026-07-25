@@ -8,23 +8,15 @@ type SpinWheelProps = {
   onSpinComplete: (selectedItem: WheelItem) => void;
 };
 
-const SEGMENT_COLOURS = [
-  "#fff7ed",
-  "#ffedd5",
-  "#fef3c7",
-  "#fff1e6",
-];
+const SEGMENT_COLOURS = ["#fff7ed", "#ffedd5", "#fef3c7", "#fff1e6"];
 
 const OUTER_BORDER_COLOUR = "#fb923c";
 const INNER_BORDER_COLOUR = "#fed7aa";
 const RADIUS_LINE_COLOUR = INNER_BORDER_COLOUR;
 const WHEEL_TEXT_FONT_SIZE = 16;
-const WHEEL_SPIN_DURATION = 0.8;
+const WHEEL_SPIN_DURATION = 0.2;
 
-export default function SpinWheel({
-  items,
-  onSpinComplete,
-}: SpinWheelProps) {
+export default function SpinWheel({ items, onSpinComplete }: SpinWheelProps) {
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
 
@@ -33,29 +25,25 @@ export default function SpinWheel({
       items.map((item) => ({
         option: item.name,
       })),
-    [],
+    [items],
   );
 
   function handleSpin() {
-    if(!mustSpin) {
-       const selectedItemIndex = Math.floor(Math.random() * items.length);
-        setPrizeNumber(selectedItemIndex)
-        setMustSpin(true);
+    if (!mustSpin) {
+      const selectedItemIndex = Math.floor(Math.random() * items.length);
+      setPrizeNumber(selectedItemIndex);
+      setMustSpin(true);
     }
-   
   }
 
   function handleStopSpinning() {
     setMustSpin(false);
-    const selectedItem = items[prizeNumber];
-
-    // navigate to the result page
+    onSpinComplete(items[prizeNumber]);
   }
 
   return (
     <section className="flex flex-col items-center">
       <div className="max-w-full overflow-hidden mb-10">
-
         <Wheel
           mustStartSpinning={mustSpin}
           prizeNumber={prizeNumber}
@@ -74,14 +62,14 @@ export default function SpinWheel({
       </div>
 
       {/* Spin button */}
-        <button
-          type="button"
-          onClick={handleSpin}
-          disabled={mustSpin}
-          className="mt-6 w-full rounded-xl bg-orange-600 px-6 py-4 font-semibold text-white transition hover:bg-orange-700 disabled:cursor-not-allowed disabled:bg-orange-300"
-        >
-          {mustSpin ? "Spinning..." : "Spin Now"}
-        </button>
+      <button
+        type="button"
+        onClick={handleSpin}
+        disabled={mustSpin}
+        className="mt-6 w-full rounded-xl bg-orange-600 px-6 py-4 font-semibold text-white transition hover:bg-orange-700 disabled:cursor-not-allowed disabled:bg-orange-300"
+      >
+        {mustSpin ? "Spinning..." : "Spin Now"}
+      </button>
     </section>
   );
 }

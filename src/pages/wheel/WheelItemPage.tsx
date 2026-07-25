@@ -1,26 +1,20 @@
 import AddMoreItemsButton from "../../components/wheel/AddMoreItemsButton";
 import WheelEmptyState from "../../components/wheel/WheelEmptyState";
 import WheelItemList from "../../components/wheel/WheelItemList";
-import { filterEligibleWheelItems } from "../../helpers/wheel/filterWheelItem";
-import { useWheel } from "../../helpers/wheel/useWheel";
-import { SAMPLE_WHEEL_ITEMS } from "../../data/sampleWheelItems"
-import { MIN_WHEEL_ITEMS, MAX_WHEEL_ITEMS } from "../../contexts/WheelContext";
+import { useWheel } from "../../contexts/WheelContext";
+import { SAMPLE_WHEEL_ITEMS } from "../../data/sampleWheelItems";
+import { MIN_WHEEL_ITEMS } from "../../contexts/WheelContext";
 import CancelButton from "../../components/wheel/CancelButton";
-
-const MINIMUM_WHEEL_ITEMS = MIN_WHEEL_ITEMS;
-const MAXIMUM_WHEEL_ITEMS = MAX_WHEEL_ITEMS;
+import { useNavigate } from "react-router";
 
 export default function WheelListPage() {
-
-  const { removeItem, clearItems } = useWheel();
-
-  const eligibleItems = SAMPLE_WHEEL_ITEMS; // TODO: change the logic here using filterEligibleWheelItems 
-  const items = SAMPLE_WHEEL_ITEMS; // TODO:
-
-  const canSpin = eligibleItems.length >= MINIMUM_WHEEL_ITEMS;
+  const { items, removeItem, clearItems } = useWheel();
+  const navigate = useNavigate();
+  const eligibleItems = SAMPLE_WHEEL_ITEMS;
+  const canSpin = eligibleItems.length >= MIN_WHEEL_ITEMS;
 
   function handleCancel() {
-    
+    navigate("/menu");
   }
 
   if (items.length === 0) {
@@ -29,9 +23,7 @@ export default function WheelListPage() {
         <div className="mx-auto max-w-md">
           <header>
             <div className="flex items-center justify-between">
-              <h1 className="text-2xl font-bold text-gray-900">
-                Wheel Item List
-              </h1>
+              <h1 className="text-2xl font-bold text-gray-900">Wheel Item List</h1>
 
               <CancelButton onClick={handleCancel} />
             </div>
@@ -42,9 +34,7 @@ export default function WheelListPage() {
           </header>
 
           {/* Empty state */}
-          <WheelEmptyState
-            onBrowseMenu={() => 1} // TODO: back to menu
-          />
+          <WheelEmptyState onBrowseMenu={() => navigate("/menu")} />
         </div>
       </main>
     );
@@ -55,9 +45,7 @@ export default function WheelListPage() {
       <div className="mx-auto max-w-md">
         <header>
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-gray-900">
-              Wheel Item List
-            </h1>
+            <h1 className="text-2xl font-bold text-gray-900">Wheel Item List</h1>
 
             <CancelButton onClick={handleCancel} />
           </div>
@@ -68,22 +56,18 @@ export default function WheelListPage() {
         </header>
 
         {/* Wheel items */}
-        <WheelItemList
-          items={items}
-          onRemove={removeItem}
-          onClear={clearItems}
-        />
+        <WheelItemList items={items} onRemove={removeItem} onClear={clearItems} />
 
         <AddMoreItemsButton
-          onClick={() => 1} // navigate to menu
-          disabled={items.length >= MAXIMUM_WHEEL_ITEMS}
+          onClick={() => navigate("/menu")}
+          disabled={items.length < MIN_WHEEL_ITEMS}
         />
 
         {/* Spin button */}
         <button
           type="button"
           disabled={!canSpin}
-          onClick={() => 1} // TODO: navigate to spin page
+          onClick={() => navigate("/wheel")}
           className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-orange-600 px-6 py-4 font-semibold text-white disabled:bg-gray-300"
         >
           Spin Now
@@ -94,7 +78,6 @@ export default function WheelListPage() {
             Add at least two items to spin the wheel.
           </p>
         )}
-
       </div>
     </main>
   );

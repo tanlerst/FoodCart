@@ -1,85 +1,65 @@
-import {
-  createContext,
-  useState,
-  type ReactNode,
-} from "react";
-
+import { createContext, useContext, useState } from "react";
 import type { WheelItem } from "../types/wheelItem";
-import { SAMPLE_WHEEL_ITEMS } from "../data/sampleWheelItems"
 
 type WheelContextValue = {
   items: WheelItem[];
-  selectedItem: WheelItem | null; // item selected by wheel
-  includeDrinks: boolean; // whether drink items should be included in wheel selection
-
-  removeItem: (itemId: number) => void; // remove wheel item
+  selectedItem: WheelItem | null;
+  addItem: (item: WheelItem) => void;
+  removeItem: (itemId: number) => void;
   clearItems: () => void;
   isItemInWheel: (itemId: number) => boolean;
-
   setSelectedItem: (item: WheelItem | null) => void;
-  setIncludeDrinks: (includeDrinks: boolean) => void;
 };
 
 export const MIN_WHEEL_ITEMS = 2;
-export const MAX_WHEEL_ITEMS = 8;
 
 export const WheelContext = createContext<WheelContextValue | null>(null);
 
-type WheelProviderProps = {
-  children: ReactNode;
-};
-
-
-function getStoredWheelItems(): WheelItem[] {
-  return SAMPLE_WHEEL_ITEMS;
-  // get wheel items from database or frontend
-  // TODO: change here
-}
-
-function getStoredIncludeDrinks() {
-  // get user saved preferences for drinks
-  // if no saved pref, return true 
-  return true;
-  // TODO: change here
-
-}
-
-export default function WheelProvider({
-  children,
-}: WheelProviderProps) {
-  const [items, setItems] = useState<WheelItem[]>(getStoredWheelItems,);
-
+export default function WheelProvider({ children }: { children: React.ReactNode }) {
+  const [items, setItems] = useState<WheelItem[]>([]);
   const [selectedItem, setSelectedItem] = useState<WheelItem | null>(null);
 
-  const [includeDrinks, setIncludeDrinks] = useState(getStoredIncludeDrinks);
+  function addItem(item: WheelItem) {
+    setItems((prev) => {
+      if (prev.some((existing) => existing.id === item.id)) {
+        return prev;
+      }
+      return [...prev, item];
+    });
+  }
 
-  function removeItem() {
-    // TODO: remove wheel item
+  function removeItem(itemId: number) {
+    setItems((prev) => prev.filter((item) => item.id !== itemId));
   }
 
   function clearItems() {
-   // TODO
+    setItems([]);
+    setSelectedItem(null);
   }
 
-  function isItemInWheel() {
-   //TODO
-   return true;
+  function isItemInWheel(itemId: number) {
+    return items.some((item) => item.id === itemId);
   }
 
   const value = {
     items,
     selectedItem,
-    includeDrinks,
+    addItem,
     removeItem,
     clearItems,
     isItemInWheel,
     setSelectedItem,
-    setIncludeDrinks,
   };
 
-  return (
-    <WheelContext.Provider value={value}>
-      {children}
-    </WheelContext.Provider>
-  );
+  return <WheelContext.Provider value={value}>{children}</WheelContext.Provider>;
+}
+
+export function useWheel() {
+  const context = useContext(WheelContext);
+
+  if (!context) {
+    throw new Error("Wheel must use context");
+  }
+
+  return context;
 }

@@ -1,17 +1,9 @@
-/* Navigation bar component for the main menu
-1. home
-2. categories
-3. cart
-4. orders
-5. profile
-
-*/
-
 import NavigationItem from "./NavigationItem";
 import { IoHomeOutline } from "react-icons/io5";
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import { FaShoppingCart } from "react-icons/fa";
 import { CgNotes } from "react-icons/cg";
+import { RxColorWheel } from "react-icons/rx";
 import { IoPerson } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
@@ -29,6 +21,13 @@ export default function NavigationBar() {
             icon={BiSolidCategoryAlt}
             label="Categories"
             onClick={() => navigate("/menu")}
+          />
+        </li>
+        <li>
+          <NavigationItem
+            icon={RxColorWheel}
+            label="Wheel"
+            onClick={() => navigate("/wheelitem")}
           />
         </li>
         <li>

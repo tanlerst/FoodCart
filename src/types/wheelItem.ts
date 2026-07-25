@@ -4,7 +4,6 @@ export type WheelItem = {
   price: number;
   image: string;
   category: {
-  name: string;
+    name: string;
   };
 };
-
