@@ -1,54 +1,100 @@
-import NavigationItem from "./NavigationItem";
-import { IoHomeOutline } from "react-icons/io5";
-import { BiSolidCategoryAlt } from "react-icons/bi";
-import { FaShoppingCart } from "react-icons/fa";
-import { CgNotes } from "react-icons/cg";
-import { RxColorWheel } from "react-icons/rx";
-import { IoPerson } from "react-icons/io5";
-import { IoGiftOutline } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+/* Bottom navigation bar for user pages. Navigation items include home (menu), wheel, surprise, cart, orders, and profile */
+
+import {
+  FerrisWheel,
+  Gift,
+  House,
+  NotepadText,
+  ShoppingCart,
+  UserRound,
+  type LucideIcon,
+} from "lucide-react";
+import { NavLink } from "react-router-dom";
+
+type NavigationBarItem = {
+  label: string;
+  icon: LucideIcon;
+  route: string;
+  end?: boolean;
+};
+
+const NAVIGATION_ITEMS: NavigationBarItem[] = [
+  {
+    label: "Home",
+    icon: House,
+    route: "/menu",
+    end: true,
+  },
+  {
+    label: "Wheel",
+    icon: FerrisWheel,
+    route: "/wheelitem",
+  },
+  {
+    label: "Surprise",
+    icon: Gift,
+    route: "/surprise",
+  },
+  {
+    label: "Cart",
+    icon: ShoppingCart,
+    route: "/cart",
+  },
+  {
+    label: "Orders",
+    icon: NotepadText,
+    route: "/orders",
+  },
+  {
+    label: "Profile",
+    icon: UserRound,
+    route: "/profile",
+  },
+];
+
+const BASE_NAVIGATION_ITEM_CLASS =
+  "flex flex-col items-center gap-1 rounded-lg px-2 py-1 text-xs font-medium transition-colors";
+
+const ACTIVE_NAVIGATION_ITEM_CLASS =
+  "text-orange-500";
+
+const INACTIVE_NAVIGATION_ITEM_CLASS =
+  "text-gray-500 hover:text-orange-500";
+
+function getNavigationItemClass(isActive: boolean) {
+  return `${BASE_NAVIGATION_ITEM_CLASS} ${
+    isActive
+      ? ACTIVE_NAVIGATION_ITEM_CLASS
+      : INACTIVE_NAVIGATION_ITEM_CLASS
+  }`;
+}
 
 export default function NavigationBar() {
-  const navigate = useNavigate();
-
   return (
-    <div className="navigation-bar text-gray p-4 mt-6 border-t">
-      <ul className="flex justify-around">
-        <li>
-          <NavigationItem icon={IoHomeOutline} label="Home" onClick={() => navigate("/menu")} />
-        </li>
-        <li>
-          <NavigationItem
-            icon={BiSolidCategoryAlt}
-            label="Categories"
-            onClick={() => navigate("/menu")}
-          />
-        </li>
-        <li>
-          <NavigationItem
-            icon={RxColorWheel}
-            label="Wheel"
-            onClick={() => navigate("/wheelitem")}
-          />
-        </li>
-        <li>
-          <NavigationItem
-            icon={IoGiftOutline}
-            label="Surprise Me"
-            onClick={() => navigate("/surprise")}
-          />
-        </li>
+    <nav className="fixed bottom-0 left-0 right-0 border-t border-gray-200 bg-white px-2 py-2 shadow-sm">
+      <ul className="mx-auto flex max-w-md items-center justify-around">
+        
+        {/* Navigation items */}
+        {NAVIGATION_ITEMS.map((item) => {
+          const Icon = item.icon;
 
-        <li>
-          <NavigationItem icon={FaShoppingCart} label="Cart" onClick={() => navigate("/cart")} />
-        </li>
-        <li>
-          <NavigationItem icon={CgNotes} label="Orders" onClick={() => navigate("/orders")} />
-        </li>
-        <li>
-          <NavigationItem icon={IoPerson} label="Profile" onClick={() => navigate("/user")} />
-        </li>
+          return (
+            <li key={item.route}>
+              <NavLink
+                to={item.route}
+                end={item.end}
+                className={({ isActive }) =>
+                  getNavigationItemClass(isActive)
+                }
+              >
+                <Icon size={22} />
+
+                <span>{item.label}</span>
+              </NavLink>
+            </li>
+          );
+        })}
       </ul>
-    </div>
+    </nav>
   );
 }
