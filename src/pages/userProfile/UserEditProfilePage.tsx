@@ -21,7 +21,7 @@ export default function UserEditProfilePage() {
   }
 
   return (
-    <main className="min-h-screen bg-orange-50/50 px-4 pb-10 pt-5">
+    <main className="min-h-screen bg-orange-50 px-4 pb-10 pt-5">
       <div className="mx-auto w-full max-w-md">
         <header className="relative flex h-14 items-center justify-center">
           <button
