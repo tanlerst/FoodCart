@@ -25,7 +25,7 @@ import SurpriseOptionPage from "./pages/surprise/SurpriseOptionPage";
 import SurpriseConfirmationPage from "./pages/surprise/SurpriseConfirmationPage";
 import SurpriseOrderPlacedPage from "./pages/surprise/SurpriseOrderPlacedPage";
 import SpinWheelPage from "./pages/wheel/SpinWheelPage";
-import WheelItemPage from "./pages/wheel/WheelItemPage";
+import WheelItemPage from "./pages/wheel/WheelListPage";
 import WheelProvider from "./contexts/WheelContext";
 import WheelResultPage from "./pages/wheel/WheelResultPage";
 import UserProfilePage from "./pages/userProfile/UserProfilePage";
