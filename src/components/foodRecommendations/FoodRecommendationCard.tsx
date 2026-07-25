@@ -54,18 +54,16 @@ export default function FoodRecommendationPage({
   }
 
   return (
-    <main className="min-h-screen bg-white p-4">
+    <main className="min-h-screen bg-white">
       <div className="relative mx-auto min-h-screen max-w-md rounded-2xl bg-white-100 p-10 shadow-md">
         {/* Close button */}
         <CancelButton onClick={handleClose} />
 
         {/* Header */}
-        <div className="flex flex-col items-center justify-center gap-4 p-4">
-          <h1 className="text-lg font-semibold mb-2">Recommended for you</h1>
-
+        <div className="flex flex-col items-center justify-center gap-4">
           <h1 className="text-3xl font-bold mb-2">Swipe to choose</h1>
 
-          <p className="mx-auto mt-2 text-sm text-center text-gray-600">
+          <p className="mx-auto text-sm text-center text-gray-600">
             Swipe right to add to your order or swipe left to skip. Browse the menu for more
             options.
           </p>
@@ -77,7 +75,7 @@ export default function FoodRecommendationPage({
           <SkipCard onSkip={handleSkip} />
           <AddCard onAdd={handleAdd} />
         </div>
-        <div className="relative mx-auto mt-4 w-[80%] ">
+        <div className="relative mx-auto mt-4 w-[90%] ">
           <DishCard dish={currentDish} />
 
           {/* Skip Icon (left) */}
