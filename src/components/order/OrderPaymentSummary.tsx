@@ -25,7 +25,7 @@ export default function OrderPaymentSummary({
         <div>
           <p className="text-sm font-semibold text-gray-700">Total</p>
 
-          <p className="mt-2 text-3xl font-bold text-orange-600">${total.toFixed(2)}</p>
+          <p className="mt-2 mx-2 text-2xl font-bold text-orange-600">${total.toFixed(2)}</p>
         </div>
       </div>
     </div>
