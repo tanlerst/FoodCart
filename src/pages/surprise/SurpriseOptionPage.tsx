@@ -8,6 +8,7 @@ import CategoryCard from "../../components/surprise/surpriseOption/CategoryCard"
 import NavigationBar from "../../components/common/NavigationBar";
 import { useNavigate } from "react-router";
 import type { SurprisePreferences } from "../../types/surprise";
+import UserLayout from "../../layouts/UserLayout";
 
 export default function SurpriseOptionPage() {
   const navigate = useNavigate();
@@ -32,11 +33,8 @@ export default function SurpriseOptionPage() {
   };
 
   return (
-    <main className="min-h-screen bg-orange-50 p-4 pb-28">
-      <div className="relative mx-auto max-w-md rounded-2xl p-10 shadow-md">
-        <h1 className="mb-2 text-center text-3xl font-bold text-gray-800">Surprise Me!</h1>
-
-        <div className="my-6 w-full max-w-md">
+    <UserLayout title="Surprise Me">
+      <div className="space-y-4">
           <MealAmountCard mealAmount={mealAmount} setMealAmount={setMealAmount} />
 
           <BudgetCard budget={budget} minBudget={0} maxBudget={200} setBudget={setBudget} />
@@ -57,7 +55,7 @@ export default function SurpriseOptionPage() {
         <div className="fixed bottom-0 left-0 right-0 bg-orange-50">
           <NavigationBar />
         </div>
-      </div>
-    </main>
+
+    </UserLayout>
   );
 }
