@@ -8,19 +8,19 @@ import BrowseMenuButton from "./BrowseMenuButton";
 import SkipCard from "./SkipCard";
 import SwipeableDishCard from "./SwipeableDishCard";
 
-type FoodRecommendationViewProps = {
+type FoodRecommendationCardProps = {
   dish: FoodItem;
   onClose: () => void;
   onSkip: () => void;
   onAdd: () => void;
 };
 
-export default function FoodRecommendationView({
+export default function FoodRecommendationCard({
   dish,
   onClose,
   onSkip,
   onAdd,
-}: FoodRecommendationViewProps) {
+}: FoodRecommendationCardProps) {
   return (
     <main className="min-h-screen bg-white">
       <div className="relative mx-auto min-h-screen max-w-md bg-white p-10 shadow-md">
