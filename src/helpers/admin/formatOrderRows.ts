@@ -1,9 +1,9 @@
 import type { adminOrderItems, adminOrders } from "../../types/adminOrder";
 
 function getOrderStatus(statusIds: number[]): number {
-  if (statusIds.includes(1)) return 1;
-  if (statusIds.every((item) => item === 3)) return 3;
-  return 2;
+  if (statusIds.every((item) => item === 4)) return 4;
+  if (statusIds.every((item) => item === 1)) return 1;
+  return 3;
 }
 
 function calculateTotal(subtotal: number): number {
@@ -11,10 +11,11 @@ function calculateTotal(subtotal: number): number {
 }
 
 export function formatOrdersAdmin(rows: adminOrderItems[]): adminOrders[] {
-  const grouped = new Map<number, adminOrders>();
+  const grouped = new Map<string, adminOrders>();
   for (const row of rows) {
-    if (!grouped.has(row.userId)) {
-      grouped.set(row.userId, {
+    if (!grouped.has(row.orderNumber)) {
+      grouped.set(row.orderNumber, {
+        orderNumber: row.orderNumber,
         userId: row.userId,
         username: row.username,
         orderTime: row.orderTime,
@@ -25,7 +26,7 @@ export function formatOrdersAdmin(rows: adminOrderItems[]): adminOrders[] {
       });
     }
 
-    const order = grouped.get(row.userId)!;
+    const order = grouped.get(row.orderNumber)!;
     order.itemQty += row.itemQty;
     order.price += row.price * row.itemQty;
     order.items.push(row.id);
@@ -36,7 +37,9 @@ export function formatOrdersAdmin(rows: adminOrderItems[]): adminOrders[] {
   }
 
   for (const order of grouped.values()) {
-    const statuses = rows.filter((row) => row.userId === order.userId).map((row) => row.status);
+    const statuses = rows
+      .filter((row) => row.orderNumber === order.orderNumber)
+      .map((row) => row.status);
     order.status = getOrderStatus(statuses);
     order.price = calculateTotal(order.price);
   }

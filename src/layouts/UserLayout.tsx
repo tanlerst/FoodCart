@@ -7,18 +7,12 @@ type UserLayoutProps = {
   headerAction?: ReactNode;
 };
 
-export default function UserLayout({
-  title,
-  children,
-  headerAction,
-}: UserLayoutProps) {
+export default function UserLayout({ title, children, headerAction }: UserLayoutProps) {
   return (
     <div className="min-h-screen bg-white">
       <main className="mx-auto flex min-h-screen w-full max-w-md flex-col px-4 pb-28 pt-6">
         <header className="mb-6 flex items-center justify-between gap-4">
-          <h1 className="text-2xl font-bold text-gray-900">
-            {title}
-          </h1>
+          <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
 
           {headerAction}
         </header>

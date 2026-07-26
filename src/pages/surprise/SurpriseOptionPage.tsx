@@ -35,27 +35,26 @@ export default function SurpriseOptionPage() {
   return (
     <UserLayout title="Surprise Me">
       <div className="space-y-4">
-          <MealAmountCard mealAmount={mealAmount} setMealAmount={setMealAmount} />
+        <MealAmountCard mealAmount={mealAmount} setMealAmount={setMealAmount} />
 
-          <BudgetCard budget={budget} minBudget={0} maxBudget={200} setBudget={setBudget} />
+        <BudgetCard budget={budget} minBudget={0} maxBudget={200} setBudget={setBudget} />
 
-          <DietaryPreferences
-            dietaryPreference={dietaryPreferences}
-            setDietaryPreference={setDietaryPreferences}
-          />
+        <DietaryPreferences
+          dietaryPreference={dietaryPreferences}
+          setDietaryPreference={setDietaryPreferences}
+        />
 
-          <CategoryCard selectedCategories={category} setSelectedCategory={setCategory} />
+        <CategoryCard selectedCategories={category} setSelectedCategory={setCategory} />
 
-          <NotesCard notes={notes} setNotes={setNotes} />
+        <NotesCard notes={notes} setNotes={setNotes} />
 
-          <div className="mt-4 flex justify-center">
-            <SurpriseMeButton onSurprise={handleSurprise} />
-          </div>
+        <div className="mt-4 flex justify-center">
+          <SurpriseMeButton onSurprise={handleSurprise} />
         </div>
-        <div className="fixed bottom-0 left-0 right-0 bg-orange-50">
-          <NavigationBar />
-        </div>
-
+      </div>
+      <div className="fixed bottom-0 left-0 right-0 bg-orange-50">
+        <NavigationBar />
+      </div>
     </UserLayout>
   );
 }

@@ -20,16 +20,16 @@ export default function LoginPage() {
   }
 
   return (
-      <AuthLayout >
-        <div className="flex justify-center items-center mb-6">
-          <h1 className="text-4xl font-bold text-gray-900">Welcome Back!</h1>
-        </div>
+    <AuthLayout>
+      <div className="flex justify-center items-center mb-6">
+        <h1 className="text-4xl font-bold text-gray-900">Welcome Back!</h1>
+      </div>
 
-        <p className="text-center text-gray-600 mb-6">Sign in to continue your food journey</p>
+      <p className="text-center text-gray-600 mb-6">Sign in to continue your food journey</p>
 
-        <LoginCard onLogin={login} />
+      <LoginCard onLogin={login} />
 
-        <SignupCard />
-      </AuthLayout>
+      <SignupCard />
+    </AuthLayout>
   );
 }

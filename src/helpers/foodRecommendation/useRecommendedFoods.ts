@@ -26,11 +26,7 @@ export function useRecommendedFoods(): UseRecommendedFoodsResult {
 
         setFoods(recommendedFoods);
       } catch (error) {
-        setError(
-          error instanceof Error
-            ? error.message
-            : "Failed to load recommendations.",
-        );
+        setError(error instanceof Error ? error.message : "Failed to load recommendations.");
       } finally {
         setLoading(false);
       }

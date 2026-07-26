@@ -19,11 +19,11 @@ function formatDateTime(timestamp: string): string {
 }
 
 function getOrderStatus(order: number): string {
-  if (order === 3) {
+  if (order === 4) {
     return "complete";
   }
 
-  if (order === 2) {
+  if (order === 3) {
     return "serving";
   }
 
@@ -67,19 +67,16 @@ export default function OrderBar({ order }: OrderBarProps) {
       className={`grid grid-cols-[60px_160px_100px_200px_94px] justify-between items-center p-4 rounded-lg shadow-md cursor-pointer bg-white`}
       onClick={openDetails}
     >
-      {/* Order ID and date */}
       <div className="flex flex-col">
-        <span className="font-semibold">User {order.username}</span>
+        <span className="font-semibold">{"Order " + order.orderNumber}</span>
 
         <span className="text-sm text-gray-500">{formatDateTime(order.orderTime)}</span>
       </div>
 
-      {/* Customer Name */}
-      {/*
       <div className="flex flex-col">
         <span className="font-semibold">{order.username}</span>
       </div>
-      */}
+
       {/* Items and Total Price */}
 
       <div className="flex flex-col items-end">

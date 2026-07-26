@@ -33,7 +33,9 @@ function addMinutes(timestamp: string, minutes: number): string {
 }
 
 function getItemStatus(status: number): OrderItemStatus {
-  return status === 3 ? "served" : "preparing";
+  if (status === 3) return "served";
+  if (status === 4) return "paid";
+  return "preparing";
 }
 
 export async function getOrderDetails(orderIds: number[]): Promise<OrderDetailsItem[]> {

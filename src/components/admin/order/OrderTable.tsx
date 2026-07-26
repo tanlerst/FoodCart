@@ -6,11 +6,24 @@ import { getOrdersAdmin } from "../../../helpers/admin/getOrdersAdmin";
 import { formatOrdersAdmin } from "../../../helpers/admin/formatOrderRows";
 import type { adminOrders } from "../../../types/adminOrder";
 
-export default function OrderTable() {
+type OrderTableProps = {
+  status: string;
+};
+
+export default function OrderTable({ status }: OrderTableProps) {
+  function convertStatus(input: number): string {
+    if (input === 1) {
+      return "preparing";
+    }
+    if (input === 3) {
+      return "serving";
+    }
+    return "complete";
+  }
+
   const [orders, setOrders] = useState<adminOrders[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  //const [selectedOrder, setSelectedOrder] = useState<string[]>([]);
 
   useEffect(() => {
     async function loadOrders() {
@@ -35,23 +48,16 @@ export default function OrderTable() {
     return <div>{error}</div>;
   }
 
-  /*
-  function handleSelectOrder(orderNumber: string) {
-    // selected order
-    if (selectedOrder.includes(orderNumber)) {
-      setSelectedOrder(selectedOrder.filter((id) => id !== orderNumber));
-    } else {
-      setSelectedOrder([...selectedOrder, orderNumber]);
-    }
-  }
-             
-  selected={selectedOrder.includes(order.username)}
-   onSelect={handleSelectOrder}
-            
-*/
+  const filteredOrders =
+    status === "all"
+      ? orders
+      : status === "incomplete"
+        ? orders.filter((order) => convertStatus(order.status) !== "complete")
+        : orders.filter((order) => convertStatus(order.status) === status);
+
   return (
     <div className="flex flex-col gap-4">
-      {orders.map((order) => (
+      {filteredOrders.map((order) => (
         <OrderBar key={order.userId} order={order} />
       ))}
     </div>

@@ -30,16 +30,15 @@ export default function UserProfileCard({ user, onEditProfile }: UserProfileCard
         </div>
       </div>
 
-        {/* Edit profile button */}
-        <button
-          type="button"
-          onClick={onEditProfile}
-          className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-orange-500 px-4 py-2.5 text-sm font-semibold text-orange-500"
-        >
-          <Pencil size={16} />
-          Edit Profile
-        </button>
-
+      {/* Edit profile button */}
+      <button
+        type="button"
+        onClick={onEditProfile}
+        className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-orange-500 px-4 py-2.5 text-sm font-semibold text-orange-500"
+      >
+        <Pencil size={16} />
+        Edit Profile
+      </button>
     </article>
   );
 }

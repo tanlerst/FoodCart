@@ -17,7 +17,6 @@ export default function MenuPage() {
 
       <CategoryTabs categories={categories} chosen_category={catTab} changeCategory={setCatTab} />
       <FoodGrid foods={filteredFoods} />
-
     </UserLayout>
   );
 }

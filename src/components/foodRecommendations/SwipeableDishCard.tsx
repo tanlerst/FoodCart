@@ -12,11 +12,7 @@ type SwipeableDishCardProps = {
 
 const SWIPE_DISTANCE = 80;
 
-export default function SwipeableDishCard({
-  dish,
-  onSkip,
-  onAdd,
-}: SwipeableDishCardProps) {
+export default function SwipeableDishCard({ dish, onSkip, onAdd }: SwipeableDishCardProps) {
   const swipeHandlers = useSwipeable({
     onSwipedLeft: onSkip,
     onSwipedRight: onAdd,
@@ -25,10 +21,7 @@ export default function SwipeableDishCard({
   });
 
   return (
-    <div
-      {...swipeHandlers}
-      className="relative mx-auto mt-4 w-[90%] touch-pan-y select-none"
-    >
+    <div {...swipeHandlers} className="relative mx-auto mt-4 w-[90%] touch-pan-y select-none">
       <DishCard dish={dish} />
 
       <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2">

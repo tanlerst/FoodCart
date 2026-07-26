@@ -10,7 +10,7 @@ export default function FoodRecommendationPage() {
   const navigate = useNavigate();
   const { addItem } = useCart();
 
-  const { foods, loading, error, } = useRecommendedFoods();
+  const { foods, loading, error } = useRecommendedFoods();
 
   function navigateToMenu() {
     navigate("/menu");
@@ -20,18 +20,16 @@ export default function FoodRecommendationPage() {
     addItem(dish, 1);
   }
 
-const {currentDish, skipCurrentDish, addCurrentDish, } = useRecommendationQueue({
-  initialDishes: foods,
-  onAddDish: addDishToCart,
-  onQueueEmpty: navigateToMenu,
-});
+  const { currentDish, skipCurrentDish, addCurrentDish } = useRecommendationQueue({
+    initialDishes: foods,
+    onAddDish: addDishToCart,
+    onQueueEmpty: navigateToMenu,
+  });
 
   if (loading) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-white">
-        <p className="text-gray-600">
-          Loading recommendations...
-        </p>
+        <p className="text-gray-600">Loading recommendations...</p>
       </main>
     );
   }
@@ -39,9 +37,7 @@ const {currentDish, skipCurrentDish, addCurrentDish, } = useRecommendationQueue(
   if (error) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-white p-8">
-        <p className="text-center text-red-600">
-          {error}
-        </p>
+        <p className="text-center text-red-600">{error}</p>
       </main>
     );
   }
@@ -49,9 +45,7 @@ const {currentDish, skipCurrentDish, addCurrentDish, } = useRecommendationQueue(
   if (!currentDish) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-white p-8">
-        <p className="text-center text-gray-600">
-          No recommendations available.
-        </p>
+        <p className="text-center text-gray-600">No recommendations available.</p>
       </main>
     );
   }

@@ -29,13 +29,11 @@ export default function FoodRecommendationView({
 
         {/* Header */}
         <header className="flex flex-col items-center justify-center gap-4">
-          <h1 className="mb-2 text-center text-3xl font-bold text-gray-900">
-            Swipe to choose
-          </h1>
+          <h1 className="mb-2 text-center text-3xl font-bold text-gray-900">Swipe to choose</h1>
 
           <p className="text-center text-sm text-gray-600">
-            Swipe right to add to your order or swipe left to
-            skip. Browse the menu for more options.
+            Swipe right to add to your order or swipe left to skip. Browse the menu for more
+            options.
           </p>
         </header>
 
@@ -47,11 +45,7 @@ export default function FoodRecommendationView({
         </div>
 
         {/* Dish card */}
-        <SwipeableDishCard
-          dish={dish}
-          onSkip={onSkip}
-          onAdd={onAdd}
-        />
+        <SwipeableDishCard dish={dish} onSkip={onSkip} onAdd={onAdd} />
 
         {/* Bottom action buttons */}
         <div className="mt-10 flex justify-center gap-4">

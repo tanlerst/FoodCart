@@ -18,7 +18,9 @@ export default function OrderItemRow({ item }: OrderItemRowProps) {
 
         <div>
           {/* Item name & item quantity */}
-          <h3 className="font-bold text-gray-900">{item.name} • x{item.quantity}</h3>
+          <h3 className="font-bold text-gray-900">
+            {item.name} • x{item.quantity}
+          </h3>
 
           <h2 className="font-medium text-gray-900">${item.price}</h2>
 
@@ -35,8 +37,6 @@ export default function OrderItemRow({ item }: OrderItemRowProps) {
           </p>
         </div>
       </div>
-
-      
     </div>
   );
 }

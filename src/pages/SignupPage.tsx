@@ -5,7 +5,6 @@ import SigninButton from "../components/auth/SigninButton";
 import AuthLayout from "../layouts/AuthLayout";
 
 export default function SignupPage() {
-
   return (
     <AuthLayout>
       <div className="space-y-4">

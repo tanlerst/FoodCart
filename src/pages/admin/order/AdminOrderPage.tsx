@@ -13,7 +13,7 @@ export default function AdminOrdersPage() {
       <main className="bg-orange-50 px-2 py-8">
         <StatusFilterBar status={status} onChange={setStatus} />
 
-        <OrderTable />
+        <OrderTable status={status} />
       </main>
     </AdminLayout>
   );

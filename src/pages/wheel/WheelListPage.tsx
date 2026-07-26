@@ -5,6 +5,7 @@ import { useWheel } from "../../contexts/WheelContext";
 import { MIN_WHEEL_ITEMS } from "../../contexts/WheelContext";
 import { useNavigate } from "react-router";
 import UserLayout from "../../layouts/UserLayout";
+import CancelButton from "../../components/common/CancelButton";
 
 export default function WheelListPage() {
   const { items, removeItem, clearItems } = useWheel();
@@ -12,18 +13,14 @@ export default function WheelListPage() {
   const canSpin = items.length >= MIN_WHEEL_ITEMS;
 
   return (
-    <UserLayout
-      title="Wheel Item List"
-    >
+    <UserLayout title="Wheel Item List" headerAction={<CancelButton onClick={() => navigate("/menu")} />}>
       {items.length === 0 ? (
         <WheelEmptyState onBrowseMenu={() => navigate("/menu")} />
       ) : (
         <>
           <WheelItemList items={items} onRemove={removeItem} onClear={clearItems} />
-          
-          <AddMoreItemsButton
-            onClick={() => navigate("/menu")}
-          />
+
+          <AddMoreItemsButton onClick={() => navigate("/menu")} />
 
           {/* Spin button */}
           <button
@@ -41,7 +38,6 @@ export default function WheelListPage() {
             </p>
           )}
         </>
-
       )}
     </UserLayout>
   );

@@ -8,11 +8,7 @@ type OrderInfoCardProps = {
   status: OrderStatus;
 };
 
-export default function OrderInfoCard({
-  orderNumber,
-  placedAt,
-  status,
-}: OrderInfoCardProps) {
+export default function OrderInfoCard({ orderNumber, placedAt, status }: OrderInfoCardProps) {
   return (
     <div className="mb-4 rounded-2xl bg-white p-5 shadow-md">
       <div className="flex items-center gap-4">
@@ -25,7 +21,7 @@ export default function OrderInfoCard({
 
           <p className="mt-1 text-sm text-gray-500">{placedAt}</p>
         </div>
-        
+
         {/* Status */}
         <span className="rounded-xl bg-orange-100 px-5 py-2 text-sm font-bold uppercase text-orange-600">
           {status}

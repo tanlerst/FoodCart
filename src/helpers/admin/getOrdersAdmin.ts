@@ -8,6 +8,7 @@ type OrderRow = {
   quantity: number;
   status: number;
   ordertime: string;
+  orderNumber: string;
 };
 
 type UserRow = {
@@ -23,8 +24,7 @@ type FoodRow = {
 export async function getOrdersAdmin(): Promise<adminOrderItems[]> {
   const { data: orderRows, error: orderError } = await supabase
     .from("orders")
-    .select("id, user, food, quantity, status, ordertime")
-    .neq("status", 4)
+    .select("id, user, food, quantity, status, ordertime, orderNumber")
     .order("ordertime", { ascending: true });
 
   if (orderError) {
@@ -82,6 +82,7 @@ export async function getOrdersAdmin(): Promise<adminOrderItems[]> {
 
     return {
       id: order.id,
+      orderNumber: order.orderNumber,
       userId: user.id,
       username: user.username,
       orderTime: order.ordertime,
