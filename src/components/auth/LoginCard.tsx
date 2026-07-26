@@ -44,13 +44,9 @@ export default function LoginCard({ onLogin }: { onLogin: (authUserid: string) =
         placeholder="Enter your password"
       />
 
-      <div className="text-right">
-        <a href="/forgot-password" className="text-sm text-orange-600 font-semibold">
-          Forgot Password?
-        </a>
+      <div className="mt-5">
+        <Button type="submit" text="Log In" />
       </div>
-
-      <Button type="submit" text="Log In" />
     </form>
   );
 }
