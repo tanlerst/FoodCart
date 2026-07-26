@@ -12,10 +12,12 @@ export default function OrderItemRow({ item }: OrderItemRowProps) {
 
   return (
     <div className="py-2">
-      <div className="flex items-center gap-2">
-        {/* Image */}
+      {/* Create three-column grid layout */}
+      <div className="grid grid-cols-[5rem_minmax(0,1fr)_auto] items-center gap-3">
+        {/* Col 1: Image */}
         <img src={item.image} alt={item.name} className="h-20 w-20 rounded-xl object-cover" />
 
+        {/* Col 2: Item details */}
         <div>
           {/* Item name & item quantity */}
           <h3 className="font-bold text-gray-900">
@@ -28,6 +30,7 @@ export default function OrderItemRow({ item }: OrderItemRowProps) {
           <p className="mt-1 text-sm text-gray-500">🕒 {item.estimatedMinutes} mins</p>
         </div>
 
+        {/* Col 3: status and estimated time */}
         <div className="shrink-0">
           <StatusBadge status={item.status} />
 
