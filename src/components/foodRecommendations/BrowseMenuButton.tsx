@@ -9,7 +9,7 @@ export default function BrowseMenuButton({ onBrowseMenu }: BrowseMenuButtonProps
     <button
       type="button"
       onClick={onBrowseMenu}
-      className="w-40 rounded-xl border-2 border-orange-400 bg-white px-6 py-3 font-bold text-orange-400"
+      className="w-40 rounded-xl border-2 border-orange-500 bg-white px-6 py-3 font-bold text-orange-500"
     >
       Browse Menu
     </button>
