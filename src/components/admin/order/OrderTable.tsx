@@ -58,7 +58,7 @@ export default function OrderTable({ status }: OrderTableProps) {
   return (
     <div className="flex flex-col gap-4">
       {filteredOrders.map((order) => (
-        <OrderBar key={order.userId} order={order} />
+        <OrderBar key={order.orderNumber} order={order} />
       ))}
     </div>
   );
