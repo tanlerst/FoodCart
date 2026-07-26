@@ -55,7 +55,7 @@ export default function ItemImageCard({ image, onImageChange, existingImageUrl }
               <>
                 <p className="font-semibold text-gray-800">Upload Item Image</p>
                 <p className="mt-2 text-sm text-gray-500">
-                  Drag and drop an image here, or click to browse
+                  Click to browse
                 </p>
                 <p className="mt-1 text-sm text-gray-500">Supports: JPG, PNG</p>
               </>
