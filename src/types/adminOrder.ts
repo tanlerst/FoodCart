@@ -1,5 +1,6 @@
 export type adminOrders = {
   userId: number;
+  orderNumber: string;
   username: string;
   orderTime: string;
   itemQty: number;
@@ -10,6 +11,7 @@ export type adminOrders = {
 
 export type adminOrderItems = {
   id: number;
+  orderNumber: string;
   userId: number;
   username: string;
   orderTime: string;

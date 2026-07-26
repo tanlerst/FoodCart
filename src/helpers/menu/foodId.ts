@@ -1,8 +1,20 @@
 import { supabase } from "../../utils/supabase";
-import type { Food } from "../../types/food";
-import type { FoodRow } from "../../types/foodRow";
+import type { FoodItem } from "../../types/food";
 
-export async function fetchFood(id: number): Promise<Food | null> {
+type FoodRow = {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  available: boolean;
+  category: {
+    name: string;
+  };
+  time: number;
+};
+
+export async function fetchFood(id: number): Promise<FoodItem | null> {
   const { data, error } = await supabase
     .from("food")
     .select(`
@@ -11,10 +23,11 @@ export async function fetchFood(id: number): Promise<Food | null> {
       description,
       price,
       image,
-      time,
+      available,
       category (
         name
       )
+      time,
     `)
     .eq("id", id)
     .single();
@@ -27,7 +40,7 @@ export async function fetchFood(id: number): Promise<Food | null> {
     return null;
   }
 
-  const food = data as FoodRow;
+  const food = data as unknown as FoodRow;
 
   return {
     id: food.id,
@@ -36,10 +49,9 @@ export async function fetchFood(id: number): Promise<Food | null> {
     price: food.price,
     image: supabase.storage.from("FoodCart").getPublicUrl(food.image).data.publicUrl,
     time: food.time,
+    isAvailable: food.available,
     category: {
-      name: Array.isArray(food.category)
-        ? (food.category[0]?.name ?? "Uncategorized")
-        : (food.category?.name ?? "Uncategorized"),
+      name: food.category.name,
     },
   };
 }

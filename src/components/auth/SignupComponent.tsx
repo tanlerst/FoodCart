@@ -23,7 +23,7 @@ export default function SignupComponent() {
 
     try {
       await doSignup({ username, email, password });
-      navigate("/login");
+      navigate("/menu");
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);

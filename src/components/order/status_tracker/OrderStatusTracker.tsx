@@ -1,4 +1,4 @@
-import type { OrderStatus } from "../../../types/orderDetails";
+import type { OrderStatus } from "../../../types/order";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import StatusLine from "./StatusLine";
 import StatusStep from "./StatusStep";
@@ -44,24 +44,26 @@ export default function OrderStatusTracker({ status }: OrderStatusTrackerProps) 
     <div className="mb-4 rounded-2xl bg-white p-5 shadow-md">
       <h2 className="mb-5 text-xl font-bold text-gray-900">Order Status</h2>
 
-      <div className="flex items-center justify-between">
-        <StatusStep icon="🧾" label="Received" active={isReceived} />
+      <div className="overflow-x-auto px-4">
+        <div className="flex min-w-[620px] items-center justify-between">
+          <StatusStep icon="🧾" label="Received" active={isReceived} />
 
-        <StatusLine active={isPreparing} />
+          <StatusLine active={isPreparing} />
 
-        <StatusStep icon="🍳" label="Preparing" active />
+          <StatusStep icon="🍳" label="Preparing" active={isPreparing} />
 
-        <StatusLine active={isServing} />
+          <StatusLine active={isServing} />
 
-        <StatusStep icon="🍽️" label="Serving" active={isServing} />
+          <StatusStep icon="🍽️" label="Serving" active={isServing} />
 
-        <StatusLine active={isComplete} />
+          <StatusLine active={isComplete} />
 
-        <StatusStep icon="✅" label="Complete" active={isComplete} />
+          <StatusStep icon="✅" label="Complete" active={isComplete} />
 
-        <StatusLine active={isPaid} />
+          <StatusLine active={isPaid} />
 
-        <StatusStep icon="💳" label="Paid" active={isPaid} />
+          <StatusStep icon="💳" label="Paid" active={isPaid} />
+        </div>
       </div>
 
       <div className="mt-6 rounded-xl border border-orange-200 bg-orange-50 p-4 text-sm text-gray-800">

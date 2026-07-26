@@ -1,24 +1,30 @@
 /* Admin Order Details Page Order Item */
 
-import type { OrderDetailsItem, OrderItemStatus } from "../../../types/orderDetails";
+import type { OrderDetailsItem, OrderItemStatus } from "../../../types/order";
 import StatusBadge from "../../common/StatusBadge";
 
 type OrderItemRowProps = {
   orderItem: OrderDetailsItem;
   onStatusChange: (itemId: number, status: OrderItemStatus) => void;
 };
-/*
+
 function getItemTimeText(orderItem: OrderDetailsItem) {
   if (orderItem.status === "served") {
-    return `Served at ${orderItem.servedAt}`;
-  } else {
+    return orderItem.servedAt ? `Served at ${orderItem.servedAt}` : "Served";
+  }
+
+  if (orderItem.status === "paid") {
+    return "";
+  }
+
+  if (orderItem.status === "preparing") {
     return `Est. ready ${orderItem.estimatedReadyAt}`;
   }
-}
-*/
-export default function OrderItemRow({ orderItem, onStatusChange }: OrderItemRowProps) {
-  const isServed = orderItem.status === "served";
 
+  return `Est. ready ${orderItem.estimatedReadyAt}`;
+}
+
+export default function OrderItemRow({ orderItem, onStatusChange }: OrderItemRowProps) {
   return (
     <div className="mx-auto mb-5 w-full grid grid-cols-[1fr_60px_160px] max-w-4xl rounded-2xl bg-white p-6 shadow-md">
       <div className="flex items-center gap-4">
@@ -51,9 +57,7 @@ export default function OrderItemRow({ orderItem, onStatusChange }: OrderItemRow
         />
 
         {/* Served time or est ready time */}
-        <p className="mt-2 text-sm text-gray-500">
-          {isServed ? `` : `Est. ready ${orderItem.estimatedReadyAt}`}
-        </p>
+        <p className="mt-2 text-sm text-gray-500">{getItemTimeText(orderItem)}</p>
       </div>
     </div>
   );

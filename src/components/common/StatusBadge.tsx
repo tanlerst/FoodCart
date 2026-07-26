@@ -1,6 +1,6 @@
 /* Status badge for an order item in admin order details page and user order page*/
 
-import type { OrderItemStatus } from "../../types/orderDetails";
+import type { OrderItemStatus } from "../../types/order";
 
 type StatusBadgeProps = {
   status: OrderItemStatus;
@@ -10,21 +10,22 @@ type StatusBadgeProps = {
 const BASE_FORMAT = "rounded-lg px-3 py-1 text-sm font-semibold";
 const SERVED_FORMAT = "bg-green-100 text-green-700";
 const PREPARING_FORMAT = "bg-orange-100 text-orange-600";
+const PAID_FORMAT = "bg-slate-100 text-slate-700";
 const SERVED_TEXT = "✔ Served";
 const PREPARING_TEXT = "⏲ Preparing";
 const PAID_TEXT = "$$ Paid";
 
 export default function StatusBadge({ status, onChange }: StatusBadgeProps) {
   const isServed = status === "served";
-  const statusFormat = isServed ? SERVED_FORMAT : PREPARING_FORMAT;
+  const isPaid = status === "paid";
+  const statusFormat = isServed ? SERVED_FORMAT : isPaid ? PAID_FORMAT : PREPARING_FORMAT;
+  const text = isServed ? SERVED_TEXT : isPaid ? PAID_TEXT : PREPARING_TEXT;
   const className = `${BASE_FORMAT} cursor-pointer ${statusFormat}`;
 
-  // user page
   if (!onChange) {
-    return <span className={className}>{isServed ? SERVED_TEXT : PREPARING_TEXT}</span>;
+    return <span className={className}>{text}</span>;
   }
 
-  // admin page that allows update status
   return (
     <select
       value={status}

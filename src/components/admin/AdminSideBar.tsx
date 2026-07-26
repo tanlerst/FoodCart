@@ -23,7 +23,7 @@ const sidebarItems: SidebarItem[] = [
   {
     label: "Menu",
     icon: "📖",
-    route: "/additem",
+    route: "/adminmenu",
   },
 ];
 
@@ -41,7 +41,7 @@ function getSidebarItemClass(isActive: boolean) {
 
 export default function AdminSideBar() {
   return (
-    <aside className="flex min-h-screen w-64 flex-col border-r border-orange-100 bg-white px-4 py-6">
+    <aside className="fixed left-0 top-0 flex h-screen w-64 flex-col border-r border-orange-100 bg-white px-4 py-6">
       {/* Side Bar */}
       <nav className="flex flex-1 flex-col gap-2">
         {sidebarItems.map((item) => (

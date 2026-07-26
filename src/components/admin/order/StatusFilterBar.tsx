@@ -10,8 +10,9 @@ export default function StatusFilter({ status, onChange }: StatusFilterBarProps)
   const statusOption = [
     { label: "All Status", value: "all" },
     { label: "Preparing", value: "preparing" },
-    { label: "Completed", value: "completed" },
-    { label: "Cancelled", value: "cancelled" },
+    { label: "Serving", value: "serving" },
+    { label: "Incomplete", value: "incomplete" },
+    { label: "Complete", value: "complete" },
   ];
 
   return (

@@ -1,5 +1,5 @@
 import { supabase } from "../../utils/supabase";
-import type { UserRow, OrderRow, FoodRow, OrderData } from "../../types/OrderData";
+import type { UserRow, OrderRow, FoodRow, OrderData } from "../../types/getOrderData";
 
 export async function getOrder(): Promise<OrderData | null> {
   const { data: authData, error: authError } = await supabase.auth.getUser();
@@ -29,7 +29,7 @@ export async function getOrder(): Promise<OrderData | null> {
 
   const { data: orderRows, error: orderError } = await supabase
     .from("orders")
-    .select("id, food, quantity, status, ordertime")
+    .select("id, food, quantity, status, ordertime, orderNumber")
     .eq("user", userRow.id)
     .neq("status", 4)
     .order("ordertime", { ascending: true });
@@ -58,5 +58,6 @@ export async function getOrder(): Promise<OrderData | null> {
     userRow,
     orderRows: typedOrderRows,
     foodRows: (foodRows ?? []) as FoodRow[],
+    orderNumber: orderRows[0].orderNumber,
   };
 }

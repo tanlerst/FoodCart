@@ -1,10 +1,10 @@
 /* grouped food items in cart page */
 
-import type { ItemData } from "../../types/itemData";
-import CartItem from "./CartItem";
+import type { CartItem } from "../../types/cart";
+import CartItemRow from "./CartItemRow";
 
 type CartItemProps = {
-  cartItems: ItemData[];
+  cartItems: CartItem[];
   incrementQuantity: (foodId: number) => void;
   decrementQuantity: (foodId: number) => void;
   removeItem: (foodId: number) => void;
@@ -24,7 +24,7 @@ export default function CartItemList({
   return (
     <div className="flex flex-col items-center justify-between p-4 border-b">
       {cartItems.map((item) => (
-        <CartItem
+        <CartItemRow
           key={item.food.id}
           cartItem={item}
           incrementQuantity={() => incrementQuantity(item.food.id)}
