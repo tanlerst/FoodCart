@@ -9,8 +9,6 @@ type OrderItemListProps = {
 };
 
 export default function OrderItemList({ items, onStatusChange }: OrderItemListProps) {
-  // updated order item
-
   return (
     <div>
       {items.map((item) => (
