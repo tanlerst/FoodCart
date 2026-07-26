@@ -29,11 +29,19 @@ export default function UserProfilePage() {
   }, []);
 
   if (loading) {
-    return <div className="p-8">Loading...</div>;
+    return (
+      <UserLayout title="Your Profile">
+        <p>Loading...</p>
+      </UserLayout>
+    );
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return (
+      <UserLayout title="Your Profile">
+        <p>Loading...</p>
+      </UserLayout>
+    ); 
   }
 
   if (!profile) {
