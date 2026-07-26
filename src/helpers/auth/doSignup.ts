@@ -27,6 +27,5 @@ export async function doSignup({ username, email, password }: Credentials) {
   });
   if (usernameError) throw usernameError;
 
-  await supabase.auth.signOut();
   return data;
 }

@@ -6,16 +6,18 @@ import { doCheckout } from "../helpers/cart/doCheckout";
 import OrderSummary from "../components/cart/OrderSummary";
 import { calculateCartPricing } from "../helpers/cart/cartCalculation";
 import UserLayout from "../layouts/UserLayout";
+import { useNavigate } from "react-router";
 
 export default function CartPage() {
   const { cartItems, increaseQuantity, decreaseQuantity, removeItem, clearCart } = useCart();
   const { subtotal, gst, serviceFee, total } = calculateCartPricing(cartItems);
-
+  const navigate = useNavigate();
   async function handleCheckout() {
     try {
       await doCheckout(cartItems);
       clearCart();
       alert("Order placed.");
+      navigate("/orders");
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
