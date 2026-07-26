@@ -10,7 +10,7 @@ type OrderStatusTrackerProps = {
 const RECEIVED_MESSAGE = "Your order has been received. We will start preparing soon.";
 const PREPARING_MESSAGE = "Your order is being prepared. We will serve once items are ready.";
 const SERVING_MESSAGE = "Some items have been served. Remaining items are still being prepared.";
-const COMPLETE_MESSAGE = "All items have been served. Please proceed to payment.";
+const SERVED_MESSAGE = "All items have been served. Please proceed to payment.";
 const PAID_MESSAGE = "Your order is complete and payment has been received.";
 
 export default function OrderStatusTracker({ status }: OrderStatusTrackerProps) {
@@ -18,12 +18,12 @@ export default function OrderStatusTracker({ status }: OrderStatusTrackerProps) 
     status === "received" ||
     status === "preparing" ||
     status === "serving" ||
-    status === "complete" ||
+    status === "served" ||
     status === "paid";
   const isPreparing =
-    status === "preparing" || status === "serving" || status === "complete" || status === "paid";
-  const isServing = status === "serving" || status === "complete" || status === "paid";
-  const isComplete = status === "complete" || status === "paid";
+    status === "preparing" || status === "serving" || status === "served" || status === "paid";
+  const isServing = status === "serving" || status === "served" || status === "paid";
+  const isServed = status === "served" || status === "paid";
   const isPaid = status === "paid";
 
   function getStatusMessage() {
@@ -33,8 +33,8 @@ export default function OrderStatusTracker({ status }: OrderStatusTrackerProps) 
       return PREPARING_MESSAGE;
     } else if (status === "serving") {
       return SERVING_MESSAGE;
-    } else if (status === "complete") {
-      return COMPLETE_MESSAGE;
+    } else if (status === "served") {
+      return SERVED_MESSAGE;
     } else if (status === "paid") {
       return PAID_MESSAGE;
     }
@@ -56,9 +56,9 @@ export default function OrderStatusTracker({ status }: OrderStatusTrackerProps) 
 
           <StatusStep icon="🍽️" label="Serving" active={isServing} />
 
-          <StatusLine active={isComplete} />
+          <StatusLine active={isServed} />
 
-          <StatusStep icon="✅" label="Complete" active={isComplete} />
+          <StatusStep icon="🍴" label="Served" active={isServed} />
 
           <StatusLine active={isPaid} />
 
