@@ -1,11 +1,3 @@
-/**
- *  @file MarkAllAsServedButton.tsx
- *  @author Xi Yan
- *  @version 1.0.0
- *  @description This file is the mark all as served button component for the order details page.
- *               This is used to mark all items' statuses as served.
- */
-
 type MarkAllAsServedButtonProps = {
   onClick: () => void;
   disabled?: boolean;
