@@ -8,10 +8,13 @@ import { getOrder } from "../helpers/order/getOrder";
 import { formatOrder } from "../helpers/order/formatOrder";
 import { useEffect, useState } from "react";
 import UserLayout from "../layouts/UserLayout";
+import OrderEmptyState from "../components/order/OrderEmptyState";
+import { useNavigate } from "react-router";
 
 export default function UserOrderDetailsPage() {
   const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadOrder() {
@@ -34,7 +37,7 @@ export default function UserOrderDetailsPage() {
   if (loading) {
     return (
       <UserLayout title="Your Order">
-        <p>Loading</p>
+        <p>Loading...</p>
       </UserLayout>
     );
   }
@@ -42,7 +45,7 @@ export default function UserOrderDetailsPage() {
   if (!orderDetails) {
     return (
       <UserLayout title="Your Order">
-        <p>No orders.</p>
+        <OrderEmptyState onBrowseMenu={() => navigate("/menu")} />
       </UserLayout>
     );
   }
