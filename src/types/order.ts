@@ -9,7 +9,6 @@ export type OrderStatus =
   | "preparing"
   | "serving"
   | "served"
-  | "complete"
   | "paid"
   | "complete";
 
