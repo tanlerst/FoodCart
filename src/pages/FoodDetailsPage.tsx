@@ -64,7 +64,7 @@ export default function FoodDetailsPage() {
           onClick={() => navigate(-1)}
           className="absolute left-4 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-white text-orange-500"
         >
-          <ChevronLeft size={32}/>
+          <ChevronLeft size={32} />
         </button>
 
         <FoodDetails

@@ -41,7 +41,7 @@ export default function UserProfilePage() {
       <UserLayout title="Your Profile">
         <p>Loading...</p>
       </UserLayout>
-    ); 
+    );
   }
 
   if (!profile) {

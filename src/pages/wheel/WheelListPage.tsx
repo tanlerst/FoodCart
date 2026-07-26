@@ -12,7 +12,7 @@ export default function WheelListPage() {
   const canSpin = items.length >= MIN_WHEEL_ITEMS;
 
   return (
-    <UserLayout title="Wheel Item List" >
+    <UserLayout title="Wheel Item List">
       {items.length === 0 ? (
         <WheelEmptyState onBrowseMenu={() => navigate("/menu")} />
       ) : (

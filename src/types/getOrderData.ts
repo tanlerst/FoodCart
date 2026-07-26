@@ -24,4 +24,5 @@ export type OrderData = {
   userRow: UserRow;
   orderRows: OrderRow[];
   foodRows: FoodRow[];
+  orderNumber: string;
 };

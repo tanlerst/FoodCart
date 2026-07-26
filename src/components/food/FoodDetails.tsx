@@ -51,10 +51,7 @@ export default function FoodDetails({
             </button>
           </div>
 
-          <button
-            onClick={addToCart}
-            className="w-full px-4 py-2 bg-orange-600 text-white rounded"
-          >
+          <button onClick={addToCart} className="w-full px-4 py-2 bg-orange-600 text-white rounded">
             Add to Cart - ${totalPrice.toFixed(2)}
           </button>
 
