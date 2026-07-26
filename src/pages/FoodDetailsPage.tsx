@@ -6,6 +6,7 @@ import { fetchFood } from "../helpers/menu/foodId";
 import { useCart } from "../contexts/CartContext";
 import { useNavigate } from "react-router";
 import { useWheel } from "../contexts/WheelContext";
+import { ChevronLeft } from "lucide-react";
 
 export default function FoodDetailsPage() {
   const { addItem: addCart } = useCart();
@@ -56,12 +57,24 @@ export default function FoodDetailsPage() {
   }
 
   return (
-    <FoodDetails
-      food={food}
-      quantity={quantity}
-      setQuantity={setQuantity}
-      addToCart={addToCart}
-      addToWheel={addToWheel}
-    />
+    <main className="min-h-screen bg-orange-50">
+      <div className="relative mx-auto min-h-screen w-full max-w-md bg-white px-4 pb-8 pt-20">
+        <button
+          type="button"
+          onClick={() => navigate(-1)}
+          className="absolute left-4 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-white text-orange-500"
+        >
+          <ChevronLeft size={26}/>
+        </button>
+
+        <FoodDetails
+          food={food}
+          quantity={quantity}
+          setQuantity={setQuantity}
+          addToCart={addToCart}
+          addToWheel={addToWheel}
+        />
+      </div>
+    </main>
   );
 }
