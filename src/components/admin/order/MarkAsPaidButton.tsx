@@ -1,11 +1,3 @@
-/**
- *  @file MarkAsPaidButton.tsx
- *  @author Xi Yan
- *  @version 1.0.0
- *  @description This file is the mark as paid button component for the order details page.
- *
- */
-
 type MarkAsPaidButtonProps = {
   onClick: () => void;
   disabled?: boolean;

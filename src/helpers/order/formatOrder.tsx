@@ -41,9 +41,9 @@ function getItemStatus(statusId: number): OrderItemStatus {
 }
 
 function getOrderStatus(statusIds: number[]): OrderStatus {
-  if (statusIds.includes(1)) return "preparing";
   if (statusIds.every((item) => item === 3)) return "complete";
-  return "serving";
+  if (statusIds.some((item) => item === 3)) return "serving";
+  return "preparing";
 }
 
 export function formatOrder(data: OrderData): OrderDetails {
