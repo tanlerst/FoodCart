@@ -1,100 +1,63 @@
-/* Food Recommendation page */
+/* Food recommendation card */
 
-import BrowseMenuButton from "./BrowseMenuButton";
-import DishCard from "./DishCard";
-import SkipCard from "./SkipCard";
-import AddCard from "./AddCard";
-import SkipIcon from "./SkipIcon";
-import AddIcon from "./AddIcon";
-import AddDishButton from "./AddDishButton";
-import { useNavigate } from "react-router";
-import { useState, useEffect } from "react";
 import type { FoodItem } from "../../types/food";
 import CancelButton from "../common/CancelButton";
+import AddCard from "./AddCard";
+import AddDishButton from "./AddDishButton";
+import BrowseMenuButton from "./BrowseMenuButton";
+import SkipCard from "./SkipCard";
+import SwipeableDishCard from "./SwipeableDishCard";
 
-type FoodRecommendationPageProps = {
-  recommendedDishes: FoodItem[];
-  onAddDish?: (dish: FoodItem) => void;
+type FoodRecommendationViewProps = {
+  dish: FoodItem;
+  onClose: () => void;
+  onSkip: () => void;
+  onAdd: () => void;
 };
 
-export default function FoodRecommendationPage({
-  recommendedDishes,
-  onAddDish,
-}: FoodRecommendationPageProps) {
-  const navigate = useNavigate();
-  const [dishes, setDishes] = useState(recommendedDishes);
-
-  function handleClose() {
-    navigate("/menu");
-  }
-
-  const currentDish = dishes[0];
-  if (!currentDish) {
-    return null;
-  }
-
-  useEffect(() => {
-    setDishes(recommendedDishes);
-  }, [recommendedDishes]);
-
-  function handleSkip() {
-    setDishes((prev) => {
-      const next = prev.slice(1);
-      if (next.length === 0) {
-        navigate("/menu");
-      }
-
-      return next;
-    });
-  }
-
-  function handleAdd() {
-    onAddDish?.(currentDish);
-    handleSkip();
-  }
-
+export default function FoodRecommendationView({
+  dish,
+  onClose,
+  onSkip,
+  onAdd,
+}: FoodRecommendationViewProps) {
   return (
     <main className="min-h-screen bg-white">
-      <div className="relative mx-auto min-h-screen max-w-md rounded-2xl bg-white-100 p-10 shadow-md">
+      <div className="relative mx-auto min-h-screen max-w-md bg-white p-10 shadow-md">
         {/* Close button */}
-        <CancelButton onClick={handleClose} />
+        <CancelButton onClick={onClose} />
 
         {/* Header */}
-        <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-3xl font-bold mb-2">Swipe to choose</h1>
+        <header className="flex flex-col items-center justify-center gap-4">
+          <h1 className="mb-2 text-center text-3xl font-bold text-gray-900">
+            Swipe to choose
+          </h1>
 
-          <p className="mx-auto text-sm text-center text-gray-600">
-            Swipe right to add to your order or swipe left to skip. Browse the menu for more
-            options.
+          <p className="text-center text-sm text-gray-600">
+            Swipe right to add to your order or swipe left to
+            skip. Browse the menu for more options.
           </p>
-        </div>
+        </header>
 
-        {/* Dish Card */}
-
+        {/* Top action controls */}
         <div className="mx-auto mt-6 flex w-[80%] items-center justify-between">
-          <SkipCard onSkip={handleSkip} />
-          <AddCard onAdd={handleAdd} />
-        </div>
-        <div className="relative mx-auto mt-4 w-[90%] ">
-          <DishCard dish={currentDish} />
+          <SkipCard onSkip={onSkip} />
 
-          {/* Skip Icon (left) */}
-          <div className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2">
-            <SkipIcon onSkip={handleSkip} />
-          </div>
-
-          {/* Add Icon (right) */}
-          <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2">
-            <AddIcon onAdd={handleAdd} />
-          </div>
+          <AddCard onAdd={onAdd} />
         </div>
 
-        {/* Browse Menu and Add Dish Buttons */}
+        {/* Dish card */}
+        <SwipeableDishCard
+          dish={dish}
+          onSkip={onSkip}
+          onAdd={onAdd}
+        />
 
-        <div className="flex justify-center gap-4 mt-10">
-          <BrowseMenuButton onBrowseMenu={handleClose} />
+        {/* Bottom action buttons */}
+        <div className="mt-10 flex justify-center gap-4">
+          <BrowseMenuButton onBrowseMenu={onClose} />
 
-          <AddDishButton onAddDish={handleAdd} />
+          <AddDishButton onAddDish={onAdd} />
         </div>
       </div>
     </main>
